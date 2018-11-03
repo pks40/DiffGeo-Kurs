@@ -1,5 +1,5 @@
 % !TeX spellcheck = de_DE
-\documentclass[a4paper]{scrartcl}
+\documentclass[a4paper]{scrreprt}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -10,16 +10,17 @@
 \usepackage[ngerman]{babel}
 \usepackage{enumitem}
 \usepackage{microtype} % Microtypography!
-\usepackage{xspace}
+\usepackage{epigraph}
 \usepackage{hyperref}
 \usepackage{todonotes}
 
-\numberwithin{equation}{section}
+\setlength{\epigraphwidth}{0.6\textwidth}
+
+\numberwithin{equation}{chapter}
 
 \newcommand{\D}{\mathrm{d}}
 \newcommand{\DD}{\mathrm{D}}
 \newcommand{\e}{\mathrm{e}}
-\DeclareMathOperator{\tr}{tr}
 
 \theoremstyle{plain}
 \newtheorem{defn}{Definition}[section]
@@ -30,22 +31,62 @@
 \newtheorem{bsp}[defn]{Beispiel}
 
 \title{Einführung in die Differentialgeometrie}
+\subtitle{Kurs auf der CdE-WinterAkademie 2018/19}
 \author{Benjamin Haake, Philip Schwartz}
-\date{Oktober 2018}
+\date{November 2018}
 
 \begin{document}
-	
+
 \maketitle
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Einleitung}
-	
-Blabla
-\todo{test}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Test} \label{sec:test}
+\setcounter{chapter}{-1}
+\chapter{Einleitung}
+\epigraph{Differentialgeometrie ist die Lehre von Eigenschaften, die invariant unter Notationswechsel sind.}{\textsc{Altes chinesisches Sprichwort}}
+
+Blabla
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Mannigfaltigkeiten}
 
 Test
-	
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Der Tangentialraum, das Differential, Untermannigfaltigkeiten}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Vektorbündel}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Vektorfelder}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Lie-Gruppen}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Tensorfelder}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Differentialformen}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Kovariante Ableitungen}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Riemann'sche Geometrie}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Integration auf Mannigfaltigkeiten}
+
+
 \end{document}
