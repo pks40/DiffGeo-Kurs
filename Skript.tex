@@ -23,6 +23,7 @@
 \newcommand{\e}{\mathrm{e}}
 
 \newcommand{\R}{\mathds{R}}
+\newcommand{\sC}{\mathcal{C}^{\infty}}
 \newcommand{\sm}{\mathcal{F}(M)}
 \newcommand{\vf}{\mathfrak{X}(M)}
 \newcommand{\tril}{\vartriangleleft}
@@ -35,6 +36,7 @@
 \newtheorem{kor}[defn]{Korollar}
 \newtheorem{bem}[defn]{Bemerkung}
 \newtheorem{bsp}[defn]{Beispiel}
+\newtheorem{nota}[defn]{Notation}
 
 \title{Einführung in die Differentialgeometrie}
 \subtitle{Kurs auf der CdE-WinterAkademie 2018/19}
@@ -92,7 +94,7 @@ Blabla
 		\begin{defn}[Stetige Abbildung]
 			Eine Abbildung $f:(X,\mathcal{T}_X)\rightarrow (Y,\mathcal{T}_Y)$ zwischen topologischen Räumen heißt stetig, wenn Urbilder offener Mengen offen sind:
 			\begin{equation*}
-				\forall U\in\mathcal{T}_Y \Rightarrow f^{-1}(U)\in\mathcal{T}_X
+				U\in\mathcal{T}_Y \Rightarrow f^{-1}(U)\in\mathcal{T}_X
 			\end{equation*}
 			Äquivalent dazu ist, dass Urbilder abgeschlossener Mengen abgeschlossen sind (da Komplementbildung mit dem Urbild vertauscht).\\
 			Die Topologien werden im Folgenden in der Notation unterdrückt.
@@ -118,7 +120,7 @@ Blabla
 			Die natürliche Zahl $n$ heißt Dimension der Mannigfaltigkeit und ist wohldefiniert (beachte, dass $n$ unabhängig von der Wahl des Punktes existieren muss).\\
 			Das Tupel $(\varphi,U)$ heißt Karte (wobei manchmal die Menge $U$ unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt Atlas $\mathcal{A}$.
 		\end{defn}
-		\begin{bsp}
+		\begin{bsp}\hfill 
 			\begin{enumerate}
 				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. 
 				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$, $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n\cdot m$).
@@ -132,13 +134,30 @@ Blabla
 			\end{equation*}
 			Da die Karten Homöomorphismen sind, sind auch alle Kartenwechsel Homöomorphismen.
 		\end{defn} 
-		\begin{defn}[Differenzierbare Mannigfaltigkeit]
-			Zwei Karten heißen verträglich, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).\\
-			Ein Atlas heißt differenzierbar, wenn alle seine Karten paarweise verträglich sind.\\
-			Ein differenzierbarer Atlas heißt maximal, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich ist und nicht in ihm enthalten ist.\\
-			Eine differenzierbare Struktur auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt differenzierbare Mannigfaltigkeit.
+		\begin{defn}[Differenzierbare Mannigfaltigkeit]\hfill
+			\begin{itemize}
+				\item Zwei Karten heißen verträglich, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
+				\item Ein Atlas heißt differenzierbar, wenn alle seine Karten paarweise verträglich sind.
+				\item Ein differenzierbarer Atlas heißt maximal, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
+				\item Eine differenzierbare Struktur auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt differenzierbare Mannigfaltigkeit.
+			\end{itemize}
 		\end{defn}
-
+	\section{Differenzierbare Abbildungen}
+		Seien von nun an $M,N$ differenzierbare Mannigfaltigkeiten.
+		\begin{defn}[Differenzierbarkeit]
+			Eine Abbildung $f:M\rightarrow N$ zwischen differenzierbaren Mannigfaltigkeiten heißt differenzierbar, wenn für alle Punkte $p\in M$ Karten $(\varphi,U)$ um  $p$ und $(\psi,V)$ um $f(p)$ existieren, sodass $f(U)\subset V$ und die folgende Abbildung glatt ist:
+			\begin{equation}
+				\psi\circ f \circ \varphi^{-1}:\varphi(U)\rightarrow \psi(V)
+			\end{equation}
+			Diese Definition ist unabhängig von der Wahl der Karte, da Kartenwechsel glatt sind. Äquivalent kann daher auch gefordert werden, dass die obige Abbildung für alle Karten glatt ist.\\
+			Wir schreiben $\sC(M,N)$ für die Menge der differenzierbaren Abbildungen zwischen Mannigfaltigkeiten $M,N$.
+		\end{defn}
+		\begin{nota}
+			$\sm:=\sC(M,\R)$ ist die Menge der (differenzierbaren) Funktionen auf $M$.
+		\end{nota}
+		\begin{defn}
+			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.
+		\end{defn}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Der Tangentialraum, das Differential, Untermannigfaltigkeiten}
 
