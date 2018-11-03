@@ -7,6 +7,8 @@
 \linespread{1.05}
 \usepackage{exscale} % To scale mathematical symbols correctly while using T1
 \usepackage{amsmath,amsthm,amssymb,dsfont}
+\usepackage{tikz}
+	\usetikzlibrary{matrix}
 \usepackage[ngerman]{babel}
 \usepackage{enumitem}
 \usepackage{microtype} % Microtypography!
@@ -21,6 +23,9 @@
 \newcommand{\D}{\mathrm{d}}
 \newcommand{\DD}{\mathrm{D}}
 \newcommand{\e}{\mathrm{e}}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\GL}{GL}
 
 \newcommand{\R}{\mathds{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
@@ -83,7 +88,7 @@ Blabla
 			Eine Teilmenge $K\subset X$ heißt kompakt, wenn jede offene Überdeckung (das heißt jede Familie offener Mengen $\lbrace U_i\rbrace_{i\in I}$ mit $K\subset \bigcup_{i\in I}U_i$) eine endliche Teilüberdeckung hat (also endlich viele $U_1,\ldots,U_n$ existieren sodass schon $K\subset \bigcup_{i=1}^n U_i$ gilt).
 		\end{defn}
 		\begin{defn}[Hausdorffraum]
-			Ein topologischer Raum $(X,\mathcal{T})$ heißt hausdorffsch oder Hausdorffraum, falls für je zwei Punkte $x,y\in X, x\neq y$ offene Umgebungen $U_x,U_y\in\mathcal{T}, x\in U_x, y\in U_y$ existieren sodass $U_x\cap U_y=\emptyset$. Zwei Punkte können also durch offene Mengen \glqq getrennt \grqq werden.
+			Ein topologischer Raum $(X,\mathcal{T})$ heißt hausdorffsch oder Hausdorffraum, falls für je zwei Punkte $x,y\in X, x\neq y$ offene Umgebungen ${U_x,U_y\in\mathcal{T}}$, ${x\in U_x}, {y\in U_y}$ existieren sodass $U_x\cap U_y=\emptyset$. Zwei Punkte können also durch offene Mengen \glqq getrennt \grqq werden.
 		\end{defn}
 		\begin{lemma}
 			In einem Hausdorffraum sind kompakte Mengen abgeschlossen.
@@ -113,17 +118,15 @@ Blabla
 		\end{defn}
 	\section{Mannigfaltigkeiten}
 		\begin{defn}
-			Ein topologischer Raum $(M,\mathcal{T})$ heißt topologische Mannigfaltigkeit, wenn er hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:
-			\begin{equation*}
-				\exists n\in \mathds{N}: \forall x\in M\, \exists U\subset M, V\subset \R^n\text{ offen mit } x\in U \text{ und ein Homöomorphismus } \varphi:U\rightarrow V
-			\end{equation*}
-			Die natürliche Zahl $n$ heißt Dimension der Mannigfaltigkeit und ist wohldefiniert (beachte, dass $n$ unabhängig von der Wahl des Punktes existieren muss).\\
+			Ein topologischer Raum $(M,\mathcal{T})$ heißt topologische Mannigfaltigkeit, wenn er hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:\\
+			Es existiert eine natürliche Zahl $n\in \mathds{N}$ (Dimension), sodass für alle Punkte $x\in M$ offene Umgebungen $U\subset M, V\subset \R^n$ mit $x\in U $ und ein Homöomorphismus $ \varphi:U\rightarrow V$ existieren.\par
+			Die Dimension der Mannigfaltigkeit und ist wohldefiniert (beachte, dass $n$ unabhängig von der Wahl des Punktes existieren muss).\\
 			Das Tupel $(\varphi,U)$ heißt Karte (wobei manchmal die Menge $U$ unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt Atlas $\mathcal{A}$.
 		\end{defn}
 		\begin{bsp}\hfill 
 			\begin{enumerate}
 				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. 
-				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$, $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n\cdot m$).
+				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n\cdot m$).
 				\item Für topologische Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine topologische Mannigfaltigkeit.
 			\end{enumerate}
 		\end{bsp}
@@ -142,6 +145,14 @@ Blabla
 				\item Eine differenzierbare Struktur auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt differenzierbare Mannigfaltigkeit.
 			\end{itemize}
 		\end{defn}
+		\begin{bsp}\hfill 
+			\begin{enumerate}
+				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale differenzierbare Mannigfaltigkeit, der oben genannte Atlas muss dazu aber erweitert werden!
+				\item Reelle, endlich dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
+				\item Das kartesische Produkt zweier differenzierbarer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine differenzierbare Mannigfaltigkeit (der Dimension $n\cdot m$).
+				\item Für differenzierbare Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine differenzierbare Mannigfaltigkeit.
+			\end{enumerate}
+		\end{bsp}
 	\section{Differenzierbare Abbildungen}
 		Seien von nun an $M,N$ differenzierbare Mannigfaltigkeiten.
 		\begin{defn}[Differenzierbarkeit]
@@ -150,22 +161,96 @@ Blabla
 				\psi\circ f \circ \varphi^{-1}:\varphi(U)\rightarrow \psi(V)
 			\end{equation}
 			Diese Definition ist unabhängig von der Wahl der Karte, da Kartenwechsel glatt sind. Äquivalent kann daher auch gefordert werden, dass die obige Abbildung für alle Karten glatt ist.\\
-			Wir schreiben $\sC(M,N)$ für die Menge der differenzierbaren Abbildungen zwischen Mannigfaltigkeiten $M,N$.
+			Wir schreiben $\sC(M,N)$ für die Menge der differenzierbaren Abbildungen.
 		\end{defn}
 		\begin{nota}
 			$\sm:=\sC(M,\R)$ ist die Menge der (differenzierbaren) Funktionen auf $M$.
 		\end{nota}
 		\begin{defn}
-			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.
+			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.\\
+			Die Menge der Diffeomorphismen $\Diff(M):=\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Der Tangentialraum, das Differential, Untermannigfaltigkeiten}
-
+	Seien von nun an alle Abbildungen differenzierbar, auch wenn dies nicht explizit erwähnt wird.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorbündel}
-
-
+	\section{Faserbündel}
+		\begin{defn}[Faserbündel]
+			Ein Faserbündel $(P,M,\pi ,F)$ ist ein Tupel aus drei Mannigfaltigkeiten (dem Totalraum $P$, der Basis $M$ und der typischen Faser $F$) zusammen mit einer surjektiven Projektion $\pi:P\rightarrow M$, die die folgenden Eigenschaften erfüllt:\\
+				Für alle Punkte $x\in M$ existiert eine offene Umgebung $x\in U\subset M$ und ein Diffeomorphismus $\phi:\pi^{-1}(U)\rightarrow U\times F$, sodass das folgende Diagramm kommutiert, also $\pi\vert_{\pi^{-1}(U)}=\pi_1\circ\phi$ (wobei $\pi_1$ die Projektion auf den ersten Faktor bezeichnet):
+			\begin{center}
+			\begin{tikzpicture}
+				\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{\pi^{-1}(U) & U\times F \\
+     U& \\};
+  				\path[-stealth]
+  					(m-1-1)	edge node [above]{$\phi$} (m-1-2)
+  							edge node [left]{$\pi$} (m-2-1)
+  					(m-1-2) edge node [below]{$\quad\pi_1$} (m-2-1)
+  					;
+			\end{tikzpicture}
+			\end{center}
+			Eine solche Abbildung $\phi$ heißt lokale Trivialisierung. Aufgrund der Existenz lokaler Trivialisierungen ist das Urbild jedes Punktes $x\in M$ unter der Projektion (Faser von $x$ genannt) $P_x:=\pi^{-1}(\lbrace x\rbrace )$ diffeomorph zur typischen Faser: $P_x\cong F \; \forall x\in M$.\\ 
+			Eine Familie lokaler Trivialisierungen, die $P$ überdecken, heißt Bündelatlas. 
+		\end{defn}
+		Sei von nun an $(P,M,\pi ,F)$ ein Faserbündel.
+		\begin{bsp}\hfill
+			\begin{enumerate}
+				\item Das triviale Bündel mit typischer Faser $F$ und Basis $M$ ist das kartesische Produkt $M\times F$ (genauer gesagt das Bündel $(M\times F,M,\pi_1,F))$.
+				\item Für eine offene Menge $U\subset M$ und $P\vert_U:=\pi^{-1}(U)$ ist $(P\vert_U,U,\pi\vert_{P_U},F)$ ein Faserbündel.
+			\end{enumerate}
+		\end{bsp}
+		\begin{defn}[Schnitt]
+			Eine Abbildung $\sigma:M\rightarrow P$ heißt (globaler) Schnitt, wenn $\pi\circ\sigma=\id_M$, also $\sigma(x)\in P_x\, \forall x\in M$. Analog heißt für eine offene Menge $U\subset M$ eine Abbildung $\sigma:U\rightarrow P\vert_U$ lokaler Schnitt, wenn $\pi\circ\sigma=\id_U$.\\
+			Die Menge aller globalen Schnitte wird mit $\Gamma(P)$ bezeichnet, die der lokalen Schnitte mit $\Gamma(P\vert_U)$.
+		\end{defn}
+	\section{Vektorbündel}
+		\begin{defn}[Vektorbündel]
+				Ein Faserbündel $(E,M,\pi,\R^n)$ heißt Vektorbündel vom Rang $n$, wenn $E_x$ für alle Punkte $x\in M$ ein $n$-dimensionaler Vektorraum ist. Weiter soll es einen Bündelatlas aus lokalen Trivialisierungen ${\phi:\pi^{-1}(U)\rightarrow U\times \R^n}$ geben, sodass die folgende Abbildung für jeden Punkt $x\in U$ ein Vektorraumisomorphismus ist:
+				\begin{equation*}
+					E_x\rightarrow \R^n,\; p\mapsto \pi_2(\phi(p))
+				\end{equation*}
+			Daraus folgt, dass die Abbildung ${\R^n\rightarrow E_x,\; v\mapsto \phi^{-1}(x,v)}$ ebenfalls ein Vektorraumisomorphismus ist.
+		\end{defn}
+		\begin{defn}
+			Analog zu Kartenwechseln lassen sich auch Trivialisierungswechsel definieren:\\
+			Sei $(E,M,\pi,\R^n)$ ein Vektorbündel, $U,V\subset M$ mit $U\cap V\neq\emptyset$ und Trivialisierungen ${\phi_U:\pi^{-1}(U)\rightarrow U\times \R^n}, {\phi_V:\pi^{-1}(U)\rightarrow U\times \R^n}$.\\
+			Die folgende Abbildung heißt Trivialisierungswechsel:
+			\begin{equation*}
+				\phi_V\circ\phi_U^{-1}:(U\cap V)\times \R^n\rightarrow (U\cap V)\times \R^n, (q,v)\mapsto (q,\tau(q)v)
+			\end{equation*}
+			wobei die Einschränkung unterdrückt wurde. Die Abbildung $\tau:U\cap V\rightarrow \GL(n,\R)$ ist differenzierbar und wird ebenfalls mit Trivialisierungswechsel bezeichnet.\todo{Wollen wir das einfach so machen? In der VL haben wir die damals dann Trivialisierungswechselfunktionen genannt, aber ich finde, dass man irgendwann auch zu viele Wörter zusammengesetzt haben kann.}
+		\end{defn}
+		\begin{defn}[Vektorbündelhomomorphismen]\hfill\\
+			Seien $(E_1,M_1,\pi_1,\R^{n_1}),(E_2,M_2,\pi_2,\R^{n_2})$ Vektorbündel.\\
+			Ein Tupel $(F,f)$ mit $F:E_1\rightarrow E_2$ und $f:M_1\rightarrow M_2$ heißt Vektorbündelhomomorphismus, wenn das folgende Diagramm kommutiert:
+			\begin{center}
+				\begin{tikzpicture}
+					\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{E_1 & E_2 \\
+     M_1&M_2 \\};
+  				\path[-stealth]
+  					(m-1-1)	edge node [above]{$F$} (m-1-2)
+  							edge node [left]{$\pi_1$} (m-2-1)
+  					(m-1-2) edge node [right]{$\pi_2$} (m-2-2)
+  					(m-2-1) edge node [above]{$f$} (m-2-2)
+  					;
+				\end{tikzpicture}
+			\end{center}
+			also $\pi_2\circ F=f\circ\pi_1$.
+		\end{defn}
+		\begin{bsp}\hfill
+			\begin{enumerate}
+				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
+				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$. Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
+			\end{enumerate}
+		\end{bsp}
+	\section{Konstruktionen von Vektorfeldern}
+		Seien $(E_1,M_1,\pi_1,\R^{n_1}),(E_2,M_2,\pi_2,\R^{n_2})$ Vektorbündel.
+		\todo{
+			$E_1\oplus E_2$, 
+			$E_1\otimes E_2$}
+		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorfelder}
 
