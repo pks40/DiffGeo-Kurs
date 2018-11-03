@@ -6,7 +6,7 @@
 \usepackage[sc]{mathpazo}
 \linespread{1.05}
 \usepackage{exscale} % To scale mathematical symbols correctly while using T1
-\usepackage{amsmath,amsthm,amssymb}
+\usepackage{amsmath,amsthm,amssymb,dsfont}
 \usepackage[ngerman]{babel}
 \usepackage{enumitem}
 \usepackage{microtype} % Microtypography!
@@ -21,6 +21,12 @@
 \newcommand{\D}{\mathrm{d}}
 \newcommand{\DD}{\mathrm{D}}
 \newcommand{\e}{\mathrm{e}}
+
+\newcommand{\R}{\mathds{R}}
+\newcommand{\sm}{\mathcal{F}(M)}
+\newcommand{\vf}{\mathfrak{X}(M)}
+\newcommand{\tril}{\vartriangleleft}
+\newcommand{\trir}{\vartriangleright}
 
 \theoremstyle{plain}
 \newtheorem{defn}{Definition}[section]
@@ -49,9 +55,89 @@ Blabla
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Mannigfaltigkeiten}
-
-Test
-
+	\section{Topologie}
+		\begin{defn}[Topologischer Raum]
+			Eine Tupel $(X,\mathcal{T})$ bestehend aus einer Menge $X$ und einer Familie von Teilmengen $\mathcal{T}$ heißt topologischer Raum, wenn folgende Eigenschaften erfüllt sind:
+			\begin{enumerate}[label=$T$\arabic*]
+				\item $\emptyset, x\in \mathcal{T}$
+				\item $\forall U_1, U_2\in \mathcal{T} \text{ gilt }U_1\cap U_2\in\mathcal{T}$
+				\item Für jede Familie $\lbrace U_i\rbrace_{i\in I}\subset \mathcal{T}$ gilt $\bigcup_{i\in I}U_i\in\mathcal{T}$
+			\end{enumerate}
+			Die Familie $\mathcal{T}$ heißt Topologie auf der Menge $X$, seine Elemente heißen offene Mengen. Eine Menge heißt abgeschlossen, wenn ihr Komplement offen ist.
+		\end{defn}
+		\begin{defn}[Basis einer Topologie]
+			Eine Familie offener Mengen $\lbrace B_i\rbrace_{i\in I}\subset \mathcal{T}$ heißt Basis eines topologischen Raums $(X,\mathcal{T})$, wenn sich jede offene Menge als Vereinigung von Elementen der Basis schreiben lässt, das heißt:
+			\begin{equation*}
+				\forall U\in\mathcal{T}\exists \lbrace B_i\rbrace_{i\in J}\subset \mathcal{T}: U=\bigcup_{i\in J}B_i
+			\end{equation*}
+		\end{defn}
+		\begin{bsp}
+			Ist $(X,d)$ ein metrischer Raum, so bilden die bzgl der Metrik offenen Mengen eine Topologie mit den $\varepsilon$-Bällen $\lbrace B_{\varepsilon}(x)\vert \; x\in X, \varepsilon >0\rbrace$ als Basis.
+		\end{bsp}
+		\begin{defn}[Zweitabzählbarkeit]
+			Ein topologischer Raum $(X,\mathcal{T})$ heißt zweitabzählbar, wenn für die Topologie $\mathcal{T}$ eine abzählbare Basis existiert. 
+		\end{defn}
+		\begin{defn}[Kompaktheit]
+			Eine Teilmenge $K\subset X$ heißt kompakt, wenn jede offene Überdeckung (das heißt jede Familie offener Mengen $\lbrace U_i\rbrace_{i\in I}$ mit $K\subset \bigcup_{i\in I}U_i$) eine endliche Teilüberdeckung hat (also endlich viele $U_1,\ldots,U_n$ existieren sodass schon $K\subset \bigcup_{i=1}^n U_i$ gilt).
+		\end{defn}
+		\begin{defn}[Hausdorffraum]
+			Ein topologischer Raum $(X,\mathcal{T})$ heißt hausdorffsch oder Hausdorffraum, falls für je zwei Punkte $x,y\in X, x\neq y$ offene Umgebungen $U_x,U_y\in\mathcal{T}, x\in U_x, y\in U_y$ existieren sodass $U_x\cap U_y=\emptyset$. Zwei Punkte können also durch offene Mengen \glqq getrennt \grqq werden.
+		\end{defn}
+		\begin{lemma}
+			In einem Hausdorffraum sind kompakte Mengen abgeschlossen.
+		\end{lemma}
+		\begin{bsp}
+			Der euklidische Raum $(\R^n,d)$ ist mit der metrischen Topologie ein topologischer Raum. Insbesondere ist er hausdorffsch und zweitabzählbar.
+		\end{bsp}
+		\begin{defn}[Stetige Abbildung]
+			Eine Abbildung $f:(X,\mathcal{T}_X)\rightarrow (Y,\mathcal{T}_Y)$ zwischen topologischen Räumen heißt stetig, wenn Urbilder offener Mengen offen sind:
+			\begin{equation*}
+				\forall U\in\mathcal{T}_Y \Rightarrow f^{-1}(U)\in\mathcal{T}_X
+			\end{equation*}
+			Äquivalent dazu ist, dass Urbilder abgeschlossener Mengen abgeschlossen sind (da Komplementbildung mit dem Urbild vertauscht).\\
+			Die Topologien werden im Folgenden in der Notation unterdrückt.
+		\end{defn}
+		\begin{lemma}
+			Die Verkettung stetiger Abbildungen ist stetig.
+		\end{lemma}
+		\begin{lemma}
+			Das Bild einer kompakten Menge unter einer stetigen Abbildung ist kompakt:
+			\begin{equation*}
+				f:X\rightarrow Y \text{ stetig }, K\subset X \text{ kompakt }\Rightarrow f(K)\subset Y \text{ kompakt}
+			\end{equation*}
+		\end{lemma}
+		\begin{defn}[Homöomorphismus]
+			Eine stetige Abbildung $f:X\rightarrow Y$ heißt Homöomorphismus, wenn sie bijektiv und ihre Umkehrabbildung stetig ist.
+		\end{defn}
+	\section{Mannigfaltigkeiten}
+		\begin{defn}
+			Ein topologischer Raum $(M,\mathcal{T})$ heißt topologische Mannigfaltigkeit, wenn er hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:
+			\begin{equation*}
+				\exists n\in \mathds{N}: \forall x\in M\, \exists U\subset M, V\subset \R^n\text{ offen mit } x\in U \text{ und ein Homöomorphismus } \varphi:U\rightarrow V
+			\end{equation*}
+			Die natürliche Zahl $n$ heißt Dimension der Mannigfaltigkeit und ist wohldefiniert (beachte, dass $n$ unabhängig von der Wahl des Punktes existieren muss).\\
+			Das Tupel $(\varphi,U)$ heißt Karte (wobei manchmal die Menge $U$ unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt Atlas $\mathcal{A}$.
+		\end{defn}
+		\begin{bsp}
+			\begin{enumerate}
+				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. 
+				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$, $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n\cdot m$).
+				\item Für topologische Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine topologische Mannigfaltigkeit.
+			\end{enumerate}
+		\end{bsp}
+		\begin{defn}
+			Für zwei Karten $\varphi_i:U_i\rightarrow V_i, i\in\lbrace 1,2 \rbrace$ heißt die folgende Abbildung Kartenwechsel:
+			\begin{equation*}
+				\varphi_2\circ\varphi_1^{-1}\vert_{\varphi_1(U_1\cap U_2)}:\varphi_1(U_1\cap U_2)\rightarrow \varphi_2(U_1\cap U_2)
+			\end{equation*}
+			Da die Karten Homöomorphismen sind, sind auch alle Kartenwechsel Homöomorphismen.
+		\end{defn} 
+		\begin{defn}[Differenzierbare Mannigfaltigkeit]
+			Zwei Karten heißen verträglich, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).\\
+			Ein Atlas heißt differenzierbar, wenn alle seine Karten paarweise verträglich sind.\\
+			Ein differenzierbarer Atlas heißt maximal, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich ist und nicht in ihm enthalten ist.\\
+			Eine differenzierbare Struktur auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt differenzierbare Mannigfaltigkeit.
+		\end{defn}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Der Tangentialraum, das Differential, Untermannigfaltigkeiten}
