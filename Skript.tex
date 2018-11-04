@@ -31,8 +31,8 @@
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
-\newcommand{\sm}{\mathcal{F}(M)}
-\newcommand{\vf}{\mathfrak{X}(M)}
+\newcommand{\sm}{\mathcal{F}}
+\newcommand{\vf}{\mathfrak{X}}
 \newcommand{\tril}{\vartriangleleft}
 \newcommand{\trir}{\vartriangleright}
 
@@ -176,8 +176,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 				\item Zwei Karten heißen \emph{verträglich}, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
 				\item Ein Atlas heißt \emph{differenzierbar}, wenn alle seine Karten paarweise verträglich sind.
 				\item Ein differenzierbarer Atlas heißt \emph{maximal}, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
-				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}.
-				\kommP{Sollten erwähnen, dass, wenn Mf. gegeben, Karten immer als aus der Struktur gemeint sind.}
+				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}. Wenn also von einer Karten auf einer differenzierbaren Mannigfaltigkeit die Rede ist, sind immer solche aus der differenzierbaren Struktur gemeint.
 			\end{itemize}
 		\end{defn}
 		\begin{bsp}\hfill 
@@ -185,7 +184,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale differenzierbare Mannigfaltigkeit, der oben genannte Atlas muss dazu aber erweitert werden!
 				\kommP{Erwähnen, dass jeder dfb. Atlas einen eindeutige dfb. Struktur induziert, mit der er verträglich ist? Übungsaufgabe?}
 				\item Reelle, endlich dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
-				%\item Das kartesische Produkt zweier differenzierbarer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine differenzierbare Mannigfaltigkeit (der Dimension $n+m$).
+				\item Das kartesische Produkt zweier differenzierbarer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine differenzierbare Mannigfaltigkeit (der Dimension $n+m$).
 				\item Für differenzierbare Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine differenzierbare Mannigfaltigkeit (\emph{topologische Summe}).
 			\end{enumerate}
 		\end{bsp}
@@ -202,7 +201,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 			Wir schreiben $\sC(M,N)$ für die Menge der glatten Abbildungen.
 		\end{defn}
 		\begin{nota}
-			$\sm:=\sC(M,\R)$ ist die Menge der (glatten) Funktionen auf $M$.
+			$\sm(M):=\sC(M,\R)$ ist die Menge der (glatten) Funktionen auf $M$.
 		\end{nota}
 		\begin{defn}
 			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.
@@ -261,7 +260,7 @@ $T_pM$ ist tatsächlich ein Untervektorraum von $(\sC_p(M))^*$ (Übung).
 \begin{bsp}
 	Sei $\gamma\colon (-\varepsilon,\varepsilon) \to M$ eine glatte Kurve mit $\gamma(0) = p$. Wir definieren den Tangentialvektor $\gamma'(0) \in T_pM$ durch \[(\gamma'(0))(f) := (f\circ\gamma)'(0),\] wobei wir auf der rechten Seite die Ableitung der Funktion $f\circ\gamma \colon I \to \mathbb R, I \subset \mathbb R$ gebildet haben.
 
-	$\gamma'(0)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\gamma'(0)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen.
+	$\gamma'(0)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\gamma'(0)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen. \kommB{Soll dazu noch eine konkrete Rechnung folgen? Vllt. als Übung? (Also dass man konkret im $\R^n$ nachrechnet, dass da so etwas wie eine Richtung herauskommt (unter Identifikation blabla)}
 
 	$\gamma'(0)$ ist wohldefiniert und tatsächlich eine Derivation: Wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ\gamma$ und $g\circ\gamma$ in einer Umgebung von $0$ überein und haben insbesondere dieselbe Ableitung an der Stelle $0$. Die Linearität von $\gamma'(0)$ folgt aus der Linearität der Ableitung, und die Derivations-Produktregel folgt aus der Produktregel für Ableitungen.
 \end{bsp}
@@ -329,7 +328,7 @@ $\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim i
 			\left.\frac{\partial}{\partial x^i}\right|_p (\varphi^j) &= \left(\partial_i \left(\varphi^j\circ \varphi^{-1}\right)\right) (\varphi(p))\\
 			&= \underbrace{\left(\partial_i \pr^j\right)}_{= \delta^j_i} (\varphi(p)) = \delta^j_i,
 		\end{align*}
-		wobei $\pr^j\colon \mathbb R^n \to R, \pr^j(x) = x^j$ die Projektion auf die $j$-te Komponente ist.
+		wobei $\pr^j\colon \mathbb R^n \to \R, \pr^j(x) = x^j$ die Projektion auf die $j$-te Komponente ist.
 	\end{proof}
 \end{lemma}
 
@@ -410,7 +409,7 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 		Sei von nun an $(P,M,\pi ,F)$ ein Faserbündel.
 		\begin{bsp}\hfill
 			\begin{enumerate}
-				\item Das triviale Bündel mit typischer Faser $F$ und Basis $M$ ist das kartesische Produkt $M\times F$ (genauer gesagt das Bündel $(M\times F,M,\pr_1,F))$.
+				\item Das triviale Bündel mit typischer Faser $F$ und Basis $M$ ist das kartesische Produkt $M\times F$ (genauer gesagt das Bündel $(M\times F,\pr_1))$.
 				\item Für eine offene Menge $U\subset M$ und $P\vert_U:=\pi^{-1}(U)$ ist $(P\vert_U,U,\pi\vert_{P_U},F)$ ein Faserbündel.
 			\end{enumerate}
 		\end{bsp}
@@ -520,8 +519,62 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Lie-Gruppen}
 	\section{Grundlagen}
-		\begin{defn}
-			Eine \emph{Lie-Gruppe} ist eine differenzierbare Mannigfaltigkeit $G$ mit einer Gruppenstruktur, sodass die Verknüpfung $\cdot\colon G\times G\rightarrow G$ und die Inversion $i\colon G\rightarrow G, g\mapsto g^{-1}$ glatte Abbildungen sind.
+		\begin{defn}[Lie-Gruppe]
+			Eine \emph{Lie-Gruppe} ist eine differenzierbare Mannigfaltigkeit $G$ mit einer Gruppenstruktur, sodass die Verknüpfung $\cdot\colon G\times G\rightarrow G$ und die Inversion ${i\colon G\rightarrow G}, {g\mapsto g^{-1}}$ glatte Abbildungen sind.
+			
+			Wir definieren die \emph{Linkstranslation} entlang $g$:
+			\begin{equation}
+				l_g\colon G\to G, h\mapsto g\cdot h
+			\end{equation}
+			Es gelten $(l_g)^{-1}=l_{g^{-1}}$ und $l_g\circ l_h=l_{g\cdot h}$.
+		\end{defn}
+		Sei $G$ von nun an eine Lie-Gruppe mit neutralem Element $e$.
+		\begin{defn}[Linksinvariante Vektorfelder]
+			Ein \emph{linksinvariantes Vektorfeld} ist ein Vektorfeld $X\in\mathfrak{X}(G)$, das \glqq invariant\grqq unter dem push-forward von Linkstranslationen ist. Das heißt, dass folgende Gleichung gilt:
+			\begin{equation*}
+				\left((l_g)_*X\right)_h\stackrel{\text{Def.}}{=}\DD l_g\vert_{g^{-1}\cdot h}X_{g^{-1}\cdot h}=X_h
+			\end{equation*}
+			Die Menge der linksinvarianten Vektorfelder heißt $\vf^L(G)$.
+		\end{defn}
+		\begin{satz}[Lie-Algebra]
+			Die linksinvarianten Vektorfelder bilden eine endlich-dimensionale Unteralgebra der Algebra der Vektorfelder (mit dem Kommutator als Verknüpfung).
+			
+			Sie ist als Vektorraum isomorph zum Tangentialraum des neutralen Elements $T_eG$.
+			\begin{proof}
+				Zum Beweis konstruieren wir den kanonischen Isomorphismus und zeigen, dass die linksinvarianten Vektorfelder unter Bildung von Kommutatoren abgeschlossen sind:
+				\begin{align}
+					\Psi&\colon\vf^L(G)\to T_eG, X\mapsto X_e\nonumber\\
+					\Phi&\colon T_eG\rightarrow \vf^L(G), v\mapsto (g\mapsto \DD l_g\vert_e v)\label{def:kan_Iso}
+				\end{align}
+				$\Phi$ ist wohldefiniert, denn für $v\in T_eG$ und $g,h\in G$ gilt:
+				\begin{align*}
+					\left((l_g)_*\Phi(v)\right)_h&=\DD l_g\vert_{g^{-1}\cdot h}\Phi(v)_{g^{-1}\cdot h}\\
+					&=\DD l_g\vert_{g^{-1}\cdot h}\DD (l_{g^{-1}\cdot h}\vert_e v)\\
+					\text{(Kettenregel)}\quad &=\DD\left(l_g\circ l_{g^{-1}}\right)\big\vert _h\DD l_h\vert_e v\\
+					&=\DD l_h\vert_e v\\
+					&=\Phi(v)_h
+				\end{align*}
+				Außerdem gilt $\Psi\circ\Phi=\id_{T_eG}$:
+				\begin{align*}
+					\Psi(\Phi(v))= (g\mapsto \DD l_g\vert_e v)_e=\DD l_e\vert_e v=v
+				\end{align*}
+				und die Umkehrung $\Phi(\Psi(X))=X$ wird punktweise durch Ausnutzen der Linksinvarianz klar:
+				\begin{align*}
+					\left((l_g)_*X\right)_g&=\DD l_g\vert_{g^{-1}\cdot g}X_{g^{-1}\cdot g}=X_g\\
+					&=\DD l_g\vert_e X_e\\
+					&=\Phi(X_e)_g
+				\end{align*}
+				Beide Abbildungen sind linear, da das Differential linear ist.
+				
+				\todo{Abgeschlossenheit unter Kommutatoren}
+			\end{proof}
+		\end{satz}
+		\begin{defn}[Lie-Algebra]
+			Die \emph{Lie-Algebra} einer Lie-Gruppe ist $T_eG$ mit der folgenden Verknüpfung:
+			\begin{align*}
+				T_eG\times T_eG\to T_eG, (v,w)\mapsto \left[\Phi(v),\Phi(w)\right]_e
+			\end{align*}
+			mit dem kanonischen Isomorphismus $\Phi\colon T_eG\to \vf^L(G)$ aus \ref{def:kan_Iso}.
 		\end{defn}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
