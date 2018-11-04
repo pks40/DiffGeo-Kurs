@@ -27,14 +27,14 @@
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\GL}{GL}
 
-\newcommand{\R}{\mathds{R}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
 \newcommand{\sm}{\mathcal{F}(M)}
 \newcommand{\vf}{\mathfrak{X}(M)}
 \newcommand{\tril}{\vartriangleleft}
 \newcommand{\trir}{\vartriangleright}
 
-\theoremstyle{plain}
+\theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
 \newtheorem{lemma}[defn]{Lemma}
 \newtheorem{satz}[defn]{Satz}
@@ -42,6 +42,10 @@
 \newtheorem{bem}[defn]{Bemerkung}
 \newtheorem{bsp}[defn]{Beispiel}
 \newtheorem{nota}[defn]{Notation}
+
+% Kommentare
+\newcommand{\kommP}[2][noinline]{\todo[#1,color=green!40]{#2}}
+\newcommand{\kommB}[2][noinline]{\todo[#1,color=blue!20]{#2}}
 
 \title{Einführung in die Differentialgeometrie}
 \subtitle{Kurs auf der CdE-WinterAkademie 2018/19}
@@ -64,112 +68,125 @@ Blabla
 \chapter{Mannigfaltigkeiten}
 	\section{Topologie}
 		\begin{defn}[Topologischer Raum]
-			Eine Tupel $(X,\mathcal{T})$ bestehend aus einer Menge $X$ und einer Familie von Teilmengen $\mathcal{T}$ heißt topologischer Raum, wenn folgende Eigenschaften erfüllt sind:
+			Ein Tupel $(X,\mathcal{T})$ bestehend aus einer Menge $X$ und einer Familie von Teilmengen $\mathcal{T}$ heißt \emph{topologischer Raum}, wenn folgende Eigenschaften erfüllt sind:
+			\kommP[size=\footnotesize,inline]{Allgemeiner Kommentar: Ich finde es bei Definitionen irgendwie besser, wenn sie als \glqq Ein XY ist ein Blubb, der abc erfüllt\grqq\ formuliert sind statt als \glqq Ein Blubb heißt XY, wenn er abc erfüllt\grqq, denn einerseits hört es sich dann nach mehr als nur einer Benennung an (was es natürlich nicht ist, aber psychologisch-didaktisch hat das, glaube ich, nen besseren Effekt), und andererseits spart man sich das \glqq wenn\grqq-vs.-\glqq genau dann, wenn\grqq-Problem. Aber letztlich ist das Geschmackssache\^{}\^{}}
+			\kommP{Habe außerdem jeweils das definierte Wort hervorgehoben.}
 			\begin{enumerate}[label=$T$\arabic*]
 				\item $\emptyset, x\in \mathcal{T}$
 				\item $\forall U_1, U_2\in \mathcal{T} \text{ gilt }U_1\cap U_2\in\mathcal{T}$
 				\item Für jede Familie $\lbrace U_i\rbrace_{i\in I}\subset \mathcal{T}$ gilt $\bigcup_{i\in I}U_i\in\mathcal{T}$
 			\end{enumerate}
-			Die Familie $\mathcal{T}$ heißt Topologie auf der Menge $X$, seine Elemente heißen offene Mengen. Eine Menge heißt abgeschlossen, wenn ihr Komplement offen ist.
+			Die Familie $\mathcal{T}$ heißt \emph{Topologie} auf der Menge $X$, ihre Elemente heißen \emph{offene Mengen}. Eine Menge heißt \emph{abgeschlossen}, wenn ihr Komplement offen ist.
 		\end{defn}
 		\begin{defn}[Basis einer Topologie]
-			Eine Familie offener Mengen $\lbrace B_i\rbrace_{i\in I}\subset \mathcal{T}$ heißt Basis eines topologischen Raums $(X,\mathcal{T})$, wenn sich jede offene Menge als Vereinigung von Elementen der Basis schreiben lässt, das heißt:
+			Eine Familie offener Mengen $\lbrace B_i\rbrace_{i\in I}\subset \mathcal{T}$ heißt \emph{Basis} eines topologischen Raums $(X,\mathcal{T})$, wenn sich jede offene Menge als Vereinigung von Elementen der Basis schreiben lässt, das heißt:
 			\begin{equation*}
 				\forall U\in\mathcal{T}\exists \lbrace B_i\rbrace_{i\in J}\subset \mathcal{T}: U=\bigcup_{i\in J}B_i
 			\end{equation*}
 		\end{defn}
 		\begin{bsp}
-			Ist $(X,d)$ ein metrischer Raum, so bilden die bzgl der Metrik offenen Mengen eine Topologie mit den $\varepsilon$-Bällen $\lbrace B_{\varepsilon}(x)\vert \; x\in X, \varepsilon >0\rbrace$ als Basis.
+			Ist $(X,d)$ ein metrischer Raum, so bilden die bzgl. der Metrik offenen Mengen eine Topologie mit den $\varepsilon$-Bällen $\lbrace B_{\varepsilon}(x)\vert \; x\in X, \varepsilon >0\rbrace$ als Basis.
 		\end{bsp}
 		\begin{defn}[Zweitabzählbarkeit]
-			Ein topologischer Raum $(X,\mathcal{T})$ heißt zweitabzählbar, wenn für die Topologie $\mathcal{T}$ eine abzählbare Basis existiert. 
+			Ein topologischer Raum $(X,\mathcal{T})$ heißt \emph{zweitabzählbar}, wenn für die Topologie $\mathcal{T}$ eine abzählbare Basis existiert. 
 		\end{defn}
 		\begin{defn}[Kompaktheit]
-			Eine Teilmenge $K\subset X$ heißt kompakt, wenn jede offene Überdeckung (das heißt jede Familie offener Mengen $\lbrace U_i\rbrace_{i\in I}$ mit $K\subset \bigcup_{i\in I}U_i$) eine endliche Teilüberdeckung hat (also endlich viele $U_1,\ldots,U_n$ existieren sodass schon $K\subset \bigcup_{i=1}^n U_i$ gilt).
+			Eine Teilmenge $K\subset X$ heißt \emph{kompakt}, wenn jede offene Überdeckung (das heißt jede Familie offener Mengen $\lbrace U_i\rbrace_{i\in I}$ mit $K\subset \bigcup_{i\in I}U_i$) eine endliche Teilüberdeckung hat (also endlich viele $U_1,\ldots,U_n$ existieren sodass schon $K\subset \bigcup_{i=1}^n U_i$ gilt).
 		\end{defn}
 		\begin{defn}[Hausdorffraum]
-			Ein topologischer Raum $(X,\mathcal{T})$ heißt hausdorffsch oder Hausdorffraum, falls für je zwei Punkte $x,y\in X, x\neq y$ offene Umgebungen ${U_x,U_y\in\mathcal{T}}$, ${x\in U_x}, {y\in U_y}$ existieren sodass $U_x\cap U_y=\emptyset$. Zwei Punkte können also durch offene Mengen \glqq getrennt \grqq werden.
+			Ein topologischer Raum $(X,\mathcal{T})$ heißt \emph{hausdorffsch} oder \emph{Hausdorffraum}, falls für je zwei Punkte $x,y\in X, x\neq y$ offene Umgebungen ${U_x,U_y\in\mathcal{T}}$, ${x\in U_x}, {y\in U_y}$ existieren sodass $U_x\cap U_y=\emptyset$. Zwei Punkte können also durch offene Mengen \glqq getrennt\grqq\ werden.
 		\end{defn}
 		\begin{lemma}
 			In einem Hausdorffraum sind kompakte Mengen abgeschlossen.
 		\end{lemma}
 		\begin{bsp}
-			Der euklidische Raum $(\R^n,d)$ ist mit der metrischen Topologie ein topologischer Raum. Insbesondere ist er hausdorffsch und zweitabzählbar.
+			Der euklidische Raum $(\R^n,d)$ ist mit der metrischen Topologie ein topologischer Raum. Er ist hausdorffsch und zweitabzählbar.
+			\kommP[size=\footnotesize]{Hier hab ich das \glqq insbesondere\grqq\ rausgenommen, weil Hausdorff-Eigenschaft und Zweitabzählbarkeit ja nicht aus dem davor folgen.}
 		\end{bsp}
 		\begin{defn}[Stetige Abbildung]
-			Eine Abbildung $f:(X,\mathcal{T}_X)\rightarrow (Y,\mathcal{T}_Y)$ zwischen topologischen Räumen heißt stetig, wenn Urbilder offener Mengen offen sind:
+			Eine Abbildung $f\colon (X,\mathcal{T}_X)\rightarrow (Y,\mathcal{T}_Y)$ zwischen topologischen Räumen heißt \emph{stetig}, wenn Urbilder offener Mengen offen sind:
+			\kommP[size=\footnotesize]{Ich hab bei allen Abbildungen den Doppelpunkt durch \textsf{\textbackslash colon} ersetzt, dann ist das nämlich für \LaTeX\ kein binärer Operator, was besser ist. Also ich hab mal gelesen, dass man das so machen sollte typographisch, und finde es auch besser so.}
 			\begin{equation*}
 				U\in\mathcal{T}_Y \Rightarrow f^{-1}(U)\in\mathcal{T}_X
 			\end{equation*}
-			Äquivalent dazu ist, dass Urbilder abgeschlossener Mengen abgeschlossen sind (da Komplementbildung mit dem Urbild vertauscht).\\
-			Die Topologien werden im Folgenden in der Notation unterdrückt.
+			Äquivalent dazu ist, dass Urbilder abgeschlossener Mengen abgeschlossen sind (da Komplementbildung mit dem Urbild vertauscht).
 		\end{defn}
+		Die Topologien werden im Folgenden in der Notation unterdrückt.
+		\kommP[size=\footnotesize]{Da das nicht Teil der Definition ist, habe ich es da rausgenommen.}
 		\begin{lemma}
 			Die Verkettung stetiger Abbildungen ist stetig.
 		\end{lemma}
 		\begin{lemma}
 			Das Bild einer kompakten Menge unter einer stetigen Abbildung ist kompakt:
 			\begin{equation*}
-				f:X\rightarrow Y \text{ stetig }, K\subset X \text{ kompakt }\Rightarrow f(K)\subset Y \text{ kompakt}
+				f\colon X\rightarrow Y \text{ stetig }, K\subset X \text{ kompakt }\Rightarrow f(K)\subset Y \text{ kompakt}
 			\end{equation*}
 		\end{lemma}
 		\begin{defn}[Homöomorphismus]
-			Eine stetige Abbildung $f:X\rightarrow Y$ heißt Homöomorphismus, wenn sie bijektiv und ihre Umkehrabbildung stetig ist.
+			Eine stetige Abbildung $f\colon X\rightarrow Y$ heißt \emph{Homöomorphismus}, wenn sie bijektiv und ihre Umkehrabbildung stetig ist.
 		\end{defn}
 	\section{Mannigfaltigkeiten}
 		\begin{defn}
-			Ein topologischer Raum $(M,\mathcal{T})$ heißt topologische Mannigfaltigkeit, wenn er hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:\\
-			Es existiert eine natürliche Zahl $n\in \mathds{N}$ (Dimension), sodass für alle Punkte $x\in M$ offene Umgebungen $U\subset M, V\subset \R^n$ mit $x\in U $ und ein Homöomorphismus $ \varphi:U\rightarrow V$ existieren.\par
-			Die Dimension der Mannigfaltigkeit und ist wohldefiniert (beachte, dass $n$ unabhängig von der Wahl des Punktes existieren muss).\\
-			Das Tupel $(\varphi,U)$ heißt Karte (wobei manchmal die Menge $U$ unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt Atlas $\mathcal{A}$.
+			Ein topologischer Raum $(M,\mathcal{T})$ heißt \emph{topologische Mannigfaltigkeit}, wenn er hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:
+			Es existiert eine natürliche Zahl $n\in \mathbb{N}$ (Dimension), sodass für alle Punkte $x\in M$ offene Umgebungen $U\subset M, V\subset \R^n$ mit $x\in U $ und ein Homöomorphismus $ \varphi\colon U\rightarrow V$ existieren.
+
+			Die Dimension der Mannigfaltigkeit und ist wohldefiniert (beachte, dass $n$ unabhängig von der Wahl des Punktes existieren muss). \kommP{Grammatik / Inhalt?}
+
+			Das Tupel $(\varphi,U)$ heißt \emph{Karte} (wobei manchmal die Menge $U$ unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt \emph{Atlas} $\mathcal{A}$.
 		\end{defn}
 		\begin{bsp}\hfill 
 			\begin{enumerate}
 				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. 
-				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n\cdot m$).
-				\item Für topologische Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine topologische Mannigfaltigkeit.
+				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n + m$).
+				\kommP{Eeeeeeigentlich bräuchte man hier ja die Produkttopologie ...}
+				\item Für topologische Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine topologische Mannigfaltigkeit (\emph{topologische Summe}).
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}
-			Für zwei Karten $\varphi_i:U_i\rightarrow V_i, i\in\lbrace 1,2 \rbrace$ heißt die folgende Abbildung Kartenwechsel:
+			Für zwei Karten $\varphi_i\colon U_i\rightarrow V_i, i\in\lbrace 1,2 \rbrace$ heißt die folgende Abbildung \emph{Kartenwechsel}:
 			\begin{equation*}
-				\varphi_2\circ\varphi_1^{-1}\vert_{\varphi_1(U_1\cap U_2)}:\varphi_1(U_1\cap U_2)\rightarrow \varphi_2(U_1\cap U_2)
+				\varphi_2\circ\varphi_1^{-1}\vert_{\varphi_1(U_1\cap U_2)}\colon \varphi_1(U_1\cap U_2)\rightarrow \varphi_2(U_1\cap U_2)
 			\end{equation*}
 			Da die Karten Homöomorphismen sind, sind auch alle Kartenwechsel Homöomorphismen.
 		\end{defn} 
 		\begin{defn}[Differenzierbare Mannigfaltigkeit]\hfill
 			\begin{itemize}
-				\item Zwei Karten heißen verträglich, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
-				\item Ein Atlas heißt differenzierbar, wenn alle seine Karten paarweise verträglich sind.
-				\item Ein differenzierbarer Atlas heißt maximal, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
-				\item Eine differenzierbare Struktur auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt differenzierbare Mannigfaltigkeit.
+				\item Zwei Karten heißen \emph{verträglich}, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
+				\item Ein Atlas heißt \emph{differenzierbar}, wenn alle seine Karten paarweise verträglich sind.
+				\item Ein differenzierbarer Atlas heißt \emph{maximal}, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
+				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}.
 			\end{itemize}
 		\end{defn}
 		\begin{bsp}\hfill 
 			\begin{enumerate}
 				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale differenzierbare Mannigfaltigkeit, der oben genannte Atlas muss dazu aber erweitert werden!
+				\kommP{Erwähnen, dass jeder dfb. Atlas einen eindeutige dfb. Struktur induziert, mit der er verträglich ist? Übungsaufgabe?}
 				\item Reelle, endlich dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
-				\item Das kartesische Produkt zweier differenzierbarer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine differenzierbare Mannigfaltigkeit (der Dimension $n\cdot m$).
-				\item Für differenzierbare Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine differenzierbare Mannigfaltigkeit.
+				\item Das kartesische Produkt zweier differenzierbarer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine differenzierbare Mannigfaltigkeit (der Dimension $n+m$).
+				\item Für differenzierbare Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine differenzierbare Mannigfaltigkeit (\emph{topologische Summe}).
 			\end{enumerate}
 		\end{bsp}
 	\section{Differenzierbare Abbildungen}
 		Seien von nun an $M,N$ differenzierbare Mannigfaltigkeiten.
 		\begin{defn}[Differenzierbarkeit]
-			Eine Abbildung $f:M\rightarrow N$ zwischen differenzierbaren Mannigfaltigkeiten heißt differenzierbar, wenn für alle Punkte $p\in M$ Karten $(\varphi,U)$ um  $p$ und $(\psi,V)$ um $f(p)$ existieren, sodass $f(U)\subset V$ und die folgende Abbildung glatt ist:
+			Eine Abbildung $f\colon M\rightarrow N$ zwischen differenzierbaren Mannigfaltigkeiten heißt \emph{differenzierbar}, wenn für alle Punkte $p\in M$ Karten $(\varphi,U)$ um  $p$ und $(\psi,V)$ um $f(p)$ existieren, sodass $f(U)\subset V$ und die folgende Abbildung glatt ist:
+			\kommP{Hier wäre ich sehr eindeutig dafür, die Abbildungen dann \glqq glatt\grqq\ zu nennen und nicht \glqq differenzierbar\grqq. Dass man bei Mannigfaltigkeiten differenzierbar sagt und glatt meint ist OK; aber bei Abbildungen sollte man genauer sein, finde ich. Evtl. $C^k$ definieren?}
 			\begin{equation}
-				\psi\circ f \circ \varphi^{-1}:\varphi(U)\rightarrow \psi(V)
+				\psi\circ f \circ \varphi^{-1}\colon \varphi(U)\rightarrow \psi(V)
 			\end{equation}
-			Diese Definition ist unabhängig von der Wahl der Karte, da Kartenwechsel glatt sind. Äquivalent kann daher auch gefordert werden, dass die obige Abbildung für alle Karten glatt ist.\\
+			Diese Definition ist unabhängig von der Wahl der Karte, da Kartenwechsel glatt sind. Äquivalent kann daher auch gefordert werden, dass die obige Abbildung für alle Karten glatt ist.
+
 			Wir schreiben $\sC(M,N)$ für die Menge der differenzierbaren Abbildungen.
 		\end{defn}
 		\begin{nota}
 			$\sm:=\sC(M,\R)$ ist die Menge der (differenzierbaren) Funktionen auf $M$.
 		\end{nota}
 		\begin{defn}
-			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.\\
+			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.
+
 			Die Menge der Diffeomorphismen $\Diff(M):=\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Der Tangentialraum, das Differential, Untermannigfaltigkeiten}
 	Seien von nun an alle Abbildungen differenzierbar, auch wenn dies nicht explizit erwähnt wird.
@@ -178,8 +195,11 @@ Blabla
 \chapter{Vektorbündel}
 	\section{Faserbündel}
 		\begin{defn}[Faserbündel]
-			Ein Faserbündel $(P,M,\pi ,F)$ ist ein Tupel aus drei Mannigfaltigkeiten (dem Totalraum $P$, der Basis $M$ und der typischen Faser $F$) zusammen mit einer surjektiven Projektion $\pi:P\rightarrow M$, die die folgenden Eigenschaften erfüllt:\\
-				Für alle Punkte $x\in M$ existiert eine offene Umgebung $x\in U\subset M$ und ein Diffeomorphismus $\phi:\pi^{-1}(U)\rightarrow U\times F$, sodass das folgende Diagramm kommutiert, also $\pi\vert_{\pi^{-1}(U)}=\pi_1\circ\phi$ (wobei $\pi_1$ die Projektion auf den ersten Faktor bezeichnet):
+			Ein \emph{Faserbündel} $(P,M,\pi ,F)$ ist ein Tupel aus drei Mannigfaltigkeiten (dem \emph{Totalraum} $P$, der \emph{Basis} $M$ und der \emph{typischen Faser} $F$) zusammen mit einer surjektiven \emph{Projektion} $\pi:P\rightarrow M$, die die folgenden Eigenschaften erfüllt:
+			\kommP{Ich würde eher $M$ als Mf. voraussetzen und von einem \emph{Bündel über $M$} reden, denke ich.}
+
+				Für alle Punkte $x\in M$ existieren eine offene Umgebung $x\in U\subset M$ und ein Diffeomorphismus $\phi:\pi^{-1}(U)\rightarrow U\times F$, sodass das folgende Diagramm kommutiert, also $\pi\vert_{\pi^{-1}(U)}=\pi_1\circ\phi$ (wobei $\pi_1$ die Projektion auf den ersten Faktor bezeichnet):
+				\kommP{Vllt. sollten wir die Projektion auf den ersten Faktor $\mathrm{pr}_1$ oder so nennen? Sonst denkt man, sie hat was mit $\pi$ zu tun / wird daraus konstruiert ... hm.}
 			\begin{center}
 			\begin{tikzpicture}
 				\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{\pi^{-1}(U) & U\times F \\
@@ -191,8 +211,9 @@ Blabla
   					;
 			\end{tikzpicture}
 			\end{center}
-			Eine solche Abbildung $\phi$ heißt lokale Trivialisierung. Aufgrund der Existenz lokaler Trivialisierungen ist das Urbild jedes Punktes $x\in M$ unter der Projektion (Faser von $x$ genannt) $P_x:=\pi^{-1}(\lbrace x\rbrace )$ diffeomorph zur typischen Faser: $P_x\cong F \; \forall x\in M$.\\ 
-			Eine Familie lokaler Trivialisierungen, die $P$ überdecken, heißt Bündelatlas. 
+			Eine solche Abbildung $\phi$ heißt \emph{lokale Trivialisierung}. Aufgrund der Existenz lokaler Trivialisierungen ist das Urbild jedes Punktes $x\in M$ unter der Projektion (\emph{Faser} von $x$ genannt) $P_x:=\pi^{-1}(\lbrace x\rbrace )$ diffeomorph zur typischen Faser: $P_x\cong F \; \forall x\in M$.
+
+			Eine Familie lokaler Trivialisierungen, die $P$ überdecken, heißt \emph{Bündelatlas}. 
 		\end{defn}
 		Sei von nun an $(P,M,\pi ,F)$ ein Faserbündel.
 		\begin{bsp}\hfill
@@ -202,29 +223,33 @@ Blabla
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}[Schnitt]
-			Eine Abbildung $\sigma:M\rightarrow P$ heißt (globaler) Schnitt, wenn $\pi\circ\sigma=\id_M$, also $\sigma(x)\in P_x\, \forall x\in M$. Analog heißt für eine offene Menge $U\subset M$ eine Abbildung $\sigma:U\rightarrow P\vert_U$ lokaler Schnitt, wenn $\pi\circ\sigma=\id_U$.\\
+			Eine Abbildung $\sigma:M\rightarrow P$ heißt (globaler) \emph{Schnitt}, wenn $\pi\circ\sigma=\id_M$, also $\sigma(x)\in P_x\, \forall x\in M$. Analog heißt für eine offene Menge $U\subset M$ eine Abbildung $\sigma:U\rightarrow P\vert_U$ \emph{lokaler Schnitt}, wenn $\pi\circ\sigma=\id_U$.
+
 			Die Menge aller globalen Schnitte wird mit $\Gamma(P)$ bezeichnet, die der lokalen Schnitte mit $\Gamma(P\vert_U)$.
 		\end{defn}
 	\section{Vektorbündel}
 		\begin{defn}[Vektorbündel]
-				Ein Faserbündel $(E,M,\pi,\R^n)$ heißt Vektorbündel vom Rang $n$, wenn $E_x$ für alle Punkte $x\in M$ ein $n$-dimensionaler Vektorraum ist. Weiter soll es einen Bündelatlas aus lokalen Trivialisierungen ${\phi:\pi^{-1}(U)\rightarrow U\times \R^n}$ geben, sodass die folgende Abbildung für jeden Punkt $x\in U$ ein Vektorraumisomorphismus ist:
+				Ein Faserbündel $(E,M,\pi,\R^n)$ heißt \emph{Vektorbündel} vom \emph{Rang} $n$, wenn $E_x$ für alle Punkte $x\in M$ ein $n$-dimensionaler Vektorraum ist. Weiter soll es einen Bündelatlas aus lokalen Trivialisierungen ${\phi:\pi^{-1}(U)\rightarrow U\times \R^n}$ geben, sodass die folgende Abbildung für jeden Punkt $x\in U$ ein Vektorraumisomorphismus ist:
 				\begin{equation*}
 					E_x\rightarrow \R^n,\; p\mapsto \pi_2(\phi(p))
 				\end{equation*}
 			Daraus folgt, dass die Abbildung ${\R^n\rightarrow E_x,\; v\mapsto \phi^{-1}(x,v)}$ ebenfalls ein Vektorraumisomorphismus ist.
 		\end{defn}
+		Analog zu Kartenwechseln lassen sich auch \emph{Trivialisierungswechsel} definieren:
 		\begin{defn}
-			Analog zu Kartenwechseln lassen sich auch Trivialisierungswechsel definieren:\\
-			Sei $(E,M,\pi,\R^n)$ ein Vektorbündel, $U,V\subset M$ mit $U\cap V\neq\emptyset$ und Trivialisierungen ${\phi_U:\pi^{-1}(U)\rightarrow U\times \R^n}, {\phi_V:\pi^{-1}(U)\rightarrow U\times \R^n}$.\\
-			Die folgende Abbildung heißt Trivialisierungswechsel:
+			Sei $(E,M,\pi,\R^n)$ ein Vektorbündel, $U,V\subset M$ mit $U\cap V\neq\emptyset$ und Trivialisierungen ${\phi_U:\pi^{-1}(U)\rightarrow U\times \R^n}, {\phi_V:\pi^{-1}(U)\rightarrow U\times \R^n}$.
+
+			Die folgende Abbildung heißt \emph{Trivialisierungswechsel}:
 			\begin{equation*}
-				\phi_V\circ\phi_U^{-1}:(U\cap V)\times \R^n\rightarrow (U\cap V)\times \R^n, (q,v)\mapsto (q,\tau(q)v)
+				\phi_V\circ\phi_U^{-1}\colon (U\cap V)\times \R^n\rightarrow (U\cap V)\times \R^n, (q,v)\mapsto (q,\tau(q)v)
 			\end{equation*}
-			wobei die Einschränkung unterdrückt wurde. Die Abbildung $\tau:U\cap V\rightarrow \GL(n,\R)$ ist differenzierbar und wird ebenfalls mit Trivialisierungswechsel bezeichnet.\todo{Wollen wir das einfach so machen? In der VL haben wir die damals dann Trivialisierungswechselfunktionen genannt, aber ich finde, dass man irgendwann auch zu viele Wörter zusammengesetzt haben kann.}
+			wobei die Einschränkung unterdrückt wurde. Die Abbildung $\tau\colon U\cap V\rightarrow \GL(n,\R)$ ist differenzierbar und wird als \emph{Übergangsfunktion} bezeichnet.\kommB[size=\footnotesize]{Wollen wir das einfach so machen? In der VL haben wir die damals dann Trivialisierungswechselfunktionen genannt, aber ich finde, dass man irgendwann auch zu viele Wörter zusammengesetzt haben kann.}
+			\kommP[size=\footnotesize]{Das sind ja die Dinger, die auf Englisch `transition function' heißen. Insofern \dots}
 		\end{defn}
 		\begin{defn}[Vektorbündelhomomorphismen]\hfill\\
-			Seien $(E_1,M_1,\pi_1,\R^{n_1}),(E_2,M_2,\pi_2,\R^{n_2})$ Vektorbündel.\\
-			Ein Tupel $(F,f)$ mit $F:E_1\rightarrow E_2$ und $f:M_1\rightarrow M_2$ heißt Vektorbündelhomomorphismus, wenn das folgende Diagramm kommutiert:
+			Seien $(E_1,M_1,\pi_1,\R^{n_1}),(E_2,M_2,\pi_2,\R^{n_2})$ Vektorbündel.
+
+			Ein Tupel $(F,f)$ mit $F:E_1\rightarrow E_2$ und $f:M_1\rightarrow M_2$ heißt \emph{Vektorbündelhomomorphismus}, wenn das folgende Diagramm kommutiert:
 			\begin{center}
 				\begin{tikzpicture}
 					\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{E_1 & E_2 \\
@@ -245,7 +270,7 @@ Blabla
 				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$. Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
 			\end{enumerate}
 		\end{bsp}
-	\section{Konstruktionen von Vektorfeldern}
+	\section{Konstruktionen von Vektorbündeln}
 		Seien $(E_1,M_1,\pi_1,\R^{n_1}),(E_2,M_2,\pi_2,\R^{n_2})$ Vektorbündel.
 		\todo{
 			$E_1\oplus E_2$, 
