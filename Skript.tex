@@ -27,6 +27,7 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\pr}{pr}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
@@ -87,8 +88,6 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 	\section{Topologie}
 		\begin{defn}[Topologischer Raum]
 			Ein Tupel $(X,\mathcal{T})$ bestehend aus einer Menge $X$ und einer Familie von Teilmengen $\mathcal{T}$ heißt \emph{topologischer Raum}, wenn folgende Eigenschaften erfüllt sind:
-			\kommP[size=\footnotesize,inline]{Allgemeiner Kommentar: Ich finde es bei Definitionen irgendwie besser, wenn sie als \glqq Ein XY ist ein Blubb, der abc erfüllt\grqq\ formuliert sind statt als \glqq Ein Blubb heißt XY, wenn er abc erfüllt\grqq, denn einerseits hört es sich dann nach mehr als nur einer Benennung an (was es natürlich nicht ist, aber psychologisch-didaktisch hat das, glaube ich, nen besseren Effekt), und andererseits spart man sich das \glqq wenn\grqq-vs.-\glqq genau dann, wenn\grqq-Problem. Aber letztlich ist das Geschmackssache\^{}\^{}}
-			\kommP{Habe außerdem jeweils das definierte Wort hervorgehoben.}
 			\begin{enumerate}[label=$T$\arabic*]
 				\item $\emptyset, x\in \mathcal{T}$
 				\item $\forall U_1, U_2\in \mathcal{T} \text{ gilt }U_1\cap U_2\in\mathcal{T}$
@@ -119,18 +118,15 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 		\end{lemma}
 		\begin{bsp}
 			Der euklidische Raum $(\R^n,d)$ ist mit der metrischen Topologie ein topologischer Raum. Er ist hausdorffsch und zweitabzählbar.
-			\kommP[size=\footnotesize]{Hier hab ich das \glqq insbesondere\grqq\ rausgenommen, weil Hausdorff-Eigenschaft und Zweitabzählbarkeit ja nicht aus dem davor folgen.}
 		\end{bsp}
 		\begin{defn}[Stetige Abbildung]
 			Eine Abbildung $f\colon (X,\mathcal{T}_X)\rightarrow (Y,\mathcal{T}_Y)$ zwischen topologischen Räumen heißt \emph{stetig}, wenn Urbilder offener Mengen offen sind:
-			\kommP[size=\footnotesize]{Ich hab bei allen Abbildungen den Doppelpunkt durch \textsf{\textbackslash colon} ersetzt, dann ist das nämlich für \LaTeX\ kein binärer Operator, was besser ist. Also ich hab mal gelesen, dass man das so machen sollte typographisch, und finde es auch besser so.}
 			\begin{equation*}
 				U\in\mathcal{T}_Y \Rightarrow f^{-1}(U)\in\mathcal{T}_X
 			\end{equation*}
 			Äquivalent dazu ist, dass Urbilder abgeschlossener Mengen abgeschlossen sind (da Komplementbildung mit dem Urbild vertauscht).
 		\end{defn}
 		Die Topologien werden im Folgenden in der Notation unterdrückt.
-		\kommP[size=\footnotesize]{Da das nicht Teil der Definition ist, habe ich es da rausgenommen.}
 		\begin{lemma}
 			Die Verkettung stetiger Abbildungen ist stetig.
 		\end{lemma}
@@ -148,15 +144,14 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 			Ein topologischer Raum $(M,\mathcal{T})$ heißt \emph{topologische Mannigfaltigkeit}, wenn er hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:
 			Es existiert eine natürliche Zahl $n\in \mathbb{N}$ (Dimension), sodass für alle Punkte $x\in M$ offene Umgebungen $U\subset M, V\subset \R^n$ mit $x\in U $ und ein Homöomorphismus $ \varphi\colon U\rightarrow V$ existieren.
 
-			Die Dimension der Mannigfaltigkeit und ist wohldefiniert (beachte, dass $n$ unabhängig von der Wahl des Punktes existieren muss). \kommP{Grammatik / Inhalt?}
+			Die Dimension der Mannigfaltigkeit ist wohldefiniert (Beachte, dass $n$ unabhängig von der Wahl des Punktes existieren muss).
 
 			Das Tupel $(\varphi,U)$ heißt \emph{Karte} (wobei manchmal die Menge $U$ unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt \emph{Atlas} $\mathcal{A}$.
 		\end{defn}
 		\begin{bsp}\hfill 
 			\begin{enumerate}
 				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. 
-				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n + m$).
-				\kommP{Eeeeeeigentlich bräuchte man hier ja die Produkttopologie ...}
+				%\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n + m$).
 				\item Für topologische Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine topologische Mannigfaltigkeit (\emph{topologische Summe}).
 			\end{enumerate}
 		\end{bsp}
@@ -181,24 +176,24 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale differenzierbare Mannigfaltigkeit, der oben genannte Atlas muss dazu aber erweitert werden!
 				\kommP{Erwähnen, dass jeder dfb. Atlas einen eindeutige dfb. Struktur induziert, mit der er verträglich ist? Übungsaufgabe?}
 				\item Reelle, endlich dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
-				\item Das kartesische Produkt zweier differenzierbarer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine differenzierbare Mannigfaltigkeit (der Dimension $n+m$).
+				%\item Das kartesische Produkt zweier differenzierbarer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine differenzierbare Mannigfaltigkeit (der Dimension $n+m$).
 				\item Für differenzierbare Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine differenzierbare Mannigfaltigkeit (\emph{topologische Summe}).
 			\end{enumerate}
 		\end{bsp}
 	\section{Differenzierbare Abbildungen}
 		Seien von nun an $M,N$ differenzierbare Mannigfaltigkeiten.
 		\begin{defn}[Differenzierbarkeit]
-			Eine Abbildung $f\colon M\rightarrow N$ zwischen differenzierbaren Mannigfaltigkeiten heißt \emph{differenzierbar}, wenn für alle Punkte $p\in M$ Karten $(\varphi,U)$ um  $p$ und $(\psi,V)$ um $f(p)$ existieren, sodass $f(U)\subset V$ und die folgende Abbildung glatt ist:
-			\kommP{Hier wäre ich sehr eindeutig dafür, die Abbildungen dann \glqq glatt\grqq\ zu nennen und nicht \glqq differenzierbar\grqq. Dass man bei Mannigfaltigkeiten differenzierbar sagt und glatt meint ist OK; aber bei Abbildungen sollte man genauer sein, finde ich. Evtl. $C^k$ definieren?}
+			Eine Abbildung $f\colon M\rightarrow N$ zwischen differenzierbaren Mannigfaltigkeiten heißt \emph{glatt}, wenn für alle Punkte $p\in M$ Karten $(\varphi,U)$ um  $p$ und $(\psi,V)$ um $f(p)$ existieren, sodass $f(U)\subset V$ und die folgende Abbildung glatt ist:
+			\kommP{Evtl. $C^k$ definieren?}
 			\begin{equation}
 				\psi\circ f \circ \varphi^{-1}\colon \varphi(U)\rightarrow \psi(V)
 			\end{equation}
 			Diese Definition ist unabhängig von der Wahl der Karte, da Kartenwechsel glatt sind. Äquivalent kann daher auch gefordert werden, dass die obige Abbildung für alle Karten glatt ist.
 
-			Wir schreiben $\sC(M,N)$ für die Menge der differenzierbaren Abbildungen.
+			Wir schreiben $\sC(M,N)$ für die Menge der glatten Abbildungen.
 		\end{defn}
 		\begin{nota}
-			$\sm:=\sC(M,\R)$ ist die Menge der (differenzierbaren) Funktionen auf $M$.
+			$\sm:=\sC(M,\R)$ ist die Menge der (glatten) Funktionen auf $M$.
 		\end{nota}
 		\begin{defn}
 			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.
@@ -288,11 +283,9 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 \chapter{Vektorbündel}
 	\section{Faserbündel}
 		\begin{defn}[Faserbündel]
-			Ein \emph{Faserbündel} $(P,M,\pi ,F)$ ist ein Tupel aus drei Mannigfaltigkeiten (dem \emph{Totalraum} $P$, der \emph{Basis} $M$ und der \emph{typischen Faser} $F$) zusammen mit einer surjektiven \emph{Projektion} $\pi:P\rightarrow M$, die die folgenden Eigenschaften erfüllt:
-			\kommP{Ich würde eher $M$ als Mf. voraussetzen und von einem \emph{Bündel über $M$} reden, denke ich.}
+			Ein \emph{Faserbündel} $(P,M,\pi ,F)$ ist ein Tupel aus drei Mannigfaltigkeiten (dem \emph{Totalraum} $P$, der \emph{Basis} $M$ und der \emph{typischen Faser} $F$) zusammen mit einer surjektiven \emph{Projektion} $\pi\colon P\rightarrow M$, die die folgenden Eigenschaften erfüllt:
 
-				Für alle Punkte $x\in M$ existieren eine offene Umgebung $x\in U\subset M$ und ein Diffeomorphismus $\phi:\pi^{-1}(U)\rightarrow U\times F$, sodass das folgende Diagramm kommutiert, also $\pi\vert_{\pi^{-1}(U)}=\pi_1\circ\phi$ (wobei $\pi_1$ die Projektion auf den ersten Faktor bezeichnet):
-				\kommP{Vllt. sollten wir die Projektion auf den ersten Faktor $\mathrm{pr}_1$ oder so nennen? Sonst denkt man, sie hat was mit $\pi$ zu tun / wird daraus konstruiert ... hm.}
+				Für alle Punkte $x\in M$ existieren eine offene Umgebung $x\in U\subset M$ und ein Diffeomorphismus $\phi\colon \pi^{-1}(U)\rightarrow U\times F$, sodass das folgende Diagramm kommutiert, also $\pi\vert_{\pi^{-1}(U)}=\pr_1\circ\phi$ (wobei $\pr_1$ die Projektion auf den ersten Faktor bezeichnet):
 			\begin{center}
 			\begin{tikzpicture}
 				\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{\pi^{-1}(U) & U\times F \\
@@ -300,62 +293,64 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
   				\path[-stealth]
   					(m-1-1)	edge node [above]{$\phi$} (m-1-2)
   							edge node [left]{$\pi$} (m-2-1)
-  					(m-1-2) edge node [below]{$\quad\pi_1$} (m-2-1)
+  					(m-1-2) edge node [below]{$\quad\pr_1$} (m-2-1)
   					;
 			\end{tikzpicture}
 			\end{center}
 			Eine solche Abbildung $\phi$ heißt \emph{lokale Trivialisierung}. Aufgrund der Existenz lokaler Trivialisierungen ist das Urbild jedes Punktes $x\in M$ unter der Projektion (\emph{Faser} von $x$ genannt) $P_x:=\pi^{-1}(\lbrace x\rbrace )$ diffeomorph zur typischen Faser: $P_x\cong F \; \forall x\in M$.
 
-			Eine Familie lokaler Trivialisierungen, die $P$ überdecken, heißt \emph{Bündelatlas}. 
+			Eine Familie lokaler Trivialisierungen, die $P$ überdecken, heißt \emph{Bündelatlas}.
 		\end{defn}
+		\begin{nota}
+			Man sagt auch \glqq Faserbündel über $M$\grqq und schreibt dafür einfach $(P,\pi)$.
+		\end{nota}
 		Sei von nun an $(P,M,\pi ,F)$ ein Faserbündel.
 		\begin{bsp}\hfill
 			\begin{enumerate}
-				\item Das triviale Bündel mit typischer Faser $F$ und Basis $M$ ist das kartesische Produkt $M\times F$ (genauer gesagt das Bündel $(M\times F,M,\pi_1,F))$.
+				\item Das triviale Bündel mit typischer Faser $F$ und Basis $M$ ist das kartesische Produkt $M\times F$ (genauer gesagt das Bündel $(M\times F,M,\pr_1,F))$.
 				\item Für eine offene Menge $U\subset M$ und $P\vert_U:=\pi^{-1}(U)$ ist $(P\vert_U,U,\pi\vert_{P_U},F)$ ein Faserbündel.
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}[Schnitt]
-			Eine Abbildung $\sigma:M\rightarrow P$ heißt (globaler) \emph{Schnitt}, wenn $\pi\circ\sigma=\id_M$, also $\sigma(x)\in P_x\, \forall x\in M$. Analog heißt für eine offene Menge $U\subset M$ eine Abbildung $\sigma:U\rightarrow P\vert_U$ \emph{lokaler Schnitt}, wenn $\pi\circ\sigma=\id_U$.
+			Eine Abbildung $\sigma\colon M\rightarrow P$ heißt (globaler) \emph{Schnitt}, wenn $\pi\circ\sigma=\id_M$, also $\sigma(x)\in P_x\, \forall x\in M$. Analog heißt für eine offene Menge $U\subset M$ eine Abbildung $\sigma\colon U\rightarrow P\vert_U$ \emph{lokaler Schnitt}, wenn $\pi\circ\sigma=\id_U$.
 
 			Die Menge aller globalen Schnitte wird mit $\Gamma(P)$ bezeichnet, die der lokalen Schnitte mit $\Gamma(P\vert_U)$.
 		\end{defn}
 	\section{Vektorbündel}
 		\begin{defn}[Vektorbündel]
-				Ein Faserbündel $(E,M,\pi,\R^n)$ heißt \emph{Vektorbündel} vom \emph{Rang} $n$, wenn $E_x$ für alle Punkte $x\in M$ ein $n$-dimensionaler Vektorraum ist. Weiter soll es einen Bündelatlas aus lokalen Trivialisierungen ${\phi:\pi^{-1}(U)\rightarrow U\times \R^n}$ geben, sodass die folgende Abbildung für jeden Punkt $x\in U$ ein Vektorraumisomorphismus ist:
+				Ein Faserbündel $(E,M,\pi,\R^n)$ heißt \emph{Vektorbündel} vom \emph{Rang} $n$, wenn $E_x$ für alle Punkte $x\in M$ ein $n$-dimensionaler Vektorraum ist. Weiter soll es einen Bündelatlas aus lokalen Trivialisierungen ${\phi\colon \pi^{-1}(U)\rightarrow U\times \R^n}$ geben, sodass die folgende Abbildung für jeden Punkt $x\in U$ ein Vektorraumisomorphismus ist:
 				\begin{equation*}
-					E_x\rightarrow \R^n,\; p\mapsto \pi_2(\phi(p))
+					E_x\rightarrow \R^n,\; p\mapsto \pr_2(\phi(p))
 				\end{equation*}
 			Daraus folgt, dass die Abbildung ${\R^n\rightarrow E_x,\; v\mapsto \phi^{-1}(x,v)}$ ebenfalls ein Vektorraumisomorphismus ist.
 		\end{defn}
 		Analog zu Kartenwechseln lassen sich auch \emph{Trivialisierungswechsel} definieren:
 		\begin{defn}
-			Sei $(E,M,\pi,\R^n)$ ein Vektorbündel, $U,V\subset M$ mit $U\cap V\neq\emptyset$ und Trivialisierungen ${\phi_U:\pi^{-1}(U)\rightarrow U\times \R^n}, {\phi_V:\pi^{-1}(U)\rightarrow U\times \R^n}$.
+			Sei $(E,M,\pi,\R^n)$ ein Vektorbündel, $U,V\subset M$ mit $U\cap V\neq\emptyset$ und Trivialisierungen ${\phi_U\colon \pi^{-1}(U)\rightarrow U\times \R^n}, {\phi_V\colon \pi^{-1}(U)\rightarrow U\times \R^n}$.
 
 			Die folgende Abbildung heißt \emph{Trivialisierungswechsel}:
 			\begin{equation*}
 				\phi_V\circ\phi_U^{-1}\colon (U\cap V)\times \R^n\rightarrow (U\cap V)\times \R^n, (q,v)\mapsto (q,\tau(q)v)
 			\end{equation*}
-			wobei die Einschränkung unterdrückt wurde. Die Abbildung $\tau\colon U\cap V\rightarrow \GL(n,\R)$ ist differenzierbar und wird als \emph{Übergangsfunktion} bezeichnet.\kommB[size=\footnotesize]{Wollen wir das einfach so machen? In der VL haben wir die damals dann Trivialisierungswechselfunktionen genannt, aber ich finde, dass man irgendwann auch zu viele Wörter zusammengesetzt haben kann.}
-			\kommP[size=\footnotesize]{Das sind ja die Dinger, die auf Englisch `transition function' heißen. Insofern \dots}
+			wobei die Einschränkung unterdrückt wurde. Die Abbildung $\tau\colon U\cap V\rightarrow \GL(n,\R)$ ist glatt und wird als \emph{Übergangsfunktion} bezeichnet.
 		\end{defn}
 		\begin{defn}[Vektorbündelhomomorphismen]\hfill\\
-			Seien $(E_1,M_1,\pi_1,\R^{n_1}),(E_2,M_2,\pi_2,\R^{n_2})$ Vektorbündel.
-
-			Ein Tupel $(F,f)$ mit $F:E_1\rightarrow E_2$ und $f:M_1\rightarrow M_2$ heißt \emph{Vektorbündelhomomorphismus}, wenn das folgende Diagramm kommutiert:
+			Seien $(E_a,M_a,\pi_a,\R^{n_a}),(E_b,M_b,\pi_b,\R^{n_b})$ Vektorbündel.
+			
+			Ein Tupel $(F,f)$ mit $F\colon E_a\rightarrow E_b$ und $f\colon M_a\rightarrow M_b$ heißt \emph{Vektorbündelhomomorphismus}, wenn das folgende Diagramm kommutiert:
 			\begin{center}
 				\begin{tikzpicture}
-					\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{E_1 & E_2 \\
-     M_1&M_2 \\};
+					\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{E_a & E_b \\
+     M_a&M_b \\};
   				\path[-stealth]
   					(m-1-1)	edge node [above]{$F$} (m-1-2)
-  							edge node [left]{$\pi_1$} (m-2-1)
-  					(m-1-2) edge node [right]{$\pi_2$} (m-2-2)
+  							edge node [left]{$\pi_a$} (m-2-1)
+  					(m-1-2) edge node [right]{$\pi_b$} (m-2-2)
   					(m-2-1) edge node [above]{$f$} (m-2-2)
   					;
 				\end{tikzpicture}
 			\end{center}
-			also $\pi_2\circ F=f\circ\pi_1$.
+			also $\pi_b\circ F=f\circ\pi_a$.
 		\end{defn}
 		\begin{bsp}\hfill
 			\begin{enumerate}
@@ -363,11 +358,57 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$. Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
 			\end{enumerate}
 		\end{bsp}
-	\section{Konstruktionen von Vektorbündeln}
-		Seien $(E_1,M_1,\pi_1,\R^{n_1}),(E_2,M_2,\pi_2,\R^{n_2})$ Vektorbündel.
-		\todo{
-			$E_1\oplus E_2$, 
-			$E_1\otimes E_2$}
+	\section{Konstruktionen von Vektorfeldern}
+		Seien $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.\\
+		\begin{defn}
+			Das zu $(E,M,\pi,\R^{n})$ \emph{duale Bündel} $(E^{\prime},M,\pi^{\prime},(\R^n)^{\prime})$ ist gegeben durch
+			\begin{align*}
+				E^{\prime}&:=\bigcup_{x\in M}(E_{x})^{\prime}\\
+				\pi^{\prime}&\colon E^{\prime}\rightarrow M\\
+				(\pi^{\prime})^{-1}(x)&=E^{\prime}_x=(E_{x})^{\prime}\quad \forall x\in M
+			\end{align*}
+			und für eine Trivialisierung $(\phi,U)$ von $E$, ist die folgende Abbildung eine Trivialisierung des dualen Bündels:
+			\begin{align*}
+				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^{\prime}\\
+				\lambda&\mapsto\left(x,\lambda\circ(\pr_2\circ\phi)^{-1}\right)
+			\end{align*}
+			wobei $\lambda\in E_x^{\prime}$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^{\prime}$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
+		\end{defn}
+		\begin{bsp}
+			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das \emph{Kotangentialbündel} $T^{\prime}M$ gewinnen. Wie wir später sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
+		\end{bsp}
+		\begin{defn}[Whitney-Summe]
+			Die \emph{Whitney-Summe} $(E_a\oplus E_b ,M,\pi,\R^{n_a+n_b})$ ist ein Vektorbündel gegeben durch
+			\begin{align*}
+				E_a\oplus E_b&:=\bigcup_{x\in M}E_{a,x}\oplus E_{b,x}\\
+				\pi&\colon E_a\oplus E_b\rightarrow M\\
+				(\pi)^{-1}(x)&=(E_a\oplus E_b)_x=E_{a,x}\oplus E_{b,x}\quad \forall x\in M
+			\end{align*}
+			und für Trivialisierungen $(\phi_a,U),(\phi_b,U)$ ist die folgende Abbildung eine Trivialisierung der Whitney-Summe:
+			\begin{align*}
+				\phi\colon\pi^{-1}(U)&\rightarrow U\times \R^{n_a+n_b}\\
+				v_a\oplus v_b&\mapsto (\pi_a(v_a), \pr_2(\phi_a(v_a))\oplus\pr_2(\phi_b(v_b)))
+			\end{align*}
+			Trivialisierungswechsel sind (wieder unter Verwendung von Spaltenvektoren) durch die folgende Blockdiagonalmatrix gegeben: 
+			\begin{equation}
+				\tau=\left(\begin{array}{cc}\tau_a&0\\0&\tau_b\\ \end{array}\right)
+			\end{equation}
+		\end{defn}
+		\begin{defn}[Tensorprodukt]
+			Das \emph{Tensorprodukt} $(E_a\otimes E_b ,M,\pi,\R^{n_a\cdot n_b})$ von Vektorbündeln ist ein Vektorbündel gegeben durch
+			\begin{align*}
+				E_a\otimes E_b&:=\bigcup_{x\in M}E_{a,x}\otimes E_{b,x}\\
+				\pi&\colon E_a\otimes E_b\rightarrow M\\
+				(\pi)^{-1}(x)&=(E_a\otimes E_b)_x=E_{a,x}\otimes E_{b,x}\quad \forall x\in M
+			\end{align*}
+			und für Trivialisierungen $(\phi_a,U),(\phi_b,U)$ ist die folgende Abbildung eine Trivialisierung des Tensorprodukts:
+			\begin{align*}
+				\phi_a\otimes\phi_b\colon\pi^{-1}(U)&\rightarrow U\times \R^{n_a\cdot n_b}\\
+				v_a\otimes v_b&\mapsto (\pi_a(v_a), \pr_2(\phi_a(v_a))\otimes\pr_2(\phi_b(v_b)))
+			\end{align*}
+			Die Übergangsfunktionen des Tensorproduktes sind durch das Tensorprodukt der Übergangsfunktionen gegeben: $\tau=\tau_a\otimes\tau_b$.
+		\end{defn}
+		\todo{Tensorprodukt von VR}
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorfelder}
