@@ -213,12 +213,13 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Der Tangentialraum, das Differential, Untermannigfaltigkeiten}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Der Tangentialraum}
 Idee: Was sind \glqq Richtungen\grqq\ auf einer Mannigfaltigkeit?
 
 Anschaulich: Wenn Mf. eingebettet im $\mathbb R^n$, können wir uns eine Tangentialebene vorstellen (Bild: $S^2$ in $\mathbb R^3$). Also: Mögliche Richtungen = Ableitungen von Kurven. Aber abstrakt?
 
-Müssen intrinsisch darüber reden können. Dabei hilft die Beobachtung, dass man Richtungen dazu benutzt, zu beschreiben, wie sich Dinge bei Bewegung in diese Richtung ändern. Also: Richtung = Richtungsableitung! Wir werden deshalb \glqq Richtungen\grqq\ als Ableitungsoperatoren formalisieren.
+Müssen intrinsisch darüber reden können. Dabei hilft die Beobachtung, dass man Richtungen dazu benutzt, zu beschreiben, wie sich Dinge bei Bewegung in diese Richtung ändern. Also: Richtung = Richtungsableitung! \todo{Ableitung entlang von Kurven im $\mathbb R^n$ als Motivation.} Wir werden deshalb \glqq Richtungen\grqq\ als Ableitungsoperatoren formalisieren.
 
 Idee: Ableitungen erfüllen eine Produktregel und wirken \glqq lokal\grqq.
 
@@ -257,7 +258,47 @@ $T_pM$ ist tatsächlich ein Untervektorraum von $(\sC_p(M))^*$ (Übung).
 	\end{proof}
 \end{lemma}
 
-Haben wir eine Karte um $p$ gegeben, dann gibt uns die Karte spezielle \glqq Richtungen, in die wir ableiten können\grqq:
+\begin{bsp}
+	Sei $\gamma\colon (-\varepsilon,\varepsilon) \to M$ eine glatte Kurve mit $\gamma(0) = p$. Wir definieren den Tangentialvektor $\gamma'(0) \in T_pM$ durch \[(\gamma'(0))(f) := (f\circ\gamma)'(0),\] wobei wir auf der rechten Seite die Ableitung der Funktion $f\circ\gamma \colon I \to \mathbb R, I \subset \mathbb R$ gebildet haben.
+
+	$\gamma'(0)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\gamma'(0)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen.
+
+	$\gamma'(0)$ ist wohldefiniert und tatsächlich eine Derivation: Wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ\gamma$ und $g\circ\gamma$ in einer Umgebung von $0$ überein und haben insbesondere dieselbe Ableitung an der Stelle $0$. Die Linearität von $\gamma'(0)$ folgt aus der Linearität der Ableitung, und die Derivations-Produktregel folgt aus der Produktregel für Ableitungen.
+\end{bsp}
+
+Später werden wir sehen, dass sich tatsächlich \emph{jeder} Tangentialvektor als Ableitung einer Kurve schreiben lässt.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Das Differential}
+
+Mithilfe des Tangentialraumbegriffs können wir nun nicht nur entscheiden, ob Abbildungen differenzierbar sind, sondern auch tatsächlich eine Art Ableitungsbegriff definieren:
+\begin{defn}
+	Seien $M,N$ differenzierbare Mannigfaltigkeiten und $f\colon M \to N$ eine differenzierbare Abbildung. Das \emph{Differential} von $f$ im Punkt $p\in M$ ist die lineare Abbildung
+	\[\DD f|_p \colon T_pM \to T_{f(p)}N\]
+	definiert durch
+	\[(\DD f|_p(v))(\alpha) = v (\alpha\circ f)\]
+	für $v\in T_pM, \alpha \in \sC_{f(p)}(N)$.
+\end{defn}
+\begin{prop}
+	$\DD f|_p(v)$ ist tatsächlich wohldefiniert und eine Derivation von $\sC_{f(p)}(N)$, und $\DD f|_p$ ist linear.
+
+	\begin{proof}
+		Übung.
+	\end{proof}
+\end{prop}
+
+\begin{satz}[Kettenregel]
+	Seien $f\colon M \to N, g\colon N \to L$ glatte Abbildungen zwischen differenzierbaren Mannigfaltigkeiten, und $p \in M$. Dann gilt \[\DD(g\circ f)|_p = \DD g|_{f(p)} \circ \DD f|_p.\]
+
+	\begin{proof}
+		Sei $v \in T_pM$. Für jedes $\alpha \in \sC_{g(f(p))}(L)$ ist $(\DD(g\circ f)|_p(v))(\alpha) = v(\alpha\circ (g \circ f)) = v((\alpha\circ g) \circ f) = (\DD f|_p(v)) (\alpha \circ g) = (\DD g|_{f(p)}(\DD f|_p(v))) (\alpha)$, also gilt $\DD(g\circ f)|_p(v) = \DD g|_{f(p)}(\DD f|_p(v))$.
+	\end{proof}
+\end{satz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Koordinatenvektoren}
+
+Haben wir eine Karte gegeben, dann gibt sie uns spezielle \glqq Richtungen, in die wir ableiten können\grqq:
 \begin{defn}
 	Sei $(\varphi,U)$ eine Karte um $p$. Für $i = 1,\dots, n$ definieren wir den Tangentialvektor $\left.\frac{\partial}{\partial x^i}\right|_p \in T_pM$ durch
 	\[\left.\frac{\partial}{\partial x^i}\right|_p(f) := \left(\partial_i \left(f\circ \varphi^{-1}\right)\right) (\varphi(p)).\]
