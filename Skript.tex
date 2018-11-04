@@ -23,6 +23,7 @@
 \newcommand{\D}{\mathrm{d}}
 \newcommand{\DD}{\mathrm{D}}
 \newcommand{\e}{\mathrm{e}}
+\newcommand{\diff}{:\Longleftrightarrow}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\GL}{GL}
@@ -38,6 +39,7 @@
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
 \newtheorem{lemma}[defn]{Lemma}
+\newtheorem{prop}[defn]{Proposition}
 \newtheorem{satz}[defn]{Satz}
 \newtheorem{kor}[defn]{Korollar}
 \newtheorem{bem}[defn]{Bemerkung}
@@ -62,7 +64,23 @@
 \chapter{Einleitung}
 \epigraph{Differentialgeometrie ist die Lehre von Eigenschaften, die invariant unter Notationswechsel sind.}{\textsc{Altes chinesisches Sprichwort}}
 
-Blabla
+Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Mathematik und auch in quasi allen Anwendungsgebieten, insb. der theoretischen Physik (ART, Eichtheorien, alles!).
+
+\section{Bekannte Konzepte, Notationen etc.}
+
+\subsection{Lineare Algebra}
+
+\begin{nota}
+	Für einen Vektorraum $V$ über einem Körper $K$ bezeichnet \[V^* := \mathrm{Hom}(V,K) = \{f\colon V \to K : f \text{ linear}\}\] den Dualraum von $V$.
+\end{nota}
+
+\subsection{Mehrdimensionale Analysis}
+\begin{nota}
+	Punkte im $\mathbb R^n$ schreiben wir als $x = (x^1, \dots, x^n)$. Die Vektoren der Standardbasis von $\mathbb R^n$ schreiben wir als $\e_1, \dots, \e_n \in \mathbb R^n$, also \[\e_i = (0,\dots,\underset{i}{1},\dots,0).\]
+
+	Sei $U \subset \mathbb R^n$ eine offene Menge und $f\colon U \to \mathbb R$ eine differenzierbare Abbildung. Die partielle Ableitung von $f$ nach der $i$-ten Komponente schreiben wir als $\partial_i f$, d.\,h. es ist
+	\[(\partial_i f)(x) = \lim_{h\to 0} \frac{f(x + h \e_i) - f(x)}{h}.\]
+\end{nota}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,6 +168,7 @@ Blabla
 				\item Ein Atlas heißt \emph{differenzierbar}, wenn alle seine Karten paarweise verträglich sind.
 				\item Ein differenzierbarer Atlas heißt \emph{maximal}, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
 				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}.
+				\kommP{Sollten erwähnen, dass, wenn Mf. gegeben, Karten immer als aus der Struktur gemeint sind.}
 			\end{itemize}
 		\end{defn}
 		\begin{bsp}\hfill 
@@ -184,7 +203,81 @@ Blabla
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Der Tangentialraum, das Differential, Untermannigfaltigkeiten}
-	Seien von nun an alle Abbildungen glatt, auch wenn dies nicht explizit erwähnt wird.
+
+\section{Der Tangentialraum}
+Idee: Was sind \glqq Richtungen\grqq\ auf einer Mannigfaltigkeit?
+
+Anschaulich: Wenn Mf. eingebettet im $\mathbb R^n$, können wir uns eine Tangentialebene vorstellen (Bild: $S^2$ in $\mathbb R^3$). Also: Mögliche Richtungen = Ableitungen von Kurven. Aber abstrakt?
+
+Müssen intrinsisch darüber reden können. Dabei hilft die Beobachtung, dass man Richtungen dazu benutzt, zu beschreiben, wie sich Dinge bei Bewegung in diese Richtung ändern. Also: Richtung = Richtungsableitung! Wir werden deshalb \glqq Richtungen\grqq\ als Ableitungsoperatoren formalisieren.
+
+Idee: Ableitungen erfüllen eine Produktregel und wirken \glqq lokal\grqq.
+
+Sei im Folgenden $M$ eine differenzierbare Mannigfaltigkeit, $\dim M = n$.
+
+\begin{defn}[Funktionskeime]
+	Sei $p \in M$. Auf der Menge $X = \{f \in \sC(U) : U \subset M \text{ offene Umgebung von } p\}$ betrachten wir die Äquivalenzrelation $\sim$, die gegeben ist durch
+	\[f \sim g \diff \exists \text{ offene Umgebung } V \text{ von } p \text{ mit } f = g \text{ auf } V.\]
+	Die Äquivalenzklassen bzgl. dieser Relation heißen glatte \emph{Funktionskeime} in $p$. Zwei um $p$ definierte Funktionen definieren also genau dann denselben Keim, wenn sie in einer Umgebung von $p$ übereinstimmen.
+
+	Den Raum der Funktionskeime in $p$ schreiben wir als $\sC_p(M)$. Den Keim zu einer Funktion $f$ schreiben wir als $[f]$. Wenn keine Missverständnisse entstehen können, schreiben wir stattdessen manchmal auch $f$, um uns Notationsaufwand zu ersparen.
+\end{defn}
+
+Zu einem Funktionskeim $[f] \in \sC_p(M)$ ist der Funktionswert $[f](p) := f(p)$ wohldefiniert (warum?).
+
+\begin{prop}
+	\kommP{Das hab ich mal \glqq Proposition\grqq\ und nicht \glqq Lemma\grqq\ genannt, weil es nur im aktuellen Kontext relevant ist und man es außerhalb nicht braucht.}
+	$\sC_p(M)$ ist mit über die Repräsentanten definierter Addition, Skalarmultiplikation und Multiplikation eine $\mathbb R$-Algebra.
+
+	\begin{proof}
+		Übung.
+	\end{proof}
+\end{prop}
+
+\begin{defn}
+	Eine \emph{Derivation} von $\sC_p(M)$ ist eine lineare Abbildung $v\colon \sC_p(M) \to \mathbb R$, die die \glqq Produktregel\grqq\ \[v(fg) = v(f) g(p) + f(p) v(g)\] erfüllt. Den Raum der Derivationen von $\sC_p(M)$ nennen wir den \emph{Tangentialraum} $T_pM$ an $M$ im Punkt $p$; die Elemente von $T_pM$ heißen auch \emph{Tangentialvektoren} in $p$.
+\end{defn}
+
+$T_pM$ ist tatsächlich ein Untervektorraum von $(\sC_p(M))^*$ (Übung).
+
+\begin{lemma}
+	Für alle $v \in T_pM$ und $c \in \mathbb R$ ist $v(c) = 0$ (dabei fassen wir $c$ als konstante Funktion bzw. den davon induzierten Funktionskeim auf).
+	
+	\begin{proof}
+		Es ist $v(1) = v(1\cdot 1) = v(1) 1(p) + 1(p) v(1) = 2 v(1)$, also $v(1) = 0$. Da $v$ linear ist, folgt die Behauptung.
+	\end{proof}
+\end{lemma}
+
+\begin{defn}
+	Sei $(\varphi,U)$ eine Karte um $p$. Für $i = 1,\dots, n$ definieren wir den Tangentialvektor $\left.\frac{\partial}{\partial x^i}\right|_p \in T_pM$ durch
+	\[\left.\frac{\partial}{\partial x^i}\right|_p(f) := \left(\partial_i \left(f\circ \varphi^{-1}\right)\right) (\varphi(p)).\]
+\end{defn}
+$\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim in der Karte $\varphi$ dar und bildet die $i$-te partielle Ableitung dieser Kartendarstellung.
+\begin{prop}
+	$\left.\frac{\partial}{\partial x^i}\right|_p$ ist tatsächlich eine Derivation von $\sC_p(M)$.
+
+	\begin{proof}
+		$\left.\frac{\partial}{\partial x^i}\right|_p$ ist wohldefiniert, denn wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ \varphi^{-1}$ und $g\circ \varphi^{-1}$ in einer Umgebung von $\varphi(p)$ überein und haben insbesondere dieselben Ableitungen an der Stelle $\varphi(p)$.
+
+		Die Linearität von $\left.\frac{\partial}{\partial x^i}\right|_p$ folgt direkt aus der Linearität von partiellen Ableitungen. Dass $\left.\frac{\partial}{\partial x^i}\right|_p$ eine Derivation ist, folgt aus der Produktregel für partielle Ableitungen:
+		\begin{align*}
+			\left.\frac{\partial}{\partial x^i}\right|_p (fg) &= \left(\partial_i \left((fg)\circ \varphi^{-1}\right)\right) (\varphi(p))\\
+			&= \left(\partial_i \left( \left(f\circ \varphi^{-1}\right) \cdot \left(g\circ \varphi^{-1}\right) \right) \right) (\varphi(p))\\
+			&= \left(\partial_i \left(f\circ \varphi^{-1}\right) \right)(\varphi(p)) \cdot \left(g\circ \varphi^{-1}\right) (\varphi(p)) \\&\quad+ \left(f\circ \varphi^{-1}\right) (\varphi(p)) \cdot \left(\partial_i \left(g\circ \varphi^{-1}\right) \right)(\varphi(p))\\
+			&= \left.\frac{\partial}{\partial x^i}\right|_p (f) \cdot g(p) + f(p) \cdot \left.\frac{\partial}{\partial x^i}\right|_p (g) \qedhere
+		\end{align*}
+	\end{proof}
+\end{prop}
+
+Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p, i \in \{1,\dots,n\}$ eine Basis von $T_pM$ bilden. Dafür brauchen wir einen kleinen Trick:
+\begin{lemma}[Hadamard-Lemma]
+	Sei $U \subset \mathbb R^n$ eine sternförmige offene Menge, $x_0 \in U$ und $f \in \sC(U)$. Dann gibt es glatte Funktionen $f_i \in \sC(U), i \in \{1,\dots,n\}$, sodass $f(x) = f(x_0) + \sum_{i=1}^n f_i(x) (x^i - x_0^i)$.
+
+	\begin{proof}
+		Bla
+	\end{proof}
+\end{lemma}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorbündel}
