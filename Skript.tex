@@ -27,7 +27,7 @@
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\GL}{GL}
 
-\newcommand{\R}{\mathds{R}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
 \newcommand{\sm}{\mathcal{F}(M)}
 \newcommand{\vf}{\mathfrak{X}(M)}
@@ -223,21 +223,21 @@ Blabla
 			wobei die Einschränkung unterdrückt wurde. Die Abbildung $\tau:U\cap V\rightarrow \GL(n,\R)$ ist differenzierbar und wird ebenfalls mit Trivialisierungswechsel bezeichnet.\todo{Wollen wir das einfach so machen? In der VL haben wir die damals dann Trivialisierungswechselfunktionen genannt, aber ich finde, dass man irgendwann auch zu viele Wörter zusammengesetzt haben kann.}
 		\end{defn}
 		\begin{defn}[Vektorbündelhomomorphismen]\hfill\\
-			Seien $(E_1,M_1,\pi_1,\R^{n_1}),(E_2,M_2,\pi_2,\R^{n_2})$ Vektorbündel.\\
-			Ein Tupel $(F,f)$ mit $F:E_1\rightarrow E_2$ und $f:M_1\rightarrow M_2$ heißt Vektorbündelhomomorphismus, wenn das folgende Diagramm kommutiert:
+			Seien $(E_a,M_a,\pi_a,\R^{n_a}),(E_b,M_b,\pi_b,\R^{n_b})$ Vektorbündel.\\
+			Ein Tupel $(F,f)$ mit $F:E_a\rightarrow E_b$ und $f:M_a\rightarrow M_b$ heißt Vektorbündelhomomorphismus, wenn das folgende Diagramm kommutiert:
 			\begin{center}
 				\begin{tikzpicture}
-					\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{E_1 & E_2 \\
-     M_1&M_2 \\};
+					\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{E_a & E_b \\
+     M_a&M_b \\};
   				\path[-stealth]
   					(m-1-1)	edge node [above]{$F$} (m-1-2)
-  							edge node [left]{$\pi_1$} (m-2-1)
-  					(m-1-2) edge node [right]{$\pi_2$} (m-2-2)
+  							edge node [left]{$\pi_a$} (m-2-1)
+  					(m-1-2) edge node [right]{$\pi_b$} (m-2-2)
   					(m-2-1) edge node [above]{$f$} (m-2-2)
   					;
 				\end{tikzpicture}
 			\end{center}
-			also $\pi_2\circ F=f\circ\pi_1$.
+			also $\pi_b\circ F=f\circ\pi_a$.
 		\end{defn}
 		\begin{bsp}\hfill
 			\begin{enumerate}
@@ -246,10 +246,44 @@ Blabla
 			\end{enumerate}
 		\end{bsp}
 	\section{Konstruktionen von Vektorfeldern}
-		Seien $(E_1,M_1,\pi_1,\R^{n_1}),(E_2,M_2,\pi_2,\R^{n_2})$ Vektorbündel.
+		Seien $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.\\
+		\begin{defn}
+			Das zu $(E,M,\pi,\R^{n})$ duale Bündel $(E^{\prime},M,\pi^{\prime},(\R^n)^{\prime})$ ist gegeben durch
+			\begin{align*}
+				E^{\prime}&:=\bigcup_{x\in M}(E_{x})^{\prime}\\
+				\pi^{\prime}&:E^{\prime}\rightarrow M\\
+				(\pi^{\prime})^{-1}(x)&=E^{\prime}_x=(E_{x})^{\prime}\quad \forall x\in M
+			\end{align*}
+			und für eine Trivialisierung $(\phi,U)$ von $E$, ist die folgende Abbildung eine Trivialisierung des dualen Bündels:
+			\begin{align*}
+				\phi^{\prime}:(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^{\prime}\\
+				\lambda&\mapsto\left(x,\lambda\circ(\pi_2\circ\phi)^{-1}\right)
+			\end{align*}
+			wobei $\lambda\in E_x^{\prime}$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^{\prime}$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
+		\end{defn}
+		\begin{bsp}
+			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das Kotangentialbündel $T^{\prime}M$ gewinnen. Wie wir im nächsten Kapitel sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
+		\end{bsp}
+		\begin{defn}[Whitney-Summe]
+			Die Whitney-Summe $(E_a\oplus E_b ,M,\pi,\R^{n_a+n_b})$ ist ein Vektorbündel gegeben durch
+			\begin{align*}
+				E_a\oplus E_b&:=\bigcup_{x\in M}E_{a,x}\oplus E_{b,x}\\
+				\pi&:E_a\oplus E_b\rightarrow M\\
+				(\pi)^{-1}(x)&=(E_a\oplus E_b)_x=E_{a,x}\oplus E_{b,x}\quad \forall x\in M
+			\end{align*}
+			und für Trivialisierungen $(\phi_a,U),(\phi_b,U)$ ist die folgende Abbildung eine Trivialisierung der Whitney-Summe:
+			\begin{align*}
+				\phi:\pi^{-1}(U)&\rightarrow U\times \R^{n_a+n_b}\\
+				v_a\oplus v_b&\mapsto (\pi_a(v_a), \pi_2(\phi_a(v_a))\oplus\pi_2(\phi_b(v_b)))
+			\end{align*}
+			Trivialisierungswechsel sind (wieder unter Verwendung von Spaltenvektoren) durch die folgende Blockdiagonalmatrix gegeben: 
+			\begin{equation}
+				\tau=\left(\begin{array}{cc}\tau_a&0\\0&\tau_b\\ \end{array}\right)
+			\end{equation}
+		\end{defn}
 		\todo{
-			$E_1\oplus E_2$, 
-			$E_1\otimes E_2$}
+			$E_a\oplus E_b$, Tensorprodukt, 
+			$E_a\otimes E_b$}
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorfelder}
