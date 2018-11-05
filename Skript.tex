@@ -463,21 +463,21 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 	\section{Konstruktionen von Vektorbündeln}
 		Seien $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.\\
 		\begin{defn}
-			Das zu $(E,M,\pi,\R^{n})$ \emph{duale Bündel} $(E^{\prime},M,\pi^{\prime},(\R^n)^{\prime})$ ist gegeben durch
+			Das zu $(E,M,\pi,\R^{n})$ \emph{duale Bündel} $(E^*,M,\pi^{\prime},(\R^n)^*)$ ist gegeben durch
 			\begin{align*}
-				E^{\prime}&:=\bigcup_{x\in M}(E_{x})^{\prime}\\
-				\pi^{\prime}&\colon E^{\prime}\rightarrow M\\
-				(\pi^{\prime})^{-1}(x)&=E^{\prime}_x=(E_{x})^{\prime}\quad \forall x\in M
+				E^*&:=\bigcup_{x\in M}(E_{x})^*\\
+				\pi^{\prime}&\colon E^*\rightarrow M\\
+				(\pi^{\prime})^{-1}(x)&=E^*_x=(E_{x})^*\quad \forall x\in M
 			\end{align*}
 			und für eine Trivialisierung $(\phi,U)$ von $E$, ist die folgende Abbildung eine Trivialisierung des dualen Bündels:
 			\begin{align*}
-				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^{\prime}\\
+				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^*\\
 				\lambda&\mapsto\left(x,\lambda\circ(\pr_2\circ\phi)^{-1}\right)
 			\end{align*}
-			wobei $\lambda\in E_x^{\prime}$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^{\prime}$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
+			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
 		\begin{bsp}
-			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das \emph{Kotangentialbündel} $T^{\prime}M$ gewinnen. Wie wir später sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
+			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das \emph{Kotangentialbündel} $T^*M$ gewinnen. Wie wir später sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
 		\end{bsp}
 		\begin{defn}[Whitney-Summe]
 			Die \emph{Whitney-Summe} $(E_a\oplus E_b ,M,\pi,\R^{n_a+n_b})$ ist ein Vektorbündel gegeben durch
