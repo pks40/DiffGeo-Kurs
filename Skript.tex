@@ -27,6 +27,11 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Un}{U}
+\DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\pr}{pr}
 
 \newcommand{\R}{\mathbb{R}}
@@ -527,10 +532,21 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 				l_g\colon G\to G, h\mapsto g\cdot h
 			\end{equation}
 			Es gelten $(l_g)^{-1}=l_{g^{-1}}$ und $l_g\circ l_h=l_{g\cdot h}$.
+			
+			Analog lassen sich auch die \emph{Rechtstranslation} $r_g$ und die \emph{Konjugation} $c_g:=l_g\circ r_{g^{-1}}$ definieren.
 		\end{defn}
+		\begin{bsp}\hfill
+		
+			\begin{enumerate}
+				\item $\R^n$ ist zusammen mit der Addition von Vektoren eine Lie-Gruppe.
+				\item $\GL(n,\R)$ ist eine $n^2$-dimensionale und $\SL(n,\R)$ eine $(n^2-1)$-dimensionale Lie-Gruppe (Die komplexen Versionen haben die doppelte Dimension). Weitere Beispiele sind die orthogonalen und unitären Gruppen $\Orth(n)$ ($n(n-1)/2$-dimensional), $\SO(n)$ ($n(n-1)/2$), $\Un(n)$ ($n^2$) und $\SU(n)$ ($n^2-1$).
+				\item $S^1\cong \lbrace z\in \mathbb{C}\vert zz^*=1\rbrace$ bekommt durch die Multiplikation in der komplexen Ebene eine Gruppenstruktur und ist damit eine Lie-Gruppe. 
+			\end{enumerate}
+			
+		\end{bsp}
 		Sei $G$ von nun an eine Lie-Gruppe mit neutralem Element $e$.
 		\begin{defn}[Linksinvariante Vektorfelder]
-			Ein \emph{linksinvariantes Vektorfeld} ist ein Vektorfeld $X\in\mathfrak{X}(G)$, das \glqq invariant\grqq unter dem push-forward von Linkstranslationen ist. Das heißt, dass folgende Gleichung gilt:
+			Ein \emph{linksinvariantes Vektorfeld} ist ein Vektorfeld $X\in\mathfrak{X}(G)$, das \glqq invariant\grqq\ unter dem push-forward von Linkstranslationen ist. Das heißt, dass folgende Gleichung gilt:
 			\begin{equation*}
 				\left((l_g)_*X\right)_h\stackrel{\text{Def.}}{=}\DD l_g\vert_{g^{-1}\cdot h}X_{g^{-1}\cdot h}=X_h
 			\end{equation*}
@@ -544,39 +560,94 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 				Zum Beweis konstruieren wir den kanonischen Isomorphismus und zeigen, dass die linksinvarianten Vektorfelder unter Bildung von Kommutatoren abgeschlossen sind:
 				\begin{align}
 					\Psi&\colon\vf^L(G)\to T_eG, X\mapsto X_e\nonumber\\
-					\Phi&\colon T_eG\rightarrow \vf^L(G), v\mapsto (g\mapsto \DD l_g\vert_e v)\label{def:kan_Iso}
-				\end{align}
-				$\Phi$ ist wohldefiniert, denn für $v\in T_eG$ und $g,h\in G$ gilt:
+					L&\colon T_eG\rightarrow \vf^L(G), v\mapsto (g\mapsto \DD l_g\vert_e v)\label{def:kan_Iso}
+				\end{align}\kommB{Ist $L$ ein guter Name bzw. gibt es da einen üblichen?}
+				$L$ ist wohldefiniert, denn für $v\in T_eG$ und $g,h\in G$ gilt:
 				\begin{align*}
-					\left((l_g)_*\Phi(v)\right)_h&=\DD l_g\vert_{g^{-1}\cdot h}\Phi(v)_{g^{-1}\cdot h}\\
+					\left((l_g)_*L(v)\right)_h&=\DD l_g\vert_{g^{-1}\cdot h}L(v)_{g^{-1}\cdot h}\\
 					&=\DD l_g\vert_{g^{-1}\cdot h}\DD (l_{g^{-1}\cdot h}\vert_e v)\\
 					\text{(Kettenregel)}\quad &=\DD\left(l_g\circ l_{g^{-1}}\right)\big\vert _h\DD l_h\vert_e v\\
 					&=\DD l_h\vert_e v\\
-					&=\Phi(v)_h
+					&=L(v)_h
 				\end{align*}
-				Außerdem gilt $\Psi\circ\Phi=\id_{T_eG}$:
+				Außerdem gilt $\Psi\circ L=\id_{T_eG}$:
 				\begin{align*}
-					\Psi(\Phi(v))= (g\mapsto \DD l_g\vert_e v)_e=\DD l_e\vert_e v=v
+					\Psi(L(v))= (g\mapsto \DD l_g\vert_e v)_e=\DD l_e\vert_e v=v
 				\end{align*}
-				und die Umkehrung $\Phi(\Psi(X))=X$ wird punktweise durch Ausnutzen der Linksinvarianz klar:
+				und die Umkehrung $L(\Psi(X))=X$ wird punktweise durch Ausnutzen der Linksinvarianz klar:
 				\begin{align*}
 					\left((l_g)_*X\right)_g&=\DD l_g\vert_{g^{-1}\cdot g}X_{g^{-1}\cdot g}=X_g\\
 					&=\DD l_g\vert_e X_e\\
-					&=\Phi(X_e)_g
+					&=L(X_e)_g
 				\end{align*}
 				Beide Abbildungen sind linear, da das Differential linear ist.
 				
-				\todo{Abgeschlossenheit unter Kommutatoren}
+				Nun bleibt zu zeigen, dass der Kommutator zweier linksinvarianter Vektorfelder linksinvariant ist (Übung).
 			\end{proof}
 		\end{satz}
-		\begin{defn}[Lie-Algebra]
-			Die \emph{Lie-Algebra} einer Lie-Gruppe ist $T_eG$ mit der folgenden Verknüpfung:
+		\begin{defn}
+			Die \emph{Lie-Algebra} einer Lie-Gruppe ist der Vektorraum $\mathfrak{g}:=T_eG$ mit der folgenden Verknüpfung:
 			\begin{align*}
-				T_eG\times T_eG\to T_eG, (v,w)\mapsto \left[\Phi(v),\Phi(w)\right]_e
+				\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}, (v,w)\mapsto \left[L(v),L(w)\right]_e
 			\end{align*}
-			mit dem kanonischen Isomorphismus $\Phi\colon T_eG\to \vf^L(G)$ aus \ref{def:kan_Iso}.
+			mit dem kanonischen Isomorphismus $L\colon \mathfrak{g}\to \vf^L(G)$ aus Gleichung (\ref{def:kan_Iso}).
 		\end{defn}
-
+		\begin{lemma}
+			Linksinvariante Vektorfelder sind vollständig, das heißt, ihre Integralkurven können auf ganz $\R$ fortgesetzt werden.
+			\begin{proof}
+				$\gamma_g:I_g\rightarrow G$ Integralkurve in $g\in G$ $\Rightarrow \gamma^{\prime}:I_p\rightarrow G, t\mapsto l_h(\gamma_p(t))$ ist Integralkurve in $h\cdot g\;\forall h\in\gamma_p(I_p)$ (Kettenregel) $\rightarrow$ Setze $\gamma_p$ fort.
+			\end{proof}\todo{Ausformulieren mit Notation des vorherigen Kapitels}
+		\end{lemma}
+		\begin{defn}[Exponentialabbildung]
+			Die \emph{Exponentialabbildung} $\exp\colon\mathfrak{g}\rightarrow G$ ist durch den Fluss der linksinvarianten Vektorfelder definiert:
+			\begin{equation*}
+				\exp(v):=\Phi_1^{L(v)}(e)
+			\end{equation*}\kommB{Notation des vorherigen Kapitels übernehmen!}
+		\end{defn}
+		\begin{lemma}
+			Für einen Lie-Gruppenhomomorphismus $\phi\colon G\rightarrow H$ (einen glatten Gruppenhomomorphismus zwischen Lie-Gruppen) kommutiert das folgende Diagramm:
+			\begin{center}
+			\begin{tikzpicture}
+				\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{\mathfrak{g} & \mathfrak{h} \\
+     G&H \\};
+  				\path[-stealth]
+  					(m-1-1)	edge node [above]{$\DD\phi\vert_e$} (m-1-2)
+  							edge node [left]{$\exp$} (m-2-1)
+  					(m-1-2) edge node [right]{$\exp$} (m-2-2)
+  					(m-2-1) edge node [above]{$\phi$} (m-2-2)
+  					;
+			\end{tikzpicture}
+			\end{center}
+			\begin{proof}
+				\kommB{Hängt davon ab, was wir über Integralkurven so beweisen wollen}
+			\end{proof}
+		\end{lemma}
+		\begin{defn}
+			Sei $M$ eine Mannigfaltigkeit, $G$ eine Lie-Gruppe.
+			
+			Eine \emph{(Rechts-) Wirkung} ist eine Abbildung 
+			\begin{gather*}
+					\tril: M \times G \rightarrow M, \quad (p,g) \mapsto p\tril g 
+				\intertext{die mit der Verknüpfung im folgenden Sinne kompatibel ist:}
+					(p \tril g)\tril h = p\tril (g\cdot h) \quad \forall p\in M, g,h \in G
+				\end{gather*}
+				
+				Analog definiert man eine \emph{(Links-) Wirkung} $\trir : G \times M \rightarrow M,\; (p,g)\mapsto g\trir p$, sodass 
+				\begin{equation*}
+					h\trir (g\trir p) =(h\cdot g)\trir p \quad \forall p\in M, g,h \in G
+				\end{equation*}
+				wobei die Reihenfolge umgekehrt ist.
+				
+				Eine \emph{Darstellung} ist eine Abbildung $\rho\colon G\rightarrow \GL(V)$ mit einem Vektorraum $V$, sodass $V\times G\rightarrow V, (v,g)\mapsto \rho(g)v$ eine Linkswirkung ist (also $\rho(g)\rho(h)=\rho(g\cdot h) \forall g,h\in G$).
+		\end{defn}
+		\begin{bsp}\hfill
+			\begin{enumerate}
+				\item Schreibt man die Elemente der obigen Beispiele von Lie-Gruppen in ihrer üblichen Form als $n\times n$-Matrizen, so erhält man (sogenannte fundamentale) Darstellungen durch die Matrixmultiplikation mit Elemente von $\R^n$ bzw. $\mathbb{C}^n$. 
+			\end{enumerate}
+		\end{bsp}
+		\kommB{Idee: Hier noch fundamentale Vektorfelder und adjungierte Darstellung und dann später bei Geodäten bzgl der Killing form sehen, dass (die Exponentialabbildungen übereinstimmen und damit) die Geodäten gerade Integralkurven linksinvarianter Vektorfelder sind.}
+		
+		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Tensorfelder}
 
