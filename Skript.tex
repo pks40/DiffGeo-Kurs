@@ -27,12 +27,8 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\SL}{SL}
-\DeclareMathOperator{\Orth}{O}
-\DeclareMathOperator{\SO}{SO}
-\DeclareMathOperator{\Un}{U}
-\DeclareMathOperator{\SU}{SU}
 \DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Ad}{Ad}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
@@ -539,7 +535,7 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 		
 			\begin{enumerate}
 				\item $\R^n$ ist zusammen mit der Addition von Vektoren eine Lie-Gruppe.
-				\item $\GL(n,\R)$ ist eine $n^2$-dimensionale und $\SL(n,\R)$ eine $(n^2-1)$-dimensionale Lie-Gruppe (Die komplexen Versionen haben die doppelte Dimension). Weitere Beispiele sind die orthogonalen und unitären Gruppen $\Orth(n)$ ($n(n-1)/2$-dimensional), $\SO(n)$ ($n(n-1)/2$), $\Un(n)$ ($n^2$) und $\SU(n)$ ($n^2-1$).
+				\item $\GL(n,\R)$ ist eine $n^2$-dimensionale und $\mathrm{SL}(n,\R)$ eine $(n^2-1)$-dimensionale Lie-Gruppe (Die komplexen Versionen haben die doppelte Dimension). Weitere Beispiele sind die orthogonalen und unitären Gruppen $\mathrm{O}(n)$ ($n(n-1)/2$-dimensional), $\mathrm{SO}(n)$ ($n(n-1)/2$), $\mathrm{U}(n)$ ($n^2$) und $\mathrm{SU}(n)$ ($n^2-1$).
 				\item $S^1\cong \lbrace z\in \mathbb{C}\vert zz^*=1\rbrace$ bekommt durch die Multiplikation in der komplexen Ebene eine Gruppenstruktur und ist damit eine Lie-Gruppe. 
 			\end{enumerate}
 			
@@ -595,15 +591,43 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 		\begin{lemma}
 			Linksinvariante Vektorfelder sind vollständig, das heißt, ihre Integralkurven können auf ganz $\R$ fortgesetzt werden.
 			\begin{proof}
-				$\gamma_g:I_g\rightarrow G$ Integralkurve in $g\in G$ $\Rightarrow \gamma^{\prime}:I_p\rightarrow G, t\mapsto l_h(\gamma_p(t))$ ist Integralkurve in $h\cdot g\;\forall h\in\gamma_p(I_p)$ (Kettenregel) $\rightarrow$ Setze $\gamma_p$ fort.
+				$\gamma_g:I_g\rightarrow G$ Integralkurve in $g\in G$ $\Rightarrow \gamma^{\prime}:I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ ist Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel) $\rightarrow$ Setze $\gamma_g$ fort.
 			\end{proof}\todo{Ausformulieren mit Notation des vorherigen Kapitels}
 		\end{lemma}
+	\section{Die Exponentialabbildung}
 		\begin{defn}[Exponentialabbildung]
 			Die \emph{Exponentialabbildung} $\exp\colon\mathfrak{g}\rightarrow G$ ist durch den Fluss der linksinvarianten Vektorfelder definiert:
 			\begin{equation*}
 				\exp(v):=\Phi_1^{L(v)}(e)
 			\end{equation*}\kommB{Notation des vorherigen Kapitels übernehmen!}
+			Dies entspricht gerade der Integralkurve von $L(v)$ in $e$ ausgewertet an der Stelle $1$.
 		\end{defn}
+		\begin{lemma}
+			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
+			\begin{enumerate}[label=\arabic*]
+				\item $\exp(0)=e$
+				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv)$
+			\end{enumerate}
+			\begin{proof}
+				Übung. \kommB{Hinweis: Zum Beweis der zweiten Eigenschaft hilft der Beweis der Vollständigkeit von linksinvarianten Vektorfeldern und die Eigenschaften von Integralkurven bzgl. Skalierung.}
+			\end{proof}
+		\end{lemma}
+		\begin{lemma}[Fluss linksinvarianter Vektorfelder]
+			Sei $X\in\vf^L(G)$.
+			
+			Der Fluss von $X$ ist durch die Exponentialabbilding wie folgt gegeben:
+			\begin{align*}
+				\Phi^X_t(p)=p\cdot \exp(tX_e) =l_p(\exp(tX_e))
+			\end{align*}
+			\begin{proof}
+				Es gilt $l_p(\exp(0))=p=\Phi^X_0(p)$. Wir zeigen nun, dass $l_p(\exp(tX_e)$ $X$ erzeugt und die Aussage folgt dann aufgrund der Eindeutigkeit der Lösung von Differentialgleichungen (oder von Integralkurven).
+				\begin{align*}
+					\frac{d}{dt}l_p(\exp(tX_e))&=\frac{d}{ds}l_{p\cdot\exp(tX_e)}(\exp(sX_e))\Big\vert_{s=0}\\
+					&=\DD l_{p\cdot\exp(tX_e)}\vert_eX_e\\
+					&=X_{p\cdot\exp(tX_e)}
+				\end{align*}
+			\end{proof}
+		\end{lemma}
 		\begin{lemma}
 			Für einen Lie-Gruppenhomomorphismus $\phi\colon G\rightarrow H$ (einen glatten Gruppenhomomorphismus zwischen Lie-Gruppen) kommutiert das folgende Diagramm:
 			\begin{center}
@@ -619,9 +643,19 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 			\end{tikzpicture}
 			\end{center}
 			\begin{proof}
-				\kommB{Hängt davon ab, was wir über Integralkurven so beweisen wollen}
+				Wir wollen zeigen, dass $\exp(D\phi\vert_e v)=\phi(\exp(v))\forall v\in\mathfrak{g}$ gilt. Sei $v\in\mathfrak{g}$, ${\gamma\colon [0,1]\rightarrow G}$,$ \gamma(t):=\phi(\exp(tv))$ und zeige nun, dass $\gamma$ die Integralkurve von $L(\DD\phi\vert_e v)$ in $e$ ist:
+				\begin{align*}
+					\gamma'(t)&=\frac{d}{dt}(\phi(\exp(tv))\\
+					&=\DD\phi\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e v\\
+					&=\DD(\phi\circ l_{\exp(tv)})\vert_e v\\
+					&=\DD(l_{\phi(\exp(tv))}\circ\phi)\vert_e v\\
+					&=\DD l_{\gamma(t)}\vert_e\DD\phi\vert_ev\\
+					&=L(\DD\phi\vert_e v)_{\gamma(t)}
+				\end{align*}
+				Daraus folgt nun insbesondere $\phi(\exp(v))=\gamma(1)=\exp(\DD\phi\vert_e v)$.
 			\end{proof}
 		\end{lemma}
+	\section{Wirkungen und Darstellungen}
 		\begin{defn}
 			Sei $M$ eine Mannigfaltigkeit, $G$ eine Lie-Gruppe.
 			
@@ -643,6 +677,10 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 		\begin{bsp}\hfill
 			\begin{enumerate}
 				\item Schreibt man die Elemente der obigen Beispiele von Lie-Gruppen in ihrer üblichen Form als $n\times n$-Matrizen, so erhält man (sogenannte fundamentale) Darstellungen durch die Matrixmultiplikation mit Elemente von $\R^n$ bzw. $\mathbb{C}^n$. 
+				\item Die Konjugationsabbildung liefert eine Darstellung jeder Lie-Gruppe auf ihrer Lie-Algebra, die sogenannte \emph{Adjungierte Darstellung}:
+				\begin{align*}
+					\Ad:G\rightarrow \GL(\mathfrak{g}), g\mapsto \DD c_g\vert_e
+				\end{align*}
 			\end{enumerate}
 		\end{bsp}
 		\kommB{Idee: Hier noch fundamentale Vektorfelder und adjungierte Darstellung und dann später bei Geodäten bzgl der Killing form sehen, dass (die Exponentialabbildungen übereinstimmen und damit) die Geodäten gerade Integralkurven linksinvarianter Vektorfelder sind.}
