@@ -27,8 +27,11 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\pr}{pr}
 \DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\tr}{tr}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
@@ -160,7 +163,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 		\end{defn}
 		\begin{bsp}\hfill 
 			\begin{enumerate}
-				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. 
+				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. Ebenso gilt dies für beliebige offene Teilmengen.
 				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n + m$). Die Produkte offener Mengen bilden dabei eine Basis der Topologie des Produktes.
 				\item Für topologische Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine topologische Mannigfaltigkeit (\emph{topologische Summe}).
 			\end{enumerate}
@@ -182,11 +185,11 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 		\end{defn}
 		\begin{bsp}\hfill 
 			\begin{enumerate}
-				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale differenzierbare Mannigfaltigkeit, der oben genannte Atlas muss dazu aber erweitert werden!
+				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden! (Übung: Zeige allgemein, dass eine Vervollständigung eines nichtleeren Atlanten eindeutig ist)
 				\kommP{Erwähnen, dass jeder dfb. Atlas einen eindeutige dfb. Struktur induziert, mit der er verträglich ist? Übungsaufgabe?}
 				\item Reelle, endlich dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
-				\item Das kartesische Produkt zweier differenzierbarer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine differenzierbare Mannigfaltigkeit (der Dimension $n+m$).
-				\item Für differenzierbare Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine differenzierbare Mannigfaltigkeit (\emph{topologische Summe}).
+				\item Die obigen Beispiele topologischer Mannigfaltigkeiten gelten auch für differenzierbare Mannigfalltigkeiten, allerdings müssen auch hier Atlanten vervollständigt werden.
+				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\vert \|x\|=1\rbrace}$ sind differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
 			\end{enumerate}
 		\end{bsp}
 	\section{Differenzierbare Abbildungen}
@@ -207,7 +210,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 		\begin{defn}
 			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.
 
-			Die Menge der Diffeomorphismen $\Diff(M):=\sC(M,M)$ bildet eine Gruppe.
+			Die Menge der Diffeomorphismen $\Diff(M)\subset\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -473,7 +476,7 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 			und für eine Trivialisierung $(\phi,U)$ von $E$, ist die folgende Abbildung eine Trivialisierung des dualen Bündels:
 			\begin{align*}
 				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^*\\
-				\lambda&\mapsto\left(x,\lambda\circ(\pr_2\circ\phi)^{-1}\right)
+				\lambda&\mapsto\left(x,\lambda\circ(\pr_2\circ\phi\vert_{\pi^{-1}(\lbrace x\rbrace)})^{-1}\right)
 			\end{align*}
 			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
@@ -521,22 +524,22 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 \chapter{Lie-Gruppen}
 	\section{Grundlagen}
 		\begin{defn}[Lie-Gruppe]
-			Eine \emph{Lie-Gruppe} ist eine differenzierbare Mannigfaltigkeit $G$ mit einer Gruppenstruktur, sodass die Verknüpfung $\cdot\colon G\times G\rightarrow G$ und die Inversion ${i\colon G\rightarrow G}, {g\mapsto g^{-1}}$ glatte Abbildungen sind.
+			Eine \emph{Lie-Gruppe} ist eine differenzierbare Mannigfaltigkeit $G$ mit einer Gruppenstruktur, sodass die Verknüpfung $\cdot\colon G\times G\rightarrow G, (g,h)\mapsto g\cdot h$ und die Inversion ${i\colon G\rightarrow G}, {g\mapsto g^{-1}}$ glatte Abbildungen sind.
 			
 			Wir definieren die \emph{Linkstranslation} entlang $g$:
 			\begin{equation}
 				l_g\colon G\to G, h\mapsto g\cdot h
 			\end{equation}
-			Es gelten $(l_g)^{-1}=l_{g^{-1}}$ und $l_g\circ l_h=l_{g\cdot h}$.
 			
-			Analog lassen sich auch die \emph{Rechtstranslation} $r_g$ und die \emph{Konjugation} $c_g:=l_g\circ r_{g^{-1}}$ definieren.
+			Es gelten $(l_g)^{-1}=l_{g^{-1}}$ und $l_g\circ l_h=l_{g\cdot h}$, also ist $l\colon G\rightarrow \mathrm{Aut}(G)$ ein Gruppenhomomorphismus.
+			
+			Analog lassen sich auch die \emph{Rechtstranslation} $r_g$ (mit $r_g\circ r_h=r_{h\cdot g}$) und die \emph{Konjugation} $c_g:= r_{g^{-1}}\circ l_g$ definieren. Rechts- und Linkstranslationen kommutieren und sind (Anti-) Automorphismen der Lie-Gruppe.
 		\end{defn}
 		\begin{bsp}\hfill
-		
 			\begin{enumerate}
 				\item $\R^n$ ist zusammen mit der Addition von Vektoren eine Lie-Gruppe.
-				\item $\GL(n,\R)$ ist eine $n^2$-dimensionale und $\mathrm{SL}(n,\R)$ eine $(n^2-1)$-dimensionale Lie-Gruppe (Die komplexen Versionen haben die doppelte Dimension). Weitere Beispiele sind die orthogonalen und unitären Gruppen $\mathrm{O}(n)$ ($n(n-1)/2$-dimensional), $\mathrm{SO}(n)$ ($n(n-1)/2$), $\mathrm{U}(n)$ ($n^2$) und $\mathrm{SU}(n)$ ($n^2-1$).
-				\item $S^1\cong \lbrace z\in \mathbb{C}\vert zz^*=1\rbrace$ bekommt durch die Multiplikation in der komplexen Ebene eine Gruppenstruktur und ist damit eine Lie-Gruppe. 
+				\item $\GL(V)$ ist für $n=\dim_{\R} V$ eine $n^2$-dimensionale und $\mathrm{SL}(n,\R)$ eine $(n^2-1)$-dimensionale Lie-Gruppe (Die komplexen Versionen haben die doppelte Dimension). Weitere Beispiele sind die orthogonalen und unitären Gruppen $\mathrm{O}(n)$ ($n(n-1)/2$-dimensional), $\mathrm{SO}(n)$ ($n(n-1)/2$), $\mathrm{U}(n)$ ($n^2$) und $\mathrm{SU}(n)$ ($n^2-1$).
+				\item $S^1\cong \lbrace z\in \mathbb{C}\vert zz^*=1\rbrace$ bekommt durch die Multiplikation in der komplexen Ebene eine Gruppenstruktur und ist damit eine Lie-Gruppe (nämlich gerade $\mathrm{U}(1)$). 
 			\end{enumerate}
 			
 		\end{bsp}
@@ -548,7 +551,7 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 			\end{equation*}
 			Die Menge der linksinvarianten Vektorfelder heißt $\vf^L(G)$.
 		\end{defn}
-		\begin{satz}[Lie-Algebra]
+		\begin{satz}
 			Die linksinvarianten Vektorfelder bilden eine endlich-dimensionale Unteralgebra der Algebra der Vektorfelder (mit dem Kommutator als Verknüpfung).
 			
 			Sie ist als Vektorraum isomorph zum Tangentialraum des neutralen Elements $T_eG$.
@@ -572,26 +575,29 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 				\end{align*}
 				und die Umkehrung $L(\Psi(X))=X$ wird punktweise durch Ausnutzen der Linksinvarianz klar:
 				\begin{align*}
-					\left((l_g)_*X\right)_g&=\DD l_g\vert_{g^{-1}\cdot g}X_{g^{-1}\cdot g}=X_g\\
+					X_g&=\DD l_g\vert_{g^{-1}\cdot g}X_{g^{-1}\cdot g}=\left((l_g)_*X\right)_g\\
 					&=\DD l_g\vert_e X_e\\
 					&=L(X_e)_g
 				\end{align*}
-				Beide Abbildungen sind linear, da das Differential linear ist.
+				Beide Abbildungen sind linear, für $L$ gilt dies, da das Differential linear ist.
 				
 				Nun bleibt zu zeigen, dass der Kommutator zweier linksinvarianter Vektorfelder linksinvariant ist (Übung).
 			\end{proof}
 		\end{satz}
-		\begin{defn}
+		\begin{defn}[Lie-Algebra]
 			Die \emph{Lie-Algebra} einer Lie-Gruppe ist der Vektorraum $\mathfrak{g}:=T_eG$ mit der folgenden Verknüpfung:
 			\begin{align*}
-				\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}, (v,w)\mapsto \left[L(v),L(w)\right]_e
+				\left[.,.\right]\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}, (v,w)\mapsto \left[v,w\right]:=\left[L(v),L(w)\right]_e
 			\end{align*}
-			mit dem kanonischen Isomorphismus $L\colon \mathfrak{g}\to \vf^L(G)$ aus Gleichung (\ref{def:kan_Iso}).
+			mit dem kanonischen Isomorphismus $L\colon \mathfrak{g}\to \vf^L(G)$ aus Gleichung (\ref{def:kan_Iso}). Diese Verkettung ist bilinear und antisymmetrisch nach Konstruktion.
 		\end{defn}
+		\begin{bsp}\hfill
+			Die Lie-Algebra der $\GL(V)$ ist der Vektorraum der Endomorphismen $\End(V)$. Dies wird klar, wenn man $\GL(n,\R)$ als (offene) Teilmenge des $\R^{n^2}$ betrachtet: Der Tangentialraum ist dann kanonisch $\R^{n^2}\cong\End(\R^n)$ und durch Basiswahl erhält man die Identifizierung für beliebige (reelle) Vektorräume.
+		\end{bsp}
 		\begin{lemma}
 			Linksinvariante Vektorfelder sind vollständig, das heißt, ihre Integralkurven können auf ganz $\R$ fortgesetzt werden.
 			\begin{proof}
-				$\gamma_g:I_g\rightarrow G$ Integralkurve in $g\in G$ $\Rightarrow \gamma^{\prime}:I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ ist Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel) $\rightarrow$ Setze $\gamma_g$ fort.
+				$\gamma_g\colon I_g\rightarrow G$ Integralkurve in $g\in G$ $\Rightarrow \gamma^{\prime}\colon I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ ist Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel) $\rightarrow$ Setze $\gamma_g$ fort.
 			\end{proof}\todo{Ausformulieren mit Notation des vorherigen Kapitels}
 		\end{lemma}
 	\section{Die Exponentialabbildung}
@@ -602,22 +608,23 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 			\end{equation*}\kommB{Notation des vorherigen Kapitels übernehmen!}
 			Dies entspricht gerade der Integralkurve von $L(v)$ in $e$ ausgewertet an der Stelle $1$.
 		\end{defn}
-		\begin{lemma}
+		\begin{lemma}\label{lemma:Eigenschaften_exp}
 			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
 			\begin{enumerate}[label=\arabic*]
+				\item $\frac{d}{dt}\exp(tv)\Big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
 				\item $\exp(0)=e$
-				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv)$
+				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
 			\end{enumerate}
 			\begin{proof}
-				Übung. \kommB{Hinweis: Zum Beweis der zweiten Eigenschaft hilft der Beweis der Vollständigkeit von linksinvarianten Vektorfeldern und die Eigenschaften von Integralkurven bzgl. Skalierung.}
+				Übung. (Für die dritte Eigenschaft, konstruiere zwei Integralkurven in $\exp(sv)$) \kommB{Hinweis: Zum Beweis der dritten Eigenschaft hilft der Beweis der Vollständigkeit von linksinvarianten Vektorfeldern und die Eigenschaften von Integralkurven bzgl. Skalierung.}
 			\end{proof}
 		\end{lemma}
-		\begin{lemma}[Fluss linksinvarianter Vektorfelder]
+		\begin{lemma}[Fluss linksinvarianter Vektorfelder]\label{lemma:Fluss_linksinvarianter_Vektorfelder}
 			Sei $X\in\vf^L(G)$.
 			
 			Der Fluss von $X$ ist durch die Exponentialabbilding wie folgt gegeben:
 			\begin{align*}
-				\Phi^X_t(p)=p\cdot \exp(tX_e) =l_p(\exp(tX_e))
+				\Phi^X_t(p)=p\cdot \exp(tX_e) \; =l_p(\exp(tX_e))=r_{\exp(tX_e)}(p)
 			\end{align*}
 			\begin{proof}
 				Es gilt $l_p(\exp(0))=p=\Phi^X_0(p)$. Wir zeigen nun, dass $l_p(\exp(tX_e)$ $X$ erzeugt und die Aussage folgt dann aufgrund der Eindeutigkeit der Lösung von Differentialgleichungen (oder von Integralkurven).
@@ -642,8 +649,9 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
   					;
 			\end{tikzpicture}
 			\end{center}
+			Man kann zeigen, dass die Abbildung $\DD\phi\vert_e$ ein Lie-Algebrenhomomorphismus ist, also mit den Kommutatoren verträglich ist.
 			\begin{proof}
-				Wir wollen zeigen, dass $\exp(D\phi\vert_e v)=\phi(\exp(v))\forall v\in\mathfrak{g}$ gilt. Sei $v\in\mathfrak{g}$, ${\gamma\colon [0,1]\rightarrow G}$,$ \gamma(t):=\phi(\exp(tv))$ und zeige nun, dass $\gamma$ die Integralkurve von $L(\DD\phi\vert_e v)$ in $e$ ist:
+				Wir wollen zeigen, dass $\exp(D\phi\vert_e v)=\phi(\exp(v))\forall v\in\mathfrak{g}$ gilt. Sei $v\in\mathfrak{g}$, ${\gamma\colon [0,1]\rightarrow G}$,$ \gamma(t):=\phi(\exp(tv))$ und zeige nun, dass $\gamma$ die Integralkurve von $L(\DD\phi\vert_e v)$ in $e\in H$ ist:
 				\begin{align*}
 					\gamma'(t)&=\frac{d}{dt}(\phi(\exp(tv))\\
 					&=\DD\phi\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e v\\
@@ -655,18 +663,25 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 				Daraus folgt nun insbesondere $\phi(\exp(v))=\gamma(1)=\exp(\DD\phi\vert_e v)$.
 			\end{proof}
 		\end{lemma}
+		\begin{bem}\label{bem:exp_induziert_Abbildungen}
+			Aufgrund von Lemma \ref{lemma:Eigenschaften_exp} lassen sich also die induzierten Lie-Algebrenhomomorphismen $\DD\phi\vert_e$ wie folgt berechnen:
+			\begin{align*}
+				\DD\phi\vert_e v&=\frac{d}{dt}\exp(t \DD\phi\vert_e v)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\phi(\exp(tv))\Big\vert_{t=0}
+			\end{align*}
+		\end{bem}
 	\section{Wirkungen und Darstellungen}
 		\begin{defn}
 			Sei $M$ eine Mannigfaltigkeit, $G$ eine Lie-Gruppe.
 			
 			Eine \emph{(Rechts-) Wirkung} ist eine Abbildung 
 			\begin{gather*}
-					\tril: M \times G \rightarrow M, \quad (p,g) \mapsto p\tril g 
+					\tril\colon M \times G \rightarrow M, \quad (p,g) \mapsto p\tril g 
 				\intertext{die mit der Verknüpfung im folgenden Sinne kompatibel ist:}
 					(p \tril g)\tril h = p\tril (g\cdot h) \quad \forall p\in M, g,h \in G
 				\end{gather*}
 				
-				Analog definiert man eine \emph{(Links-) Wirkung} $\trir : G \times M \rightarrow M,\; (p,g)\mapsto g\trir p$, sodass 
+				Analog definiert man eine \emph{(Links-) Wirkung} $\trir \colon G \times M \rightarrow M,\; (p,g)\mapsto g\trir p$, sodass 
 				\begin{equation*}
 					h\trir (g\trir p) =(h\cdot g)\trir p \quad \forall p\in M, g,h \in G
 				\end{equation*}
@@ -676,15 +691,59 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 		\end{defn}
 		\begin{bsp}\hfill
 			\begin{enumerate}
-				\item Schreibt man die Elemente der obigen Beispiele von Lie-Gruppen in ihrer üblichen Form als $n\times n$-Matrizen, so erhält man (sogenannte fundamentale) Darstellungen durch die Matrixmultiplikation mit Elemente von $\R^n$ bzw. $\mathbb{C}^n$. 
-				\item Die Konjugationsabbildung liefert eine Darstellung jeder Lie-Gruppe auf ihrer Lie-Algebra, die sogenannte \emph{Adjungierte Darstellung}:
-				\begin{align*}
-					\Ad:G\rightarrow \GL(\mathfrak{g}), g\mapsto \DD c_g\vert_e
-				\end{align*}
+				\item Rechts- und Linkstranslationen sind Rechts- und Linkswirkungen auf der Lie-Gruppe selbst.
+				\item Schreibt man die Elemente der obigen Beispiele von Lie-Gruppen in ihrer üblichen Form als $n\times n$-Matrizen, so erhält man (sogenannte fundamentale) Darstellungen durch die Matrixmultiplikation mit Elementen von $\R^n$ bzw. $\mathbb{C}^n$.
 			\end{enumerate}
 		\end{bsp}
-		\kommB{Idee: Hier noch fundamentale Vektorfelder und adjungierte Darstellung und dann später bei Geodäten bzgl der Killing form sehen, dass (die Exponentialabbildungen übereinstimmen und damit) die Geodäten gerade Integralkurven linksinvarianter Vektorfelder sind.}
+		\begin{defn}[Die Adjungierte Darstellung]\hfill
 		
+			Die Konjugation liefert eine Darstellung jeder Lie-Gruppe auf ihrer Lie-Algebra, die sogenannte \emph{Adjungierte Darstellung}:
+			\begin{align*}
+				\Ad\colon G\rightarrow \GL(\mathfrak{g}), g\mapsto \DD c_g\vert_e
+			\end{align*}
+			Man erhält darüber hinaus auch eine Darstellung der Lie-Algebra selbst:
+			\begin{align*}
+				\ad:=\DD\Ad\vert_e\colon\mathfrak{g}\rightarrow\End(\mathfrak{g}),
+			\end{align*}
+			Mit Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} und Bemerkung \ref{bem:exp_induziert_Abbildungen} folgt dann:
+			\begin{align*}
+				\ad_v(w)&=\frac{d}{dt}\Ad_{\exp(tv)}(w)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\DD c_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}L(w)_{\exp(tv)}\right)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\DD \Phi_{-t}^{L(v)}\vert_{\Phi^{L(v)}_t(e)}L(w)_{\Phi^{L(v)}_t(e)}\right)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\left(\Phi_{-t}^{L(v)}\right)_*L(w)\right)_e\Big\vert_{t=0}\\
+				&=\mathcal{L}_{L(v)}(L(w))_e\\
+				&=\left[v,w\right]
+			\end{align*}
+			Also ist $\ad_v$ eine lineare Abbildung. Beachte: $\ad$ ist auch \glqq im ersten Argument\grqq\ linear, also $\ad_{v+w}=\ad_v+\ad_w \quad\forall v,w\in\mathfrak{g}$ und ist damit ein Gruppenhomomorphismus der Lie-Algebra als additive Gruppe, allerdings keine Abbildung in eine $\GL(V)$ (Man sagt dennoch \glqq induzierte Darstellung\grqq).
+		\end{defn}
+		\begin{defn}[Killing-Form]
+			Die \emph{Killing-Form} ist eine symmetrische Bilinearform, definiert durch:
+			\begin{align*}
+				B_{\mathfrak{g}}\colon\mathfrak{g}\times\mathfrak{g}\rightarrow\R, (v,w)\mapsto \tr(\ad_v\circ\ad_w).
+			\end{align*}
+			Die Bilinearität folgt aufgrund der Linearität der Spur und $\ad$ und die Symmetrie aufgrund der Zyklizität der Spur.
+		\end{defn}
+		\begin{satz}
+			Die Killing-Form ist negativ definit genau dann, wenn die Lie-Gruppe kompakt und das Zentrum der Lie-Algebra
+			\begin{equation*}
+				\mathfrak{z}(\mathfrak{g}):=\lbrace v\in\mathfrak{g}\vert\, \left[v,w\right]=0\,\forall w\in\mathfrak{g}\rbrace
+			\end{equation*}
+			trivial ist.
+		\end{satz}
+		\kommB{Idee: Hier noch fundamentale Vektorfelder und adjungierte Darstellung und dann später bei Geodäten bzgl der Killing-form sehen, dass (die Exponentialabbildungen übereinstimmen und damit) die Geodäten gerade Integralkurven linksinvarianter Vektorfelder sind.}
+		
+		Mit Wirkungen lassen sich auch allgemeiner Vektorfelder von Elementen der Lie-Algebra erzeugen:
+		\begin{defn}[Fundamentale Vektorfelder]
+			Sei $\trir:G\times M\rightarrow M$ eine Linkswirkung.
+			
+			Das \emph{fundamentale Vektorfeld} $X^v$ zu einem Element der Lie-Algebra $v\in\mathfrak{g}$ ist durch die folgende Gleichung definiert:
+			\begin{align*}
+				X^v_p:=\frac{d}{dt}\exp(tv)\trir p\Big\vert_{t=0} \quad\forall p\in M
+			\end{align*}
+			Beachte, dass dies für die Linkstranslation gerade dem Fluss aus Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} entspricht!
+		\end{defn}
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Tensorfelder}
