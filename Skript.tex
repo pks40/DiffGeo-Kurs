@@ -755,10 +755,35 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Kovariante Ableitungen}
+	\section{Grundlagen}
+		\begin{defn}[Kovariante Ableitung]Sei $E$ ein Vektorbündel über $M$.
+			Eine \emph{kovariante Ableitung} ist eine Abbildung
+			\begin{align*}
+				\nabla\colon \vf(M)\times\Gamma(E)\rightarrow\Gamma(E), (X,\sigma)\mapsto \nabla_X \sigma,
+			\end{align*}
+			die die folgenden Eigenschaften erfüllt:
+			\begin{enumerate}[label=\arabic*]
+				\item $\sm(M)$-Linearität im ersten Argument: 
+				\begin{equation*}
+					\nabla_{X+fY}\sigma=\nabla_X\sigma+f\nabla_Y \sigma\quad\forall X,Y\in\vf(M), f\in\sm(M),\sigma\in\Gamma(E)
+				\end{equation*}
+				\item \glqq Derivativität\grqq\ im zweiten Argument: 
+				\begin{equation*}
+					\nabla_X(f\sigma)=\underbrace{X(f)}_{\in\sm(M)} \sigma+f\nabla_X \sigma\quad\forall X\in\vf(M), f\in\sm(M),\sigma\in\Gamma(E)
+				\end{equation*}
+			\end{enumerate}
+		\end{defn}
+		Die kovariante Ableitung ist im Fall des Tangentialbündels eine weitere Tensorderivation. Dementsprechend wird sie durch ihre Wirkung auf Vektorfeldern und Funktionen definiert. Ihren besonderen Nutzen sehen wir später im Kontext der Riemannschen Geometrie.
+	\section{Induzierte Zusammenhänge}
+	\section{Geodäten}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Riemann'sche Geometrie}
+	\section{Grundlagen}
+	\section{Metrik und Zusammenhang}
+	\section{Der Satz von Hopf-Rinow}
+	\section{Anwendung: Lie-Gruppen}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
