@@ -115,7 +115,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 			\end{equation*}
 		\end{defn}
 		\begin{bsp}
-			Ist $(X,d)$ ein metrischer Raum, so bilden die bzgl. der Metrik offenen Mengen eine Topologie mit den $\varepsilon$-Bällen $\lbrace B_{\varepsilon}(x)\vert \; x\in X, \varepsilon >0\rbrace$ als Basis.
+			Ist $(X,d)$ ein metrischer Raum, so bilden die bzgl. der Metrik offenen Mengen eine Topologie mit den $\varepsilon$-Bällen $\lbrace B_{\varepsilon}(x)\mid x\in X, \varepsilon >0\rbrace$ als Basis.
 		\end{bsp}
 		\begin{defn}[Zweitabzählbarkeit]
 			Ein topologischer Raum $(X,\mathcal{T})$ heißt \emph{zweitabzählbar}, wenn für die Topologie $\mathcal{T}$ eine abzählbare Basis existiert. 
@@ -189,7 +189,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 				\kommP{Erwähnen, dass jeder dfb. Atlas einen eindeutige dfb. Struktur induziert, mit der er verträglich ist? Übungsaufgabe?}
 				\item Reelle, endlich dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
 				\item Die obigen Beispiele topologischer Mannigfaltigkeiten gelten auch für differenzierbare Mannigfalltigkeiten, allerdings müssen auch hier Atlanten vervollständigt werden.
-				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\vert \|x\|=1\rbrace}$ sind differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
+				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\mid \|x\|=1\rbrace}$ sind differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
 			\end{enumerate}
 		\end{bsp}
 	\section{Differenzierbare Abbildungen}
@@ -464,6 +464,16 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$. Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
 			\end{enumerate}
 		\end{bsp}
+		\begin{defn}[Rahmen]
+			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_2)\in\Gamma(P\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet. 
+			
+			Beachte: Ist $(\phi,U)$ eine Trivialisierung und $(e_1,\ldots,e_n)$ die Standardbasis von $\R^n$, dann ist mit $\sigma_i(x):=\phi^{-1}(x,e_i)$ das Tupel $(\sigma_1,\ldots,\sigma_n)$ ein lokaler Rahmen über $U$.
+			
+			Natürlicherweise ist ein \emph{globaler Rahmen} ein lokaler Rahmen über $M$.
+		\end{defn}
+		\begin{satz}
+			Ein Vektorbündel besitzt genau dann einen globalen Rahmen, wenn es trivial ist (das heißt isomorph zum trivialen Bündel).
+		\end{satz}
 	\section{Konstruktionen von Vektorbündeln}
 		Seien $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.\\
 		\begin{defn}
@@ -515,7 +525,41 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 			Die Übergangsfunktionen des Tensorproduktes sind durch das Tensorprodukt der Übergangsfunktionen gegeben: $\tau=\tau_a\otimes\tau_b$.
 		\end{defn}
 		\todo{Tensorprodukt von VR}
-		
+		\begin{defn}[Rückzug von Vektorbündeln]
+			Sei $f\colon N\rightarrow M$.
+			
+			Das \emph{entlang $f$ zurückgezogene Vektoründel} $(f^*E,\pi_f,N, F)$ ist gegeben durch:
+			\begin{align*}
+				f^*E&:=\bigcup _{x\in N} E_{f(x)}\\
+				\pi_f&\colon f^*E\rightarrow N\\
+				(\pi_f)^{-1}(x)&=(f^*E)_x=E_{f(x)}\quad\forall x\in N
+			\end{align*}
+			und für $x\in N$ existiert eine Trivialisierung $(\phi,U)$ um $f(x)\in M$ und dannist die folgende Abbildung eine Trivialisierung $(\phi_f,f^{-1}(U))$ des zurückgezogenen Bündels um $x\in N$:
+			\begin{align*}
+				\phi_f \colon (\pi_f)^{-1}(f^{-1}(U))&\rightarrow f^{-1}(U)\times\R^n\\
+				\underbrace{v}_{\in (f^*(E))_x=E_{f(x)}}&\mapsto (\pi_f(v),\pr_2(\phi(v)))
+			\end{align*}
+			Die Übergangsfunktionen sind identisch zu denen des ursprünglichen Bündels.
+		\end{defn}
+		Mit dem Rückzug eines Vektorbündels geht auch ein Rückzug seiner Schnitte einher.
+		\begin{defn}[Rückzug von Schnitten]
+			Sei $f:N\rightarrow M$, $\sigma\in\Gamma(E)$.
+			
+			Der \emph{Rückzug eines Schnittes} $f^*\sigma$ ist folgendermaßen definiert:
+			\begin{align*}
+				f^*\sigma\colon N &\rightarrow f^*E,\\
+				x &\mapsto \sigma(f(x))=: (f^*\sigma)(x)
+			\end{align*}
+			Damit ist $f^*\sigma\in\Gamma(f^*E)$, insbesondere differenzierbar. Wir bezeichnen die Menge der zurückgezogenen Schnitte mit $f^*(\Gamma(E))\subset\Gamma(f^*E)$.
+		\end{defn}
+		\begin{lemma}
+			Sei $f:N\rightarrow M$.
+			
+			Die zurückgezogenen Schnitte $f^*(\Gamma(E))$ erzeugen durch $\sm(N)$-Linearkombination die Schnitte des zurückgezogenen Bündels $\Gamma(f^*E)$.
+			\begin{proof}
+				Übung. Hinweis: Betrachte lokale Rahmen.
+			\end{proof}
+		\end{lemma}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorfelder}
 
@@ -539,7 +583,7 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 			\begin{enumerate}
 				\item $\R^n$ ist zusammen mit der Addition von Vektoren eine Lie-Gruppe.
 				\item $\GL(V)$ ist für $n=\dim_{\R} V$ eine $n^2$-dimensionale und $\mathrm{SL}(n,\R)$ eine $(n^2-1)$-dimensionale Lie-Gruppe (Die komplexen Versionen haben die doppelte Dimension). Weitere Beispiele sind die orthogonalen und unitären Gruppen $\mathrm{O}(n)$ ($n(n-1)/2$-dimensional), $\mathrm{SO}(n)$ ($n(n-1)/2$), $\mathrm{U}(n)$ ($n^2$) und $\mathrm{SU}(n)$ ($n^2-1$).
-				\item $S^1\cong \lbrace z\in \mathbb{C}\vert zz^*=1\rbrace$ bekommt durch die Multiplikation in der komplexen Ebene eine Gruppenstruktur und ist damit eine Lie-Gruppe (nämlich gerade $\mathrm{U}(1)$). 
+				\item $S^1\cong \lbrace z\in \mathbb{C}\mid zz^*=1\rbrace$ bekommt durch die Multiplikation in der komplexen Ebene eine Gruppenstruktur und ist damit eine Lie-Gruppe (nämlich gerade $\mathrm{U}(1)$). 
 			\end{enumerate}
 			
 		\end{bsp}
@@ -728,9 +772,9 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 		\begin{satz}
 			Die Killing-Form ist negativ definit genau dann, wenn die Lie-Gruppe kompakt und das Zentrum der Lie-Algebra
 			\begin{equation*}
-				\mathfrak{z}(\mathfrak{g}):=\lbrace v\in\mathfrak{g}\vert\, \left[v,w\right]=0\,\forall w\in\mathfrak{g}\rbrace
+				\mathfrak{z}(\mathfrak{g}):=\lbrace v\in\mathfrak{g}\mid \left[v,w\right]=0\,\forall w\in\mathfrak{g}\rbrace
 			\end{equation*}
-			trivial ist.
+			trivial ($=\lbrace 0\rbrace$) ist.
 		\end{satz}
 		\kommB{Idee: Hier noch fundamentale Vektorfelder und adjungierte Darstellung und dann später bei Geodäten bzgl der Killing-form sehen, dass (die Exponentialabbildungen übereinstimmen und damit) die Geodäten gerade Integralkurven linksinvarianter Vektorfelder sind.}
 		
@@ -742,7 +786,7 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 			\begin{align*}
 				X^v_p:=\frac{d}{dt}\exp(tv)\trir p\Big\vert_{t=0} \quad\forall p\in M
 			\end{align*}
-			Beachte, dass dies für die Linkstranslation gerade dem Fluss aus Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} entspricht!
+			Beachte, dass dies für die Linkstranslation gerade dem Fluss aus Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} entspricht! Linksinvariante Vektorfelder sind also die fundamentalen Vektorfelder der Lie-Gruppe selbst.
 		\end{defn}
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -773,14 +817,81 @@ Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p,
 				\end{equation*}
 			\end{enumerate}
 		\end{defn}
-		Die kovariante Ableitung ist im Fall des Tangentialbündels eine weitere Tensorderivation. Dementsprechend wird sie durch ihre Wirkung auf Vektorfeldern und Funktionen definiert. Ihren besonderen Nutzen sehen wir später im Kontext der Riemannschen Geometrie.
+		Die kovariante Ableitung ist im Fall des Tangentialbündels ergibt eine weitere Tensorderivation (definiert als Forsetzung ihrer Wirkung auf Vektorfeldern und Funktionen). Ihren besonderen Nutzen sehen wir später im Kontext der Riemannschen Geometrie.
+		
+		Sei von nun an $\nabla$ eine kovariante Ableitung auf einem Vektorbündel $(E,\pi)$.
+		\begin{lemma}[Lokalität kovarianter Ableitungen]
+			Seien $X_1,X_2\in\vf(M)$ und $\sigma_1,\sigma_2\in\Gamma(E)$ auf einer Umgebung von $p\in M$ identisch, so gilt:
+			\begin{enumerate}
+				\item $\left(\nabla_{X_1}\sigma_1\right)(p)=\left(\nabla_{X_2}\sigma_1\right)(p)$
+				\item $\left(\nabla_{X_1}\sigma_1\right)(p)=\left(\nabla_{X_1}\sigma_2\right)(p)$
+			\end{enumerate}
+			\begin{proof}
+				Übung.
+			\end{proof}
+		\end{lemma}
 	\section{Induzierte Zusammenhänge}
+		Insbesondere interessieren uns kovariante Ableitungen entlang von Kurven $\gamma\colon I\rightarrow M$. Dies entspricht einer kovarianten Ableitung auf dem zurückgezogenen Bündel auf das Intervall $I$. Wir müssen also die kovariante Ableitung ebenfalls zurückziehen.
+		\begin{satz}[Rückzug von kovarianten Ableitungen]
+			Sei $f\colon N\rightarrow M$.
+			
+			Für eine kovariante Ableitung $\nabla$ auf dem Vektorbündel $(E,\pi)$ gilt: $\exists!$ kovariante Ableitung $f^*\nabla\colon\vf(N)\times\Gamma(f^*E)\rightarrow \Gamma(f^*E)$ sodass für alle $X\in\vf(N),\sigma\in\Gamma(E), {p \in N}$ gilt:
+			\begin{equation*}
+				\left(\left(f^*\nabla\right)_X(f^*\sigma)\right)(p)=f^*\left(\nabla_Y\sigma\right)(p)
+			\end{equation*}
+			mit einem Vektorfeld $Y\in\vf(M)$ sodass $Y_{f(p)}=\DD f\vert_p X_p$. Diese kovariante Ableitung ist der \emph{Rückzug der kovarianten Ableitung} $\nabla$.
+			\begin{proof}
+				Auf $\vf(N)\times f^*(\Gamma(E))$ ist der Rückzug wegen der Lokalität der kovarianten Ableitungen wohldefiniert (insbesondere unabhängig von der Wahl $Y\in\vf(M)$). Linearität und Derivativität folgen aus den entsprechenden Eigenschaften der ursprünglichen kovarianten Ableitung und der Linearität des Differentials. Man setzt die kovariante Ableitung derivativ auf $\Gamma(f^*E)$ fort (da $f^*(\Gamma(E))$ alle Schnitte $\Gamma(f^*E)$ erzeugt). Eindeutigkeit ohne Beweis.
+			\end{proof}
+		\end{satz}
 	\section{Geodäten}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Riemann'sche Geometrie}
 	\section{Grundlagen}
+		Wir wollen das Konzept eines Skalarproduktes auf Vektorräumen auf Vektorbündel übertragen.
+		\begin{defn}[Bündelmetrik]
+			Sei $(E,\pi)$ ein Vektorbündel über $M$.
+			
+			
+			Eine \emph{Bündelmetrik} ist ein eine Abbildung
+			\begin{equation*}
+				g\colon \Gamma(E)\times\Gamma(E)\rightarrow \sm(M), (\sigma^1,\sigma^2)\mapsto (p\mapsto g_p(\sigma^1_p,\sigma^2_p)),
+			\end{equation*}
+			(also $g\in\Gamma(E^*\otimes E^*)$) sodass an jedem Punkt $p\in M$ die Abbildung $g_p\colon E_p\times E_p\rightarrow \R$ eine nicht-degenerierte, symmetrische Bilinearform mit von $p$ unabhängiger Signatur ist.
+		\end{defn}
+		\begin{defn}[Riemann'sche Metrik]
+			Eine \emph{Riemann'sche Metrik} ist ein Bündelmetrik $g$ auf dem Tangentialbündel, sodass $g_p$ fü jeden Punkt $p\in M$ ein Skalarprodukt ist (also insbesondere positiv definit).
+			
+			In Koordinaten ist die Metrik durch eine positiv definite, symmetrische Matrix $g_{ij}$ gegeben, sodass $g=g_{ij}dx^i\otimes dx^j$ gilt. Die (Komponenten der) Inversen Matrix werden mit $g^{ij}$ bezeichnet, sodass $g_{ij}g^{jk}=\delta^k_i$.
+		\end{defn}
+		\begin{bem}
+			Man sagt auch \emph{pseudo-Riemann'sche Metrik} für eine beliebige Bündelmetrik auf dem Tangentialbündel. Physik!
+		\end{bem}
+		\begin{satz}
+			Auf jeder Mannigfaltigkeit existiert eine Riemann'sche Metrik.
+		\end{satz}
+		Wie für Vektorräume induziert ein Skalarprodukt einen Isomorphismus zum Dualraum:
+		\begin{defn}
+			Die \emph{metrischen Typänderungen} sind die folgenden punktweise definierten Abbildungen:
+			\begin{align*}
+				^{\flat}&\colon T_pM\rightarrow T_p^*M, v\mapsto v^{\flat}:=g_p(v,\cdot)\\
+				^{\sharp}&\colon T_p^*M\rightarrow T_pM, \lambda\mapsto \lambda^{\sharp}
+			\end{align*}
+			wobei $\lambda^{\sharp}\in T_pM$ der durch die Gleichung $\lambda(v)=g_p(\lambda^{\sharp},v)\forall v\in T_pM$ eindeutig definierte Vektor ist.
+			
+			Es gelten $(v^{\flat})^{\sharp}=v\;\forall v\in T_pM$ und $(\lambda^{\sharp})^{\flat}=\lambda\;\forall\lambda\in T_p^*M$.
+			
+			Man erhält dadurch einen Isomorphismus von Vektorbündeln $TM\cong T^*M$ und einen Isomorphismus von $\sm(M)$-Moduln $\vf(M)\cong \Omega^1(M)$ (Wegen der $\sm(M)$-Linearität der Metrik).
+			
+			In Koordinaten wirkt die metrische Typänderung auf Komponenten auf einfache Weise. Sei $X\in\vf(M), \omega\in\Omega^1(M)$:
+			\begin{align*}
+				(X^{\flat})_i&=g_{ij}X^j\\
+				(\omega^{\sharp})^i&=g^{ij}\omega_j
+			\end{align*}
+			wobei $g^{ij}$ wieder die Komponenten der Inversen Matrix bezeichnet.
+		\end{defn}
 	\section{Metrik und Zusammenhang}
 	\section{Der Satz von Hopf-Rinow}
 	\section{Anwendung: Lie-Gruppen}
