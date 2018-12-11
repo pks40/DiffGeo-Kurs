@@ -46,6 +46,8 @@
 \newtheorem{bsp}[defn]{Beispiel}
 \newtheorem{nota}[defn]{Notation}
 
+\newcommand{\bewUeb}{\begin{proof}Übung.\end{proof}}
+
 % Kommentare
 \newcommand{\kommP}[2][noinline]{\todo[#1,color=green!40]{#2}}
 \newcommand{\kommB}[2][noinline]{\todo[#1,color=blue!20]{#2}}
@@ -76,19 +78,19 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 
 \subsection{Mehrdimensionale Analysis}
 \begin{nota}
-	Punkte im $\mathbb R^n$ schreiben wir als $x = (x^1, \dots, x^n)$. Die Vektoren der Standardbasis von $\mathbb R^n$ schreiben wir als $\e_1, \dots, \e_n \in \mathbb R^n$, also \[\e_i = (0,\dots,\underset{i}{1},\dots,0).\]
+	Punkte im $\mathbb R^n$ schreiben wir als $a = (a^1, \dots, a^n)$. Die Vektoren der Standardbasis von $\mathbb R^n$ schreiben wir als $\e_1, \dots, \e_n \in \mathbb R^n$, also \[\e_i = (0,\dots,\underset{i}{1},\dots,0).\]
 
 	Sei $U \subset \mathbb R^n$ eine offene Menge und $f\colon U \to \mathbb R$ eine differenzierbare Abbildung. Die partielle Ableitung von $f$ nach der $i$-ten Komponente schreiben wir als $\partial_i f$, d.\,h. es ist
-	\[(\partial_i f)(x) = \lim_{h\to 0} \frac{f(x + h \e_i) - f(x)}{h}.\]
+	\[(\partial_i f)(a) = \left.\frac{\D f(a + h \e_i)}{\D h}\right|_{h=0} = \lim_{h\to 0} \frac{f(a + h \e_i) - f(a)}{h}.\]
 \end{nota}
 
 \begin{satz}[Mehrdimensionale Kettenregel]
 	Seien $U \subset \mathbb R^l, V \subset \mathbb R^m, W \subset \mathbb R^n$ offene Mengen und $f\colon U\to V, g\colon V \to W$ differenzierbare Abbildungen. Dann ist auch $g\circ f\colon U \to W$ differenzierbar, und für die Differentiale gilt
-	\[\DD(g\circ f)|_x = \DD g|_{f(x)} \circ \DD f|_x\]
-	für $x \in U$. Für die partiellen Ableitungen der Komponenten gilt also
+	\[\DD(g\circ f)|_a = \DD g|_{f(a)} \circ \DD f|_a\]
+	für $a \in U$. Für die partiellen Ableitungen der Komponenten gilt also
 	\[\partial_i(g\circ f) = \sum_{j = 1}^m ((\partial_j g)\circ f) \cdot \partial_i f^j,\]
 	d.\,h.
-	\[(\partial_i(g\circ f))(x) = \sum_{j = 1}^m (\partial_j g)(f(x)) \cdot (\partial_i f^j)(x).\]
+	\[(\partial_i(g\circ f))(a) = \sum_{j = 1}^m (\partial_j g)(f(a)) \cdot (\partial_i f^j)(a).\]
 \end{satz}
 
 
@@ -228,20 +230,15 @@ Sei im Folgenden $M$ eine differenzierbare Mannigfaltigkeit, $\dim M = n$.
 \begin{defn}[Funktionskeime]
 	Sei $p \in M$. Auf der Menge $X = \{f \in \sC(U) : U \subset M \text{ offene Umgebung von } p\}$ betrachten wir die Äquivalenzrelation $\sim$, die gegeben ist durch
 	\[f \sim g \diff \exists \text{ offene Umgebung } V \text{ von } p \text{ mit } f = g \text{ auf } V.\]
-	Die Äquivalenzklassen bzgl. dieser Relation heißen glatte \emph{Funktionskeime} in $p$. Zwei um $p$ definierte Funktionen definieren also genau dann denselben Keim, wenn sie in einer Umgebung von $p$ übereinstimmen.
+	Die Äquivalenzklassen bzgl. dieser Relation heißen glatte \emph{Funktionskeime} an $M$ im Punkt $p$. Zwei um $p$ definierte Funktionen definieren also genau dann denselben Keim, wenn sie in einer Umgebung von $p$ übereinstimmen.
 
-	Den Raum der Funktionskeime in $p$ schreiben wir als $\sC_p(M)$. Den Keim zu einer Funktion $f$ schreiben wir als $[f]$. Wenn keine Missverständnisse entstehen können, schreiben wir stattdessen manchmal auch $f$, um uns Notationsaufwand zu ersparen.
+	Den Raum der Funktionskeime an $M$ in $p$ schreiben wir als $\sC_p(M)$. Den Keim zu einer Funktion $f$ schreiben wir als $[f]$. Wenn keine Missverständnisse entstehen können, schreiben wir stattdessen manchmal auch $f$, um uns Notationsaufwand zu ersparen.
 \end{defn}
 
 Zu einem Funktionskeim $[f] \in \sC_p(M)$ ist der Funktionswert $[f](p) := f(p)$ wohldefiniert (warum?).
 
 \begin{prop}
-	\kommP{Das hab ich mal \glqq Proposition\grqq\ und nicht \glqq Lemma\grqq\ genannt, weil es nur im aktuellen Kontext relevant ist und man es außerhalb nicht braucht.}
-	$\sC_p(M)$ ist mit über die Repräsentanten definierter Addition, Skalarmultiplikation und Multiplikation eine $\mathbb R$-Algebra.
-
-	\begin{proof}
-		Übung.
-	\end{proof}
+	$\sC_p(M)$ ist mit über die Repräsentanten definierter Addition, Skalarmultiplikation und Multiplikation eine $\mathbb R$-Algebra. \bewUeb
 \end{prop}
 
 \begin{defn}
@@ -258,12 +255,12 @@ $T_pM$ ist tatsächlich ein Untervektorraum von $(\sC_p(M))^*$ (Übung).
 	\end{proof}
 \end{lemma}
 
-\begin{bsp}
-	Sei $\gamma\colon (-\varepsilon,\varepsilon) \to M$ eine glatte Kurve mit $\gamma(0) = p$. Wir definieren den Tangentialvektor $\gamma'(0) \in T_pM$ durch \[(\gamma'(0))(f) := (f\circ\gamma)'(0),\] wobei wir auf der rechten Seite die Ableitung der Funktion $f\circ\gamma \colon I \to \mathbb R, I \subset \mathbb R$ gebildet haben.
+\begin{bsp} \label{bsp:kurve_geschw}
+	Sei $I\subset\mathbb R$ offen und $\gamma\colon I \to M$ eine glatte Kurve mit $\gamma(s) = p$ für ein $s \in I$. Wir definieren den Tangentialvektor $\gamma'(s) \in T_pM$ durch \[(\gamma'(s))(f) := (f\circ\gamma)'(s),\] wobei wir auf der rechten Seite die Ableitung der Funktion $f\circ\gamma \colon I \to \mathbb R, I \subset \mathbb R$ gebildet haben.
 
-	$\gamma'(0)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\gamma'(0)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen.
+	$\gamma'(s)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\gamma'(s)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen.
 
-	$\gamma'(0)$ ist wohldefiniert und tatsächlich eine Derivation: Wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ\gamma$ und $g\circ\gamma$ in einer Umgebung von $0$ überein und haben insbesondere dieselbe Ableitung an der Stelle $0$. Die Linearität von $\gamma'(0)$ folgt aus der Linearität der Ableitung, und die Derivations-Produktregel folgt aus der Produktregel für Ableitungen.
+	$\gamma'(s)$ ist wohldefiniert und tatsächlich eine Derivation: Wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ\gamma$ und $g\circ\gamma$ in einer Umgebung von $s$ überein und haben insbesondere dieselbe Ableitung an der Stelle $s$. Die Linearität von $\gamma'(s)$ folgt aus der Linearität der Ableitung, und die Derivations-Produktregel folgt aus der Produktregel für Ableitungen.
 \end{bsp}
 
 Später werden wir sehen, dass sich tatsächlich \emph{jeder} Tangentialvektor als Ableitung einer Kurve schreiben lässt.
@@ -273,113 +270,198 @@ Später werden wir sehen, dass sich tatsächlich \emph{jeder} Tangentialvektor a
 
 Mithilfe des Tangentialraumbegriffs können wir nun nicht nur entscheiden, ob Abbildungen differenzierbar sind, sondern auch tatsächlich eine Art Ableitungsbegriff definieren:
 \begin{defn}
-	Seien $M,N$ differenzierbare Mannigfaltigkeiten und $f\colon M \to N$ eine differenzierbare Abbildung. Das \emph{Differential} von $f$ im Punkt $p\in M$ ist die lineare Abbildung
-	\[\DD f|_p \colon T_pM \to T_{f(p)}N\]
+	Seien $M,N$ differenzierbare Mannigfaltigkeiten und $f\colon M \to N$ eine glatte Abbildung. Das \emph{Differential} von $f$ im Punkt $p\in M$ ist die lineare Abbildung
+	\[\left.\DD f\right|_p \colon T_pM \to T_{f(p)}N\]
 	definiert durch
-	\[(\DD f|_p(v))(\alpha) = v (\alpha\circ f)\]
+	\[\left(\left.\DD f\right|_p(v)\right)(\alpha) = v (\alpha\circ f)\]
 	für $v\in T_pM, \alpha \in \sC_{f(p)}(N)$.
 \end{defn}
 \begin{prop}
-	$\DD f|_p(v)$ ist tatsächlich wohldefiniert und eine Derivation von $\sC_{f(p)}(N)$, und $\DD f|_p$ ist linear.
-
-	\begin{proof}
-		Übung.
-	\end{proof}
+	$\left.\DD f\right|_p(v)$ ist tatsächlich wohldefiniert und eine Derivation von $\sC_{f(p)}(N)$, und $\left.\DD f\right|_p$ ist linear. \bewUeb
 \end{prop}
 
 \begin{satz}[Kettenregel]
-	Seien $f\colon M \to N, g\colon N \to L$ glatte Abbildungen zwischen differenzierbaren Mannigfaltigkeiten, und $p \in M$. Dann gilt \[\DD(g\circ f)|_p = \DD g|_{f(p)} \circ \DD f|_p.\]
+	Seien $f\colon M \to N, g\colon N \to L$ glatte Abbildungen zwischen differenzierbaren Mannigfaltigkeiten, und $p \in M$. Dann gilt \[\left.\DD(g\circ f)\right|_p = \left.\DD g\right|_{f(p)} \circ \left.\DD f\right|_p.\]
 
 	\begin{proof}
-		Sei $v \in T_pM$. Für jedes $\alpha \in \sC_{g(f(p))}(L)$ ist $(\DD(g\circ f)|_p(v))(\alpha) = v(\alpha\circ (g \circ f)) = v((\alpha\circ g) \circ f) = (\DD f|_p(v)) (\alpha \circ g) = (\DD g|_{f(p)}(\DD f|_p(v))) (\alpha)$, also gilt $\DD(g\circ f)|_p(v) = \DD g|_{f(p)}(\DD f|_p(v))$.
+		Sei $v \in T_pM$. Für jedes $\alpha \in \sC_{g(f(p))}(L)$ ist
+		\begin{align*}
+			\left(\left.\DD(g\circ f)\right|_p(v)\right)(\alpha) &= v(\alpha\circ (g \circ f))\\
+			&= v((\alpha\circ g) \circ f)\\
+			&= \left(\left.\DD f\right|_p(v)\right) (\alpha \circ g)\\
+			&= \left(\left.\DD g\right|_{f(p)} \left(\left.\DD f\right|_p(v)\right)\right) (\alpha),
+		\end{align*}
+		also gilt $\left.\DD(g\circ f)\right|_p(v) = \left.\DD g\right|_{f(p)}\left(\left.\DD f\right|_p(v)\right)$.
+	\end{proof}
+\end{satz}
+
+\begin{lemma} \label{lemma:differential_diffeo}
+	\begin{enumerate}[label=(\alph*)]
+		\item $\left.\DD(\id_M)\right|_p = \id_{T_pM}$
+		\item Ist $f\colon M \to N$ ein Diffeomorphismus, so ist $\left.\DD f\right|_p$ für jedes $p\in M$ ein Isomorphismus, und es gilt $\left.\DD f^{-1}\right|_{f(p)} = \left(\left.\DD f\right|_p\right)^{-1}$.
+	\end{enumerate}
+	\bewUeb
+\end{lemma}
+
+\begin{prop}
+	Sei $M$ eine differenzierbare Mannigfaltigkeit und $U\subset M$ eine offene Teilmenge. Für jedes $p\in U$ ist $T_pU$ kanonisch isomorph zu $T_pM$ vermöge $\left.\DD i\right|_p$, wobei $i\colon U \to M, i(q) := q$ die Inklusionsabbildung ist.
+
+	\begin{proof}
+		Sei $p \in U$. $\left.\DD i\right|_p$ ist definiert über $\left(\left.\DD i\right|_p(v)\right)(\alpha) = v(\alpha\circ i)$ für $v \in T_pU$ und $\alpha \in \sC_p(M)$; d.\,h. $\left.\DD i\right|_p(v)$ ist einfach $v$, nur aufgefasst als Derivation, die Funktionskeime an $M$ ableitet, indem man diese als Funktionskeime an $U$ auffasst. Da Funktionskeime an $U$ in $p$ und Funktionskeime an $M$ in $p$ aber einander entsprechen, ist damit klar, dass $\left.\DD i\right|_p$ ein Isomorphismus ist.
+
+		Etwas genauer: Jeder Funktionskeim $\tilde\alpha \in \sC_p(U)$ kann auch als Keim $\alpha \in \sC_p(M)$ aufgefasst werden, und umgekehrt: Jede offene Umgebung von $p$ in $U$ ist auch offen in $M$, und jede offene Umgebung von $p$ in $M$ enthält eine offene Umgebung von $p$ in $U$. Da bei der Definition von Funktionskeimen um $p$ Funktionen äquivalent sind, wenn sie auf einer offenen Umgebung von $p$ übereinstimmen, spielt es also keine Rolle, ob wir in $U$ oder in $M$ sind (\glqq es wird eh alles äquivalent gemacht\grqq)\footnote{
+			Als Element von $\sC_p(M)$ besteht der Keim / die Äquivalenzklasse potentiell aus mehr Funktionen, da auch noch Funktionen dazukommen, die auf \glqq größeren\grqq\ Umgebungen von $p$ definiert sind.
+		}.
+
+		Diese Abbildung $\sC_p(M) \ni \alpha \mapsto \tilde\alpha \in \sC_p(U)$ ist also für $[f]_{p,M} \in \sC_p(M)$, $f$ definiert auf $V$, gegeben durch $[f]_{p,M} \mapsto \left[\left.f\right|_{U\cap V}\right]_{p,U} \in \sC_p(U)$, was man auch schreiben kann als $[f]_{p,M} \mapsto \left[\left.f\circ i\right|_{U\cap V}\right]_{p,U}$. D.\,h. das oben beschriebene Auffassen von $\alpha$ als Keim auf der kleineren Mannigfaltigkeit $U$ ist die Abbildung $\sC_p(M) \ni \alpha \mapsto \alpha\circ i \in \sC_p(U)$. Wie oben beschrieben lässt sich das umkehren, ist also ein Isomorphismus. Damit ist aber auch $\left.\DD i\right|_p$ ein Isomorphismus, denn es ist definiert als $\left(\left.\DD i\right|_p(v)\right)(\alpha) = v(\alpha\circ i)$.
+	\end{proof}
+\end{prop}
+
+Da $\left.\DD i\right|_p(v)$ einfach dieselbe Derivation wie $v$ ist (sie unterscheiden sich nur darin, ob man die Keime, auf die sie wirkt, als Keime an $M$ oder an $U$ betrachtet), werden wir im Folgenden $T_pU$ und $T_pM$ (meistens) miteinander identifizieren.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Der Tangentialraum eines Vektorraums}
+
+Betrachten wir einen endlich-dimensionalen Vektorraum $V$, so sagt uns die Intuition, dass die Richtungen, in die wir ableiten können, einfach die Richtungen des Vektorraums sein sollten. Wir erwarten also einen kanonischen Isomorphismus $T_pV \cong V$ für alle $p \in V$. Sei im Folgenden $V$ ein endlich-dimensionaler Vektorraum und $p \in V$ ein fester Punkt.
+\begin{defn}
+	Für $v \in V$ definieren wir den Tangentialvektor $\left.\partial_v\right|_p \in T_pV$ durch
+	\[\left.\partial_v\right|_p(f) := (\partial_v f)(p) = \left.\frac{\D f(p + h v)}{\D h}\right|_{h=0} = \lim_{h\to 0} \frac{f(p + h v) - f(p)}{h}.\]
+\end{defn}
+$\left.\partial_v\right|_p$ ist also einfach die Richtungsableitung in Richtung von $v$ am Punkt $p$.
+\begin{prop}
+	$\left.\partial_v\right|_p$ ist tatsächlich eine Derivation von $\sC_p(V)$.
+	
+	\begin{proof}
+		$\left.\partial_v\right|_p$ ist wohldefiniert, denn wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein und haben insbesondere dieselben Ableitungen an der Stelle $p$. Dass Richtungsableitungen linear sind und die Produktregel erfüllen, ist bekannt\footnote{Oder folgt schnell aus den entsprechenden Eigenschaften für Ableitungen von Funktionen $\mathbb R \to \mathbb R$.}.
+	\end{proof}
+\end{prop}
+
+\begin{satz} \label{satz:tangt_vr}
+	Die Abbildung \[V \to T_pV, v \mapsto \left.\partial_v\right|_p\] ist ein linearer Isomorphismus.
+	
+	\begin{proof}\let\qed\relax
+		Linearität ist einfach zu zeigen (Übung). Um Surjektivität und Injektivität zu zeigen, fixieren wir eine Basis $\{b_1,\dots,b_n\}$ von $V$. Sei $\{\theta^1, \dots, \theta^n\}$ die dazu duale Basis von $V^*$, also für $i = 1, \dots, n$ jeweils $\theta^i\colon V \to \mathbb R$ die lineare Abbildung definiert durch $\theta^i(b_j) = \delta^i_j$ und lineare Fortsetzung.
+
+		Für beliebiges $v = \sum_{i=1}^n v^i b_i \in V$ ist $\left.\partial_v\right|_p(\theta^i) = \left.\frac{\D\theta^i(p + h v)}{\D h}\right|_{h=0} = \left.\frac{\D(\theta^i(p) + h v^i)}{\D h}\right|_{h=0} = v^i$ für alle $i$. Falls $\left.\partial_v\right|_p = 0$ gilt, ist also $v^i = \left.\partial_v\right|_p(\theta^i) = 0(\theta^i) = 0$, also $v=0$. Das zeigt, dass der Kern der betrachteten Abbildung nur die 0 enthält, also deren Injektivität. Um die Surjektivität zu zeigen, brauchen wir einen kleinen Trick.
+	\end{proof}
+\end{satz}
+
+\begin{lemma}[Hadamard-Lemma] \label{lemma:Hadamard}
+	Seien $U \subset \mathbb R^n$ eine offene Menge, die sternförmig um $x_0$ ist, und $f \in \sC(U)$. Dann gibt es glatte Funktionen $f_i \in \sC(U), i = 1,\dots,n$, sodass \[f(x) = f(x_0) + \sum_{i=1}^n f_i(x) (x^i - x_0^i).\]
+	
+	\begin{proof}
+		Für $x \in U$ setze $y := x - x_0$. Dann ist
+		\begin{align*}
+		f(x) - f(x_0) &= f(x_0 + 1\cdot y) - f(x_0 + 0\cdot y)\\
+		&= \int_0^1 \left(\frac{\D}{\D t} f(x_0 + ty)\right) \D t\\
+		\text{(Kettenregel)} \quad &= \int_0^1 \sum_{i=1}^n (\partial_i f)(x_0 + ty) y^i \D t\\
+		&= \sum_{i=1}^n \left(\int_0^1 (\partial_i f)(x_0 + tx - tx_0) \D t\right) (x^i - x_0^i).
+		\end{align*}
+		Mit \[f_i(x) := \int_0^1 (\partial_i f)(x_0 + tx - tx_0) \D t\] folgt also die Behauptung (die $f_i$ sind glatt wegen Kettenregel und Sätzen über das Differenzieren unter dem Integral).
+	\end{proof}
+\end{lemma}
+
+\begin{kor}[Hadamard-Lemma auf Vektorräumen]
+	Sei $\theta = (\theta^1, \dots, \theta^n) \colon V \to \mathbb R^n$ ein linearer Isomorphismus und sei $\alpha \in \sC_p(V)$. Dann gibt es $\alpha_i \in \sC_p(V), i = 1,\dots, n$ mit \[\alpha = \alpha(p) + \sum_{i=1}^n \alpha_i \cdot (\theta^i - \theta^i(p)).\]
+	
+	\begin{proof}
+		Das ist einfach das Hadamard-Lemma \ref{lemma:Hadamard} angewendet auf unseren Vektorraum $V$, der über $\theta$ mit $\mathbb R^n$ identifiziert wurde.
+	\end{proof}
+\end{kor}
+
+\begin{proof}[Zurück zum Beweis von Satz \ref{satz:tangt_vr}]
+	Mit dem Hadamard-Lemma können wir jetzt auch zeigen, dass die Abbildung $v \mapsto \left.\partial_v\right|_p$ surjektiv ist. Seien $w \in T_pV$ und $\alpha \in \sC_p(V)$ beliebig, und seien $\alpha_i \in \sC_p(V)$ zu $\alpha$ mit dem Hadamard-Lemma gewählt. Dann ist
+	\begin{align}\begin{split} \label{eq:pf_tangt_vr}
+		w(\alpha) &= w\left(\alpha(p) + \sum_{i=1}^n \alpha_i \cdot (\theta^i - \theta^i(p))\right)\\
+		\text{(Linearität, $w(\text{const.}) = 0$)} \quad &= \sum_{i=1}^n w(\alpha_i \cdot (\theta^i - \theta^i(p)))\\
+		&= \sum_{i=1}^n \left( w(\alpha_i) \cdot (\theta^i(p) - \theta^i(p)) + \alpha_i(p) \cdot w(\theta^i) \right)\\
+		&= \sum_{i=1}^n \alpha_i(p) \cdot w(\theta^i).
+	\end{split}\end{align}
+	Insbesondere gilt damit auch $\left.\partial_v\right|_p (\alpha) = \sum_{j=1}^n \alpha_i(p) \cdot \left.\partial_v\right|_p (\theta^i) = \sum_{j=1}^n \alpha_i(p) \cdot v^i$ für beliebige Vektoren $v = \sum_{i=1}^n v^i b_i$. Wenn wir also $v := \sum_{i=1}^n w(\theta^i) b_i$ setzen, ist $w(\alpha) = \left.\partial_v\right|_p (\alpha)$.
+
+	Da $\alpha$ beliebig war, gilt also $w = \left.\partial_v\right|_p$. Wir können also jedes $w \in T_pV$ als Richtungsableitung in Richtung eines Vektors $v\in V$ schreiben.
+\end{proof}
+
+Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also zu $V$ selbst isomorph; ein Vektor $v \in V$ wird dabei mit der Richtungsableitung $\left.\partial_v\right|_p$ identifiziert.
+
+\begin{kor}
+	Auf dem $\mathbb R^n$ bilden die partiellen Ableitungsoperatoren $\left.\partial_1\right|_p, \dots, \left.\partial_n\right|_p$ eine Basis des Tangentialraums $T_p\mathbb R^n$.
+	
+	\begin{proof}
+		$\left.\partial_i\right|_p$ ist die Richtungsableitung in Richtung des Standardbasisvektors $\e_i$.
+	\end{proof}
+\end{kor}
+
+\begin{bsp}
+	Ist $U\subset\mathbb R^n$ offen und $p\in U$, so bilden die partiellen Ableitungsableitungen $\left.\partial_1\right|_p, \dots, \left.\partial_n\right|_p$ eine Basis von $T_pU$ (denn es ist ja $T_pU = T_p\mathbb R^n$).
+\end{bsp}
+
+\begin{bsp}
+	Sei $I \subset \mathbb R$ eine offene Menge, $s \in I$ und $\left.\partial_1\right|_s$ der eine Ableitungsoperator, der eine Basis von $T_s I$ bildet.
+
+	Ist $M$ eine differenzierbare Mannigfaltigkeit und $\gamma\colon I \to M$ eine glatte Kurve, so können wir das Differential $\left.\DD \gamma\right|_s \colon T_sI \to T_{\gamma(s)} M$ betrachten. Dieses bildet den Basisvektor $\left.\partial_1\right|_s$ ab auf die Derivation $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)$, die wirkt als $\left(\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)\right)(f) = \left.\partial_1\right|_s (f\circ\gamma) = \left.\frac{\D(f\circ\gamma)(s + h)}{\D h}\right|_{h=0} = (f\circ\gamma)'(s)$. Das ist aber genau die Wirkung des in Beispiel \ref{bsp:kurve_geschw} definierten \glqq Geschwindigkeitsvektors\grqq\ $\gamma'(s) \in T_{\gamma(s)} M$, also gilt $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s) = \gamma'(s)$.
+
+	Der \glqq Geschwindigkeitsvektor\grqq\ $\gamma'(s)$ ist also tatsächlich in einem formalen Sinne die Ableitung der Kurve $\gamma$ an der Stelle $s$, nämlich das Differential von $\gamma$ an dieser Stelle angewendet auf den kanonischen Basisvektor von $T_sI$.
+\end{bsp}
+
+\begin{satz}[Differential von linearen Abbildungen]
+	Sei $L\colon V \to W$ eine lineare Abbildung. Bzgl. der Identifikationen $T_pV \equiv V, T_{L(p)}W \equiv W$ ist $\left.\DD L\right|_p = L$.
+
+	\begin{center}
+		\begin{tikzpicture}
+		\matrix(m)[matrix of math nodes,row sep=4em,column sep=4em,minimum width=2em]{T_pV & T_{L(p)}W \\
+			V&W \\};
+		\path[-stealth]
+		(m-1-1)	edge node [above]{$\left.\DD L\right|_p$} (m-1-2)
+		(m-2-1) edge node [left]{$v \mapsto \left.\partial_v\right|_p$} (m-1-1)
+		(m-2-2) edge node [right]{$w \mapsto \left.\partial_w\right|_{L(p)}$} (m-1-2)
+		(m-2-1) edge node [above]{$L$} (m-2-2)
+		;
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{proof}
+		Für $v\in V$ ist
+		\begin{align*}
+			\left(\left.\DD L\right|_p \left( \left.\partial_v\right|_p \right)\right) (f) &= \left.\partial_v\right|_p (f \circ L)\\
+			&= \left.\frac{\D f(L(p + h v))}{\D h}\right|_{h=0}\\
+			&= \left.\frac{\D f(L(p) + h L(v))}{\D h}\right|_{h=0}\\
+			&= \left.\partial_{L(v)}\right|_{L(p)} (f)
+		\end{align*}
+		für beliebige $f$, also $\left.\DD L\right|_p \left( \left.\partial_v\right|_p \right) = \left.\partial_{L(v)}\right|_{L(p)}$.
+		Das mussten wir aber zeigen.
 	\end{proof}
 \end{satz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Koordinatenvektoren}
 
-Haben wir eine Karte gegeben, dann gibt sie uns spezielle \glqq Richtungen, in die wir ableiten können\grqq:
+Haben wir auf einer Mannigfaltigkeit $M$ eine Karte $(x,U)$ gegeben, dann ermöglicht sie uns, $U$ mit einer offenen Teilmenge des $\mathbb R^n$ zu identifizieren. Das gilt auch für die Tangentialräume:
 \begin{defn}
-	Sei $(\varphi,U)$ eine Karte um $p$. Für $i = 1,\dots, n$ definieren wir den Tangentialvektor $\left.\frac{\partial}{\partial x^i}\right|_p \in T_pM$ durch
-	\[\left.\frac{\partial}{\partial x^i}\right|_p(f) := \left(\partial_i \left(f\circ \varphi^{-1}\right)\right) (\varphi(p)).\]
-	Die $\left.\frac{\partial}{\partial x^i}\right|_p$ heißen die von $\varphi$ \emph{induzierten Koordinatenvektoren} in $p$.
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p\in M$ und $(x,U)$ eine Karte um $p$. Wir schreiben $V = x(U) \subset \mathbb R^n$. Als Abbildung $x\colon U \to V$ ist $x$ ein Diffeomorphismus (Übung!). Nach Lemma \ref{lemma:differential_diffeo} ist dann also
+	\[\left.\DD x\right|_p \colon T_pM \to T_{x(p)} \mathbb R^n\]
+	ein Isomorphismus, wobei wir die Identifikationen $T_pM = T_pU$, $T_{x(p)}\mathbb R^n = T_{x(p)} x(U)$ benutzt haben. Diesen benutzen wir, um aus der kanonischen Basis $\{\left.\partial_i\right|_{x(p)}\}$ von $T_{x(p)}\mathbb R^n$ eine Basis von $T_pM$ zu erhalten: Für $i = 1,\dots, n$ definieren wir
+	\[\left.\frac{\partial}{\partial x^i}\right|_p := \left(\left.\DD x\right|_p\right)^{-1} \left(\left.\partial_i\right|_{x(p)}\right) = \left.\DD x^{-1}\right|_{x(p)} \left(\left.\partial_i\right|_{x(p)}\right)\]
+	Die $\left.\frac{\partial}{\partial x^i}\right|_p$ heißen die von $x$ \emph{induzierten Koordinatenvektoren} in $p$, zusammen bilden sie die von $x$ induzierte \emph{Koordinatenbasis} von $T_pM$.
 \end{defn}
-$\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim in der Karte $\varphi$ dar und bildet die $i$-te partielle Ableitung dieser Kartendarstellung. (Achtung: Notation ist schlecht, die Vektoren hängen natürlich von der Wahl von $\varphi$ ab!)
-\begin{prop}
-	$\left.\frac{\partial}{\partial x^i}\right|_p$ ist tatsächlich eine Derivation von $\sC_p(M)$.
+Die Koordinatenvektoren wirken durch
+\[\left.\frac{\partial}{\partial x^i}\right|_p(f) = \left.\partial_i\right|_{x(p)} (f \circ x^{-1}) = \left(\partial_i (f\circ x^{-1})\right) (x(p)).\]
+$\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim in der Karte $x$ dar und bildet die $i$-te partielle Ableitung dieser Kartendarstellung.
 
-	\begin{proof}
-		$\left.\frac{\partial}{\partial x^i}\right|_p$ ist wohldefiniert, denn wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ \varphi^{-1}$ und $g\circ \varphi^{-1}$ in einer Umgebung von $\varphi(p)$ überein und haben insbesondere dieselben Ableitungen an der Stelle $\varphi(p)$.
+\todo{Sagen, dass wir, wenn wir in Koordinaten rechnen wollen, die Karte meist als $x$ schreiben statt als $\varphi$ o.ä., da die Notation $\partial/\partial\varphi^i$ scheiße aussieht und nicht Standard ist.}
 
-		Die Linearität von $\left.\frac{\partial}{\partial x^i}\right|_p$ folgt direkt aus der Linearität von partiellen Ableitungen. Dass $\left.\frac{\partial}{\partial x^i}\right|_p$ eine Derivation ist, folgt aus der Produktregel für partielle Ableitungen:
-		\begin{align*}
-			\left.\frac{\partial}{\partial x^i}\right|_p (fg) &= \left(\partial_i \left((fg)\circ \varphi^{-1}\right)\right) (\varphi(p))\\
-			&= \left(\partial_i \left( \left(f\circ \varphi^{-1}\right) \cdot \left(g\circ \varphi^{-1}\right) \right) \right) (\varphi(p))\\
-			&= \left(\partial_i \left(f\circ \varphi^{-1}\right) \right)(\varphi(p)) \cdot \left(g\circ \varphi^{-1}\right) (\varphi(p)) \\&\quad+ \left(f\circ \varphi^{-1}\right) (\varphi(p)) \cdot \left(\partial_i \left(g\circ \varphi^{-1}\right) \right)(\varphi(p))\\
-			&= \left.\frac{\partial}{\partial x^i}\right|_p (f) \cdot g(p) + f(p) \cdot \left.\frac{\partial}{\partial x^i}\right|_p (g) \qedhere
-		\end{align*}
-	\end{proof}
-\end{prop}
+\begin{bsp}
+	Für eine Karte $(x,U)$ um $p$ sind die Komponenten $x^i, i = 1,\dots, n$ reellwertige glatte Funktionen auf $U$, können also als Funktionskeime in $p$ aufgefasst werden. Wendet man darauf die Koordinatenvektoren an, so erhält man
+	\begin{align*}
+		\left.\frac{\partial}{\partial x^i}\right|_p (x^j) &= \left(\partial_i \left(x^j\circ x^{-1}\right)\right) (x(p))\\
+		&= \underbrace{\left(\partial_i \pr^j\right)}_{= \delta^j_i} (x(p)) = \delta^j_i,
+	\end{align*}
+	wobei $\pr^j\colon \mathbb R^n \to R, \pr^j(a) = a^j$ die Projektion auf die $j$-te Komponente ist.
+\end{bsp}
 
-\begin{lemma}
-	Für eine Karte $(\varphi,U)$ um $p$ sind die Komponenten $\varphi^i, i = 1,\dots, n$ reellwertige glatte Funktionen auf $U$, können also als Funktionskeime in $p$ aufgefasst werden. Wendet man darauf die Koordinatenvektoren an, so erhält man \[\left.\frac{\partial}{\partial x^i}\right|_p (\varphi^j) = \delta^j_i.\]
-	\begin{proof}
-		Es ist
-		\begin{align*}
-			\left.\frac{\partial}{\partial x^i}\right|_p (\varphi^j) &= \left(\partial_i \left(\varphi^j\circ \varphi^{-1}\right)\right) (\varphi(p))\\
-			&= \underbrace{\left(\partial_i \pr^j\right)}_{= \delta^j_i} (\varphi(p)) = \delta^j_i,
-		\end{align*}
-		wobei $\pr^j\colon \mathbb R^n \to R, \pr^j(x) = x^j$ die Projektion auf die $j$-te Komponente ist.
-	\end{proof}
+\begin{lemma}[Differential in Kartendarstellung]
+	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten.
 \end{lemma}
-
-Wir wollen jetzt zeigen, dass die $\left.\frac{\partial}{\partial x^i}\right|_p, i = 1,\dots,n$ eine Basis von $T_pM$ bilden, dass also der Begriff von Derivationen tatsächlich eine gewisse Art von Intuition über \glqq Richtungen\grqq\ erfüllt ($n$ verschiedene Richtungen, Ableitung nach verschiedenen Koordinaten entspricht unabhängigen Richtungen):
-\begin{satz} \label{satz:koord_basis}
-	Sei $\varphi$ eine Karte um $p$. Die induzierten Koordinatenvektoren $\left.\frac{\partial}{\partial x^1}\right|_p, \dots, \left.\frac{\partial}{\partial x^n}\right|_p$ bilden eine Basis von $T_pM$.
-
-	\begin{proof}\let\qed\relax
-		Lineare Unabhängigkeit zu zeigen ist einfach: Aus $\sum_{i=1}^n \lambda^i \left.\frac{\partial}{\partial x^i}\right|_p = 0$ folgt mit dem obigen Beispiel $0 = \sum_{i=1}^n \lambda^i \left.\frac{\partial}{\partial x^i}\right|_p (\varphi^j) = \sum_{i=1}^n \lambda^i \delta^j_i = \lambda^j$ für alle $j = 1,\dots, n$. Um zu zeigen, dass die Vektoren auch ein Erzeugendensystem bilden, brauchen wir einen kleinen Trick.
-	\end{proof}
-\end{satz}
-
-\begin{lemma}[Hadamard-Lemma] \label{lemma:Hadamard}
-	Seien $U \subset \mathbb R^n$ eine offene Menge, die sternförmig um $x_0$ ist, und $f \in \sC(U)$. Dann gibt es glatte Funktionen $f_i \in \sC(U), i = 1,\dots,n$, sodass \[f(x) = f(x_0) + \sum_{i=1}^n f_i(x) (x^i - x_0^i).\]
-
-	\begin{proof}
-		Für $x \in U$ setze $y := x - x_0$. Dann ist
-		\begin{align*}
-			f(x) - f(x_0) &= f(x_0 + 1\cdot y) - f(x_0 + 0\cdot y)\\
-			&= \int_0^1 \left(\frac{\D}{\D t} f(x_0 + ty)\right) \D t\\
-			\text{(Kettenregel)} \quad &= \int_0^1 \sum_{i=1}^n (\partial_i f)(x_0 + ty) y^i \D t\\
-			&= \sum_{i=1}^n \left(\int_0^1 (\partial_i f)(x_0 + tx - tx_0) \D t\right) (x^i - x_0^i).
-		\end{align*}
-		Mit \[f_i(x) := \int_0^1 (\partial_i f)(x_0 + tx - tx_0) \D t\] folgt also die Behauptung (die $f_i$ sind glatt wegen Kettenregel und Sätzen über das Differenzieren unter dem Integral).
-	\end{proof}
-\end{lemma}
-
-\begin{kor}[Hadamard-Lemma auf Mannigfaltigkeiten]
-	Seien $p\in M$, $\alpha \in \sC_p(M)$ und $(\varphi,U)$ eine Karte um $p$. Dann gibt es $\alpha_i \in \sC_p(M), i = 1,\dots, n$ mit \[\alpha = \alpha(p) + \sum_{i=1}^n \alpha_i \cdot (\varphi^i - \varphi^i(p)).\]
-
-	\begin{proof}
-		Sei $f\colon V \to \mathbb R$ ein Repräsentant von $\alpha$, sodass $V \subset U$ eine solche Menge ist, dass $W := \varphi(V) \subset \mathbb R^n$ sternförmig um $\varphi(p)$ ist (z.\,B. könnte $W$ eine kleine offene Kugel sein). Dann ist $f\circ\varphi^{-1}|_W \in \sC(W)$. Nach dem Hadamard-Lemma \ref{lemma:Hadamard} gibt es also glatte Funktionen $g_i$ auf $W$ mit $f(\varphi^{-1}(x)) = f(p) + \sum_{i=1}^n g_i(x) (x^i - \varphi^i(p))$. Für alle $q \in V$ ist damit $f(q) = f(p) + \sum_{i=1}^n g_i(\varphi(q)) \cdot (\varphi^i(q) - \varphi^i(p))$, die Behauptung folgt also mit $\alpha_i := [g_i \circ \varphi]$.
-	\end{proof}
-\end{kor}
-
-\begin{proof}[Zurück zum Beweis von Satz \ref{satz:koord_basis}]
-	Mit dem Hadamard-Lemma können wir jetzt auch zeigen, dass die Koordinatenvektoren ein Erzeugendensystem bilden. Seien $v \in T_pM$ und $\alpha \in \sC_p(M)$ beliebig, und seien $\alpha_i \in \sC_p(M)$ zu $\alpha$ mit dem Hadamard-Lemma gewählt. Dann ist
-	\begin{align}\begin{split} \label{eq:pf_koord_basis}
-		v(\alpha) &= v\left(\alpha(p) + \sum_{i=1}^n \alpha_i \cdot (\varphi^i - \varphi^i(p))\right)\\
-		\text{(Linearität, $v(\text{const.}) = 0$)} \quad &= \sum_{i=1}^n v(\alpha_i \cdot (\varphi^i - \varphi^i(p)))\\
-		&= \sum_{i=1}^n \left( v(\alpha_i) \cdot (\varphi^i(p) - \varphi^i(p)) + \alpha_i(p) \cdot v(\varphi^i) \right)\\
-		&= \sum_{i=1}^n \alpha_i(p) \cdot v(\varphi^i).
-	\end{split}\end{align}
-	Insbesondere gilt damit auch $\left.\frac{\partial}{\partial x^i}\right|_p (\alpha) = \sum_{j=1}^n \alpha_j(p) \cdot \delta^j_i = \alpha_i(p)$. Zurückeingesetzt in \eqref{eq:pf_koord_basis} erhalten wir damit
-	\begin{equation*}
-		v(\alpha) = \sum_{i=1}^n \left.\frac{\partial}{\partial x^i}\right|_p (\alpha) \cdot v(\varphi^i)
-		= \left(\sum_{i=1}^n v(\varphi^i) \left.\frac{\partial}{\partial x^i}\right|_p \right)(\alpha)
-	\end{equation*}
-	Da $\alpha$ beliebig war, gilt also $v = \sum_{i=1}^n v(\varphi^i) \left.\frac{\partial}{\partial x^i}\right|_p$. Wir können also jedes $v \in T_pM$ als Linearkombination der Koordinatenvektoren schreiben.
-\end{proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
