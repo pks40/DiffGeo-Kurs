@@ -382,26 +382,24 @@ $\left.\partial_v\right|_p$ ist also einfach die Richtungsableitung in Richtung 
 	Da $\alpha$ beliebig war, gilt also $w = \left.\partial_v\right|_p$. Wir können also jedes $w \in T_pV$ als Richtungsableitung in Richtung eines Vektors $v\in V$ schreiben.
 \end{proof}
 
-Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also zu $V$ selbst isomorph; ein Vektor $v \in V$ wird dabei mit der Richtungsableitung $\left.\partial_v\right|_p$ identifiziert.
+Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise zu $V$ selbst isomorph; ein Vektor $v \in V$ wird dabei mit der Richtungsableitung $\left.\partial_v\right|_p$ identifiziert.
 
 \begin{kor}
 	Auf dem $\mathbb R^n$ bilden die partiellen Ableitungsoperatoren $\left.\partial_1\right|_p, \dots, \left.\partial_n\right|_p$ eine Basis des Tangentialraums $T_p\mathbb R^n$.
-	
+
 	\begin{proof}
 		$\left.\partial_i\right|_p$ ist die Richtungsableitung in Richtung des Standardbasisvektors $\e_i$.
 	\end{proof}
 \end{kor}
 
+\begin{bem} \label{bem:entw_tangt_Rn}
+	Die Entwicklung eines Tangentialvektors $w \in T_p\mathbb R^n$ in dieser Basis ist
+	\[w = \sum_{i=1}^n w(\pr^i) \left.\partial_i\right|_p,\]
+	was sich direkt aus dem Beweis von Satz \ref{satz:tangt_vr} ergibt.
+\end{bem}
+
 \begin{bsp}
 	Ist $U\subset\mathbb R^n$ offen und $p\in U$, so bilden die partiellen Ableitungsableitungen $\left.\partial_1\right|_p, \dots, \left.\partial_n\right|_p$ eine Basis von $T_pU$ (denn es ist ja $T_pU = T_p\mathbb R^n$).
-\end{bsp}
-
-\begin{bsp}
-	Sei $I \subset \mathbb R$ eine offene Menge, $s \in I$ und $\left.\partial_1\right|_s$ der kanonische Ableitungsoperator, der eine Basis von $T_s I$ bildet.
-
-	Ist $M$ eine differenzierbare Mannigfaltigkeit und $\gamma\colon I \to M$ eine glatte Kurve, so können wir das Differential $\left.\DD \gamma\right|_s \colon T_sI \to T_{\gamma(s)} M$ betrachten. Dieses bildet den Basisvektor $\left.\partial_1\right|_s$ ab auf die Derivation $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)$, die wirkt als $\left(\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)\right)(f) = \left.\partial_1\right|_s (f\circ\gamma) = \left.\frac{\D(f\circ\gamma)(s + h)}{\D h}\right|_{h=0} = (f\circ\gamma)'(s)$. Das ist aber genau die Wirkung des in Beispiel \ref{bsp:kurve_geschw} definierten \glqq Geschwindigkeitsvektors\grqq\ $\gamma'(s) \in T_{\gamma(s)} M$, also gilt $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s) = \gamma'(s)$.
-
-	Der \glqq Geschwindigkeitsvektor\grqq\ $\gamma'(s)$ ist also tatsächlich in einem formalen Sinne die Ableitung der Kurve $\gamma$ an der Stelle $s$, nämlich das Differential von $\gamma$ an dieser Stelle angewendet auf den kanonischen Basisvektor von $T_sI$.
 \end{bsp}
 
 \begin{satz}[Differential von linearen Abbildungen]
@@ -432,6 +430,22 @@ Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also zu $V$ selbst isomorp
 		Das mussten wir aber zeigen.
 	\end{proof}
 \end{satz}
+
+\begin{bsp}
+	Sei $I \subset \mathbb R$ eine offene Menge, $s \in I$ und $\left.\partial_1\right|_s$ der kanonische Ableitungsoperator, der eine Basis von $T_s I$ bildet.
+
+	Ist $M$ eine differenzierbare Mannigfaltigkeit und $\gamma\colon I \to M$ eine glatte Kurve, so können wir das Differential $\left.\DD \gamma\right|_s \colon T_sI \to T_{\gamma(s)} M$ betrachten. Dieses bildet den Basisvektor $\left.\partial_1\right|_s$ ab auf die Derivation $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)$, die wirkt als $\left(\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)\right)(f) = \left.\partial_1\right|_s (f\circ\gamma) = \left.\frac{\D(f\circ\gamma)(s + h)}{\D h}\right|_{h=0} = (f\circ\gamma)'(s)$. Das ist aber genau die Wirkung des in Beispiel \ref{bsp:kurve_geschw} definierten \glqq Geschwindigkeitsvektors\grqq\ $\gamma'(s) \in T_{\gamma(s)} M$, also gilt $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s) = \gamma'(s)$.
+
+	Der \glqq Geschwindigkeitsvektor\grqq\ $\gamma'(s)$ ist also tatsächlich in einem formalen Sinne die Ableitung der Kurve $\gamma$ an der Stelle $s$, nämlich das Differential von $\gamma$ an dieser Stelle angewendet auf den kanonischen Basisvektor von $T_sI$.
+\end{bsp}
+
+\begin{lemma}[Differential von glatten Funktionen als Anwendung der Derivation]
+	Für $f\in\sC(M)$ und $v \in T_pM$ ist $\left.\DD f\right|_p(v) = v(f)$ unter der kanonischen Identifikation $T_{f(p)}\mathbb R \equiv \mathbb R$.
+
+	\begin{proof}
+		Nach Bemerkung \ref{bem:entw_tangt_Rn} ist $\left.\DD f\right|_p(v) = \Big(\DD f\big|_p(v)\Big)(\id) \cdot \left.\partial_1\right|_{f(p)} \in T_{f(p)}\mathbb R$. Da nach Definition $\Big(\DD f\big|_p(v)\Big)(\id) = v(\id \circ f) = v(f)$ gilt und $\left.\partial_1\right|_{f(p)}$ unter $T_{f(p)}\mathbb R \equiv \mathbb R$ mit $1$ identifiziert wird, folgt die Behauptung.
+	\end{proof}
+\end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Koordinatenvektoren}
