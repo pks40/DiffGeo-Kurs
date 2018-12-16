@@ -397,7 +397,7 @@ Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also zu $V$ selbst isomorp
 \end{bsp}
 
 \begin{bsp}
-	Sei $I \subset \mathbb R$ eine offene Menge, $s \in I$ und $\left.\partial_1\right|_s$ der eine Ableitungsoperator, der eine Basis von $T_s I$ bildet.
+	Sei $I \subset \mathbb R$ eine offene Menge, $s \in I$ und $\left.\partial_1\right|_s$ der kanonische Ableitungsoperator, der eine Basis von $T_s I$ bildet.
 
 	Ist $M$ eine differenzierbare Mannigfaltigkeit und $\gamma\colon I \to M$ eine glatte Kurve, so können wir das Differential $\left.\DD \gamma\right|_s \colon T_sI \to T_{\gamma(s)} M$ betrachten. Dieses bildet den Basisvektor $\left.\partial_1\right|_s$ ab auf die Derivation $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)$, die wirkt als $\left(\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)\right)(f) = \left.\partial_1\right|_s (f\circ\gamma) = \left.\frac{\D(f\circ\gamma)(s + h)}{\D h}\right|_{h=0} = (f\circ\gamma)'(s)$. Das ist aber genau die Wirkung des in Beispiel \ref{bsp:kurve_geschw} definierten \glqq Geschwindigkeitsvektors\grqq\ $\gamma'(s) \in T_{\gamma(s)} M$, also gilt $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s) = \gamma'(s)$.
 
@@ -448,7 +448,11 @@ Die Koordinatenvektoren wirken durch
 \[\left.\frac{\partial}{\partial x^i}\right|_p(f) = \left.\partial_i\right|_{x(p)} (f \circ x^{-1}) = \left(\partial_i (f\circ x^{-1})\right) (x(p)).\]
 $\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim in der Karte $x$ dar und bildet die $i$-te partielle Ableitung dieser Kartendarstellung.
 
-\todo{Sagen, dass wir, wenn wir in Koordinaten rechnen wollen, die Karte meist als $x$ schreiben statt als $\varphi$ o.ä., da die Notation $\partial/\partial\varphi^i$ scheiße aussieht und nicht Standard ist.}
+\begin{bem}
+	Wenn wir in Koordinaten rechnen wollen, schreiben wir Karten meist als $x = (x^1, \dots, x^n)$ o.\,ä. statt als $\varphi$ o.\,ä., da das zur historisch etablierten Notation von Koordinatenvektoren passt. Die Funktionen $x^i$ nennt man dann auch \emph{Koordinatenfunktionen}, die $x^i(p)$ sind die \emph{Koordinaten} von $p$.
+
+	Aufpassen muss man dann allerdings manchmal, wenn man Punkte im $\mathbb R^n$ auch als $x$ schreibt (deshalb haben wir das oben auch eher vermieden).
+\end{bem}
 
 \begin{bsp}
 	Für eine Karte $(x,U)$ um $p$ sind die Komponenten $x^i, i = 1,\dots, n$ reellwertige glatte Funktionen auf $U$, können also als Funktionskeime in $p$ aufgefasst werden. Wendet man darauf die Koordinatenvektoren an, so erhält man
@@ -459,9 +463,48 @@ $\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim i
 	wobei $\pr^j\colon \mathbb R^n \to R, \pr^j(a) = a^j$ die Projektion auf die $j$-te Komponente ist.
 \end{bsp}
 
-\begin{lemma}[Differential in Kartendarstellung]
-	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten.
+\begin{lemma}[Differential in Kartendarstellung] \label{lemma:differential_koord}
+	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Sei $p\in M$, $x$ eine Karte von $M$ um $p$ und $y$ eine Karte von $N$ um $f(p)$. Dann ist die Darstellungsmatrix des Differentials $\left.\DD f\right|_p$ bzgl. der Koordinatenbasen $\left.\frac{\partial}{\partial x^i}\right|_p$ von $T_pM$ und $\left.\frac{\partial}{\partial y^i}\right|_{f(p)}$ von $T_{f(p)}N$ die Jacobi-Matrix der Kartendarstellung $y \circ f \circ x^{-1}$ von $f$ an der Stelle $x(p)$, also die Matrix
+	\[\mathrm{J}(y\circ f\circ x^{-1})|_{x(p)} = \left[\left(\partial_j(y\circ f\circ x^{-1})^i\right) (x(p)) \right]_{ij}.\]
+	\bewUeb
 \end{lemma}
+
+\begin{defn}
+	Sei $M$ eine differenzierbare Mannigfaltigkeit und $(x,U)$ eine Karte. Für $f \in \sC(U)$ definieren wir die Funktionen $\frac{\partial f}{\partial x^i} \in \sC(U)$ durch
+	\[\frac{\partial f}{\partial x^i}(p) := \left.\frac{\partial}{\partial x^i}\right|_p(f).\]
+	Manchmal nennen wir diese Funktionen die \emph{partiellen Ableitungen} von $f$ bzgl. der Karte $x$, wobei das natürlich \emph{abuse of language} ist.
+\end{defn}
+
+Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{lemma:differential_koord} also
+\[\left[\frac{\partial(y^i \circ f)}{\partial x^j}(p)\right]_{ij}.\]
+
+\begin{lemma}[Transformationsformel für Tangentialvektoren]
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p\in M$ und seien $x, y$ zwei Karten um $p$. Für die Koordinatenvektoren gilt
+	\[\left.\frac{\partial}{\partial y^i}\right|_p = \sum_{j=1}^n \frac{\partial x^j}{\partial y^i}(p) \left.\frac{\partial}{\partial x^j}\right|_p.\]
+	Die Basiswechselmatrix ist also die Jacobi-Matrix des inversen Kartenwechsels $x \circ y^{-1}$ (an der Stelle $y(p)$).
+
+	Für einen Tangentialvektor $v = \sum_{i=1}^n v^i \left.\frac{\partial}{\partial x^i}\right|_p = \sum_{i=1}^n \tilde v^i \left.\frac{\partial}{\partial y^i}\right|_p$ gilt dementsprechend
+	\[\tilde v^j = \sum_{i=1}^n \frac{\partial y^j}{\partial x^i}(p) v^i.\]
+
+	\bewUeb
+\end{lemma}
+
+\todo{Summenkonvention einführen.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ableitungen von Kurven}
+\begin{bsp}
+	Für eine offene Menge $I\subset\mathbb R$ schreibt man die kanonische Karte $\id_I\colon I \to I$ oft als $t$ und den davon induzierten Koordinatenvektor dann als $\left.\frac{\D}{\D t}\right|_s \in T_sI$. Das ist natürlich einfach der normale Ableitungsoperator an der Stelle $s$, den wir oben schon als $\left.\partial_1\right|_s$ geschrieben haben. Für eine glatte Kurve $\gamma\colon I \to M$ ist also
+	\[\gamma'(s) = \left.\DD\gamma\right|_s \left(\left.\frac{\D}{\D t}\right|_s\right).\]
+
+	Statt $\gamma'(s)$ schreiben wir für die Ableitung einer Kurve an der Stelle $s$ in Zukunft auch
+	\[\gamma'(s) = \left.\frac{\D}{\D t}\gamma(t)\right|_{t = s}.\]
+
+	Man kann sich überlegen, dass
+	\[\gamma'(s) = \left.\frac{\D}{\D t}\gamma(s + t)\right|_{t = 0}\]
+	gilt (Übung!).
+\end{bsp}
+\todo{Ausarbeiten!}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
