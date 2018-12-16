@@ -392,11 +392,15 @@ Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise 
 	\end{proof}
 \end{kor}
 
-\begin{bem} \label{bem:entw_tangt_Rn}
+\begin{kor} \label{kor:entw_tangt_Rn}
 	Die Entwicklung eines Tangentialvektors $w \in T_p\mathbb R^n$ in dieser Basis ist
 	\[w = \sum_{i=1}^n w(\pr^i) \left.\partial_i\right|_p,\]
-	was sich direkt aus dem Beweis von Satz \ref{satz:tangt_vr} ergibt.
-\end{bem}
+	wobei $\pr^i\colon \mathbb R^n \to R, \pr^j(a) = a^j$ die Projektion auf die $i$-te Komponente ist.
+
+	\begin{proof}
+		Das ergibt sich direkt aus dem Beweis von Satz \ref{satz:tangt_vr}, da die Projektionen $\pr^i$ die zu $\e_i$ duale Basis von $(\mathbb R^n)^*$ bilden.
+	\end{proof}
+\end{kor}
 
 \begin{bsp}
 	Ist $U\subset\mathbb R^n$ offen und $p\in U$, so bilden die partiellen Ableitungsableitungen $\left.\partial_1\right|_p, \dots, \left.\partial_n\right|_p$ eine Basis von $T_pU$ (denn es ist ja $T_pU = T_p\mathbb R^n$).
@@ -443,7 +447,7 @@ Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise 
 	Für $f\in\sC(M)$ und $v \in T_pM$ ist $\left.\DD f\right|_p(v) = v(f)$ unter der kanonischen Identifikation $T_{f(p)}\mathbb R \equiv \mathbb R$.
 
 	\begin{proof}
-		Nach Bemerkung \ref{bem:entw_tangt_Rn} ist $\left.\DD f\right|_p(v) = \Big(\DD f\big|_p(v)\Big)(\id) \cdot \left.\partial_1\right|_{f(p)} \in T_{f(p)}\mathbb R$. Da nach Definition $\Big(\DD f\big|_p(v)\Big)(\id) = v(\id \circ f) = v(f)$ gilt und $\left.\partial_1\right|_{f(p)}$ unter $T_{f(p)}\mathbb R \equiv \mathbb R$ mit $1$ identifiziert wird, folgt die Behauptung.
+		Nach Korollar \ref{kor:entw_tangt_Rn} ist $\left.\DD f\right|_p(v) = \Big(\DD f\big|_p(v)\Big)(\id) \cdot \left.\partial_1\right|_{f(p)} \in T_{f(p)}\mathbb R$. Da nach Definition $\Big(\DD f\big|_p(v)\Big)(\id) = v(\id \circ f) = v(f)$ gilt und $\left.\partial_1\right|_{f(p)}$ unter $T_{f(p)}\mathbb R \equiv \mathbb R$ mit $1$ identifiziert wird, folgt die Behauptung.
 	\end{proof}
 \end{lemma}
 
@@ -476,6 +480,18 @@ $\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim i
 	\end{align*}
 	wobei $\pr^j\colon \mathbb R^n \to R, \pr^j(a) = a^j$ die Projektion auf die $j$-te Komponente ist.
 \end{bsp}
+
+\begin{lemma}[Koordinatendarstellung von Tangentialvektoren]
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p \in M$, $v \in T_pM$ und $x$ eine Karte um $p$. Die Darstellung von $v$ in der von $x$ induzierten Koordinatenbasis ist
+	\[v = \sum_{i=1}^n v^i \left.\frac{\partial}{\partial x^i}\right|_p\]
+	mit
+	\[v^i = v(x^i).\]
+
+	\begin{proof}
+		Nach Korollar \ref{kor:entw_tangt_Rn} ist $\left.\DD x\right|_p(v) = \sum_{i=1}^n \Big(\DD x\big|_p(v)\Big) (\pr^i) \left.\partial_i\right|_{x(p)}$. Da nach Definition $\Big(\DD x\big|_p(v)\Big) (\pr^i) = v(\pr^i \circ x) = v(x^i)$ ist, haben wir also $\left.\DD x\right|_p(v) = \sum_{i=1}^n v(x^i) \left.\partial_i\right|_{x(p)}$.
+		Anwenden von $\left(\left.\DD x\right|_p\right)^{-1}$ auf beiden Seiten liefert die Behauptung.
+	\end{proof}
+\end{lemma}
 
 \begin{lemma}[Differential in Kartendarstellung] \label{lemma:differential_koord}
 	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Sei $p\in M$, $x$ eine Karte von $M$ um $p$ und $y$ eine Karte von $N$ um $f(p)$. Dann ist die Darstellungsmatrix des Differentials $\left.\DD f\right|_p$ bzgl. der Koordinatenbasen $\left.\frac{\partial}{\partial x^i}\right|_p$ von $T_pM$ und $\left.\frac{\partial}{\partial y^i}\right|_{f(p)}$ von $T_{f(p)}N$ die Jacobi-Matrix der Kartendarstellung $y \circ f \circ x^{-1}$ von $f$ an der Stelle $x(p)$, also die Matrix
@@ -518,7 +534,10 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 	\[\gamma'(s) = \left.\frac{\D}{\D t}\gamma(s + t)\right|_{t = 0}\]
 	gilt (Übung!).
 \end{bsp}
-\todo{Ausarbeiten!}
+\todo{Ausarbeiten! Zeigen: Jeder Tangentialvektor ist Ableitung einer Kurve. Koordinatenvektoren sind Ableitungen von Koordinatenlinien.}
+
+\section{Untermannigfaltigkeiten}
+\kommP{Weglassen? Brauchen wir nicht später, und wir haben eh zu wenig Zeit, und das Kapitel ist eh zu voll ...}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
