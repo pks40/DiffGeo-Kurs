@@ -76,6 +76,8 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 
 \subsection{Lineare Algebra}
 
+Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
+
 \begin{nota}
 	Für einen Vektorraum $V$ über einem Körper $K$ bezeichnet \[V^* := \mathrm{Hom}(V,K) = \{f\colon V \to K : f \text{ linear}\}\] den Dualraum von $V$.
 \end{nota}
@@ -214,6 +216,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 
 			Die Menge der Diffeomorphismen $\Diff(M)\subset\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Der Tangentialraum, das Differential, Untermannigfaltigkeiten}
@@ -544,6 +547,10 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Multilineare Algebra: Das Tensorprodukt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorbündel}
 	\section{Faserbündel}
 		\begin{defn}[Faserbündel]
@@ -722,6 +729,93 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 				Übung. Hinweis: Betrachte lokale Rahmen.
 			\end{proof}
 		\end{lemma}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Ein analytischer Trick: Bump functions}
+
+Von recht großer Bedeutung in der (glatten) Differentialgeometrie sind sogenannte \emph{bump functions}, glatte Funktionen, die auf einer gegebenen offenen Menge $U$ konstant 1 sind, außerhalb einer größeren offenen Menge $V \supset U$ allerdings 0. Sie ermöglichen, Eigenschaften oder geometrische Objekte zu \glqq lokalisieren\grqq. Wir wollen jetzt die Existenz solcher Funktionen zeigen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Abschneidefunktionen auf $\R$ und bump functions im $\R^n$}
+Als erstes brauchen wir die Existenz einer glatten Funktion $\R\to\R$, die auf der negativen reellen Achse konstant 0, auf der positiven aber positiv ist:
+\begin{prop}
+	Die Funktion $f\colon\mathbb R \to \mathbb R$,
+	\[f(t) := \begin{cases}
+		0 & t \le 0 \\
+		\e^{-1/t} & t > 0
+	\end{cases}\]
+	ist glatt.
+
+	\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[->] (-1,0) -- (3,0) node[right] {$t$};
+		\draw[->] (0,-0.25) -- (0,1.25) node[above] {$f(t)$};
+		\draw[very thick,domain=0.001:3] plot (\x,{exp(-1/\x)});
+		\draw[very thick] (-1,0) -- (0.005,0);
+		\draw[dashed] (-1,1) -- (3,1);
+	\end{tikzpicture}
+	\end{center}
+
+	\begin{proof}
+		Auf $(-\infty,0)$ ist $f$ konstant 0, also auch alle Ableitungen; auf $(0,\infty)$ ist $f$ als Verkettung glatter Funktionen glatt. Interessant ist also die Frage, ob alle Ableitungen am Punkt $0$ existieren.
+
+		Damit wir dies untersuchen können, betrachten wir zunächst die $k$-ten Ableitungen $f^{(k)}(t)$ für $t>0$. Per Induktion kann man leicht zeigen (Übung!), dass diese von der Form
+		\[f^{(k)}(t) = p_k(t) \frac{\e^{-1/t}}{t^{2k}} \; \text{für} \; t > 0\]
+		sind, wobei $p_k$ ein Polynom ist.
+
+		Wir wollen jetzt per Induktion zeigen, dass $f^{(k)}(0) = 0$ für alle $k\ge 0$. Für $k = 0$ stimmt das nach Definition. Nehmen wir an, es sei $f^{(k)}(0) = 0$, und betrachten wir $f^{(k+1)}(0)$. Nach Definition und Induktionsannahme ist
+		\[f^{(k+1)}(0) = \lim_{h\to 0}\frac{f^{(k)}(h) - f^{(k)}(0)}{h} = \lim_{h\to 0}\frac{f^{(k)}(h)}{h}.\]
+		Der linksseitige Limes ist klarerweise $0$, der rechtsseitige ist \[\lim_{h\to 0^+} p_k(h) \frac{\e^{-1/h}}{h^{2k+1}}.\] Nun ist aber
+		\begin{align*}
+			\lim_{h\to 0^+} \frac{\e^{-1/h}}{h^{2k+1}} &= \lim_{h\to 0^+} \frac{h^{-2k-1}}{\e^{1/h}}\\
+			\text{(l'Hôpital)} \quad &= \lim_{h\to 0^+} \frac{(-2k-1)h^{-2k-2}}{-h^{-2}\e^{1/h}}\\
+			&= (2k+1) \lim_{h\to 0^+} \frac{\e^{-1/h}}{h^{2k}}\\
+			\text{(induktiv)} \quad &= \dots = (2k+1)! \lim_{h\to 0^+} \e^{-1/h}\\
+			&= 0,
+		\end{align*}
+		also ist \[\lim_{h\to 0^+} p_k(h) \frac{\e^{-1/h}}{h^{2k+1}} = p_k(0) \lim_{h\to 0^+} \frac{\e^{-1/h}}{h^{2k+1}} = 0.\]
+		Damit existiert $f^{(k+1)}(0)$ und ist 0.
+	\end{proof}
+\end{prop}
+
+Damit können wir nun sogenannte \emph{Abschneidefunktionen} konstruieren:
+\begin{lemma}[Existenz von Abschneidefunktionen]
+	Für beliebige reelle Zahlen $r' > r > 0$ gibt es eine glatte Funktion $h\colon\R\to\R$ mit $h(t) = 1$ für $t\le r$, $h(t) \in (0,1)$ für $t \in (r,r')$ und $h(t) = 0$ für $r \ge r'$.
+
+	\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[->] (-0.25,0) -- (3,0) node[right] {$t$};
+		\draw[->] (0,-0.25) -- (0,1.25) node[above] {$h(t)$};
+		\draw[very thick,domain=1.001:1.999] plot (\x,{exp(-1/(2-\x))/(exp(-1/(2-\x)) + exp(-1/(\x-1)))});
+		\draw[very thick] (-0.25,1) -- (1.005,1);
+		\draw[very thick] (1.995,0) -- (2.97,0);
+		\draw[dashed] (1,0) -- (1,1);
+
+		\draw (1,-3pt)--(1,+3pt) node[below,yshift=-10pt] {$r\vphantom{'}$};
+		\draw (2,-3pt)--(2,+3pt) node[below,yshift=-10pt] {$r'$};
+	\end{tikzpicture}
+	\end{center}
+
+	\begin{proof}
+		Sei $f$ die Funktion aus der vorigen Proposition. Wir setzen
+		\[h(t) := \frac{f(r' - t)}{f(r' - t) + f(t - r)}.\]
+		Der Nenner ist immer positiv: Für $t \le r < r'$ ist $r' - t > 0$, also $f(r'-t) > 0$, und für $t > r$ ist $t-r > 0$, also $f(t-r) > 0$.
+
+		Da $f$ glatt ist, ist auch $h$ glatt. Für $t \le r$ ist $f(t-r) = 0$, also $h(t) = 1$; für $t \in (r,r')$ ist sowohl $f(r'-t) > 0$ als auch $f(t-r) > 0$, also $h(t) \in (0,1)$; und für $t \ge r'$ ist $f(r'-t) = 0$, also $h(t) = 0$.
+	\end{proof}
+\end{lemma}
+
+Mit Abschneidefunktionen können wir nun \emph{bump functions} auf dem $\R^n$ konstruieren, die Werte in $[0,1]$ annehmen und auf einer gegebenen Kugel konstant 1 sind, außerhalb einer größeren (konzentrischen) aber 0.
+\begin{lemma}
+	Für beliebige reelle Zahlen $r' > r > 0$ gibt es eine Funktion $H \in \sC(\R^n)$ mit Werten in $[0,1]$, die $H \equiv 1$ auf $\bar B_r(0)$ und $H \equiv 0$ auf $\R^n \setminus B_{r'}$ erfüllt.
+
+	\begin{proof}
+		Wir setzen $H(a) := h(\|a\|)$, wobei $h$ die Abschneidefunktion aus dem vorigen Lemma ist. Die Aussagen über Werte von $H$ gelten nach Konstruktion. Auf $\R^n\setminus 0$ ist die Norm $\|\cdot\|$ glatt, also auch $H$ als Verkettung von glatten Funktionen; da $H$ auf $B_r(0)$ konstant 1 ist, ist es auch in $0$ glatt.
+	\end{proof}
+\end{lemma}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorfelder}
 
