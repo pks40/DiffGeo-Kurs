@@ -32,6 +32,7 @@
 \DeclareMathOperator{\Ad}{Ad}
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\supp}{supp}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
@@ -734,7 +735,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Ein analytischer Trick: Bump functions}
 
-Von recht großer Bedeutung in der (glatten) Differentialgeometrie sind sogenannte \emph{bump functions}, glatte Funktionen, die auf einer gegebenen offenen Menge $U$ konstant 1 sind, außerhalb einer größeren offenen Menge $V \supset U$ allerdings 0. Sie ermöglichen, Eigenschaften oder geometrische Objekte zu \glqq lokalisieren\grqq. Wir wollen jetzt die Existenz solcher Funktionen zeigen.
+Von recht großer Bedeutung in der (glatten) Differentialgeometrie sind sogenannte \emph{bump functions}, glatte Funktionen, die auf einer gegebenen abgeschlossenen Menge $A$ konstant 1 sind, außerhalb einer größeren offenen Menge $U \supset A$ allerdings 0. Sie ermöglichen, Eigenschaften oder geometrische Objekte zu \glqq lokalisieren\grqq. Wir wollen jetzt die Existenz solcher Funktionen zeigen.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Abschneidefunktionen auf $\R$ und bump functions im $\R^n$}
@@ -807,13 +808,52 @@ Damit können wir nun sogenannte \emph{Abschneidefunktionen} konstruieren:
 \end{lemma}
 
 Mit Abschneidefunktionen können wir nun \emph{bump functions} auf dem $\R^n$ konstruieren, die Werte in $[0,1]$ annehmen und auf einer gegebenen Kugel konstant 1 sind, außerhalb einer größeren (konzentrischen) aber 0.
-\begin{lemma}
-	Für beliebige reelle Zahlen $r' > r > 0$ gibt es eine Funktion $H \in \sC(\R^n)$ mit Werten in $[0,1]$, die $H \equiv 1$ auf $\bar B_r(0)$ und $H \equiv 0$ auf $\R^n \setminus B_{r'}$ erfüllt.
+\begin{lemma} \label{lemma:bump_fn_kugel}
+	Für beliebige reelle Zahlen $r' > r > 0$ gibt es eine glatte Funktion $H \in \sC(\R^n)$ mit Werten in $[0,1]$, die $H \equiv 1$ auf $\bar B_r(0)$ und $H \equiv 0$ auf $\R^n \setminus B_{r'}(0)$ erfüllt und auf $B_{r'}$ positiv ist.
 
 	\begin{proof}
 		Wir setzen $H(a) := h(\|a\|)$, wobei $h$ die Abschneidefunktion aus dem vorigen Lemma ist. Die Aussagen über Werte von $H$ gelten nach Konstruktion. Auf $\R^n\setminus 0$ ist die Norm $\|\cdot\|$ glatt, also auch $H$ als Verkettung von glatten Funktionen; da $H$ auf $B_r(0)$ konstant 1 ist, ist es auch in $0$ glatt.
 	\end{proof}
 \end{lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Bump functions auf Mannigfaltigkeiten}
+
+Wir wollen beweisen:
+\begin{satz}[Bump functions] \label{satz:bump_fn}
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $A$ eine abgeschlossene und $U \supset A$ eine offene Teilmenge von $M$. Dann gibt es eine glatte Funktion $\psi \in \sC(M)$ mit Werten in $[0,1]$ mit $\psi \equiv 1$ auf $A$ und $\supp(\psi) \subset U$. Dabei ist $\supp(\psi) := \overline{\{p \in M \colon f(p) \ne 0\}}$ der \emph{Träger} von $\psi$.
+\end{satz}
+Die Idee des Beweises ist, $A$ mit kleinen Kartenumgebungen zu überdecken, deren Bilder Kugeln im $\R^n$ sind, und bump functions auf diesen Kugeln zu nutzen, um $\psi$ zu konstruieren. Um das auszuführen, brauchen wir noch einen kleinen Hilfssatz:
+\begin{lemma}
+	Sei $M$ eine differenzierbare Mannigfaltigkeit. Es existiert eine Familie $\{(\varphi_i,W_i)\}_{i\in I}$ von Karten von $M$ sowie eine weitere Familie von offenen Mengen $\{B_i\}_{i\in I}$, $\bar B_i \subset W_i$, mit den folgenden Eigenschaften:
+	\begin{enumerate}[label=(\roman*)]
+		\item Die $B_i$ überdecken $M$.
+		\item Zu jedem Punkt $p\in M$ gibt es eine offene Umgebung $W$, die nur endlich viele der $B_i$ schneidet (d.\,h. die Überdeckung $\{B_i\}_{i\in I}$ von $M$ ist \emph{lokal endlich}).
+		\item Zu jedem $i\in I$ existiert ein $r_i > 0$ mit $\varphi_i(B_i) = B_{r_i}(0)$ (d.\,h. die Karte bildet $B_i$ auf eine Kugel ab)
+	\end{enumerate}
+
+	(ohne Beweis, da zu technisch/topologisch)
+\end{lemma}
+
+% Der folgende Beweis ist zusammengestückelt aus dem Beweis der Existenz einer Zerlegung der Eins aus dem Buch von Lee.
+\begin{proof}[Beweis von Satz \ref{satz:bump_fn}]
+	Betrachte $U$ als differenzierbare Mannigfaltigkeit und wende darauf das vorige Lemma an, um $\{(\varphi_i,W_i)\}_{i\in I}$, $\{B_i\}_{i\in I}$, $\{r_i\}_{i\in I}$ zu erhalten. Für jedes $i\in I$ wählen wir eine bump function $H_i \in \sC(\R^n)$, die auf $B_{r_i}(0)$ positiv ist und außerhalb von $B_{r_i}(0)$ verschwindet (diese existiert nach Lemma \ref{lemma:bump_fn_kugel} für $r' = r_i$).
+
+	Für $i\in I$ definieren wir $f_i \in \sC(M)$ durch
+	\[f_i := \begin{cases}
+		H_i \circ \varphi_i & \text{auf} \; W_i\\
+		0 & \text{auf} \; M \setminus \bar B_i.
+	\end{cases}\]
+	Auf dem Durchschnitt $W_i \setminus \bar B_i$ der beiden Definitionsbereiche ergeben beide Ausdrücke 0, $f_i$ ist also wohldefiniert. Auf $B_i$ ist $f_i$ positiv, außerhalb von $B_i$ ist es 0; also ist $\supp(f_i) = \bar B_i$.
+
+	Über exakt dieselbe Konstruktion bekommen wir eine lokal endliche offene Überdeckung $\{\tilde B_j\}_{j\in J}$ von $M\setminus A$ und nichtnegative Funktionen $\tilde f_j \in \sC(M)$, sodass $\tilde f_j$ auf $\tilde B_j$ positiv ist und $\supp(\tilde f_j) = \overline {\tilde B_j}$ gilt.
+
+	Wir definieren jetzt $F \in \sC(M)$ durch $F(p) := \sum_{i\in I} f_i(p) + \sum_{j\in J} \tilde f_j(p)$. Wegen der lokalen Endlichkeit von $\{B_i\}_i$ und $\{\tilde B_j\}_j$ sind in einer Umgebung jedes beliebigen Punktes nur endlich viele der Summanden ungleich 0, die Summe existiert also. Da die $f_i$ und $\tilde f_j$ nichtnegativ und auf $B_i$ bzw. $\tilde B_j$ jeweils positiv sind, ist $F > 0$ (da jedes $p\in M$ in einem $B_i$ oder einem $\tilde B_j$ liegt). Wenn wir also $g_i := f_i / F \in \sC(M)$ und $\tilde g_j := \tilde f_j / F \in \sC(M)$ setzen, dann ist jedes $g_i$ bzw. $\tilde g_j$ eine nichtnegative Funktion, die auf $B_i$ bzw. $\tilde B_j$ positiv ist und für die $\supp(g_i) = \bar B_i$ bzw. $\supp(\tilde g_j) = \overline{\tilde B_j}$ gilt, und es ist $\sum_i g_i + \sum_j \tilde g_j = 1$.
+
+	Da die $\tilde g_j$ jeweils außerhalb von $\overline{\tilde B_j} \subset M \setminus A$ verschwinden, verschwinden sie insbesondere auf $A$. Für $p \in A$ ist also $1 = \sum_i g_i(p) + \sum_j \underbrace{\tilde g_j(p)}_{=0} = \sum_i g_i(p)$. Der Kandidat für unsere gesuchte Funktion ist also $\psi := \sum_i g_i$. Tatsächlich gilt auch $\supp(\psi) \subset U$: Weil jedes $g_i$ nur auf $B_i$ von 0 verschieden ist, gilt $\supp(\psi) = \overline{\bigcup_i B_i} = \bigcup_i \bar B_i \subset U$, wobei bei der letzten Gleichheit benutzt wurde, dass für lokal endliche Überdeckungen $\{X_k\}_k$ eines topologischen Raumes immer $\overline{\bigcup_k X_k} = \bigcup_k \bar X_k$ gilt.
+\end{proof}
+
+Anwendung: Punktweise Derivationen von $\sC(M)$ lassen sich zu Derivationen von Keimen \glqq lokalisieren\grqq\ via bump functions.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -821,7 +861,7 @@ Mit Abschneidefunktionen können wir nun \emph{bump functions} auf dem $\R^n$ ko
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Grundlegendes}
-Definition: Schnitt im Tangentialbündel. Zeigen, dass äquivalent zu (globalen) Derivationen von $\sC(M)$. (Dazu vorher als Lemma: Punktweise Derivationen von $\sC(M)$ lassen sich zu Derivationen von Keimen \glqq lokalisieren\grqq\ via bump functions.)
+Definition: Schnitt im Tangentialbündel. Zeigen, dass äquivalent zu (globalen) Derivationen von $\sC(M)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Pushforward und Kommutator}
