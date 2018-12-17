@@ -27,12 +27,16 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\tr}{tr}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
-\newcommand{\sm}{\mathcal{F}(M)}
-\newcommand{\vf}{\mathfrak{X}(M)}
+\newcommand{\sm}{\mathcal{F}}
+\newcommand{\vf}{\mathfrak{X}}
 \newcommand{\tril}{\vartriangleleft}
 \newcommand{\trir}{\vartriangleright}
 
@@ -113,7 +117,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 			\end{equation*}
 		\end{defn}
 		\begin{bsp}
-			Ist $(X,d)$ ein metrischer Raum, so bilden die bzgl. der Metrik offenen Mengen eine Topologie mit den $\varepsilon$-Bällen $\lbrace B_{\varepsilon}(x)\vert \; x\in X, \varepsilon >0\rbrace$ als Basis.
+			Ist $(X,d)$ ein metrischer Raum, so bilden die bzgl. der Metrik offenen Mengen eine Topologie mit den $\varepsilon$-Bällen $\lbrace B_{\varepsilon}(x)\mid x\in X, \varepsilon >0\rbrace$ als Basis.
 		\end{bsp}
 		\begin{defn}[Zweitabzählbarkeit]
 			Ein topologischer Raum $(X,\mathcal{T})$ heißt \emph{zweitabzählbar}, wenn für die Topologie $\mathcal{T}$ eine abzählbare Basis existiert. 
@@ -161,7 +165,7 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 		\end{defn}
 		\begin{bsp}\hfill 
 			\begin{enumerate}
-				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. 
+				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. Ebenso gilt dies für beliebige offene Teilmengen.
 				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n + m$). Die Produkte offener Mengen bilden dabei eine Basis der Topologie des Produktes.
 				\item Für topologische Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine topologische Mannigfaltigkeit (\emph{topologische Summe}).
 			\end{enumerate}
@@ -178,17 +182,16 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 				\item Zwei Karten heißen \emph{verträglich}, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
 				\item Ein Atlas heißt \emph{differenzierbar}, wenn alle seine Karten paarweise verträglich sind.
 				\item Ein differenzierbarer Atlas heißt \emph{maximal}, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
-				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}.
-				\kommP{Sollten erwähnen, dass, wenn Mf. gegeben, Karten immer als aus der Struktur gemeint sind.}
+				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}. Wenn also von einer Karten auf einer differenzierbaren Mannigfaltigkeit die Rede ist, sind immer solche aus der differenzierbaren Struktur gemeint.
 			\end{itemize}
 		\end{defn}
 		\begin{bsp}\hfill 
 			\begin{enumerate}
-				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale differenzierbare Mannigfaltigkeit, der oben genannte Atlas muss dazu aber erweitert werden!
+				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden! (Übung: Zeige allgemein, dass eine Vervollständigung eines nichtleeren Atlanten eindeutig ist)
 				\kommP{Erwähnen, dass jeder dfb. Atlas einen eindeutige dfb. Struktur induziert, mit der er verträglich ist? Übungsaufgabe?}
 				\item Reelle, endlich dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
-				%\item Das kartesische Produkt zweier differenzierbarer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine differenzierbare Mannigfaltigkeit (der Dimension $n+m$).
-				\item Für differenzierbare Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine differenzierbare Mannigfaltigkeit (\emph{topologische Summe}).
+				\item Die obigen Beispiele topologischer Mannigfaltigkeiten gelten auch für differenzierbare Mannigfalltigkeiten, allerdings müssen auch hier Atlanten vervollständigt werden.
+				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\mid \|x\|=1\rbrace}$ sind differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
 			\end{enumerate}
 		\end{bsp}
 	\section{Differenzierbare Abbildungen}
@@ -204,12 +207,12 @@ Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Math
 			Wir schreiben $\sC(M,N)$ für die Menge der glatten Abbildungen.
 		\end{defn}
 		\begin{nota}
-			$\sm:=\sC(M,\R)$ ist die Menge der (glatten) Funktionen auf $M$.
+			$\sm(M):=\sC(M,\R)$ ist die Menge der (glatten) Funktionen auf $M$.
 		\end{nota}
 		\begin{defn}
 			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.
 
-			Die Menge der Diffeomorphismen $\Diff(M):=\sC(M,M)$ bildet eine Gruppe.
+			Die Menge der Diffeomorphismen $\Diff(M)\subset\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -258,7 +261,7 @@ $T_pM$ ist tatsächlich ein Untervektorraum von $(\sC_p(M))^*$ (Übung).
 \begin{bsp} \label{bsp:kurve_geschw}
 	Sei $I\subset\mathbb R$ offen und $\gamma\colon I \to M$ eine glatte Kurve mit $\gamma(s) = p$ für ein $s \in I$. Wir definieren den Tangentialvektor $\gamma'(s) \in T_pM$ durch \[(\gamma'(s))(f) := (f\circ\gamma)'(s),\] wobei wir auf der rechten Seite die Ableitung der Funktion $f\circ\gamma \colon I \to \mathbb R, I \subset \mathbb R$ gebildet haben.
 
-	$\gamma'(s)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\gamma'(s)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen.
+	$\gamma'(s)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\gamma'(s)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen. \kommB{Soll dazu noch eine konkrete Rechnung folgen? Vllt. als Übung? (Also dass man konkret im $\R^n$ nachrechnet, dass da so etwas wie eine Richtung herauskommt (unter Identifikation blabla)}
 
 	$\gamma'(s)$ ist wohldefiniert und tatsächlich eine Derivation: Wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ\gamma$ und $g\circ\gamma$ in einer Umgebung von $s$ überein und haben insbesondere dieselbe Ableitung an der Stelle $s$. Die Linearität von $\gamma'(s)$ folgt aus der Linearität der Ableitung, und die Derivations-Produktregel folgt aus der Produktregel für Ableitungen.
 \end{bsp}
@@ -568,7 +571,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 		Sei von nun an $(P,M,\pi ,F)$ ein Faserbündel.
 		\begin{bsp}\hfill
 			\begin{enumerate}
-				\item Das triviale Bündel mit typischer Faser $F$ und Basis $M$ ist das kartesische Produkt $M\times F$ (genauer gesagt das Bündel $(M\times F,M,\pr_1,F))$.
+				\item Das triviale Bündel mit typischer Faser $F$ und Basis $M$ ist das kartesische Produkt $M\times F$ (genauer gesagt das Bündel $(M\times F,\pr_1))$.
 				\item Für eine offene Menge $U\subset M$ und $P\vert_U:=\pi^{-1}(U)$ ist $(P\vert_U,U,\pi\vert_{P_U},F)$ ein Faserbündel.
 			\end{enumerate}
 		\end{bsp}
@@ -619,24 +622,38 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$. Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
 			\end{enumerate}
 		\end{bsp}
+		\begin{defn}[Rahmen]
+			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_2)\in\Gamma(P\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet. 
+			
+			Beachte: Ist $(\phi,U)$ eine Trivialisierung und $(e_1,\ldots,e_n)$ die Standardbasis von $\R^n$, dann ist mit $\sigma_i(x):=\phi^{-1}(x,e_i)$ das Tupel $(\sigma_1,\ldots,\sigma_n)$ ein lokaler Rahmen über $U$.
+			
+			Natürlicherweise ist ein \emph{globaler Rahmen} ein lokaler Rahmen über $M$.
+		\end{defn}
+		\begin{satz}
+			Ein Vektorbündel besitzt genau dann einen globalen Rahmen, wenn es trivial ist (das heißt isomorph zum trivialen Bündel).
+		\end{satz}
+		Später brauchen wir noch folgendes Ergebnis:
+		\begin{kor}\label{kor:Vektorbündel_über_Intervallen}
+			Vektorbündel über offenen Intervallen sind trivial.
+		\end{kor}
 	\section{Konstruktionen von Vektorbündeln}
 		Seien $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.\\
 		\begin{defn}
-			Das zu $(E,M,\pi,\R^{n})$ \emph{duale Bündel} $(E^{\prime},M,\pi^{\prime},(\R^n)^{\prime})$ ist gegeben durch
+			Das zu $(E,M,\pi,\R^{n})$ \emph{duale Bündel} $(E^*,M,\pi^{\prime},(\R^n)^*)$ ist gegeben durch
 			\begin{align*}
-				E^{\prime}&:=\bigcup_{x\in M}(E_{x})^{\prime}\\
-				\pi^{\prime}&\colon E^{\prime}\rightarrow M\\
-				(\pi^{\prime})^{-1}(x)&=E^{\prime}_x=(E_{x})^{\prime}\quad \forall x\in M
+				E^*&:=\bigcup_{x\in M}(E_{x})^*\\
+				\pi^{\prime}&\colon E^*\rightarrow M\\
+				(\pi^{\prime})^{-1}(x)&=E^*_x=(E_{x})^*\quad \forall x\in M
 			\end{align*}
 			und für eine Trivialisierung $(\phi,U)$ von $E$, ist die folgende Abbildung eine Trivialisierung des dualen Bündels:
 			\begin{align*}
-				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^{\prime}\\
-				\lambda&\mapsto\left(x,\lambda\circ(\pr_2\circ\phi)^{-1}\right)
+				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^*\\
+				\lambda&\mapsto\left(x,\lambda\circ(\pr_2\circ\phi\vert_{\pi^{-1}(\lbrace x\rbrace)})^{-1}\right)
 			\end{align*}
-			wobei $\lambda\in E_x^{\prime}$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^{\prime}$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
+			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
 		\begin{bsp}
-			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das \emph{Kotangentialbündel} $T^{\prime}M$ gewinnen. Wie wir später sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
+			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das \emph{Kotangentialbündel} $T^*M$ gewinnen. Wie wir später sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
 		\end{bsp}
 		\begin{defn}[Whitney-Summe]
 			Die \emph{Whitney-Summe} $(E_a\oplus E_b ,M,\pi,\R^{n_a+n_b})$ ist ein Vektorbündel gegeben durch
@@ -670,7 +687,41 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 			Die Übergangsfunktionen des Tensorproduktes sind durch das Tensorprodukt der Übergangsfunktionen gegeben: $\tau=\tau_a\otimes\tau_b$.
 		\end{defn}
 		\todo{Tensorprodukt von VR}
-		
+		\begin{defn}[Rückzug von Vektorbündeln]
+			Sei $f\colon N\rightarrow M$.
+			
+			Das \emph{entlang $f$ zurückgezogene Vektoründel} $(f^*E,\pi_f,N, F)$ ist gegeben durch:
+			\begin{align*}
+				f^*E&:=\bigcup _{x\in N} E_{f(x)}\\
+				\pi_f&\colon f^*E\rightarrow N\\
+				(\pi_f)^{-1}(x)&=(f^*E)_x=E_{f(x)}\quad\forall x\in N
+			\end{align*}
+			und für $x\in N$ existiert eine Trivialisierung $(\phi,U)$ um $f(x)\in M$ und dannist die folgende Abbildung eine Trivialisierung $(\phi_f,f^{-1}(U))$ des zurückgezogenen Bündels um $x\in N$:
+			\begin{align*}
+				\phi_f \colon (\pi_f)^{-1}(f^{-1}(U))&\rightarrow f^{-1}(U)\times\R^n\\
+				\underbrace{v}_{\in (f^*(E))_x=E_{f(x)}}&\mapsto (\pi_f(v),\pr_2(\phi(v)))
+			\end{align*}
+			Die Übergangsfunktionen sind identisch zu denen des ursprünglichen Bündels.
+		\end{defn}
+		Mit dem Rückzug eines Vektorbündels geht auch ein Rückzug seiner Schnitte einher.
+		\begin{defn}[Rückzug von Schnitten]
+			Sei $f:N\rightarrow M$, $\sigma\in\Gamma(E)$.
+			
+			Der \emph{Rückzug eines Schnittes} $f^*\sigma$ ist folgendermaßen definiert:
+			\begin{align*}
+				f^*\sigma\colon N &\rightarrow f^*E,\\
+				x &\mapsto \sigma(f(x))=: (f^*\sigma)(x)
+			\end{align*}
+			Damit ist $f^*\sigma\in\Gamma(f^*E)$, insbesondere differenzierbar. Wir bezeichnen die Menge der zurückgezogenen Schnitte mit $f^*(\Gamma(E))\subset\Gamma(f^*E)$.
+		\end{defn}
+		\begin{lemma}\label{lemma:Zurückziehen_von_Schnitten}
+			Sei $f:N\rightarrow M$.
+			
+			Die zurückgezogenen Schnitte $f^*(\Gamma(E))$ erzeugen durch $\sm(N)$-Linearkombination die Schnitte des zurückgezogenen Bündels $\Gamma(f^*E)$.
+			\begin{proof}
+				Übung. Hinweis: Betrachte lokale Rahmen.
+			\end{proof}
+		\end{lemma}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorfelder}
 
@@ -690,10 +741,228 @@ Definition von Integralkurven, Existenz per Picard-Lindelöf. Definition Fluss, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Lie-Gruppen}
 	\section{Grundlagen}
-		\begin{defn}
-			Eine \emph{Lie-Gruppe} ist eine differenzierbare Mannigfaltigkeit $G$ mit einer Gruppenstruktur, sodass die Verknüpfung $\cdot\colon G\times G\rightarrow G$ und die Inversion $i\colon G\rightarrow G, g\mapsto g^{-1}$ glatte Abbildungen sind.
+		\begin{defn}[Lie-Gruppe]
+			Eine \emph{Lie-Gruppe} ist eine differenzierbare Mannigfaltigkeit $G$ mit einer Gruppenstruktur, sodass die Verknüpfung $\cdot\colon G\times G\rightarrow G, (g,h)\mapsto g\cdot h$ und die Inversion ${i\colon G\rightarrow G}, {g\mapsto g^{-1}}$ glatte Abbildungen sind.
+			
+			Wir definieren die \emph{Linkstranslation} entlang $g$:
+			\begin{equation}
+				l_g\colon G\to G, h\mapsto g\cdot h
+			\end{equation}
+			
+			Es gelten $(l_g)^{-1}=l_{g^{-1}}$ und $l_g\circ l_h=l_{g\cdot h}$, also ist $l\colon G\rightarrow \mathrm{Aut}(G)$ ein Gruppenhomomorphismus.
+			
+			Analog lassen sich auch die \emph{Rechtstranslation} $r_g$ (mit $r_g\circ r_h=r_{h\cdot g}$) und die \emph{Konjugation} $c_g:= r_{g^{-1}}\circ l_g$ definieren. Rechts- und Linkstranslationen kommutieren und sind (Anti-) Automorphismen der Lie-Gruppe.
 		\end{defn}
-
+		\begin{bsp}\hfill
+			\begin{enumerate}
+				\item $\R^n$ ist zusammen mit der Addition von Vektoren eine Lie-Gruppe.
+				\item $\GL(V)$ ist für $n=\dim_{\R} V$ eine $n^2$-dimensionale und $\mathrm{SL}(n,\R)$ eine $(n^2-1)$-dimensionale Lie-Gruppe (Die komplexen Versionen haben die doppelte Dimension). Weitere Beispiele sind die orthogonalen und unitären Gruppen $\mathrm{O}(n)$ ($n(n-1)/2$-dimensional), $\mathrm{SO}(n)$ ($n(n-1)/2$), $\mathrm{U}(n)$ ($n^2$) und $\mathrm{SU}(n)$ ($n^2-1$).
+				\item $S^1\cong \lbrace z\in \mathbb{C}\mid zz^*=1\rbrace$ bekommt durch die Multiplikation in der komplexen Ebene eine Gruppenstruktur und ist damit eine Lie-Gruppe (nämlich gerade $\mathrm{U}(1)$). 
+			\end{enumerate}
+			
+		\end{bsp}
+		Sei $G$ von nun an eine Lie-Gruppe mit neutralem Element $e$.
+		\begin{defn}[Linksinvariante Vektorfelder]
+			Ein \emph{linksinvariantes Vektorfeld} ist ein Vektorfeld $X\in\mathfrak{X}(G)$, das \glqq invariant\grqq\ unter dem push-forward von Linkstranslationen ist. Das heißt, dass folgende Gleichung gilt:
+			\begin{equation*}
+				\left((l_g)_*X\right)_h\stackrel{\text{Def.}}{=}\DD l_g\vert_{g^{-1}\cdot h}X_{g^{-1}\cdot h}=X_h
+			\end{equation*}
+			Die Menge der linksinvarianten Vektorfelder heißt $\vf^L(G)$.
+		\end{defn}
+		\begin{satz}
+			Die linksinvarianten Vektorfelder bilden eine endlich-dimensionale Unteralgebra der Algebra der Vektorfelder (mit dem Kommutator als Verknüpfung).
+			
+			Sie ist als Vektorraum isomorph zum Tangentialraum des neutralen Elements $T_eG$.
+			\begin{proof}
+				Zum Beweis konstruieren wir den kanonischen Isomorphismus und zeigen, dass die linksinvarianten Vektorfelder unter Bildung von Kommutatoren abgeschlossen sind:
+				\begin{align}
+					\Psi&\colon\vf^L(G)\to T_eG, X\mapsto X_e\nonumber\\
+					L&\colon T_eG\rightarrow \vf^L(G), v\mapsto (g\mapsto \DD l_g\vert_e v)\label{def:kan_Iso}
+				\end{align}\kommB{Ist $L$ ein guter Name bzw. gibt es da einen üblichen?}
+				$L$ ist wohldefiniert, denn für $v\in T_eG$ und $g,h\in G$ gilt:
+				\begin{align*}
+					\left((l_g)_*L(v)\right)_h&=\DD l_g\vert_{g^{-1}\cdot h}L(v)_{g^{-1}\cdot h}\\
+					&=\DD l_g\vert_{g^{-1}\cdot h}\DD (l_{g^{-1}\cdot h}\vert_e v)\\
+					\text{(Kettenregel)}\quad &=\DD\left(l_g\circ l_{g^{-1}}\right)\big\vert _h\DD l_h\vert_e v\\
+					&=\DD l_h\vert_e v\\
+					&=L(v)_h
+				\end{align*}
+				Außerdem gilt $\Psi\circ L=\id_{T_eG}$:
+				\begin{align*}
+					\Psi(L(v))= (g\mapsto \DD l_g\vert_e v)_e=\DD l_e\vert_e v=v
+				\end{align*}
+				und die Umkehrung $L(\Psi(X))=X$ wird punktweise durch Ausnutzen der Linksinvarianz klar:
+				\begin{align*}
+					X_g&=\DD l_g\vert_{g^{-1}\cdot g}X_{g^{-1}\cdot g}=\left((l_g)_*X\right)_g\\
+					&=\DD l_g\vert_e X_e\\
+					&=L(X_e)_g
+				\end{align*}
+				Beide Abbildungen sind linear, für $L$ gilt dies, da das Differential linear ist.
+				
+				Nun bleibt zu zeigen, dass der Kommutator zweier linksinvarianter Vektorfelder linksinvariant ist (Übung).
+			\end{proof}
+		\end{satz}
+		\begin{defn}[Lie-Algebra]
+			Die \emph{Lie-Algebra} einer Lie-Gruppe ist der Vektorraum $\mathfrak{g}:=T_eG$ mit der folgenden Verknüpfung:
+			\begin{align*}
+				\left[.,.\right]\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}, (v,w)\mapsto \left[v,w\right]:=\left[L(v),L(w)\right]_e
+			\end{align*}
+			mit dem kanonischen Isomorphismus $L\colon \mathfrak{g}\to \vf^L(G)$ aus Gleichung (\ref{def:kan_Iso}). Diese Verkettung ist bilinear und antisymmetrisch nach Konstruktion.
+		\end{defn}
+		\begin{bsp}\hfill
+			Die Lie-Algebra der $\GL(V)$ ist der Vektorraum der Endomorphismen $\End(V)$. Dies wird klar, wenn man $\GL(n,\R)$ als (offene) Teilmenge des $\R^{n^2}$ betrachtet: Der Tangentialraum ist dann kanonisch $\R^{n^2}\cong\End(\R^n)$ und durch Basiswahl erhält man die Identifizierung für beliebige (reelle) Vektorräume.
+		\end{bsp}
+		\begin{lemma}
+			Linksinvariante Vektorfelder sind vollständig, das heißt, ihre Integralkurven können auf ganz $\R$ fortgesetzt werden.
+			\begin{proof}
+				$\gamma_g\colon I_g\rightarrow G$ Integralkurve in $g\in G$ $\Rightarrow \gamma^{\prime}\colon I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ ist Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel) $\rightarrow$ Setze $\gamma_g$ fort.
+			\end{proof}\todo{Ausformulieren mit Notation des vorherigen Kapitels}
+		\end{lemma}
+	\section{Die Exponentialabbildung}
+		\begin{defn}[Exponentialabbildung]
+			Die \emph{Exponentialabbildung} $\exp\colon\mathfrak{g}\rightarrow G$ ist durch den Fluss der linksinvarianten Vektorfelder definiert:
+			\begin{equation*}
+				\exp(v):=\Phi_1^{L(v)}(e)
+			\end{equation*}\kommB{Notation des vorherigen Kapitels übernehmen!}
+			Dies entspricht gerade der Integralkurve von $L(v)$ in $e$ ausgewertet an der Stelle $1$.
+		\end{defn}
+		\begin{lemma}\label{lemma:Eigenschaften_exp}
+			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
+			\begin{enumerate}[label=\arabic*]
+				\item $\frac{d}{dt}\exp(tv)\Big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
+				\item $\exp(0)=e$
+				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
+			\end{enumerate}
+			\begin{proof}
+				Übung. (Für die dritte Eigenschaft, konstruiere zwei Integralkurven in $\exp(sv)$) \kommB{Hinweis: Zum Beweis der dritten Eigenschaft hilft der Beweis der Vollständigkeit von linksinvarianten Vektorfeldern und die Eigenschaften von Integralkurven bzgl. Skalierung.}
+			\end{proof}
+		\end{lemma}
+		\begin{lemma}[Fluss linksinvarianter Vektorfelder]\label{lemma:Fluss_linksinvarianter_Vektorfelder}
+			Sei $X\in\vf^L(G)$.
+			
+			Der Fluss von $X$ ist durch die Exponentialabbilding wie folgt gegeben:
+			\begin{align*}
+				\Phi^X_t(p)=p\cdot \exp(tX_e) \; =l_p(\exp(tX_e))=r_{\exp(tX_e)}(p)
+			\end{align*}
+			\begin{proof}
+				Es gilt $l_p(\exp(0))=p=\Phi^X_0(p)$. Wir zeigen nun, dass $l_p(\exp(tX_e)$ $X$ erzeugt und die Aussage folgt dann aufgrund der Eindeutigkeit der Lösung von Differentialgleichungen (oder von Integralkurven).
+				\begin{align*}
+					\frac{d}{dt}l_p(\exp(tX_e))&=\frac{d}{ds}l_{p\cdot\exp(tX_e)}(\exp(sX_e))\Big\vert_{s=0}\\
+					&=\DD l_{p\cdot\exp(tX_e)}\vert_eX_e\\
+					&=X_{p\cdot\exp(tX_e)}
+				\end{align*}
+			\end{proof}
+		\end{lemma}
+		\begin{lemma}
+			Für einen Lie-Gruppenhomomorphismus $\phi\colon G\rightarrow H$ (einen glatten Gruppenhomomorphismus zwischen Lie-Gruppen) kommutiert das folgende Diagramm:
+			\begin{center}
+			\begin{tikzpicture}
+				\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{\mathfrak{g} & \mathfrak{h} \\
+     G&H \\};
+  				\path[-stealth]
+  					(m-1-1)	edge node [above]{$\DD\phi\vert_e$} (m-1-2)
+  							edge node [left]{$\exp$} (m-2-1)
+  					(m-1-2) edge node [right]{$\exp$} (m-2-2)
+  					(m-2-1) edge node [above]{$\phi$} (m-2-2)
+  					;
+			\end{tikzpicture}
+			\end{center}
+			Man kann zeigen, dass die Abbildung $\DD\phi\vert_e$ ein Lie-Algebrenhomomorphismus ist, also mit den Kommutatoren verträglich ist.
+			\begin{proof}
+				Wir wollen zeigen, dass $\exp(D\phi\vert_e v)=\phi(\exp(v))\forall v\in\mathfrak{g}$ gilt. Sei $v\in\mathfrak{g}$, ${\gamma\colon [0,1]\rightarrow G}$,$ \gamma(t):=\phi(\exp(tv))$ und zeige nun, dass $\gamma$ die Integralkurve von $L(\DD\phi\vert_e v)$ in $e\in H$ ist:
+				\begin{align*}
+					\gamma'(t)&=\frac{d}{dt}(\phi(\exp(tv))\\
+					&=\DD\phi\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e v\\
+					&=\DD(\phi\circ l_{\exp(tv)})\vert_e v\\
+					&=\DD(l_{\phi(\exp(tv))}\circ\phi)\vert_e v\\
+					&=\DD l_{\gamma(t)}\vert_e\DD\phi\vert_ev\\
+					&=L(\DD\phi\vert_e v)_{\gamma(t)}
+				\end{align*}
+				Daraus folgt nun insbesondere $\phi(\exp(v))=\gamma(1)=\exp(\DD\phi\vert_e v)$.
+			\end{proof}
+		\end{lemma}
+		\begin{bem}\label{bem:exp_induziert_Abbildungen}
+			Aufgrund von Lemma \ref{lemma:Eigenschaften_exp} lassen sich also die induzierten Lie-Algebrenhomomorphismen $\DD\phi\vert_e$ wie folgt berechnen:
+			\begin{align*}
+				\DD\phi\vert_e v&=\frac{d}{dt}\exp(t \DD\phi\vert_e v)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\phi(\exp(tv))\Big\vert_{t=0}
+			\end{align*}
+		\end{bem}
+	\section{Wirkungen und Darstellungen}
+		\begin{defn}[Gruppenwirkung]
+			Sei $M$ eine Mannigfaltigkeit, $G$ eine Lie-Gruppe.
+			
+			Eine \emph{Rechtswirkung} ist eine Abbildung 
+			\begin{gather*}
+					\tril\colon M \times G \rightarrow M, \quad (p,g) \mapsto p\tril g 
+				\intertext{die mit der Verknüpfung im folgenden Sinne kompatibel ist:}
+					(p \tril g)\tril h = p\tril (g\cdot h) \quad \forall p\in M, g,h \in G
+				\end{gather*}
+				Außerdem gelte $p\tril e=p$ für alle Punkte $p\in M$.
+				
+				Analog definiert man eine \emph{Linkswirkung} $\trir \colon G \times M \rightarrow M,\; (p,g)\mapsto g\trir p$, sodass 
+				\begin{equation*}
+					h\trir (g\trir p) =(h\cdot g)\trir p \quad \forall p\in M, g,h \in G
+				\end{equation*}
+				wobei die Reihenfolge umgekehrt ist und es gelte $e\trir p=p$ für alle Punkte $p\in M$.
+		\end{defn}
+		\begin{bsp}\hfill
+			\begin{enumerate}
+				\item Rechts- und Linkstranslationen sind Rechts- und Linkswirkungen auf der Lie-Gruppe selbst.
+				\item Eine \emph{Darstellung} ist ein Gruppenhomomorphismus $\rho\colon G\rightarrow \GL(V)$ für einem Vektorraum $V$. Damit ist $V\times G\rightarrow V, (v,g)\mapsto \rho(g)v$ eine Linkswirkung (da nach Definition eines Gruppenhomomorphismus gerade $\rho(g)\rho(h)=\rho(g\cdot h) \forall g,h\in G$ und $\rho(e)=\id_V$ gelten).
+				\item Schreibt man die Elemente der obigen Beispiele von Lie-Gruppen in ihrer üblichen Form als $n\times n$-Matrizen, so erhält man (sogenannte fundamentale) Darstellungen durch die Matrixmultiplikation mit Elementen von $\R^n$ bzw. $\mathbb{C}^n$.
+			\end{enumerate}
+		\end{bsp}
+		\begin{defn}[Die Adjungierte Darstellung]\hfill
+		
+			Die Konjugation liefert eine Darstellung jeder Lie-Gruppe auf ihrer Lie-Algebra, die sogenannte \emph{Adjungierte Darstellung}:
+			\begin{align*}
+				\Ad\colon G\rightarrow \GL(\mathfrak{g}), g\mapsto \DD c_g\vert_e
+			\end{align*}
+			Man erhält darüber hinaus auch eine Darstellung der Lie-Algebra selbst:
+			\begin{align*}
+				\ad:=\DD\Ad\vert_e\colon\mathfrak{g}\rightarrow\End(\mathfrak{g}),
+			\end{align*}
+			Mit Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} und Bemerkung \ref{bem:exp_induziert_Abbildungen} folgt dann:
+			\begin{align*}
+				\ad_v(w)&=\frac{d}{dt}\Ad_{\exp(tv)}(w)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\DD c_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}L(w)_{\exp(tv)}\right)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\DD \Phi_{-t}^{L(v)}\vert_{\Phi^{L(v)}_t(e)}L(w)_{\Phi^{L(v)}_t(e)}\right)\Big\vert_{t=0}\\
+				&=\frac{d}{dt}\left(\left(\Phi_{-t}^{L(v)}\right)_*L(w)\right)_e\Big\vert_{t=0}\\
+				&=\mathcal{L}_{L(v)}(L(w))_e\\
+				&=\left[v,w\right]
+			\end{align*}
+			Also ist $\ad_v$ eine lineare Abbildung. Beachte: $\ad$ ist auch \glqq im ersten Argument\grqq\ linear, also $\ad_{v+w}=\ad_v+\ad_w \quad\forall v,w\in\mathfrak{g}$ und ist damit ein Gruppenhomomorphismus der Lie-Algebra als additive Gruppe, allerdings keine Abbildung in eine $\GL(V)$ (Man sagt dennoch \glqq induzierte Darstellung\grqq).
+		\end{defn}
+		\begin{defn}[Killing-Form]
+			Die \emph{Killing-Form} ist eine symmetrische Bilinearform, definiert durch:
+			\begin{align*}
+				B_{\mathfrak{g}}\colon\mathfrak{g}\times\mathfrak{g}\rightarrow\R, (v,w)\mapsto \tr(\ad_v\circ\ad_w).
+			\end{align*}
+			Die Bilinearität folgt aufgrund der Linearität der Spur und $\ad$ und die Symmetrie aufgrund der Zyklizität der Spur.
+		\end{defn}
+		\begin{satz}
+			Die Killing-Form ist negativ definit genau dann, wenn die Lie-Gruppe kompakt und das Zentrum der Lie-Algebra
+			\begin{equation*}
+				\mathfrak{z}(\mathfrak{g}):=\lbrace v\in\mathfrak{g}\mid \left[v,w\right]=0\,\forall w\in\mathfrak{g}\rbrace
+			\end{equation*}
+			trivial ($=\lbrace 0\rbrace$) ist.
+		\end{satz}
+		\kommB{Idee: Hier noch fundamentale Vektorfelder und adjungierte Darstellung und dann später bei Geodäten bzgl der Killing-form sehen, dass (die Exponentialabbildungen übereinstimmen und damit) die Geodäten gerade Integralkurven linksinvarianter Vektorfelder sind.}
+		
+		Mit Wirkungen lassen sich auch allgemeiner Vektorfelder von Elementen der Lie-Algebra erzeugen:
+		\begin{defn}[Fundamentale Vektorfelder]
+			Sei $\trir:G\times M\rightarrow M$ eine Linkswirkung.
+			
+			Das \emph{fundamentale Vektorfeld} $X^v$ zu einem Element der Lie-Algebra $v\in\mathfrak{g}$ ist durch die folgende Gleichung definiert:
+			\begin{align*}
+				X^v_p:=\frac{d}{dt}\exp(tv)\trir p\Big\vert_{t=0} \quad\forall p\in M
+			\end{align*}
+			Beachte, dass dies für die Linkstranslation gerade dem Fluss aus Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} entspricht! Linksinvariante Vektorfelder sind also die fundamentalen Vektorfelder der Lie-Gruppe selbst.
+		\end{defn}
+		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Tensorfelder}
 
@@ -704,10 +973,200 @@ Definition von Integralkurven, Existenz per Picard-Lindelöf. Definition Fluss, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Kovariante Ableitungen}
-
+	\section{Grundlagen}
+		\begin{defn}[Kovariante Ableitung]Sei $E$ ein Vektorbündel über $M$.
+		
+			Eine \emph{kovariante Ableitung} ist eine Abbildung
+			\begin{align*}
+				\nabla\colon \vf(M)\times\Gamma(E)\rightarrow\Gamma(E), (X,\sigma)\mapsto \nabla_X \sigma,
+			\end{align*}
+			die die folgenden Eigenschaften erfüllt:
+			\begin{enumerate}[label=\arabic*]
+				\item $\sm(M)$-Linearität im ersten Argument: 
+				\begin{equation*}
+					\nabla_{X+fY}\sigma=\nabla_X\sigma+f\nabla_Y \sigma\quad\forall X,Y\in\vf(M), f\in\sm(M),\sigma\in\Gamma(E)
+				\end{equation*}
+				\item \glqq Derivativität\grqq\ im zweiten Argument: 
+				\begin{equation*}
+					\nabla_X(f\sigma)=\underbrace{X(f)}_{\in\sm(M)} \sigma+f\nabla_X \sigma\quad\forall X\in\vf(M), f\in\sm(M),\sigma\in\Gamma(E)
+				\end{equation*}
+			\end{enumerate}
+		\end{defn}
+		Die kovariante Ableitung ist im Fall des Tangentialbündels ergibt eine weitere Tensorderivation (definiert als Forsetzung ihrer Wirkung auf Vektorfeldern und Funktionen). Ihren besonderen Nutzen sehen wir später im Kontext der Riemannschen Geometrie.
+		
+		Sei von nun an $\nabla$ eine kovariante Ableitung auf einem Vektorbündel $(E,\pi)$.
+		\begin{lemma}\label{lemma:Einschränkung_kovarianter_Ableitungen}
+			Sei $U\in M$ offen. 
+			
+			Es existiert eine eindeutige kovariante Ableitung $\nabla^U\colon\vf(U)\times\Gamma(E\vert_U)\rightarrow \Gamma(E\vert_U)$ sodass $\nabla^U_{X\vert_U}\sigma\vert_U=(\nabla_X\sigma)\vert_U\; \forall X\in\vf(M),\sigma\in\Gamma(E)$ gilt.
+			\begin{proof}
+				Seien $\nabla'$ und $\nabla''$ kovariante Ableitungen, die die obige Bedingung erfüllen. Wir müssen zeigen, dass diese beiden auf beliebigen lokalen Schnitten und Vektorfeldern identisch sind. 
+				
+				Da lokale Schnitte und Vektorfelder von Einschränkungen globaler Schnitte und Vektorfelder erzeugt werden, und die Wirkung von Vektorfeldern auf Funktionen ebenfalls nur lokal vom Vektorfeld abhängt, reicht es (aufgrund der $\sm(U)$-Linearität und der Derivativität), die Gleichheit der kovarianten Ableitungen auf Einschränkungen der Schnitte und Vektorfelder zu zeigen. Diese ist jedoch nach Voraussetzung gegeben.
+			\end{proof}
+		\end{lemma}
+		\begin{lemma}[Lokalität kovarianter Ableitungen]
+			Seien $X_1,X_2\in\vf(M)$ und $\sigma_1,\sigma_2\in\Gamma(E)$ auf einer Umgebung von $p\in M$ identisch, so gilt:
+			\begin{enumerate}
+				\item $\left(\nabla_{X_1}\sigma_1\right)(p)=\left(\nabla_{X_2}\sigma_1\right)(p)$
+				\item $\left(\nabla_{X_1}\sigma_1\right)(p)=\left(\nabla_{X_1}\sigma_2\right)(p)$
+			\end{enumerate}
+			\begin{proof}
+				Übung. (Für die 2. darf Lemma \ref{lemma:Einschränkung_kovarianter_Ableitungen} verwendet werden.)
+			\end{proof}
+		\end{lemma}
+		Wir wollen noch allgemein untersuchen, wie kovariante Ableitungen in lokalen Trivialisierungen aussehen.
+		\begin{lemma}
+			Sei $(\sigma_1,\ldots,\sigma_k)$ ein lokaler Rahmen über $U\subset M$ und $\phi\colon\pi^{-1}(U)\rightarrow U\times \R^k$, sodass $\phi(\sigma_i)=e_i$ die Standardbasis ist. Damit ist dann $\mathrm{span}_{\R}\lbrace (\sigma_1)_x, \ldots,(\sigma_k)_x\rbrace=E_x\cong\R^k$ und $\Gamma(E\vert_U)=\mathrm{span}_{\sm(U)}\lbrace \sigma_1,\ldots,\sigma_k\rbrace$.
+			
+			Die kovariante Ableitung des Rahmens ist wieder ein Schnitt, lässt sich also in Komponenten bezüglich dieses Rahmens schreiben, sodass die kovariante Ableitung bezüglich eines gegebenen Vektorfeldes $X\in\vf(U)$ wie eine Matrix wirkt:
+			\begin{align*}
+				(A_X)^a_b\sigma_a=\nabla_X\sigma_b
+			\end{align*}
+			
+			Man erhält punktweise ($x\in M$) lineare Abbildungen
+			\begin{align*}
+				(A_X)_x\colon\R^k&\rightarrow\R^k,\\
+				(v^1,\ldots,v^k)&\mapsto \pr_2(\phi((\nabla_X v^i\sigma_i)(x)))=((A_X)_{b,x}^av^b)e_a
+			\end{align*}
+			wobei die letzte Gleichheit wegen der $\R$-Linearität der kovarianten Ableitung und der Kompatibilität von Rahmen und Trivialisierung folgt. Damit ist $A_X$ ein Schnitt des trivialen Bündels $U\times \End(\R^k)$. Die \emph{Zusammenhangs(eins)form} ist die Abbildung $X\mapsto A_X\in\Gamma(U\times \R^k)$.
+			
+			Ist zusätzlich $U$ eine Koordinatenumgebung, dann definiert man die \emph{Zusammenhangskoeffeizienten} $A_{ib}^a:=(A_{\partial_i})^a_b$.
+			
+			Für einen beliebigen lokalen Schnitt $\sigma=f^a\sigma_a\in\Gamma(E\vert_U)$ und ein lokales Vektorfeld $X=g^i\partial_i$ (mit $f^a,g^i\in\sm(U)$) lässt sich die kovariante Ableitung dann folgendermaßen schreiben:
+			\begin{align*}
+				\nabla_X\sigma=\left( X(f^a)+(A_X)^a_bf^b\right)\sigma_a=g^i\left( \partial_i(f^a)+A^a_{ib}f^b\right)\sigma_a
+			\end{align*}
+			
+			Für Elemente $\rho_c=\tau_c^d\sigma_d$ eines anderen lokalen Rahmens und $\frac{\partial}{\partial y^j}=\frac{\partial x^i}{\partial y^j}\frac{\partial}{\partial x^i}$ einer Koordinatenbasis (wobei im ersten Faktor rechts mit $x^i$ die Koordinatenfunktionen $\varphi^i$ gemeint sind), lassen sich damit auch die Zusammenhangskoeffizienten $B^c_{jd}$ bezüglich des Rahmens $\rho$ und der Koordinaten $y$ berechnen:
+			\begin{align*}
+				B^c_{jd}&=\frac{\partial x^i}{\partial y^j}\left((\tau^{-1})^c_a\frac{\partial \tau^a_d}{\partial x^i}+(\tau^{-1})^c_aA^a_{ib}\tau^b_d\right)\\
+				B_j&= \frac{\partial x^i}{\partial y^j}\left(\tau^{-1}\frac{\partial \tau}{\partial x^i}+\tau^{-1}A_{i}\tau\right)\quad\text{als Matrizen}
+			\end{align*}
+			Man sieht dies durch Vergleich der Koeffizienten bezüglich der Basen:
+			\begin{align*}
+				\nabla_{\frac{\partial}{\partial y^j}}\rho_d&=B_{jd}^c\rho_c=B_{jd}^c\tau_c^d\sigma_d\\
+				&=\frac{\partial x^i}{\partial y^j} \left(\partial_i(\tau^a_d)+A^a_{ib}\tau^b_d\right)\sigma_a=\frac{\partial x^i}{\partial y^j} \left(\partial_i(\tau^a_d)+A^a_{ib}\tau^b_d\right)(\tau^{-1})^c_a\rho_c
+			\end{align*}
+			Beachte: Die Zusammenhangskoeffizienten sind nicht Koeffizienten eines Tensors.
+		\end{lemma}\kommB[inline]{Ist das hier zu technisch? Wollen/Brauchen wir das (Abgesehen von Beweisen)?}
+	\section{Induzierte Zusammenhänge}
+		Insbesondere interessieren uns kovariante Ableitungen entlang von Kurven $\gamma\colon I\rightarrow M$. Dies entspricht einer kovarianten Ableitung auf dem auf das Intervall $I$ zurückgezogenen Bündel. Wir müssen also die kovariante Ableitung ebenfalls zurückziehen.
+		\begin{satz}[Rückzug von kovarianten Ableitungen]
+			Sei $f\colon N\rightarrow M$.
+			
+			Für eine kovariante Ableitung $\nabla$ auf dem Vektorbündel $(E,\pi)$ gilt: $\exists!$ kovariante Ableitung $f^*\nabla\colon\vf(N)\times\Gamma(f^*E)\rightarrow \Gamma(f^*E)$ sodass für alle $X\in\vf(N),\sigma\in\Gamma(E), {p \in N}$ gilt:
+			\begin{equation*}
+				\left(\left(f^*\nabla\right)_X(f^*\sigma)\right)(p)=f^*\left(\nabla_Y\sigma\right)(p)
+			\end{equation*}
+			mit einem Vektorfeld $Y\in\vf(M)$ sodass $Y_{f(p)}=\DD f\vert_p X_p$. Diese kovariante Ableitung ist der \emph{Rückzug der kovarianten Ableitung} $\nabla$.
+			
+			Seien $A_{ib}^a$ die Zusammenhangskoeffizienten von $\nabla$ in einer Koordinatenumgebung $U\subset M$ und bezüglich eines Rahmens $\sigma_a$.
+			Fasst man $f$ in Koordinaten $u\in V\subset N$ (mit $f(V)\subset U$) als Funktion $f\colon\R^n\rightarrow\R^m$ auf, so sind die Zusammenhangskoeffizienten der zurückgezogenen kovarianten Ableitung bezüglich des Rahmens $f^*\sigma_a$ durch $\frac{\partial f^i}{\partial u^j}A_{ib}^a$ gegeben.
+			\begin{proof}
+				Auf $\vf(N)\times f^*(\Gamma(E))$ ist der Rückzug wegen der Lokalität der kovarianten Ableitungen wohldefiniert (insbesondere unabhängig von der Wahl $Y\in\vf(M)$). Linearität und Derivativität folgen aus den entsprechenden Eigenschaften der ursprünglichen kovarianten Ableitung und der Linearität des Differentials. Man setzt die kovariante Ableitung lokal derivativ auf $\Gamma(f^*E\vert_U)$ fort (da $f^*(\Gamma(E\vert_U))$ alle Schnitte $\Gamma(f^*E\vert_U)$ erzeugt). Eindeutigkeit ohne Beweis.
+			\end{proof}
+		\end{satz}
+		\begin{defn}
+			Für eine Kurve $\gamma\colon I\rightarrow M$ sei $\partial_t$ das Vektorfeld, das von der Kurve $id_I\colon I\rightarrow I$ erzeugt wird. Man erhält dann eine kovariante Ableitung auf $I$:
+			\begin{align*}
+				\nabla_t:=(\gamma^*\nabla)_{\partial_t}\colon\Gamma(\gamma^*E)\rightarrow\Gamma(\gamma^*E)
+			\end{align*}
+			Das \glqq Auswerten\grqq\ an $\partial_t$ schränkt die Allgemeinheit nicht ein, da dieses Vektorfeld ja einen globalen Rahmen des Tangentialbündels $TI$ darstellt.
+			
+			Weiter können wir $X:=\dot{\gamma}$ als Schnitt von $\gamma^*(TM)$ auffassen mit $X_t=\dot{\gamma}(t)$.  
+		\end{defn}
+	\section{Geodäten}
+		\begin{defn}[Parallele Schnitte]
+			Sei $\gamma\colon I\rightarrow M$ eine Kurve.
+			
+			Ein entlang $\gamma$ \emph{kovariant konstanter} (auch \emph{horizontaler} oder \emph{paralleler}) Schnitt ist ein $\sigma\in\Gamma(\gamma^*E)$, sodass gilt:
+			\begin{align*}
+				\nabla_t\sigma=0
+			\end{align*}
+		\end{defn}
+		\begin{lemma}
+			Sei $\gamma\colon I\rightarrow M$ eine Kurve, $a\in I$, $v\in E_{\gamma(a)}$.
+			
+			Es existiert genau ein paralleler Schnitt $\sigma\in \Gamma(\gamma^*E)$ mit $\sigma(a)=v$.
+			
+			Der Paralleltransport ist der folgende Isomorphismus von Vektorräumen:
+			\begin{align*}
+				P_{a}(b)\colon E_{\gamma(a)}\rightarrow E_{\gamma(b)}, v\mapsto \sigma(b)
+			\end{align*}
+			Mit entsprechendem Schnitt $\sigma$ wie oben, in Abhängigkeit von $v$.
+			\begin{proof}
+				In Koordinaten von $M$ und einem lokalen Rahmen $\sigma_c$ löst $\sigma=f^c\gamma^*\sigma_c$ die folgende homogene, lineare Differentialgleichung:
+				\begin{align*}
+					\dot{f}^c+A^c_{id}\dot{\gamma}^i f^d=0
+				\end{align*}
+				Man erhält die eindeutige Lösung $f^c$ mit $f^c(a)=v^c$ und $\sigma:=f^c\sigma_c$ lässt sich durch \glqq Verkleben\grqq\ von Lösungen auf ganz $I$ fortsetzen. (Man kann nach Lemma \ref{kor:Vektorbündel_über_Intervallen} erst $\gamma^*E$ global trivialisieren und die entsprechende Differentialgleichung dort lösen.)
+				
+				Der Paralleltransport ist wohldefiniert wegen der Eindeutigkeit von Lösungen linearer Differentialgleichungen. Aufgrund der Homogenität und Linearität ist der Paralleltransport außerdem linear. Für die Isomorphie wählt man $b$ und $\sigma(b)$ als neue Anfangsbedingungen. Dann ist eben $\sigma$ wieder eine Lösung und damit $P_a(b)P_b(a)=\id_{E_{\gamma(a)}}$ und analog $P_b(a)P_a(b)=\id_{E_{\gamma(b)}}$.
+			\end{proof}
+		\end{lemma}
+		Dieses Lemma gibt uns eine Anschauung davon, was die kovariante Ableitung leistet: Sie schreibt einen Zusammenhang zwischen einzelnen Fasern vor, indem sie anschaulich angibt, wann ein Schnitt entlang einer Kurve nicht variiert (Manchmal wird die kovariante Ableitung deshalb auch \glqq Zusammenhang\grqq\ genannt. Wir bleiben bei unserer Konvention).
+		
+		Man kann auch andersherum eine kovariante Ableitung aus einem Paralleltransport gewinnen:
+		\begin{lemma}
+			Sei $\gamma\colon I\rightarrow M$ eine Kurve, $a=0\in I$, $x=\gamma(0)$.
+			
+			Der Paralleltransport erfüllt die folgende Eigenschaft:
+			\begin{align*}
+				\frac{d}{dt} P^{-1}_0(t) \sigma(\gamma(t))\Big\vert_{t=0}=(\nabla_{\dot{\gamma}(0)}\sigma) (x)
+			\end{align*}
+			Aus den obigen Aussagen ist klar, dass dies nur von $\dot{\gamma}(0)$ abhängt, nicht von der ganzen Kurve. Dies erläutert anschaulich, warum man durch diese Formal auch eine kovariante Ableitung definieren kann.
+		\end{lemma}
+		
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Riemann'sche Geometrie}
+	\section{Grundlagen}
+		Wir wollen das Konzept eines Skalarproduktes auf Vektorräumen auf Vektorbündel übertragen.
+		\begin{defn}[Bündelmetrik]
+			Sei $(E,\pi)$ ein Vektorbündel über $M$.
+			
+			
+			Eine \emph{Bündelmetrik} ist ein eine Abbildung
+			\begin{equation*}
+				g\colon \Gamma(E)\times\Gamma(E)\rightarrow \sm(M), (\sigma^1,\sigma^2)\mapsto (p\mapsto g_p(\sigma^1_p,\sigma^2_p)),
+			\end{equation*}
+			(also $g\in\Gamma(E^*\otimes E^*)$) sodass an jedem Punkt $p\in M$ die Abbildung $g_p\colon E_p\times E_p\rightarrow \R$ eine nicht-degenerierte, symmetrische Bilinearform mit von $p$ unabhängiger Signatur ist.
+		\end{defn}
+		\begin{defn}[Riemann'sche Metrik]
+			Eine \emph{Riemann'sche Metrik} ist ein Bündelmetrik $g$ auf dem Tangentialbündel, sodass $g_p$ fü jeden Punkt $p\in M$ ein Skalarprodukt ist (also insbesondere positiv definit).
+			
+			In Koordinaten ist die Metrik durch eine positiv definite, symmetrische Matrix $g_{ij}$ gegeben, sodass $g=g_{ij}dx^i\otimes dx^j$ gilt. Die (Komponenten der) Inversen Matrix werden mit $g^{ij}$ bezeichnet, sodass $g_{ij}g^{jk}=\delta^k_i$.
+		\end{defn}
+		\begin{bem}
+			Man sagt auch \emph{pseudo-Riemann'sche Metrik} für eine beliebige Bündelmetrik auf dem Tangentialbündel. Physik!
+		\end{bem}
+		\begin{satz}
+			Auf jeder Mannigfaltigkeit existiert eine Riemann'sche Metrik.
+		\end{satz}
+		Wie für Vektorräume induziert ein Skalarprodukt einen Isomorphismus zum Dualraum:
+		\begin{defn}
+			Die \emph{metrischen Typänderungen} sind die folgenden punktweise definierten Abbildungen:
+			\begin{align*}
+				^{\flat}&\colon T_pM\rightarrow T_p^*M, v\mapsto v^{\flat}:=g_p(v,\cdot)\\
+				^{\sharp}&\colon T_p^*M\rightarrow T_pM, \lambda\mapsto \lambda^{\sharp}
+			\end{align*}
+			wobei $\lambda^{\sharp}\in T_pM$ der durch die Gleichung $\lambda(v)=g_p(\lambda^{\sharp},v)\forall v\in T_pM$ eindeutig definierte Vektor ist.
+			
+			Es gelten $(v^{\flat})^{\sharp}=v\;\forall v\in T_pM$ und $(\lambda^{\sharp})^{\flat}=\lambda\;\forall\lambda\in T_p^*M$.
+			
+			Man erhält dadurch einen Isomorphismus von Vektorbündeln $TM\cong T^*M$ und einen Isomorphismus von $\sm(M)$-Moduln $\vf(M)\cong \Omega^1(M)$ (Wegen der $\sm(M)$-Linearität der Metrik).
+			
+			In Koordinaten wirkt die metrische Typänderung auf Komponenten auf einfache Weise. Sei $X\in\vf(M), \omega\in\Omega^1(M)$:
+			\begin{align*}
+				(X^{\flat})_i&=g_{ij}X^j\\
+				(\omega^{\sharp})^i&=g^{ij}\omega_j
+			\end{align*}
+			wobei $g^{ij}$ wieder die Komponenten der Inversen Matrix bezeichnet.
+		\end{defn}
+	\section{Metrik und Zusammenhang}
+	\section{Der Satz von Hopf-Rinow}
+	\section{Anwendung: Lie-Gruppen}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
