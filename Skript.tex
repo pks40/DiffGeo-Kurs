@@ -828,8 +828,8 @@ Die Idee des Beweises ist, $A$ mit kleinen Kartenumgebungen zu überdecken, dere
 	Sei $M$ eine differenzierbare Mannigfaltigkeit. Es existiert eine Familie $\{(\varphi_i,W_i)\}_{i\in I}$ von Karten von $M$ sowie eine weitere Familie von offenen Mengen $\{B_i\}_{i\in I}$, $\bar B_i \subset W_i$, mit den folgenden Eigenschaften:
 	\begin{enumerate}[label=(\roman*)]
 		\item Die $B_i$ überdecken $M$.
-		\item Zu jedem Punkt $p\in M$ gibt es eine offene Umgebung $W$, die nur endlich viele der $B_i$ schneidet (d.\,h. die Überdeckung $\{B_i\}_{i\in I}$ von $M$ ist \emph{lokal endlich}).
-		\item Zu jedem $i\in I$ existiert ein $r_i > 0$ mit $\varphi_i(B_i) = B_{r_i}(0)$ (d.\,h. die Karte bildet $B_i$ auf eine Kugel ab)
+		\item Zu jedem Punkt $p\in M$ gibt es eine offene Umgebung $W$, die nur endlich viele der $B_i$ schneidet (d.\,h. die Familie $\{B_i\}_{i\in I}$ von Teilmengen von $M$ ist \emph{lokal endlich}).
+		\item Zu jedem $i\in I$ existiert ein $r_i > 0$ mit $\varphi_i(B_i) = B_{r_i}(0)$ (d.\,h. die Karte bildet $B_i$ auf eine Kugel ab).
 	\end{enumerate}
 
 	(ohne Beweis, da zu technisch/topologisch)
@@ -850,10 +850,31 @@ Die Idee des Beweises ist, $A$ mit kleinen Kartenumgebungen zu überdecken, dere
 
 	Wir definieren jetzt $F \in \sC(M)$ durch $F(p) := \sum_{i\in I} f_i(p) + \sum_{j\in J} \tilde f_j(p)$. Wegen der lokalen Endlichkeit von $\{B_i\}_i$ und $\{\tilde B_j\}_j$ sind in einer Umgebung jedes beliebigen Punktes nur endlich viele der Summanden ungleich 0, die Summe existiert also. Da die $f_i$ und $\tilde f_j$ nichtnegativ und auf $B_i$ bzw. $\tilde B_j$ jeweils positiv sind, ist $F > 0$ (da jedes $p\in M$ in einem $B_i$ oder einem $\tilde B_j$ liegt). Wenn wir also $g_i := f_i / F \in \sC(M)$ und $\tilde g_j := \tilde f_j / F \in \sC(M)$ setzen, dann ist jedes $g_i$ bzw. $\tilde g_j$ eine nichtnegative Funktion, die auf $B_i$ bzw. $\tilde B_j$ positiv ist und für die $\supp(g_i) = \bar B_i$ bzw. $\supp(\tilde g_j) = \overline{\tilde B_j}$ gilt, und es ist $\sum_i g_i + \sum_j \tilde g_j = 1$.
 
-	Da die $\tilde g_j$ jeweils außerhalb von $\overline{\tilde B_j} \subset M \setminus A$ verschwinden, verschwinden sie insbesondere auf $A$. Für $p \in A$ ist also $1 = \sum_i g_i(p) + \sum_j \underbrace{\tilde g_j(p)}_{=0} = \sum_i g_i(p)$. Der Kandidat für unsere gesuchte Funktion ist also $\psi := \sum_i g_i$. Tatsächlich gilt auch $\supp(\psi) \subset U$: Weil jedes $g_i$ nur auf $B_i$ von 0 verschieden ist, gilt $\supp(\psi) = \overline{\bigcup_i B_i} = \bigcup_i \bar B_i \subset U$, wobei bei der letzten Gleichheit benutzt wurde, dass für lokal endliche Überdeckungen $\{X_k\}_k$ eines topologischen Raumes immer $\overline{\bigcup_k X_k} = \bigcup_k \bar X_k$ gilt.
+	Da die $\tilde g_j$ jeweils außerhalb von $\overline{\tilde B_j} \subset M \setminus A$ verschwinden, verschwinden sie insbesondere auf $A$. Für $p \in A$ ist also $1 = \sum_i g_i(p) + \sum_j \underbrace{\tilde g_j(p)}_{=0} = \sum_i g_i(p)$. Der Kandidat für unsere gesuchte Funktion ist also $\psi := \sum_i g_i$. Tatsächlich gilt auch $\supp(\psi) \subset U$: Weil jedes $g_i$ nur auf $B_i$ von 0 verschieden ist, gilt $\supp(\psi) = \overline{\bigcup_i B_i} = \bigcup_i \bar B_i \subset U$, wobei bei der letzten Gleichheit benutzt wurde, dass für lokal endliche Familien $\{X_k\}_k$ von Teilmengen eines topologischen Raumes immer $\overline{\bigcup_k X_k} = \bigcup_k \bar X_k$ gilt.
 \end{proof}
 
 Anwendung: Punktweise Derivationen von $\sC(M)$ lassen sich zu Derivationen von Keimen \glqq lokalisieren\grqq\ via bump functions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Zerlegungen der Eins}
+Ein wichtiges Hilfsmittel beim Studium differenzierbarer Mannigfaltigkeiten sind sogenannte \emph{Zerlegungen der Eins}. Dies sind jeweils in den Mengen einer gegebenen offenen Überdeckung getragene Funktionen, deren Summe die konstante Einsfunktion ergibt:
+\begin{defn}
+	Sei $M$ eine differenzierbare Mannigfaltigkeit und $\{X_i\}_{i\in I}$ eine offene Überdeckung von $M$. Eine $\{X_i\}_{i\in I}$ \emph{untergeordnete Zerlegung der Eins} ist eine Familie $\{\psi_i\}_{i\in I}$ von glatten Funktionen $\psi_i \in \sC(M)$ mit:
+	\begin{enumerate}[label=(\roman*)]
+		\item Die $\psi_i$ nehmen Werte in $[0,1]$ an.
+		\item Für jedes $i\in I$ ist $\supp(\psi_i) \subset X_i$.
+		\item Die Familie $\{\supp(\psi_i)\}_{i\in I}$ ist lokal endlich.
+		\item Für alle $p\in M$ ist $\sum_{i\in I} \psi_i(p) = 1$.
+	\end{enumerate}
+\end{defn}
+
+\begin{satz}
+	Zu jeder offenen Überdeckung $\{X_i\}_{i\in I}$ einer differenzierbaren Mannigfaltigkeit $M$ gibt es eine untergeordnete Zerlegung der Eins.
+
+	\begin{proof}
+		Der Beweis ist fast derselbe wie der von Satz \ref{satz:bump_fn} über die Existenz von bump functions. Details sind uns hier egal; bei Interesse siehe Lee, Satz 2.23.
+	\end{proof}
+\end{satz}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
