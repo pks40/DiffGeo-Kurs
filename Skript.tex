@@ -1062,9 +1062,13 @@ Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar nah
 \begin{defn}[Integralkurven]
 	Sei $X \in \mathfrak X(M)$ ein Vektorfeld und $p\in M$. Eine \emph{Integralkurve von $X$ durch $p$} ist eine glatte Kurve $\gamma\colon I \to M$, wobei $I \subset \R$ ein offenes Intervall um 0 ist, mit \[\gamma(0) = p, \dot\gamma(t) = X_{\gamma(t)} \; \forall t \in I.\]
 \end{defn}
-
+Direkt aus der Definition ist klar, dass im Parameterbereich \glqq verschobene\grqq\ Integralkurven wieder Integralkurven sind:
 \begin{lemma}
-	Durch jeden Punkt $p$ existiert lokal eine Integralkurve von $X$ (d.\,h. es gibt ein Intervall $(-\varepsilon,\varepsilon)$, auf dem eine Integralkurve existiert), und diese ist eindeutig.
+Ist $\gamma\colon (a,b) \to M$ Integralkurve von $X\in\mathfrak X(M)$ durch $p\in M$, dann ist für $s \in (a,b)$ die durch $\lambda(t) := \gamma(s + t)$ definierte Kurve $\lambda\colon (a-s,b-s) \to M$ Integralkurve von $X$ durch $\gamma(s)$. \qed
+\end{lemma}
+Lokal existieren Integralkurven immer:
+\begin{lemma}
+	Durch jeden Punkt $p$ existiert lokal eine Integralkurve von $X$ (d.\,h. es gibt ein Intervall $(-\varepsilon,\varepsilon)$, auf dem eine Integralkurve existiert), und diese ist lokal eindeutig.
 
 	\begin{proof}
 		In Koordinaten $x$ um $p$ schreiben wir $X = X^i \frac{\partial}{\partial x^i}$ und führen die Notationen $\eta^i := x^i \circ \gamma$, $\tilde X^i := X^i \circ x^{-1}$ ein. Damit lauten die zu lösenden Gleichungen
@@ -1072,14 +1076,42 @@ Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar nah
 		Dies ist aber eine glatte gewöhnliche Differentialgleichung erster Ordnung für $\eta\colon I \to \R^n$, hat also nach dem Satz von Picard-Lindelöf eine lokal eindeutige Lösung.
 	\end{proof}
 \end{lemma}
-Insbesondere schneiden sich verschiedene Integralkurven eines Vektorfeldes nicht (wenn sie sich schneiden, dann sind sie gleich).
+Insbesondere schneiden sich verschiedene Integralkurven eines Vektorfeldes nicht (wenn sie sich schneiden, dann sind sie wegen der Eindeutigkeit lokal gleich, setzen einander also fort).
+
+Die Integralkurven eines Vektorfeldes fasst man oft zu einer einzigen Abbildung zusammen:
+\begin{defn}
+	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $U_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times U_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
+	\[U_p \ni t \mapsto \Phi(p,t) \in M\]
+	die maximale Integralkurve von $X$ durch $p$ ist.
+\end{defn}
+
+\begin{satz}[Eigenschaften von Flüssen]
+	Sei $\Phi\colon U \to M$ der Fluss von $X \in \mathfrak X(M)$, und seien $U_p$ wie in der vorigen Definition. Dann gilt:
+	\begin{enumerate}[label=(\roman*)]
+		\item $U \subset M \times \R$ ist offen und $\Phi$ ist glatt.
+		\item $\Phi(p,0) = p$ für alle $p \in M$.
+		\item Ist $s \in U_p$, so ist $U_{\Phi(p,s)} = \{t - s : t \in U_p\}$.
+		\item Ist $t \in U_p$ und $s \in U_{\Phi(p,t)}$, dann ist $t+s \in U_p$ und es gilt $\Phi(\Phi(p,t),s) = \Phi(p,t+s)$.
+		\item Für alle $t\in\R$ ist $M_t := \{p \in M : (t,p) \in U\}$ eine offene Teilmenge von $M$. $\Phi_t(p) := \Phi(p,t)$ definiert einen Diffeomorphismus $\Phi_t\colon M_t \to M_{-t}$.
+	\end{enumerate}
+
+	\begin{proof}
+		... \todo{Beweisen ...}
+	\end{proof}
+\end{satz}
+
 \begin{defn}
 	Ein Vektorfeld heißt \emph{vollständig}, wenn sich alle seine Integralkurven auf ganz $\R$ als Definitionsbereich fortsetzen lassen.
 \end{defn}
 \begin{satz}
 	Vektorfelder mit kompakten Träger sind vollständig.
+	
+	\begin{proof}
+		... \todo{Beweisen ...}
+	\end{proof}
 \end{satz}
-Definition Fluss, Eigenschaften. Defn. Lie-Ableitung (für Funktionen und Vektorfelder). Zeigen, dass Ableitung / Kommutator.
+
+Eigenschaften. Defn. Lie-Ableitung (für Funktionen und Vektorfelder). Zeigen, dass Ableitung / Kommutator.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
