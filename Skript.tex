@@ -890,14 +890,32 @@ Die Idee des Beweises der Existenz von Zerlegungen der Eins ist, die gegebenen o
 \section{Bump functions auf Mannigfaltigkeiten}
 Jetzt können wir bump functions konstruieren:
 \begin{kor}[Bump functions]
-	Sei $M$ eine differenzierbare Mannigfaltigkeit, $A$ eine abgeschlossene und $U \supset A$ eine offene Teilmenge von $M$. Dann gibt es eine glatte Funktion $\psi \in \sC(M)$ mit Werten in $[0,1]$ mit $\psi \equiv 1$ auf $A$ und $\supp(\psi) \subset U$.
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $A$ eine abgeschlossene und $U \supset A$ eine offene Teilmenge von $M$. Dann gibt es eine bump function für $A$ mit Träger in $U$, d.\,h. eine glatte Funktion $\psi \in \sC(M)$ mit Werten in $[0,1]$ mit $\psi \equiv 1$ auf $A$ und $\supp(\psi) \subset U$.
 
 	\begin{proof}
 		Setze $U_0 := U$ und $U_1 := M \setminus A$. Sei $\{\psi_0, \psi_1\}$ eine der offenen Überdeckung $\{U_0, U_1\}$ untergeordnete Zerlegung der Eins. Da $\supp{\psi_1} \subset U_1$ gilt, verschwindet $\psi_1$ auf $A$; dort gilt also $1 = \psi_0 + \psi_1 = \psi_0$. Außerdem ist $\supp(\psi_0) \subset U$, also ist $\psi_0$ eine Funktion mit den gesuchten Eigenschaften.
 	\end{proof}
 \end{kor}
 
-Anwendung: Punktweise Derivationen von $\sC(M)$ lassen sich zu Derivationen von Keimen \glqq lokalisieren\grqq\ via bump functions.
+Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktionskeimen $\sC_p(M)$, so lässt sich dieser natürlich insbesondere auf globale Funktionen $f \in \sC(M)$ anwenden. Als Anwendung von bump functions wollen wir zeigen, dass sich auch umgekehrt \glqq punktweise Derivationen\grqq\ von $\sC(M)$ zu Derivationen von Funktionskeimen \glqq lokalisieren\grqq\ lassen:
+\begin{lemma}
+	Sei $M$ eine differenzierbare Mannigfaltigkeit und $p\in M$. Sei $v$ eine Derivation von $\sC(M)$ bzgl. $p$, d.\,h. eine lineare Abbildung $v\colon M \to \R$ mit der Eigenschaft \[v(gh) = v(g) h(p) + g(p) v(h)\] für alle $g,h \in \sC(M)$. Dann gibt es einen eindeutigen Tangentialvektor $w \in T_pM$ mit $w([g]) = v(g)$ für alle globalen Funktionen $g \in \sC(M)$.
+
+	\begin{proof}
+		Wir zeigen zunächst die Existenz von $w$. Sei $[f] \in \sC_p(M)$ ein Funktionskeim, repräsentiert durch $f\in \sC(U)$. Wir definieren $w([f])$ wie folgt: Wir wählen eine beliebige globale Funktion $\tilde f \in \sC(M)$, die in einer offenen Umgebung $V \subset U$ mit $f$ übereinstimmt, und setzen $w([f]) := v(\tilde f)$. (Für den Fall, dass schon $U=M$ gilt, können wir einfach $\tilde f = f$ wählen und haben damit direkt die geforderte Gleichung $w([f]) = v(f)$ für globale Funktionen $f \in \sC(M)$.)
+
+		Wir müssen natürlich zeigen, dass $w$ von der Wahl der \glqq Fortsetzung\grqq\ $\tilde f$ unabhängig ist. D.\,h. wir müssen zeigen: Stimmen $g,h \in \sC(M)$ in einer offenen Umgebung $V$ von $p$ überein, so ist $v(g) = v(h)$. Um das zu sehen, wähle eine bump function $\psi \in \sC(M)$ für $\supp\{g - h\}$ mit Träger in $M\setminus \{p\}$. Da dann $g-h = (g-h)\psi$ gilt, ist \[v(g-h) = v((g-h)\psi) = v(g-h) \underbrace{\psi(p)}_{=0} + \underbrace{(g-h)(p)}_{=0} v(\psi) = 0.\]
+		Dies zeigt auch, dass $w([f])$ von der Wahl des Repräsentanten $f$ unabhängig ist.
+
+		Dass so eine Fortsetzung $\tilde f$ tatsächlich immer existiert, sieht man so: Wir wählen irgendeine offene Umgebung $V$ von $p$ mit $\overline{V} \subset U$ und eine bump function $\psi_V \in \sC(M)$ für $\overline{V}$ mit Träger in $U$ und definieren
+		\[\tilde f := \begin{cases}
+			f \cdot \psi_V & \text{auf} \; U\\
+			0 & \text{auf} \; M \setminus \supp(\psi_V).
+		\end{cases}\]
+
+		Die Eindeutigkeit von $w$ ist nun auch klar: Haben wir ein $\hat w \in T_pM$, das $\hat w([g]) = v(g)$ für alle globalen Funktionen $g$ erfüllt, so ist $\hat w([f]) = \hat w([\tilde f]) = v(\tilde f) = w([\tilde f]) = w([f])$.
+	\end{proof}
+\end{lemma}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
