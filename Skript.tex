@@ -891,9 +891,9 @@ Die Idee des Beweises der Existenz von Zerlegungen der Eins ist, die gegebenen o
 Jetzt können wir bump functions konstruieren:
 \begin{kor}[Bump functions]
 	Sei $M$ eine differenzierbare Mannigfaltigkeit, $A$ eine abgeschlossene und $U \supset A$ eine offene Teilmenge von $M$. Dann gibt es eine glatte Funktion $\psi \in \sC(M)$ mit Werten in $[0,1]$ mit $\psi \equiv 1$ auf $A$ und $\supp(\psi) \subset U$.
-	
+
 	\begin{proof}
-		\todo{Aus Zerlegung der Eins folgern.}
+		Setze $U_0 := U$ und $U_1 := M \setminus A$. Sei $\{\psi_0, \psi_1\}$ eine der offenen Überdeckung $\{U_0, U_1\}$ untergeordnete Zerlegung der Eins. Da $\supp{\psi_1} \subset U_1$ gilt, verschwindet $\psi_1$ auf $A$; dort gilt also $1 = \psi_0 + \psi_1 = \psi_0$. Außerdem ist $\supp(\psi_0) \subset U$, also ist $\psi_0$ eine Funktion mit den gesuchten Eigenschaften.
 	\end{proof}
 \end{kor}
 
