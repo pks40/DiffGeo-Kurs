@@ -827,7 +827,7 @@ Zunächst brauchen wir ein paar Definitionen.
 \begin{defn}
 	Sei $M$ ein topologischer Raum.
 	\begin{enumerate}[label=(\alph*)]
-		\item Der \emph{Träger} einer Funktion $\psi\colon M \to \R$ ist $\supp(\psi) := \overline{\{p \in M \colon f(p) \ne 0\}}$.
+		\item Der \emph{Träger} einer Funktion $\psi\colon M \to \R$ ist $\supp(\psi) := \overline{\{p \in M \colon f(p) \ne 0\}}$. (Diese Definition ergibt auch Sinn, wenn der Zielbereich von $\psi$ ein Vektorraum oder ein Vektorbündel [oder eine abelsche Gruppe, \dots] ist.)
 		\item Eine Familie $\{X_i\}_{i\in I}$ von Teilmengen von $M$ heißt \emph{lokal endlich}, wenn es zu jedem Punkt $p\in M$ eine offene Umgebung $U$ gibt, die nur endlich viele der $X_i$ schneidet.
 		\item Sei $\{X_i\}_{i\in I}$ eine Überdeckung von $M$. Eine \emph{Verfeinerung} dieser Überdeckung ist eine Überdeckung $\{Y_j\}_{j\in J}$, sodass jedes $Y_j$ in einem der $X_i$ enthalten ist.
 	\end{enumerate}
@@ -942,6 +942,11 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 \end{defn}
 Ein Vektorfeld ordnet also jedem Punkt einer Mannigfaltigkeit einen Vektor im entsprechenden Tangentialraum zu.
 
+\begin{bem}
+	Man kann Vektorfelder in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), X \in \mathfrak(X)$ definiert man $fX \in \mathfrak(X)$ durch $(fX)_p := f(p) X_p$. Mit dieser Operation wird $\mathfrak X(M)$ offensichtlich zu einem $\sC(M)$-Modul.
+	\kommP{Das allgemein zu Räumen von Schnitten?}
+\end{bem}
+
 \begin{bsp}
 	Sei $(x,U)$ eine Karte von $M$. Die Abbildungen
 	\[\frac{\partial}{\partial x^i}\colon p \mapsto \left.\frac{\partial}{\partial x^i}\right|_p, \; i = 1,\dots,n\]
@@ -956,10 +961,15 @@ Nach Konstruktion gilt die folgende Charakterisierung der Glattheit:
 	glatt sind. \qed
 \end{lemma}
 
-Ein Vektorfeld $X\in\mathfrak X(M)$ kann man auf eine Funktion $f\in\sC(M)$ anwenden: Man erhält eine Funktion $X(f) \in\sC(M)$ durch $(X(f))(p) := X_p(f)$. Diese ist glatt, denn in Koordinaten gilt einfach $X(f) = X^i \frac{\partial f}{\partial x^i}$. Man kann Vektorfelder also als $\R$-lineare Abbildungen $X\colon \sC(M) \to \sC(M)$ auffassen. Aufgrund der Produktregel für Tangentialvektoren erfüllen Vektorfelder die Produktregel \[X(fg) = X(f) g + f X(g).\]
-Umgekehrt lassen sich Vektorfelder (auf glatten Mannigfaltigkeiten) auch äquivalent als Derivationen von $\sC(M)$ charakterisieren:
-\begin{satz}[Vektorfelder als Derivationen von $\sC(M)$]
-	Sei $M$ eine differenzierbare Mannigfaltigkeit. Ist $F\colon \sC(M) \to \sC(M)$ eine Derivation, d.\,h. eine $\R$-lineare Abbildung, die $F(fg) = F(f) g + f F(g)$ für alle $f,g \in \sC(M)$ erfüllt, so gibt es ein eindeutiges Vektorfeld $X \in \mathfrak X(M)$ mit $F(f) = X(f)$.
+\begin{bem}
+	Ein Vektorfeld $X\colon M \to TM$ kann man auf eine Funktion $f\in\sC(M)$ anwenden: Man erhält eine Funktion $X(f)$ durch $(X(f))(p) := X_p(f)$. Man nennt $X(f)$ die \emph{Ableitung von $f$ in Richtung von $X$} (weil sie eben punktweise genau das ist).
+
+	Ist $X$ glatt, dann ist diese Ableitung auch glatt, denn in Koordinaten gilt einfach $X(f) = X^i \frac{\partial f}{\partial x^i}$. Man kann glatte Vektorfelder also als $\R$-lineare Abbildungen $X\colon \sC(M) \to \sC(M)$ auffassen. Aufgrund der Produktregel für Tangentialvektoren erfüllen Vektorfelder die Produktregel
+	\[X(fg) = X(f) g + f X(g).\]
+\end{bem}
+Umgekehrt lassen sich Vektorfelder (auf glatten Mannigfaltigkeiten) auch äquivalent als (globale) Derivationen von $\sC(M)$ charakterisieren:
+\begin{satz}[Vektorfelder als globale Derivationen von $\sC(M)$]
+	Sei $M$ eine differenzierbare Mannigfaltigkeit. Ist $F\colon \sC(M) \to \sC(M)$ eine (globale) Derivation, d.\,h. eine $\R$-lineare Abbildung, die $F(fg) = F(f) g + f F(g)$ für alle $f,g \in \sC(M)$ erfüllt, so gibt es ein eindeutiges Vektorfeld $X \in \mathfrak X(M)$ mit $F(f) = X(f)$.
 
 	\begin{proof}
 		Für jeden Punkt $p \in M$ soll $(F(fg))(p) = (F(f)(p)) g(p) + f(p) (F(g))(p)$ gelten. Da die Abbildung $\sC(M) \ni f \mapsto (F(f))(p) \in \mathbb R$ außerdem $\R$-linear ist, gibt es nach Lemma \ref{lemma:tangtvek_punktw_deriv} also einen eindeutigen Tangentialvektor $X_p \in T_pM$ mit $(F(f))(p) = X_p(f)$.
@@ -967,14 +977,109 @@ Umgekehrt lassen sich Vektorfelder (auf glatten Mannigfaltigkeiten) auch äquiva
 		Wir müssen nur noch zeigen, dass das so definierte Vektorfeld $X\colon M \to TM$ glatt ist. Schreiben wir dazu bzgl. einer Karte $(x,U)$ das Vektorfeld lokal als $X|_U = X^i \frac{\partial}{\partial x^i}$, so müssen wir zeigen, dass die Funktionen $X^i \colon U \to \mathbb R$ glatt sind. Sei dafür $p \in U$. Wir wählen Funktionen $\tilde x^i \in \sC(M)$, die in einer offenen Umgebung $V$ von $p$ mit den $x^i$ übereinstimmen. Für $q \in V$ ist dann $X^i(q) = X^j(q) \delta^i_j = X^j(q) \frac{\partial x^i}{\partial x^j}(q) = X^j(q) \frac{\partial \tilde x^i}{\partial x^j}(q) = X_q (\tilde x^i)$, d.\,h. auf $V$ stimmt $X^i$ mit $X(\tilde x^i) = F(\tilde x^i)$ überein. Letzteres ist aber eine glatte Funktion auf ganz $M$, also ist $X^i$ glatt auf $V$. Da $p$ beliebig war, ist damit $X^i$ glatt auf $U$.
 	\end{proof}
 \end{satz}
+Der letzte Teil des vorherigen Beweises zeigt außerdem:
+\begin{kor}
+	Ist $X\colon M \to TM$ ein Vektorfeld auf $M$, sodass $X(f)$ für jede glatte Funktion $f \in \sC(M)$ wieder glatt ist, so ist $X$ glatt. \qed
+\end{kor}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Pushforward und Kommutator}
-Definitionen
+\section{Der Kommutator}
+
+\begin{defn}
+	Für zwei Vektorfelder $X, Y \in \mathfrak X(M)$ definiert man den \emph{Kommutator} $[X,Y] \in \mathfrak X(M)$ als das Vektorfeld, das auf glatten Funktionen $f\in \sC(M)$ wirkt als
+	\[[X,Y](f) := X(Y(f)) - Y(X(f)).\]
+\end{defn}
+
+\begin{prop}
+	$[X,Y](f) := X(Y(f)) - Y(X(f))$ definiert tatsächlich eine Derivation von $\sC(M)$ und damit ein Vektorfeld.
+
+	\begin{proof}
+		Direktes Nachrechnen (Übung).
+	\end{proof}
+\end{prop}
+
+Später werden wir eine geometrische Interpretation des Kommutators kennenlernen.
+
+\begin{lemma}[Eigenschaften des Kommutators] \label{lemma:kommut}
+	Der Kommutator von Vektorfeldern erfüllt die folgenden Eigenschaften:
+	\begin{enumerate}[label=(\alph*)]
+		\item \label{lemma:kommut_1} $[\cdot,\cdot] \colon \mathfrak X(M) \times \mathfrak X(M) \to \mathfrak X(M)$ ist $\R$-bilinear.
+		\item \label{lemma:kommut_2} Für beliebige Vektorfelder $X,Y \in \mathfrak X(M)$ gilt $[X,Y] = -[Y,X]$ (\emph{Antisymmetrie}).
+		\item \label{lemma:kommut_3} Für beliebige Vektorfelder $X,Y,Z \in \mathfrak X(M)$ gilt $[X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0$ (\emph{Jacobi-Identität}).
+		\item \label{lemma:kommut_4} Für $X,Y \in \mathfrak X(M)$ und $f \in \sC(M)$ ist $[X,fY] = f[X,Y] + X(f) Y$.
+	\end{enumerate}
+	\bewUeb
+\end{lemma}
+\begin{bem}
+	Die Eigenschaften \ref{lemma:kommut_1}, \ref{lemma:kommut_2} und \ref{lemma:kommut_3} besagen, dass $(\mathfrak X(M), [\cdot,\cdot])$ eine sogenannte \emph{Lie-Algebra} über $\R$ ist.
+\end{bem}
+
+\begin{lemma}[Kommutator in Koordinaten]
+	Sei $x$ eine Karte von $M$.
+	\begin{enumerate}[label=(\alph*)]
+		\item Für die Koordinatenvektorfelder gilt
+			\[\left[\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j}\right] = 0.\]
+		\item Für $X = X^i \frac{\partial}{\partial x^i}, Y = Y^i \frac{\partial}{\partial x^i}$ ist
+			\[[X,Y] = \left(X^j\frac{\partial Y^i}{\partial x^j} - Y^j\frac{\partial X^i}{\partial x^j}\right) \frac{\partial}{\partial x^i}.\]
+	\end{enumerate}
+
+	\begin{proof}
+		Dass von derselben Karte induzierte Koordinatenvektorfelder kommutieren, folgt aus dem Satz von Schwarz (Vertauschbarkeit von partiellen Ableitungen); die Koordinatenformel folgt dann mit Lemma \ref{lemma:kommut} \ref{lemma:kommut_4}.
+	\end{proof}
+\end{lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Transport von Vektorfeldern}
+Hat man einen Diffeomorphismus $\phi\colon M\to N$, dann kann man damit Vektorfelder von $M$ nach $N$ \glqq transportieren\grqq:
+\begin{defn}
+	Sei $\phi\colon M \to N$ ein Diffeomorphismus und $X \in \mathfrak X(M)$. Der \emph{Pushforward von $X$ entlang von $\phi$} ist das Vektorfeld $\phi_*X \in \mathfrak X(M)$ definiert durch
+	\[(\phi_*X)_q := \DD\phi|_{\phi^{-1}(q)}(X_{\phi^{-1}(q)}) \quad \text{für} \; q \in N\]
+	bzw.
+	\[(\phi_*X)_{\phi(p)} = \DD\phi|_{p}(X_p) \quad \text{für} \; p \in M.\]
+\end{defn}
+Man tut also das Einzige, was man sinnvoll tun kann, um aus $X$ ein Vektorfeld auf $N$ zu erhalten: Man bildet die entsprechenden Tangentialvektoren mit dem Differential von $\phi$ von $M$ nach $N$ ab. In die andere Richtung funktioniert das natürlich auch:
+\begin{defn}
+	Der \emph{Pullback von $X \in \mathfrak X(N)$ entlang von $\phi\colon M \to N$} ist $\phi^*X := (\phi^{-1})_*X$, also
+	\[(\phi^*X)(p) := \DD(\phi^{-1})|_{\phi(p)}(X_{\phi(p)}) \quad \text{für} \; p \in M.\]
+\end{defn}
+
+Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar naheliegenderweise als $\phi_*f := f \circ \phi^{-1}$ und $\phi^*g := g \circ \phi$ für einen Diffeomorphismus $\phi\colon M \to N$ und $f \in \sC(M), g \in \sC(N)$.
+
+\begin{lemma}
+	Für einen Diffeomorphismus $\phi\colon M \to N$, $f \in \sC(M)$ und $X \in \mathfrak X(M)$ ist $\phi_*(f X) = \phi_*f \cdot \phi_*X$. Außerdem ist $\phi_*(X(f)) = (\phi_*X)(\phi_*f)$
+	\bewUeb
+\end{lemma}
+
+\begin{lemma}[Pushforward in Koordinaten]
+	Sind $x$ Koordinaten für $M$ und $y$ Koordinaten für $N$, so berechnet sich der Pushforward von $X = X^i \frac{\partial}{\partial x^i}$ zu $\phi_*X = (\phi_*X)^i \frac{\partial}{\partial y^i}$ mit
+	\[(\phi_*X)^i = \left(X^i \frac{\partial (y^j \circ \phi)}{\partial x^i}\right) \circ \phi^{-1}.\]
+	\bewUeb
+\end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Integralkurven und die Lie-Ableitung}
-Definition von Integralkurven, Existenz per Picard-Lindelöf. Definition Fluss, Eigenschaften. Defn. Lie-Ableitung (für Funktionen und Vektorfelder). Zeigen, dass Ableitung / Kommutator.
+
+\begin{defn}[Integralkurven]
+	Sei $X \in \mathfrak X(M)$ ein Vektorfeld und $p\in M$. Eine \emph{Integralkurve von $X$ durch $p$} ist eine glatte Kurve $\gamma\colon I \to M$, wobei $I \subset \R$ ein offenes Intervall um 0 ist, mit \[\gamma(0) = p, \dot\gamma(t) = X_{\gamma(t)} \; \forall t \in I.\]
+\end{defn}
+
+\begin{lemma}
+	Durch jeden Punkt $p$ existiert lokal eine Integralkurve von $X$ (d.\,h. es gibt ein Intervall $(-\varepsilon,\varepsilon)$, auf dem eine Integralkurve existiert), und diese ist eindeutig.
+
+	\begin{proof}
+		In Koordinaten $x$ um $p$ schreiben wir $X = X^i \frac{\partial}{\partial x^i}$ und führen die Notationen $\eta^i := x^i \circ \gamma$, $\tilde X^i := X^i \circ x^{-1}$ ein. Damit lauten die zu lösenden Gleichungen
+		\[\eta^i(0) = x^i(p), \dot \eta^i(t) = \tilde X^i(\eta(t)).\]
+		Dies ist aber eine glatte gewöhnliche Differentialgleichung erster Ordnung für $\eta\colon I \to \R^n$, hat also nach dem Satz von Picard-Lindelöf eine lokal eindeutige Lösung.
+	\end{proof}
+\end{lemma}
+Insbesondere schneiden sich verschiedene Integralkurven eines Vektorfeldes nicht (wenn sie sich schneiden, dann sind sie gleich).
+\begin{defn}
+	Ein Vektorfeld heißt \emph{vollständig}, wenn sich alle seine Integralkurven auf ganz $\R$ als Definitionsbereich fortsetzen lassen.
+\end{defn}
+\begin{satz}
+	Vektorfelder mit kompakten Träger sind vollständig.
+\end{satz}
+Definition Fluss, Eigenschaften. Defn. Lie-Ableitung (für Funktionen und Vektorfelder). Zeigen, dass Ableitung / Kommutator.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
