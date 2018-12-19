@@ -628,6 +628,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 			\begin{enumerate}
 				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
 				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$. Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
+				\kommP{Bündelatlas konstruieren? Als Übung?}
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}[Rahmen]
@@ -897,8 +898,21 @@ Jetzt können wir bump functions konstruieren:
 	\end{proof}
 \end{kor}
 
+Mit bump functions können wir lokal definierte Funktionen zu globalen Funktionen fortsetzen:
+\begin{kor}
+	Seien $M$ eine differenzierbare Mannigfaltigkeit, $V \subset U \subset M$ offene Teilmengen mit $\overline{V} \subset U$ und $f \in \sC(U)$ eine glatte Funktion. Dann gibt es eine globale Funktion $\tilde f \in \sC(M)$, die auf $V$ mit $f$ übereinstimmt.
+
+	\begin{proof}
+		Wir wählen eine bump function $\psi \in \sC(M)$ für $\overline{V}$ mit Träger in $U$ und definieren
+		\[\tilde f := \begin{cases}
+		f \cdot \psi & \text{auf} \; U\\
+		0 & \text{auf} \; M \setminus \supp(\psi).
+		\end{cases}\]
+	\end{proof}
+\end{kor}
+
 Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktionskeimen $\sC_p(M)$, so lässt sich dieser natürlich insbesondere auf globale Funktionen $f \in \sC(M)$ anwenden. Als Anwendung von bump functions wollen wir zeigen, dass sich auch umgekehrt \glqq punktweise Derivationen\grqq\ von $\sC(M)$ zu Derivationen von Funktionskeimen \glqq lokalisieren\grqq\ lassen:
-\begin{lemma}
+\begin{lemma}[Tangentialvektoren als punktweise Derivationen] \label{lemma:tangtvek_punktw_deriv}
 	Sei $M$ eine differenzierbare Mannigfaltigkeit und $p\in M$. Sei $v$ eine Derivation von $\sC(M)$ bzgl. $p$, d.\,h. eine lineare Abbildung $v\colon M \to \R$ mit der Eigenschaft \[v(gh) = v(g) h(p) + g(p) v(h)\] für alle $g,h \in \sC(M)$. Dann gibt es einen eindeutigen Tangentialvektor $w \in T_pM$ mit $w([g]) = v(g)$ für alle globalen Funktionen $g \in \sC(M)$.
 
 	\begin{proof}
@@ -906,12 +920,6 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 
 		Wir müssen natürlich zeigen, dass $w$ von der Wahl der \glqq Fortsetzung\grqq\ $\tilde f$ unabhängig ist. D.\,h. wir müssen zeigen: Stimmen $g,h \in \sC(M)$ in einer offenen Umgebung $V$ von $p$ überein, so ist $v(g) = v(h)$. Um das zu sehen, wähle eine bump function $\psi \in \sC(M)$ für $\supp\{g - h\}$ mit Träger in $M\setminus \{p\}$. Da dann $g-h = (g-h)\psi$ gilt, ist \[v(g-h) = v((g-h)\psi) = v(g-h) \underbrace{\psi(p)}_{=0} + \underbrace{(g-h)(p)}_{=0} v(\psi) = 0.\]
 		Dies zeigt auch, dass $w([f])$ von der Wahl des Repräsentanten $f$ unabhängig ist.
-
-		Dass so eine Fortsetzung $\tilde f$ tatsächlich immer existiert, sieht man so: Wir wählen irgendeine offene Umgebung $V$ von $p$ mit $\overline{V} \subset U$ und eine bump function $\psi_V \in \sC(M)$ für $\overline{V}$ mit Träger in $U$ und definieren
-		\[\tilde f := \begin{cases}
-			f \cdot \psi_V & \text{auf} \; U\\
-			0 & \text{auf} \; M \setminus \supp(\psi_V).
-		\end{cases}\]
 
 		Die Eindeutigkeit von $w$ ist nun auch klar: Haben wir ein $\hat w \in T_pM$, das $\hat w([g]) = v(g)$ für alle globalen Funktionen $g$ erfüllt, so ist $\hat w([f]) = \hat w([\tilde f]) = v(\tilde f) = w([\tilde f]) = w([f])$.
 	\end{proof}
@@ -927,7 +935,38 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Grundlegendes}
-Definition: Schnitt im Tangentialbündel. Zeigen, dass äquivalent zu (globalen) Derivationen von $\sC(M)$.
+\begin{defn}
+	Ein (glattes) \emph{Vektorfeld} auf einer differenzierbaren Mannigfaltigkeit $M$ ist ein (glatter) Schnitt des Tangentialbündels $TM$, also eine (glatte) Abbildung $X\colon M \to TM$, sodass $X(p) \in T_pM$ für alle $p\in M$ gilt. Statt $X(p)$ schreiben wir im Folgenden meist $X_p$.
+
+	Den Raum der glatten Vektorfelder auf $M$ schreiben wir als $\mathfrak X(M) := \Gamma(TM)$
+\end{defn}
+Ein Vektorfeld ordnet also jedem Punkt einer Mannigfaltigkeit einen Vektor im entsprechenden Tangentialraum zu.
+
+\begin{bsp}
+	Sei $(x,U)$ eine Karte von $M$. Die Abbildungen
+	\[\frac{\partial}{\partial x^i}\colon p \mapsto \left.\frac{\partial}{\partial x^i}\right|_p, \; i = 1,\dots,n\]
+	sind lokal definierte Vektorfelder $\frac{\partial}{\partial x^i} \in \mathfrak X(U)$, die von der Karte $x$ \emph{induzierten Koordinatenvektorfelder}; glatt sind sie nach Konstruktion des Tangentialbündels. Sie bilden einen lokalen Rahmen von $TM$ über $U$.
+\end{bsp}
+
+Nach Konstruktion gilt die folgende Charakterisierung der Glattheit:
+\kommP{Das allgemeiner als Bemerkung in das Vektorbündel-Kapitel, also dass Schnitte genau dann glatt sind, wenn die Koeffizienten bzgl. glatter lokaler Rahmen glatte Funktionen sind?}
+\begin{lemma}
+	Sei $(x,U)$ eine Karte von $M$. Ein lokal definiertes Vektorfeld $X\colon U \to TU$ ist genau dann glatt, wenn die Koeffizientenfunktionen $X^i\colon U \to \R$ in der Entwicklung
+	\[X = X^i \frac{\partial}{\partial x^i}\]
+	glatt sind. \qed
+\end{lemma}
+
+Ein Vektorfeld $X\in\mathfrak X(M)$ kann man auf eine Funktion $f\in\sC(M)$ anwenden: Man erhält eine Funktion $X(f) \in\sC(M)$ durch $(X(f))(p) := X_p(f)$. Diese ist glatt, denn in Koordinaten gilt einfach $X(f) = X^i \frac{\partial f}{\partial x^i}$. Man kann Vektorfelder also als $\R$-lineare Abbildungen $X\colon \sC(M) \to \sC(M)$ auffassen. Aufgrund der Produktregel für Tangentialvektoren erfüllen Vektorfelder die Produktregel \[X(fg) = X(f) g + f X(g).\]
+Umgekehrt lassen sich Vektorfelder (auf glatten Mannigfaltigkeiten) auch äquivalent als Derivationen von $\sC(M)$ charakterisieren:
+\begin{satz}[Vektorfelder als Derivationen von $\sC(M)$]
+	Sei $M$ eine differenzierbare Mannigfaltigkeit. Ist $F\colon \sC(M) \to \sC(M)$ eine Derivation, d.\,h. eine $\R$-lineare Abbildung, die $F(fg) = F(f) g + f F(g)$ für alle $f,g \in \sC(M)$ erfüllt, so gibt es ein eindeutiges Vektorfeld $X \in \mathfrak X(M)$ mit $F(f) = X(f)$.
+
+	\begin{proof}
+		Für jeden Punkt $p \in M$ soll $(F(fg))(p) = (F(f)(p)) g(p) + f(p) (F(g))(p)$ gelten. Da die Abbildung $\sC(M) \ni f \mapsto (F(f))(p) \in \mathbb R$ außerdem $\R$-linear ist, gibt es nach Lemma \ref{lemma:tangtvek_punktw_deriv} also einen eindeutigen Tangentialvektor $X_p \in T_pM$ mit $(F(f))(p) = X_p(f)$.
+
+		Wir müssen nur noch zeigen, dass das so definierte Vektorfeld $X\colon M \to TM$ glatt ist. Schreiben wir dazu bzgl. einer Karte $(x,U)$ das Vektorfeld lokal als $X|_U = X^i \frac{\partial}{\partial x^i}$, so müssen wir zeigen, dass die Funktionen $X^i \colon U \to \mathbb R$ glatt sind. Sei dafür $p \in U$. Wir wählen Funktionen $\tilde x^i \in \sC(M)$, die in einer offenen Umgebung $V$ von $p$ mit den $x^i$ übereinstimmen. Für $q \in V$ ist dann $X^i(q) = X^j(q) \delta^i_j = X^j(q) \frac{\partial x^i}{\partial x^j}(q) = X^j(q) \frac{\partial \tilde x^i}{\partial x^j}(q) = X_q (\tilde x^i)$, d.\,h. auf $V$ stimmt $X^i$ mit $X(\tilde x^i) = F(\tilde x^i)$ überein. Letzteres ist aber eine glatte Funktion auf ganz $M$, also ist $X^i$ glatt auf $V$. Da $p$ beliebig war, ist damit $X^i$ glatt auf $U$.
+	\end{proof}
+\end{satz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Pushforward und Kommutator}
