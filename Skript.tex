@@ -403,7 +403,7 @@ Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise 
 \begin{kor} \label{kor:entw_tangt_Rn}
 	Die Entwicklung eines Tangentialvektors $w \in T_p\mathbb R^n$ in dieser Basis ist
 	\[w = \sum_{i=1}^n w(\pr^i) \left.\partial_i\right|_p,\]
-	wobei $\pr^i\colon \mathbb R^n \to R, \pr^j(a) = a^j$ die Projektion auf die $i$-te Komponente ist.
+	wobei $\pr^i\colon \mathbb R^n \to \mathbb R, \pr^j(a) = a^j$ die Projektion auf die $i$-te Komponente ist.
 
 	\begin{proof}
 		Das ergibt sich direkt aus dem Beweis von Satz \ref{satz:tangt_vr}, da die Projektionen $\pr^i$ die zu $\e_i$ duale Basis von $(\mathbb R^n)^*$ bilden.
@@ -550,6 +550,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 
 \section{Untermannigfaltigkeiten}
 \kommP{Weglassen? Brauchen wir nicht später, und wir haben eh zu wenig Zeit, und das Kapitel ist eh zu voll ...}
+\kommB{Ja!}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -590,7 +591,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}[Schnitt]
-			Eine Abbildung $\sigma\colon M\rightarrow P$ heißt (globaler) \emph{Schnitt}, wenn $\pi\circ\sigma=\id_M$, also $\sigma(x)\in P_x\, \forall x\in M$. Analog heißt für eine offene Menge $U\subset M$ eine Abbildung $\sigma\colon U\rightarrow P\vert_U$ \emph{lokaler Schnitt}, wenn $\pi\circ\sigma=\id_U$.
+			Eine (glatte) Abbildung $\sigma\colon M\rightarrow P$ heißt (globaler) \emph{Schnitt}, wenn $\pi\circ\sigma=\id_M$, also $\sigma(x)\in P_x\, \forall x\in M$. Analog heißt für eine offene Menge $U\subset M$ eine Abbildung $\sigma\colon U\rightarrow P\vert_U$ \emph{lokaler Schnitt}, wenn $\pi\circ\sigma=\id_U$.
 
 			Die Menge aller globalen Schnitte wird mit $\Gamma(P)$ bezeichnet, die der lokalen Schnitte mit $\Gamma(P\vert_U)$.
 		\end{defn}
@@ -630,6 +631,13 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 			\end{center}
 			also $\pi_b\circ F=f\circ\pi_a$.
 		\end{defn}
+		
+		
+		\begin{bem}
+			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)_p := f(p) \sigma_p$. Mit dieser Operation wird $\Gamma(E)$ offensichtlich zu einem $\sC(M)$-Modul.
+		\end{bem}
+
+		
 		\begin{bsp}\hfill
 			\begin{enumerate}
 				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
@@ -638,7 +646,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}[Rahmen]
-			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_2)\in\Gamma(P\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet. 
+			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_n)\in\Gamma(P\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet. 
 			
 			Beachte: Ist $(\phi,U)$ eine Trivialisierung und $(e_1,\ldots,e_n)$ die Standardbasis von $\R^n$, dann ist mit $\sigma_i(x):=\phi^{-1}(x,e_i)$ das Tupel $(\sigma_1,\ldots,\sigma_n)$ ein lokaler Rahmen über $U$.
 			
@@ -646,7 +654,13 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 		\end{defn}
 		\begin{satz}
 			Ein Vektorbündel besitzt genau dann einen globalen Rahmen, wenn es trivial ist (das heißt isomorph zum trivialen Bündel).
+			\bewUeb
 		\end{satz}
+		
+		\begin{lemma}
+			Ein lokaler Schnitt $\sigma\colon U\rightarrow E$ ist genau dann glatt, wenn für einen einen lokalen Rahmen $(\sigma_1,\ldots,\sigma_n)$ mit $\sigma=f^i\sigma_i$ die Koeffizientenfunktionen $f^i\colon U\rightarrow \R$ glatt sind. 
+		\end{lemma}
+		
 		Später brauchen wir noch folgendes Ergebnis:
 		\begin{kor}\label{kor:Vektorbündel_über_Intervallen}
 			Vektorbündel über offenen Intervallen sind trivial.
@@ -924,7 +938,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 	\begin{proof}
 		Wir zeigen zunächst die Existenz von $w$. Sei $[f] \in \sC_p(M)$ ein Funktionskeim, repräsentiert durch $f\in \sC(U)$. Wir definieren $w([f])$ wie folgt: Wir wählen eine beliebige globale Funktion $\tilde f \in \sC(M)$, die in einer offenen Umgebung $V \subset U$ mit $f$ übereinstimmt, und setzen $w([f]) := v(\tilde f)$. (Für den Fall, dass schon $U=M$ gilt, können wir einfach $\tilde f = f$ wählen und haben damit direkt die geforderte Gleichung $w([f]) = v(f)$ für globale Funktionen $f \in \sC(M)$.)
 
-		Wir müssen natürlich zeigen, dass $w$ von der Wahl der \glqq Fortsetzung\grqq\ $\tilde f$ unabhängig ist. D.\,h. wir müssen zeigen: Stimmen $g,h \in \sC(M)$ in einer offenen Umgebung $V$ von $p$ überein, so ist $v(g) = v(h)$. Um das zu sehen, wähle eine bump function $\psi \in \sC(M)$ für $\supp\{g - h\}$ mit Träger in $M\setminus \{p\}$. Da dann $g-h = (g-h)\psi$ gilt, ist \[v(g-h) = v((g-h)\psi) = v(g-h) \underbrace{\psi(p)}_{=0} + \underbrace{(g-h)(p)}_{=0} v(\psi) = 0.\]
+		Wir müssen natürlich zeigen, dass $w$ von der Wahl der \glqq Fortsetzung\grqq\ $\tilde f$ unabhängig ist. D.\,h. wir müssen zeigen: Stimmen $g,h \in \sC(M)$ in einer offenen Umgebung $V$ von $p$ überein, so ist $v(g) = v(h)$. Um das zu sehen, wähle eine bump function $\psi \in \sC(M)$ für $\supp\{g - h\}$\kommB{Was meinst du hier? Der Träger von $g-h$ ist doch egal...} mit Träger in $M\setminus \{p\}$. Da dann $g-h = (g-h)\psi$ gilt, ist \[v(g-h) = v((g-h)\psi) = v(g-h) \underbrace{\psi(p)}_{=0} + \underbrace{(g-h)(p)}_{=0} v(\psi) = 0.\]
 		Dies zeigt auch, dass $w([f])$ von der Wahl des Repräsentanten $f$ unabhängig ist.
 
 		Die Eindeutigkeit von $w$ ist nun auch klar: Haben wir ein $\hat w \in T_pM$, das $\hat w([g]) = v(g)$ für alle globalen Funktionen $g$ erfüllt, so ist $\hat w([f]) = \hat w([\tilde f]) = v(\tilde f) = w([\tilde f]) = w([f])$.
@@ -935,6 +949,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 	Da eine analytische Funktion, die auf einer offenen Menge verschwindet, überall verschwindet, gibt es keine analytischen bump functions. Auf analytischen Mannigfaltigkeiten funktioniert daher der vorherige Beweis nicht, und tatsächlich sind auf einer analytischen Mannigfaltigkeit $M$ im Allgemeinen \glqq punktweise Derivationen\grqq\ von $\mathcal C^\omega(M)$ nicht dasselbe wie Derivationen von analytischen Funktionskeimen $\mathcal C^\omega_p(M)$.
 \end{bem}
 
+\kommB[inline]{Insgesamt finde ich es wichtig, Zerlegungen der Eins und bump functions gesehen zu haben, aber die Beweise hier finde ich alle sehr technisch... Findest du, dass wir das machen müssen (und nicht nur sagen können: Solche Funktionen gibt es)? Also Zerlegung der Eins muss man ja quasi so machen, aber die Funktionen so explizit zu konstruieren bzw. Existenz von Allem zu zeigen ist eben sehr aufwendig, findest du nicht?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorfelder}
@@ -944,14 +959,11 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 \begin{defn}
 	Ein (glattes) \emph{Vektorfeld} auf einer differenzierbaren Mannigfaltigkeit $M$ ist ein (glatter) Schnitt des Tangentialbündels $TM$, also eine (glatte) Abbildung $X\colon M \to TM$, sodass $X(p) \in T_pM$ für alle $p\in M$ gilt. Statt $X(p)$ schreiben wir im Folgenden meist $X_p$.
 
+\kommB{Habe jetzt hier den Teil zu $\mathfrak{X}$ als $\sC(M)$-Modul herausgenommen und im Vektorbündel-Kapitel eingefügt. Ich fand, das fehlt dann an dieser Stelle nicht. Sollen wir es mit der Differenzierbarkeit ebenso machen?}
+
 	Den Raum der glatten Vektorfelder auf $M$ schreiben wir als $\mathfrak X(M) := \Gamma(TM)$
 \end{defn}
 Ein Vektorfeld ordnet also jedem Punkt einer Mannigfaltigkeit einen Vektor im entsprechenden Tangentialraum zu.
-
-\begin{bem}
-	Man kann Vektorfelder in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), X \in \mathfrak(X)$ definiert man $fX \in \mathfrak(X)$ durch $(fX)_p := f(p) X_p$. Mit dieser Operation wird $\mathfrak X(M)$ offensichtlich zu einem $\sC(M)$-Modul.
-	\kommP{Das allgemein zu Räumen von Schnitten?}
-\end{bem}
 
 \begin{bsp}
 	Sei $(x,U)$ eine Karte von $M$. Die Abbildungen
@@ -1047,7 +1059,7 @@ Man tut also das Einzige, was man sinnvoll tun kann, um aus $X$ ein Vektorfeld a
 \begin{defn}
 	Der \emph{Pullback von $X \in \mathfrak X(N)$ entlang von $\phi\colon M \to N$} ist $\phi^*X := (\phi^{-1})_*X$, also
 	\[(\phi^*X)(p) := \DD(\phi^{-1})|_{\phi(p)}(X_{\phi(p)}) \quad \text{für} \; p \in M.\]
-\end{defn}
+\end{defn}\kommB{Hier sollte noch eine Anmerkung zum Rückzug von Schnitten hin, damit klar ist, dass das hier eine \glqq echte Erweiterung\grqq\ ist.}
 
 Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar naheliegenderweise als $\phi_*f := f \circ \phi^{-1}$ und $\phi^*g := g \circ \phi$ für einen Diffeomorphismus $\phi\colon M \to N$ und $f \in \sC(M), g \in \sC(N)$.
 
@@ -1105,7 +1117,7 @@ Insbesondere können wir jede Integralkurve eindeutig auf ein maximales Existenz
 Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \begin{defn}[Fluss]
 	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $U_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times U_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
-	\[U_p \ni t \mapsto \Phi(p,t) \in M\]
+	\[U_p \ni t \mapsto \Phi(p,t) \in M\] \kommB{Möchtest du das nicht lieber $I_p$ nennen?}
 	die maximale Integralkurve von $X$ durch $p$ ist.
 \end{defn}
 
@@ -1142,6 +1154,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \begin{defn}[Lie-Ableitung]
 	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$) definiert durch
 	\[(\mathcal L_X T)(p) := \left.\frac{\D(\Phi_t^* T)(p)}{\D t}\right|_{t=0} = \lim_{t\to 0} \frac{(\Phi_t^* T)(p) - T(p)}{t},\]
+	\kommB[inline]{Vllt möchte man hier noch irgendwas dazu sagen, dass $(\Phi_t^* T)(p)$ für Vektorfelder $T$ eine Kurve im Tangentialbündel beschreibt (und man dann eben punktweise ($\forall p \in M$) die Tangentialräume des Bündels mit den Fasern identifiziert. Ich fand das damals immer irritierend, dass auf einmal überall solche $\frac{d}{dt}$ Ableitungen von Objekten auf Mf standen...}
 	wobei $\Phi$ der Fluss von $X$ ist. Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir es \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
 
 	Lokal um jeden Punkt $p$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn.
