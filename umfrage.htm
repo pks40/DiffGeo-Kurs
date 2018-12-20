@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Umfrage zu „Einführung in die Differentialgeometrie“</title>
+<meta charset="utf-8">
+<style>
+	li {margin-bottom: 1em;}
+</style>
+</head>
+
+<body>
+<h1 style="text-align:center">CdE-WinterAkademie 2018/19 – „Einführung in die Differentialgeometrie“: Teilnehmerumfrage</h1>
+
+<div>Liebe Teilnehmer unseres Kurses,
+<br/>um euch und euren Wissensstand ein bisschen kennenzulernen, würden wir euch bitten, die folgende Umfrage auszufüllen. Die Ergebnisse werden per E-Mail an uns geschickt.
+<br/>Alle Angaben sind natürlich freiwillig; allerdings freuen wir uns sehr über möglichst vollständige Formulare und ihr helft uns damit bei der weiteren Kursplanung.
+<br/>Benni und Philip
+</div>
+
+<form action="senden.php" method="post" accept-charset="UTF-8">
+<ul>
+<li>Name:<br/><input name="Name" type="text" size="30" maxlength="50"></li>
+
+<li>Bitte beschreibe kurz, was du gerade machst und wo (also z.&thinsp;B. „Schüler 12. Klasse in Bayern“, „Studentin Literaturwissenschaft 5. Semester in Hintertupfingen“, „Nach FSJ im Zirkus gerade mit dem Mathestudium angefangen“, …):<br/><textarea name="Tätigkeit" cols="75" rows="5"></textarea></li>
+
+<li>Warum hast du diesen Kurs gewählt? Was erwartest du?<br/><textarea name="Erwartungen" cols="75" rows="5"></textarea></li>
+
+<li>Weißt du schon etwas über Differentialgeometrie? Wenn ja: Wie viel und woher? (grobe Beschreibung reicht)<br/><textarea name="Vorwissen DiffGeo" cols="75" rows="5"></textarea></li>
+
+<li>Wie ist (grob gefasst) deine mathematische Vorbildung? (z.&thinsp;B. „Mathe-LK“, „Vorlesung ‚Mathematische Methoden der Physik‘“, „Einführungsvorlesungen in LinA und Ana“, „Promotion in Algebra“, …)<br/><textarea name="Vorwissen Mathe" cols="75" rows="5"></textarea></li>
+
+<li>Bitte gib bei den folgenden (inhaltlichen) Dingen an, wie gut du sie kennst. Dabei bedeuten in etwa:
+
+	<br/><table>
+		<tr><td>1:</td><td>„Beherrsche ich sehr gut und sicher.“</td></tr>
+		<tr><td>2:</td><td>„Ich kann einigermaßen damit umgehen.“</td></tr>
+		<tr><td>3:</td><td>„Ist mir schon mal über den Weg gelaufen, aber ich weiß nicht wirklich etwas darüber.“</td></tr>
+		<tr><td>4:</td><td>„Habe ich noch nie gehört.“</td></tr>
+	</table><br/>
+
+	Es sind bewusst auch Dinge dabei, von denen ihr ziemlich sicher noch nie etwas oder noch nicht viel gehört habt (vor allem im unteren Bereich). Wenn ihr alle Punkte der Liste gut kennt, seid ihr vermutlich im falschen Kurs. ;-)
+
+	<br/><br/><table>
+		<tr><th>Thema</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+
+		<tr><td>Ich weiß, was Vektorräume und lineare Abbildungen sind.</td><td><input type="radio" name="Vektorraum" value="1"></td><td><input type="radio" name="Vektorraum" value="2"></td><td><input type="radio" name="Vektorraum" value="3"></td><td><input type="radio" name="Vektorraum" value="4"></td></tr>
+
+		<tr><td>Ich weiß, was ein Dualraum ist.</td><td><input type="radio" name="Dualraum" value="1"></td><td><input type="radio" name="Dualraum" value="2"></td><td><input type="radio" name="Dualraum" value="3"></td><td><input type="radio" name="Dualraum" value="4"></td></tr>
+
+		<tr><td>Ich weiß, was Tensorprodukte von Vektorräumen sind.</td><td><input type="radio" name="Tensorprodukte" value="1"></td><td><input type="radio" name="Tensorprodukte" value="2"></td><td><input type="radio" name="Tensorprodukte" value="3"></td><td><input type="radio" name="Tensorprodukte" value="4"></td></tr>
+
+		<tr><td>Ich beherrsche mehrdimensionale Differentialrechnung.</td><td><input type="radio" name="mehrdimDiffRechnung" value="1"></td><td><input type="radio" name="mehrdimDiffRechnung" value="2"></td><td><input type="radio" name="mehrdimDiffRechnung" value="3"></td><td><input type="radio" name="mehrdimDiffRechnung" value="4"></td></tr>
+
+		<tr><td>Ich kenne den Satz von der impliziten Funktion.</td><td><input type="radio" name="implFkt" value="1"></td><td><input type="radio" name="implFkt" value="2"></td><td><input type="radio" name="implFkt" value="3"></td><td><input type="radio" name="implFkt" value="4"></td></tr>
+
+		<tr><td>Ich weiß, was ein topologischer Raum ist.</td><td><input type="radio" name="Topologie" value="1"></td><td><input type="radio" name="Topologie" value="2"></td><td><input type="radio" name="Topologie" value="3"></td><td><input type="radio" name="Topologie" value="4"></td></tr>
+
+		<tr><td>Ich weiß, was eine glatte Mannigfaltigkeit ist.</td><td><input type="radio" name="Mfk" value="1"></td><td><input type="radio" name="Mfk" value="2"></td><td><input type="radio" name="Mfk" value="3"></td><td><input type="radio" name="Mfk" value="4"></td></tr>
+
+		<tr><td>Ich kenne und verstehe die Aussage der Poincaré-Vermutung (die inzwischen ein Satz ist).</td><td><input type="radio" name="Poincaré" value="1"></td><td><input type="radio" name="Poincaré" value="2"></td><td><input type="radio" name="Poincaré" value="3"></td><td><input type="radio" name="Poincaré" value="4"></td></tr>
+
+		<tr><td>(Bonus: Ich kenne den Beweis der Poincaré-Vermutung.</td><td><input type="radio" name="Poincaré_Beweis" value="1"></td><td><input type="radio" name="Poincaré_Beweis" value="2"></td><td><input type="radio" name="Poincaré_Beweis" value="3"></td><td><input type="radio" name="Poincaré_Beweis" value="4">)</td></tr>
+
+		<tr><td>Ich weiß, was der Tangentialraum in einem Punkt <em>p</em> einer Mannigfaltigkeit ist.</td><td><input type="radio" name="Tangentialraum" value="1"></td><td><input type="radio" name="Tangentialraum" value="2"></td><td><input type="radio" name="Tangentialraum" value="3"></td><td><input type="radio" name="Tangentialraum" value="4"></td></tr>
+
+		<tr><td>Ich weiß, was Vektorbündel sind.</td><td><input type="radio" name="Vektorbündel" value="1"></td><td><input type="radio" name="Vektorbündel" value="2"></td><td><input type="radio" name="Vektorbündel" value="3"></td><td><input type="radio" name="Vektorbündel" value="4"></td></tr>
+
+		<tr><td>Ich weiß, was Differentialformen sind.</td><td><input type="radio" name="Differentialformen" value="1"></td><td><input type="radio" name="Differentialformen" value="2"></td><td><input type="radio" name="Differentialformen" value="3"></td><td><input type="radio" name="Differentialformen" value="4"></td></tr>
+
+		<tr><td>Ich weiß, was Lie-Gruppen sind.</td><td><input type="radio" name="Lie-Gruppe" value="1"></td><td><input type="radio" name="Lie-Gruppe" value="2"></td><td><input type="radio" name="Lie-Gruppe" value="3"></td><td><input type="radio" name="Lie-Gruppe" value="4"></td></tr>
+
+		<tr><td>Ich kenne Hauptfaserbündel.</td><td><input type="radio" name="Hauptfaserbündel" value="1"></td><td><input type="radio" name="Hauptfaserbündel" value="2"></td><td><input type="radio" name="Hauptfaserbündel" value="3"></td><td><input type="radio" name="Hauptfaserbündel" value="4"></td></tr>
+	</table>
+</li>
+
+<li><input type="checkbox" name="lost">Ich habe das Spiel verloren.</li>
+
+<li>Hast du noch Anregungen, Kommentare, …?<br><textarea name="Kommentare" cols="75" rows="5"></textarea></li>
+</ul>
+
+<p><input type="submit" value="Umfrage absenden"></p>
+</form>
+</body>
+</html>

@@ -6,3 +6,5 @@
 *.out
 *.snm
 *.toc
+
+!2012_Book_IntroductionToSmoothManifolds.pdf
