@@ -458,6 +458,10 @@ Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise 
 	\end{proof}
 \end{lemma}
 
+\begin{defn}
+	Fassen wir für $f \in \sC(M)$ das Differential $\left.\DD f\right|_p$ wie oben als Abbildung nach $\mathbb R$ auf, so schreiben wir es als $\left.\D f\right|_p \colon T_pM \to \mathbb R$.
+\end{defn}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Koordinatenvektoren}
 
@@ -541,7 +545,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 	\[\gamma'(s) = \left.\frac{\D}{\D t}\gamma(s + t)\right|_{t = 0}\]
 	gilt (Übung!).
 \end{bsp}
-\todo{Ausarbeiten! Zeigen: Jeder Tangentialvektor ist Ableitung einer Kurve. Koordinatenvektoren sind Ableitungen von Koordinatenlinien.}
+\todo{Ausarbeiten! Explizite Form der Kettenregel für Ableitungen von Kurven. Zeigen: Jeder Tangentialvektor ist Ableitung einer Kurve. Koordinatenvektoren sind Ableitungen von Koordinatenlinien.}
 
 \section{Untermannigfaltigkeiten}
 \kommP{Weglassen? Brauchen wir nicht später, und wir haben eh zu wenig Zeit, und das Kapitel ist eh zu voll ...}
@@ -549,6 +553,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Multilineare Algebra: Das Tensorprodukt}
+\todo{Tensorprodukt}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1063,11 +1068,11 @@ Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar nah
 	Sei $X \in \mathfrak X(M)$ ein Vektorfeld und $p\in M$. Eine \emph{Integralkurve von $X$ durch $p$} ist eine glatte Kurve $\gamma\colon I \to M$, wobei $I \subset \R$ ein offenes Intervall um 0 ist, mit \[\gamma(0) = p, \dot\gamma(t) = X_{\gamma(t)} \; \forall t \in I.\]
 \end{defn}
 Direkt aus der Definition ist klar, dass im Parameterbereich \glqq verschobene\grqq\ Integralkurven wieder Integralkurven sind:
-\begin{lemma}
-Ist $\gamma\colon (a,b) \to M$ Integralkurve von $X\in\mathfrak X(M)$ durch $p\in M$, dann ist für $s \in (a,b)$ die durch $\lambda(t) := \gamma(s + t)$ definierte Kurve $\lambda\colon (a-s,b-s) \to M$ Integralkurve von $X$ durch $\gamma(s)$. \qed
+\begin{lemma}[Verschobene Integralkurven] \label{lemma:int_kurv_versch}
+	Ist $\gamma\colon (a,b) \to M$ Integralkurve von $X\in\mathfrak X(M)$ durch $p\in M$, dann ist für $s \in (a,b)$ die durch $\lambda(t) := \gamma(s + t)$ definierte Kurve $\lambda\colon (a-s,b-s) \to M$ Integralkurve von $X$ durch $\gamma(s)$. \qed
 \end{lemma}
 Lokal existieren Integralkurven immer:
-\begin{lemma}
+\begin{lemma}[Lokale Existenz]
 	Durch jeden Punkt $p$ existiert lokal eine Integralkurve von $X$ (d.\,h. es gibt ein Intervall $(-\varepsilon,\varepsilon)$, auf dem eine Integralkurve existiert), und diese ist lokal eindeutig.
 
 	\begin{proof}
@@ -1076,10 +1081,20 @@ Lokal existieren Integralkurven immer:
 		Dies ist aber eine glatte gewöhnliche Differentialgleichung erster Ordnung für $\eta\colon I \to \R^n$, hat also nach dem Satz von Picard-Lindelöf eine lokal eindeutige Lösung.
 	\end{proof}
 \end{lemma}
-Insbesondere schneiden sich verschiedene Integralkurven eines Vektorfeldes nicht (wenn sie sich schneiden, dann sind sie wegen der Eindeutigkeit lokal gleich, setzen einander also fort).
+Integralkurven sind auch global eindeutig:
+\begin{lemma}[Globale Eindeutigkeit]
+	Sind $\gamma\colon I \to M$ und $\tilde\gamma\colon \tilde I \to M$ Integralkurven von $X$ durch $p$, so ist $\gamma = \tilde \gamma$ auf dem gemeinsamen Definitionsbereich $I \cap \tilde I$.
 
-Die Integralkurven eines Vektorfeldes fasst man oft zu einer einzigen Abbildung zusammen:
-\begin{defn}
+	\begin{proof}
+		Wir setzen $S := \{t \in I \cap \tilde I: \gamma(t) = \tilde \gamma(t)\} \subset I \cap \tilde I$. $S$ ist nichtleer, da $0 \in S$. Nach Definition ist $S$ wegen der Stetigkeit von $\gamma$ und $\tilde \gamma$ abgeschlossen\footnote{Genauer: Da $M$ hausdorffsch ist, ist die Diagonale $\{(p,p) : p \in M\} \subset M \times M$ abgeschlossen. $S$ ist das Urbild der Diagonalen unter der glatten, insb. stetigen Abbildung $(\gamma,\tilde \gamma) \colon I \cap \tilde I \to M \times M$ und damit auch abgeschlossen.} Wenn wir noch zeigen können, dass $S$ offen ist, dann folgt, da $I \cap \tilde I$ ein Intervall, also zusammenhängend ist, dass $S = I \cap \tilde I$.
+
+		Ist $s \in S$, so sind aber in einer Umgebung von $\gamma(s) =: q$ die Kartendarstellungen von sowohl $\gamma$ als auch $\tilde \gamma$ Lösungen derselben gewöhnlichen Differentialgleichung mit demselben Anfangswert $\gamma(s) = \tilde\gamma(s) = q$; nach der lokalen Eindeutigkeitsaussage im Satz von Picard-Lindelöf gibt es also ein offenes Intervall $J$ um $s$, auf dem sie übereinstimmen. Das heißt aber $J \subset S$; es folgt, dass $S$ offen ist.
+	\end{proof}
+\end{lemma}
+Insbesondere können wir jede Integralkurve eindeutig auf ein maximales Existenzintervall fortsetzen. Außerdem schneiden sich verschiedene Integralkurven eines Vektorfeldes nicht.
+
+Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
+\begin{defn}[Fluss]
 	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $U_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times U_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
 	\[U_p \ni t \mapsto \Phi(p,t) \in M\]
 	die maximale Integralkurve von $X$ durch $p$ ist.
@@ -1089,14 +1104,18 @@ Die Integralkurven eines Vektorfeldes fasst man oft zu einer einzigen Abbildung 
 	Sei $\Phi\colon U \to M$ der Fluss von $X \in \mathfrak X(M)$, und seien $U_p$ wie in der vorigen Definition. Dann gilt:
 	\begin{enumerate}[label=(\roman*)]
 		\item $U \subset M \times \R$ ist offen und $\Phi$ ist glatt.
+		\item Ist $s \in U_p$, so ist $U_{\Phi(p,s)} = U_p - s = \{t - s : t \in U_p\}$.
 		\item $\Phi(p,0) = p$ für alle $p \in M$.
-		\item Ist $s \in U_p$, so ist $U_{\Phi(p,s)} = \{t - s : t \in U_p\}$.
 		\item Ist $t \in U_p$ und $s \in U_{\Phi(p,t)}$, dann ist $t+s \in U_p$ und es gilt $\Phi(\Phi(p,t),s) = \Phi(p,t+s)$.
 		\item Für alle $t\in\R$ ist $M_t := \{p \in M : (t,p) \in U\}$ eine offene Teilmenge von $M$. $\Phi_t(p) := \Phi(p,t)$ definiert einen Diffeomorphismus $\Phi_t\colon M_t \to M_{-t}$.
 	\end{enumerate}
 
 	\begin{proof}
-		... \todo{Beweisen ...}
+		(iii) gilt nach Definition; (ii) und (iv) folgen aus der \glqq Verschiebe-Eigenschaft\grqq\ von Lemma \ref{lemma:int_kurv_versch} und der Maximalität der Existenzintervalle.
+
+		Um (i) zu zeigen, bemerken wir zunächst, dass aus der Theorie gewöhnlicher Differentialgleichungen folgt, dass es um jeden Punkt der Form $(p,0) \in U$ eine offene Umgebung $V$ in $M\times\R$ gibt, auf der der Fluss $\Phi$ existiert (d.\,h. $V\subset U$) und glatt ist. Mithilfe von Eigenschaft (iv) kann man diese Umgebungen nun auch zu anderen Punkten $(p,t)$ transportieren; die Details sind ein bisschen technisch und bringen kein Mehrverständnis, deshalb lassen wir sie aus.
+
+		Zuletzt zeigen wir noch (v). Offen ist $M_t$ nach Definition. Mit Eigenschaft (ii) gilt $p \in M_t \implies t \in U_p \implies U_{\Phi(p,t)} = U_p - t \overset{0 \in U_p}{\implies} -t \in U_{\Phi(p,t)} \implies \Phi(p,t) \in M_{-t}$, also bildet $\Phi_t$ tatsächlich $M_t$ auf $M_{-t}$ ab. Nach (iv) ist nun $\Phi_{-t} \circ \Phi_t = \Phi_0 \overset{\text{(ii)}}{=} \id_{M_t}$. Analog folgt $\Phi_t \circ \Phi_{-t} \overset{\text{(ii)}}{=} \id_{M_{-t}}$, also sind $\Phi_t$ und $\Phi_{-t}$ zueinander inverse Diffeomorphismen.
 	\end{proof}
 \end{satz}
 
@@ -1107,11 +1126,33 @@ Die Integralkurven eines Vektorfeldes fasst man oft zu einer einzigen Abbildung 
 	Vektorfelder mit kompakten Träger sind vollständig.
 	
 	\begin{proof}
-		... \todo{Beweisen ...}
+		... \todo{Vollständigkeit von kompakt getragenen VF beweisen.}
 	\end{proof}
 \end{satz}
 
-Eigenschaften. Defn. Lie-Ableitung (für Funktionen und Vektorfelder). Zeigen, dass Ableitung / Kommutator.
+\begin{defn}[Lie-Ableitung]
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$) definiert durch
+	\[(\mathcal L_X T)(p) := \left.\frac{\D(\Phi_t^* T)(p)}{\D t}\right|_{t=0} = \lim_{t\to 0} \frac{(\Phi_t^* T)(p) - T(p)}{t},\]
+	wobei $\Phi$ der Fluss von $X$ ist. Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir es \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
+
+	Lokal um jeden Punkt $p$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn.
+\end{defn}
+
+\begin{lemma}
+	Für eine glatte Funktion $f \in \sC(M)$ ist $\mathcal L_X f = X(f)$ die übliche Ableitung.
+
+	\begin{proof}
+		Es ist $(\mathcal L_X f)(p) = \left.\frac{\D}{\D t}(\Phi_t^* f)(p)\right|_{t=0}  = \left.\frac{\D}{\D t}f(\Phi_t(p))\right|_{t=0} = \left.\D f\right|_p \left( \left.\frac{\D}{\D t}\Phi_t(p)\right|_{t=0} \right) = \left.\D f\right|_p (X_p) = X_p(f)$ nach Kettenregel.
+	\end{proof}
+\end{lemma}
+
+\begin{lemma}
+	Für ein Vektorfeld $Y \in \mathfrak X(M)$ ist $\mathcal L_X Y = [X,Y]$ der Kommutator.
+
+	\begin{proof}
+		...
+	\end{proof}
+\end{lemma}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1341,10 +1382,12 @@ Eigenschaften. Defn. Lie-Ableitung (für Funktionen und Vektorfelder). Zeigen, d
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Tensorfelder}
+\todo{Tensorfelder}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Differentialformen}
+\todo{Differentialformen}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
