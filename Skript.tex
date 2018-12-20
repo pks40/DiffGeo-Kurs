@@ -597,7 +597,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 		\end{defn}
 	\section{Vektorbündel}
 		\begin{defn}[Vektorbündel]
-				Ein Faserbündel $(E,M,\pi,\R^n)$ heißt \emph{Vektorbündel} vom \emph{Rang} $n$, wenn $E_x$ für alle Punkte $x\in M$ ein $n$-dimensionaler Vektorraum ist. Weiter soll es einen Bündelatlanten aus lokalen Trivialisierungen ${\phi\colon \pi^{-1}(U)\rightarrow U\times \R^n}$ geben, sodass die folgende Abbildung für jeden Punkt $x\in U$ ein Vektorraumisomorphismus ist:
+				Ein Faserbündel $(E,M,\pi,\R^n)$ heißt \emph{Vektorbündel} vom \emph{Rang} $n$, wenn $E_x$ für alle Punkte $x\in M$ ein $n$-dimensionaler Vektorraum ist. Weiter soll es einen Bündelatlas aus lokalen Trivialisierungen ${\phi\colon \pi^{-1}(U)\rightarrow U\times \R^n}$ geben, sodass die folgende Abbildung für jeden Punkt $x\in U$ ein Vektorraumisomorphismus ist:
 				\begin{equation*}
 					E_x\rightarrow \R^n,\; p\mapsto \pr_2(\phi(p))
 				\end{equation*}
@@ -849,14 +849,8 @@ Zunächst brauchen wir ein paar Definitionen.
 	\begin{enumerate}[label=(\alph*)]
 		\item Der \emph{Träger} einer Funktion $\psi\colon M \to \R$ ist $\supp(\psi) := \overline{\{p \in M \colon f(p) \ne 0\}}$. (Diese Definition ergibt auch Sinn, wenn der Zielbereich von $\psi$ ein Vektorraum oder ein Vektorbündel [oder eine abelsche Gruppe, \dots] ist.)
 		\item Eine Familie $\{X_i\}_{i\in I}$ von Teilmengen von $M$ heißt \emph{lokal endlich}, wenn es zu jedem Punkt $p\in M$ eine offene Umgebung $U$ gibt, die nur endlich viele der $X_i$ schneidet.
-		\item Sei $\{X_i\}_{i\in I}$ eine Überdeckung von $M$. Eine \emph{Verfeinerung} dieser Überdeckung ist eine Überdeckung $\{Y_j\}_{j\in J}$, sodass jedes $Y_j$ in einem der $X_i$ enthalten ist.
 	\end{enumerate}
 \end{defn}
-\begin{lemma} \label{lemma:lok_endl_abschluss}
-	Ist $\{X_i\}_{i\in I}$ lokal endlich, so ist $\overline{\bigcup_{i\in I} X_i} = \bigcup_{i\in I} \overline{X_i}$. Außerdem ist auch $\{\overline{X_i}\}_{i\in I}$ lokal endlich.
-
-	(ohne Beweis [Übung?])
-\end{lemma}
 Das, worum es hier gehen soll, sind nun Zerlegungen der Eins:
 \begin{defn}
 	Sei $M$ eine differenzierbare Mannigfaltigkeit und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $M$. Eine $\{U_i\}_{i\in I}$ \emph{untergeordnete Zerlegung der Eins} ist eine Familie $\{\psi_i\}_{i\in I}$ von glatten Funktionen $\psi_i \in \sC(M)$ mit folgenden Eigenschaften:
@@ -868,42 +862,12 @@ Das, worum es hier gehen soll, sind nun Zerlegungen der Eins:
 	\end{enumerate}
 	Wegen der lokalen Endlichkeit sind in einer Umgebung jedes beliebigen Punktes nur endlich viele der Summanden in \ref{defn:zerl_eins_summe} ungleich 0, die Summe existiert also (ohne dass wir uns Gedanken um Konvergenz machen müssen).
 \end{defn}
-Die Idee des Beweises der Existenz von Zerlegungen der Eins ist, die gegebenen offenen Mengen mit kleinen Kartenumgebungen zu überdecken, deren Bilder Kugeln im $\R^n$ sind, und bump functions auf diesen Kugeln zu nutzen, un die Funktionen $\psi_i$ zu konstruieren. Um das auszuführen, brauchen wir noch einen kleinen technischen Hilfssatz:
-\begin{lemma}
-	Sei $M$ eine differenzierbare Mannigfaltigkeit und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $M$. Es existieren eine Familie $\{(\varphi_j,V_j)\}_{j\in J}$ von Karten von $M$, die $M$ überdecken, sowie eine weitere offene Überdeckung $\{B_j\}_{j\in J}$ von $M$ mit den folgenden Eigenschaften:
-	\begin{enumerate}[label=(\roman*)]
-		\item $\{V_j\}_{j\in J}$ ist eine Verfeinerung von $\{U_i\}_{i\in I}$.
-		\item Für alle $j\in J$ ist $\bar B_j \subset V_j$.
-		\item $\{B_j\}_{j\in J}$ ist lokal endlich.
-		\item Zu jedem $j\in J$ existiert ein $r_j > 0$ mit $\varphi_j(B_j) = B_{r_j}(0)$ (d.\,h. die Karte bildet $B_j$ auf eine Kugel ab).
-	\end{enumerate}
-	
-	(ohne Beweis, da zu technisch/topologisch)
-\end{lemma}
-\begin{bem}
-	Dieses Lemma zeigt insbesondere, dass Mannigfaltigkeiten \emph{parakompakt} sind: Jede offene Überdeckung hat eine lokal endliche Verfeinerung.
-\end{bem}
 
 \begin{satz}
 	Zu jeder offenen Überdeckung $\{U_i\}_{i\in I}$ einer differenzierbaren Mannigfaltigkeit $M$ gibt es eine untergeordnete Zerlegung der Eins.
 
-	\begin{proof}
-		Wende das vorige Lemma an, um $\{(\varphi_j,V_j)\}_{j\in J}$, $\{B_j\}_{j\in J}$, $\{r_j\}_{j\in J}$ wie dort zu erhalten. Für jedes $j\in J$ wählen wir eine bump function $H_j \in \sC(\R^n)$, die auf $B_{r_j}(0)$ positiv ist und außerhalb von $B_{r_j}(0)$ verschwindet (diese existiert nach Lemma \ref{lemma:bump_fn_kugel} für $r' = r_j$).
-
-		Für $j\in J$ definieren wir $f_j \in \sC(M)$ durch
-		\[f_j := \begin{cases}
-			H_j \circ \varphi_j & \text{auf} \; V_j\\
-			0 & \text{auf} \; M \setminus \overline{B_j}.
-		\end{cases}\]
-		Auf dem Durchschnitt $V_j \setminus \overline{B_j}$ der beiden Definitionsbereiche ergeben beide Ausdrücke 0, $f_j$ ist also wohldefiniert. Auf $B_j$ ist $f_j$ positiv, außerhalb von $B_j$ ist es 0; also ist $\supp(f_j) = \bar B_j$.
-
-		Wir definieren jetzt $F \in \sC(M)$ durch $F(p) := \sum_{j\in J} f_j(p)$ (wegen der lokalen Endlichkeit von $\{B_j\}_{j\in J}$ existiert die Summe). Da die $f_j$ nichtnegativ und auf $B_j$  jeweils positiv sind, ist $F > 0$ (da jedes $p\in M$ in einem $B_j$ liegt). Wenn wir also $g_j := f_j / F \in \sC(M)$ setzen, dann ist jedes $g_j$ eine nichtnegative Funktion, die auf $B_j$ positiv ist und für die $\supp(g_j) = \bar B_j$ gilt, und es ist $\sum_{j \in J} g_j = F/F = 1$.
-
-		Jetzt müssen wir die konstruierten Funktionen $g_j$ noch zu den gesuchten Funktionen $\{\psi_i\}_{i\in I}$ zusammenfassen. Da $\{V_j\}_{j\in J}$ eine Verfeinerung von $\{U_i\}_{i\in I}$ ist, gibt es zu jedem $j \in J$ ein $\lambda(j) \in I$ mit $V_j \subset U_{\lambda(j)}$. Wir setzen
-		\[\psi_i := \sum_{j\in J: \lambda(j) = i} g_j \in \sC(M).\]
-		Weil die $g_j$ positiv sind und jedes $g_j$ genau auf $B_j$ von 0 verschieden ist, gilt jeweils $\supp(\psi_i) = \overline{\bigcup_{j: \lambda(j) = i} B_j} = \bigcup_{j: \lambda(j) = i} \overline{B_j} \subset U_i$, wobei bei der letzten Gleichheit Lemma \ref{lemma:lok_endl_abschluss} benutzt wurde. Nach diesem Lemma ist außerdem $\{\overline{B_j}\}_{j\in J}$ lokal endlich; da die $\overline{B_j}$ einfach nur zu den Trägern $\supp(\psi_i)$ \glqq zusammengefasst werden\grqq, ist damit auch $\{\supp(\psi_i)\}_{i\in I}$ lokal endlich.
-
-		Nach Konstruktion nehmen die $\psi_i$ Werte in $[0,1]$ an und es gilt $\sum_{i\in I} \psi_i = 1$.
+	\begin{proof}[Grobe Beweisidee]
+		Wir überdecken die gegebenen offenen Mengen $U_i$ mit kleinen Kartenumgebungen, deren Bilder Kugeln im $\R^n$ sind, und stückeln die $\psi_i$ aus bump functions auf diesen Kugeln zusammen. Details sind uns hier zu technisch.
 	\end{proof}
 \end{satz}
 
@@ -1063,8 +1027,10 @@ Man tut also das Einzige, was man sinnvoll tun kann, um aus $X$ ein Vektorfeld a
 
 Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar naheliegenderweise als $\phi_*f := f \circ \phi^{-1}$ und $\phi^*g := g \circ \phi$ für einen Diffeomorphismus $\phi\colon M \to N$ und $f \in \sC(M), g \in \sC(N)$.
 
-\begin{lemma}
+\begin{lemma} \label{lemma:transport_VF_funk}
 	Für einen Diffeomorphismus $\phi\colon M \to N$, $f \in \sC(M)$ und $X \in \mathfrak X(M)$ ist $\phi_*(f X) = \phi_*f \cdot \phi_*X$. Außerdem ist $\phi_*(X(f)) = (\phi_*X)(\phi_*f)$
+
+	Die entsprechenden Formeln gelten natürlich auch für Pullbacks.
 	\bewUeb
 \end{lemma}
 
@@ -1092,6 +1058,10 @@ Direkt aus der Definition ist klar, dass im Parameterbereich \glqq verschobene\g
 \begin{lemma}[Verschobene Integralkurven] \label{lemma:int_kurv_versch}
 	Ist $\gamma\colon (a,b) \to M$ Integralkurve von $X\in\mathfrak X(M)$ durch $p\in M$, dann ist für $s \in (a,b)$ die durch $\lambda(t) := \gamma(s + t)$ definierte Kurve $\lambda\colon (a-s,b-s) \to M$ Integralkurve von $X$ durch $\gamma(s)$. \qed
 \end{lemma}
+Laufen wir Integralkurven schneller entlang, so sind sie die Integralkurven des entsprechend skalierten Vektorfeldes:
+\begin{lemma}
+	Ist $\gamma$ Integralkurve von $X$ durch $p$ und $a\in\R$, so definiert $\tilde\gamma(t) := \gamma(at)$ die Integralkurve $\tilde\gamma$ von $aX$ durch $p$. \bewUeb
+\end{lemma}
 Lokal existieren Integralkurven immer:
 \begin{lemma}[Lokale Existenz]
 	Durch jeden Punkt $p$ existiert lokal eine Integralkurve von $X$ (d.\,h. es gibt ein Intervall $(-\varepsilon,\varepsilon)$, auf dem eine Integralkurve existiert), und diese ist lokal eindeutig.
@@ -1117,8 +1087,15 @@ Insbesondere können wir jede Integralkurve eindeutig auf ein maximales Existenz
 Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \begin{defn}[Fluss]
 	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $U_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times U_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
+<<<<<<< HEAD
 	\[U_p \ni t \mapsto \Phi(p,t) \in M\] \kommB{Möchtest du das nicht lieber $I_p$ nennen?}
 	die maximale Integralkurve von $X$ durch $p$ ist.
+=======
+	\[U_p \ni t \mapsto \Phi(p,t) \in M\]
+	die maximale Integralkurve von $X$ durch $p$ ist. $\Phi$ löst also die gewöhnliche Differentialgleichung
+	\[\frac{\D}{\D t} \Phi(p,t) = X_{\Phi(p,t)}, \quad \Phi(p,0) = p\]
+	auf dem maximal möglichen Gebiet.
+>>>>>>> b6a7fca88b6d1d058b1cb4459b23222e32077504
 \end{defn}
 
 \begin{satz}[Eigenschaften von Flüssen]
@@ -1152,15 +1129,25 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \end{satz}
 
 \begin{defn}[Lie-Ableitung]
+<<<<<<< HEAD
 	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$) definiert durch
 	\[(\mathcal L_X T)(p) := \left.\frac{\D(\Phi_t^* T)(p)}{\D t}\right|_{t=0} = \lim_{t\to 0} \frac{(\Phi_t^* T)(p) - T(p)}{t},\]
 	\kommB[inline]{Vllt möchte man hier noch irgendwas dazu sagen, dass $(\Phi_t^* T)(p)$ für Vektorfelder $T$ eine Kurve im Tangentialbündel beschreibt (und man dann eben punktweise ($\forall p \in M$) die Tangentialräume des Bündels mit den Fasern identifiziert. Ich fand das damals immer irritierend, dass auf einmal überall solche $\frac{d}{dt}$ Ableitungen von Objekten auf Mf standen...}
 	wobei $\Phi$ der Fluss von $X$ ist. Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir es \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
+=======
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$), definiert als
+	\[\mathcal L_X T := \left.\frac{\D(\Phi_t^* T)}{\D t}\right|_{t=0} = \lim_{t\to 0} \frac{\Phi_t^* T - T}{t},\]
+	wobei $\Phi$ der Fluss von $X$ ist. Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir uns \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
+>>>>>>> b6a7fca88b6d1d058b1cb4459b23222e32077504
 
-	Lokal um jeden Punkt $p$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn.
+	Lokal um jeden Punkt $p\in M$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn. Die Glattheit von $\mathcal L_X T$ folgt, da der Fluss von $X$ und $T$ glatt sind.
 \end{defn}
 
-\begin{lemma}
+\begin{bem}
+	Ist $\Phi$ der Fluss von $X$ und $a\in\R$, so definiert $\tilde\Phi(p,t) := \Phi(p,at)$ den Fluss $\tilde\Phi$ von $aX$, und folglich ist $\left.\frac{\D(\Phi_{at}^* T)}{\D t}\right|_{t=0} = \mathcal L_{aX} T$. Andererseits ist nach Kettenregel $\left.\frac{\D(\Phi_{at}^* T)}{\D t}\right|_{t=0} = a \left.\frac{\D(\Phi_t^* T)}{\D t}\right|_{t=0} = a \mathcal L_X T$. Also gilt $\mathcal L_{aX} T = a \mathcal L_X T$.
+\end{bem}
+
+\begin{lemma} \label{lemma:lie_abl_funk}
 	Für eine glatte Funktion $f \in \sC(M)$ ist $\mathcal L_X f = X(f)$ die übliche Ableitung.
 
 	\begin{proof}
@@ -1172,7 +1159,21 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	Für ein Vektorfeld $Y \in \mathfrak X(M)$ ist $\mathcal L_X Y = [X,Y]$ der Kommutator.
 
 	\begin{proof}
-		...
+		Für $f\in \sC(M)$ gilt lokal:
+		\begingroup
+		\allowdisplaybreaks
+		\begin{align*}
+			(\mathcal L_X Y)(f) &= \left(\left.\frac{\D}{\D t}\Phi_t^* Y\right|_{t=0}\right)(f)\\
+			\text{($\mathfrak X(M) \ni Z \mapsto Z(f)$ ist $\mathbb R$-linear)} \quad &= \left.\frac{\D}{\D t}(\Phi_t^* Y)(f)\right|_{t=0}\\
+			&= \left.\frac{\D}{\D t}(\Phi_t^* Y)(\Phi_t^* \Phi_{-t}^*f)\right|_{t=0}\\
+			\text{(Lemma \ref{lemma:transport_VF_funk})} \quad &= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(\Phi_{-t}^*f)\Big) \right|_{t=0}\\
+			\text{(siehe oben)} \quad &= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(\Phi_0^*f)\Big) \right|_{t=0} + \left.\frac{\D}{\D t}\Phi_0^* \Big(Y(\Phi_{-t}^*f)\Big) \right|_{t=0}\\
+			&= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(f)\Big) \right|_{t=0} + \left.\frac{\D}{\D t} Y(\Phi_{-t}^*f) \right|_{t=0}\\
+			\text{($\sC(M) \ni g \mapsto Y(g)$ ist $\mathbb R$-linear)} \quad &= \mathcal L_X \Big(Y(f)\Big) + Y\left( \left.\frac{\D}{\D t} \Phi_{-t}^*f \right|_{t=0} \right)\\
+			&= \mathcal L_X \Big(Y(f)\Big) + Y\Big({-}\mathcal L_{X} f\Big)\\
+			\text{(Lemma \ref{lemma:lie_abl_funk})} \quad &= X(Y(f)) - Y(X(f)) = [X,Y](f) \qedhere
+		\end{align*}%
+		\endgroup
 	\end{proof}
 \end{lemma}
 
