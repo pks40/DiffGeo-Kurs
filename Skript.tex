@@ -835,14 +835,8 @@ Zunächst brauchen wir ein paar Definitionen.
 	\begin{enumerate}[label=(\alph*)]
 		\item Der \emph{Träger} einer Funktion $\psi\colon M \to \R$ ist $\supp(\psi) := \overline{\{p \in M \colon f(p) \ne 0\}}$. (Diese Definition ergibt auch Sinn, wenn der Zielbereich von $\psi$ ein Vektorraum oder ein Vektorbündel [oder eine abelsche Gruppe, \dots] ist.)
 		\item Eine Familie $\{X_i\}_{i\in I}$ von Teilmengen von $M$ heißt \emph{lokal endlich}, wenn es zu jedem Punkt $p\in M$ eine offene Umgebung $U$ gibt, die nur endlich viele der $X_i$ schneidet.
-		\item Sei $\{X_i\}_{i\in I}$ eine Überdeckung von $M$. Eine \emph{Verfeinerung} dieser Überdeckung ist eine Überdeckung $\{Y_j\}_{j\in J}$, sodass jedes $Y_j$ in einem der $X_i$ enthalten ist.
 	\end{enumerate}
 \end{defn}
-\begin{lemma} \label{lemma:lok_endl_abschluss}
-	Ist $\{X_i\}_{i\in I}$ lokal endlich, so ist $\overline{\bigcup_{i\in I} X_i} = \bigcup_{i\in I} \overline{X_i}$. Außerdem ist auch $\{\overline{X_i}\}_{i\in I}$ lokal endlich.
-
-	(ohne Beweis [Übung?])
-\end{lemma}
 Das, worum es hier gehen soll, sind nun Zerlegungen der Eins:
 \begin{defn}
 	Sei $M$ eine differenzierbare Mannigfaltigkeit und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $M$. Eine $\{U_i\}_{i\in I}$ \emph{untergeordnete Zerlegung der Eins} ist eine Familie $\{\psi_i\}_{i\in I}$ von glatten Funktionen $\psi_i \in \sC(M)$ mit folgenden Eigenschaften:
@@ -854,42 +848,12 @@ Das, worum es hier gehen soll, sind nun Zerlegungen der Eins:
 	\end{enumerate}
 	Wegen der lokalen Endlichkeit sind in einer Umgebung jedes beliebigen Punktes nur endlich viele der Summanden in \ref{defn:zerl_eins_summe} ungleich 0, die Summe existiert also (ohne dass wir uns Gedanken um Konvergenz machen müssen).
 \end{defn}
-Die Idee des Beweises der Existenz von Zerlegungen der Eins ist, die gegebenen offenen Mengen mit kleinen Kartenumgebungen zu überdecken, deren Bilder Kugeln im $\R^n$ sind, und bump functions auf diesen Kugeln zu nutzen, un die Funktionen $\psi_i$ zu konstruieren. Um das auszuführen, brauchen wir noch einen kleinen technischen Hilfssatz:
-\begin{lemma}
-	Sei $M$ eine differenzierbare Mannigfaltigkeit und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $M$. Es existieren eine Familie $\{(\varphi_j,V_j)\}_{j\in J}$ von Karten von $M$, die $M$ überdecken, sowie eine weitere offene Überdeckung $\{B_j\}_{j\in J}$ von $M$ mit den folgenden Eigenschaften:
-	\begin{enumerate}[label=(\roman*)]
-		\item $\{V_j\}_{j\in J}$ ist eine Verfeinerung von $\{U_i\}_{i\in I}$.
-		\item Für alle $j\in J$ ist $\bar B_j \subset V_j$.
-		\item $\{B_j\}_{j\in J}$ ist lokal endlich.
-		\item Zu jedem $j\in J$ existiert ein $r_j > 0$ mit $\varphi_j(B_j) = B_{r_j}(0)$ (d.\,h. die Karte bildet $B_j$ auf eine Kugel ab).
-	\end{enumerate}
-	
-	(ohne Beweis, da zu technisch/topologisch)
-\end{lemma}
-\begin{bem}
-	Dieses Lemma zeigt insbesondere, dass Mannigfaltigkeiten \emph{parakompakt} sind: Jede offene Überdeckung hat eine lokal endliche Verfeinerung.
-\end{bem}
 
 \begin{satz}
 	Zu jeder offenen Überdeckung $\{U_i\}_{i\in I}$ einer differenzierbaren Mannigfaltigkeit $M$ gibt es eine untergeordnete Zerlegung der Eins.
 
-	\begin{proof}
-		Wende das vorige Lemma an, um $\{(\varphi_j,V_j)\}_{j\in J}$, $\{B_j\}_{j\in J}$, $\{r_j\}_{j\in J}$ wie dort zu erhalten. Für jedes $j\in J$ wählen wir eine bump function $H_j \in \sC(\R^n)$, die auf $B_{r_j}(0)$ positiv ist und außerhalb von $B_{r_j}(0)$ verschwindet (diese existiert nach Lemma \ref{lemma:bump_fn_kugel} für $r' = r_j$).
-
-		Für $j\in J$ definieren wir $f_j \in \sC(M)$ durch
-		\[f_j := \begin{cases}
-			H_j \circ \varphi_j & \text{auf} \; V_j\\
-			0 & \text{auf} \; M \setminus \overline{B_j}.
-		\end{cases}\]
-		Auf dem Durchschnitt $V_j \setminus \overline{B_j}$ der beiden Definitionsbereiche ergeben beide Ausdrücke 0, $f_j$ ist also wohldefiniert. Auf $B_j$ ist $f_j$ positiv, außerhalb von $B_j$ ist es 0; also ist $\supp(f_j) = \bar B_j$.
-
-		Wir definieren jetzt $F \in \sC(M)$ durch $F(p) := \sum_{j\in J} f_j(p)$ (wegen der lokalen Endlichkeit von $\{B_j\}_{j\in J}$ existiert die Summe). Da die $f_j$ nichtnegativ und auf $B_j$  jeweils positiv sind, ist $F > 0$ (da jedes $p\in M$ in einem $B_j$ liegt). Wenn wir also $g_j := f_j / F \in \sC(M)$ setzen, dann ist jedes $g_j$ eine nichtnegative Funktion, die auf $B_j$ positiv ist und für die $\supp(g_j) = \bar B_j$ gilt, und es ist $\sum_{j \in J} g_j = F/F = 1$.
-
-		Jetzt müssen wir die konstruierten Funktionen $g_j$ noch zu den gesuchten Funktionen $\{\psi_i\}_{i\in I}$ zusammenfassen. Da $\{V_j\}_{j\in J}$ eine Verfeinerung von $\{U_i\}_{i\in I}$ ist, gibt es zu jedem $j \in J$ ein $\lambda(j) \in I$ mit $V_j \subset U_{\lambda(j)}$. Wir setzen
-		\[\psi_i := \sum_{j\in J: \lambda(j) = i} g_j \in \sC(M).\]
-		Weil die $g_j$ positiv sind und jedes $g_j$ genau auf $B_j$ von 0 verschieden ist, gilt jeweils $\supp(\psi_i) = \overline{\bigcup_{j: \lambda(j) = i} B_j} = \bigcup_{j: \lambda(j) = i} \overline{B_j} \subset U_i$, wobei bei der letzten Gleichheit Lemma \ref{lemma:lok_endl_abschluss} benutzt wurde. Nach diesem Lemma ist außerdem $\{\overline{B_j}\}_{j\in J}$ lokal endlich; da die $\overline{B_j}$ einfach nur zu den Trägern $\supp(\psi_i)$ \glqq zusammengefasst werden\grqq, ist damit auch $\{\supp(\psi_i)\}_{i\in I}$ lokal endlich.
-
-		Nach Konstruktion nehmen die $\psi_i$ Werte in $[0,1]$ an und es gilt $\sum_{i\in I} \psi_i = 1$.
+	\begin{proof}[Grobe Beweisidee]
+		Wir überdecken die gegebenen offenen Mengen $U_i$ mit kleinen Kartenumgebungen, deren Bilder Kugeln im $\R^n$ sind, und stückeln die $\psi_i$ aus bump functions auf diesen Kugeln zusammen. Details sind uns hier zu technisch.
 	\end{proof}
 \end{satz}
 
