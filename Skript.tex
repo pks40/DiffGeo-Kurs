@@ -642,7 +642,6 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 			\begin{enumerate}
 				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
 				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$. Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
-				\kommP{Bündelatlas konstruieren? Als Übung?}
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}[Rahmen]
@@ -715,7 +714,6 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 			\end{align*}
 			Die Übergangsfunktionen des Tensorproduktes sind durch das Tensorprodukt der Übergangsfunktionen gegeben: $\tau=\tau_a\otimes\tau_b$.
 		\end{defn}
-		\todo{Tensorprodukt von VR}
 		\begin{defn}[Rückzug von Vektorbündeln]
 			Sei $f\colon N\rightarrow M$.
 			
@@ -1241,22 +1239,27 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\begin{lemma}
 			Linksinvariante Vektorfelder sind vollständig, das heißt, ihre Integralkurven können auf ganz $\R$ fortgesetzt werden.
 			\begin{proof}
-				$\gamma_g\colon I_g\rightarrow G$ Integralkurve in $g\in G$ $\Rightarrow \gamma^{\prime}\colon I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ ist Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel) $\rightarrow$ Setze $\gamma_g$ fort.
-			\end{proof}\todo{Ausformulieren mit Notation des vorherigen Kapitels}
+			Die Idee ist hier, dass sich Integralkurven verschieben lassen, wie in Lemma \ref{lemma:int_kurv_versch}, man aber auf Lie-Gruppen auch durch die Linkstranslationen Integralkurven verschieben kann. Sei also $\gamma_g\colon I_g\rightarrow G$ eine maximale Integralkurve von $X\in\vf^L(G)$ in $g\in G$ und $I_g\neq \R$, dann ist auch $\gamma_h\colon I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ eine Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel):
+			\begin{align*}
+				\left.\frac{d}{dt}\gamma_h(t)\right\vert_{t=s}&=\DD l_h\vert_{\gamma_g(s)} X_{\gamma_g(s)}\\
+				&=X_{h\cdot \gamma_g(s)}
+			\end{align*}
+			Damit haben wir also eine Integralkurve $\gamma_h$, die auf $I_g$ definiert ist. Wenn wir nun aber $h$ so wählen, dass $g\in\gamma_h(I_g)$ gilt (und $g=\gamma_h(a)$), dann ist die verschobene Kurve $\lambda(t)=\gamma_h(t+a)\;\forall t\in I_g-a$ auch eine Integralkurve von $X$ in $g$ und wir können den Definitionsbereich von $\gamma_g$ um $a$ verlängern! Dies ist ein Widerspruch zur Annahme der Maximalität, also muss für maximale Integralkurven schon $I=\R$ gelten.
+			\end{proof}
 		\end{lemma}
 	\section{Die Exponentialabbildung}
 		\begin{defn}[Exponentialabbildung]
 			Die \emph{Exponentialabbildung} $\exp\colon\mathfrak{g}\rightarrow G$ ist durch den Fluss der linksinvarianten Vektorfelder definiert:
 			\begin{equation*}
 				\exp(v):=\Phi_1^{L(v)}(e)
-			\end{equation*}\kommB{Notation des vorherigen Kapitels übernehmen!}
+			\end{equation*}
 			Dies entspricht gerade der Integralkurve von $L(v)$ in $e$ ausgewertet an der Stelle $1$.
 		\end{defn}
 		\begin{lemma}\label{lemma:Eigenschaften_exp}
 			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
 			\begin{enumerate}[label=\arabic* .]
 				\item $\exp(0)=e$
-				\item $\frac{d}{dt}\exp(tv)\Big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
+				\item $\frac{d}{dt}\exp(tv)\big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
 				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
 			\end{enumerate}
 			\begin{proof}
