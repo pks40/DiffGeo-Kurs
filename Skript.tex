@@ -32,6 +32,7 @@
 \DeclareMathOperator{\Ad}{Ad}
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Exp}{Exp}
 \DeclareMathOperator{\supp}{supp}
 
 \newcommand{\R}{\mathbb{R}}
@@ -595,7 +596,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 		\end{defn}
 	\section{Vektorbündel}
 		\begin{defn}[Vektorbündel]
-				Ein Faserbündel $(E,M,\pi,\R^n)$ heißt \emph{Vektorbündel} vom \emph{Rang} $n$, wenn $E_x$ für alle Punkte $x\in M$ ein $n$-dimensionaler Vektorraum ist. Weiter soll es einen Bündelatlas aus lokalen Trivialisierungen ${\phi\colon \pi^{-1}(U)\rightarrow U\times \R^n}$ geben, sodass die folgende Abbildung für jeden Punkt $x\in U$ ein Vektorraumisomorphismus ist:
+				Ein Faserbündel $(E,M,\pi,\R^n)$ heißt \emph{Vektorbündel} vom \emph{Rang} $n$, wenn $E_x$ für alle Punkte $x\in M$ ein $n$-dimensionaler Vektorraum ist. Weiter soll es einen Bündelatlanten aus lokalen Trivialisierungen ${\phi\colon \pi^{-1}(U)\rightarrow U\times \R^n}$ geben, sodass die folgende Abbildung für jeden Punkt $x\in U$ ein Vektorraumisomorphismus ist:
 				\begin{equation*}
 					E_x\rightarrow \R^n,\; p\mapsto \pr_2(\phi(p))
 				\end{equation*}
@@ -1279,9 +1280,9 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\end{defn}
 		\begin{lemma}\label{lemma:Eigenschaften_exp}
 			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
-			\begin{enumerate}[label=\arabic*]
-				\item $\frac{d}{dt}\exp(tv)\Big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
+			\begin{enumerate}[label=\arabic* .]
 				\item $\exp(0)=e$
+				\item $\frac{d}{dt}\exp(tv)\Big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
 				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
 			\end{enumerate}
 			\begin{proof}
@@ -1521,7 +1522,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\end{proof}
 		\end{satz}
 		\begin{defn}
-			Für eine Kurve $\gamma\colon I\rightarrow M$ sei $\partial_t$ das Vektorfeld, das von der Kurve $id_I\colon I\rightarrow I$ erzeugt wird. Man erhält dann eine kovariante Ableitung auf $I$:
+			Für eine Kurve $\gamma\colon I\rightarrow M$ sei $\partial_t$ das Vektorfeld, das zu der Karte $id_I\colon I\rightarrow I$ gehört. Man erhält dann eine kovariante Ableitung auf $I$:
 			\begin{align*}
 				\nabla_t:=(\gamma^*\nabla)_{\partial_t}\colon\Gamma(\gamma^*E)\rightarrow\Gamma(\gamma^*E)
 			\end{align*}
@@ -1529,11 +1530,11 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			
 			Weiter können wir $X:=\dot{\gamma}$ als Schnitt von $\gamma^*(TM)$ auffassen mit $X_t=\dot{\gamma}(t)$.  
 		\end{defn}
-	\section{Geodäten}
+	\section{Parallele Schnitte}
 		\begin{defn}[Parallele Schnitte]
 			Sei $\gamma\colon I\rightarrow M$ eine Kurve.
 			
-			Ein entlang $\gamma$ \emph{kovariant konstanter} (auch \emph{horizontaler} oder \emph{paralleler}) Schnitt ist ein $\sigma\in\Gamma(\gamma^*E)$, sodass gilt:
+			Ein entlang $\gamma$ \emph{kovariant konstanter} (auch \emph{horizontaler} oder \emph{paralleler}) Schnitt ist ein Schnitt $\sigma\in\Gamma(\gamma^*E)$, sodass gilt:
 			\begin{align*}
 				\nabla_t\sigma=0
 			\end{align*}
@@ -1560,7 +1561,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\end{lemma}
 		Dieses Lemma gibt uns eine Anschauung davon, was die kovariante Ableitung leistet: Sie schreibt einen Zusammenhang zwischen einzelnen Fasern vor, indem sie anschaulich angibt, wann ein Schnitt entlang einer Kurve nicht variiert (Manchmal wird die kovariante Ableitung deshalb auch \glqq Zusammenhang\grqq\ genannt. Wir bleiben bei unserer Konvention).
 		
-		Man kann auch andersherum eine kovariante Ableitung aus einem Paralleltransport gewinnen:
+		Man kann auch andersherum eine kovariante Ableitung aus einem Paralleltransport gewinnen (Ohne Beweis):
 		\begin{lemma}
 			Sei $\gamma\colon I\rightarrow M$ eine Kurve, $a=0\in I$, $x=\gamma(0)$.
 			
@@ -1570,6 +1571,46 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\end{align*}
 			Aus den obigen Aussagen ist klar, dass dies nur von $\dot{\gamma}(0)$ abhängt, nicht von der ganzen Kurve. Dies erläutert anschaulich, warum man durch diese Formal auch eine kovariante Ableitung definieren kann.
 		\end{lemma}
+		
+	\section{Geodäten}
+		\begin{defn}
+			Eine \emph{affine kovariante Ableitung} ist eine kovariante Ableitung auf dem Tangentialbündel. Dies bringt zusätzliche Struktur mit sich! Insbesondere lässt sich eine affine kovariante Ableitung als Tensorderivation fortsetzen (mit den nötigen Eigenschaften), wobei $\nabla_Xf=X(f) \quad\forall X\in\vf(M),f\in\sm(M)$.
+			
+			Wir schreiben dafür $X\mapsto\nabla_X\in \mathrm{Der}(\mathcal{T}(M))$.
+		\end{defn}
+		\begin{defn}[Geodäte]
+			Eine Geodäte ist eine Kurve $\gamma\colon I\rightarrow M$ sodass das Tangentialfeld $\dot{\gamma}\in\Gamma(\gamma^*TM)$ parallel entlang der Kurve ist: $\nabla_{t}\dot{\gamma}=0$.
+			
+			In lokalen Koordinaten auf $M$ erfüllt eine Geodäte die folgende Differentialgleichung:
+			\begin{align*}
+				\ddot{\gamma}^i(t)+\Gamma^i_{jk}\dot{\gamma}^j\dot{\gamma}^k=0
+			\end{align*}
+			Man sieht, dass die Eigenschaft einer Kurve, Geodäte zu sein, nicht invariant unter Reparametrisierung ist.
+		\end{defn}
+		\begin{satz}
+			Für $x\in M$, $v\in T_xM$ existiert eine eindeutige maximal fortgesetzte Geodäte $\gamma_{(x,v)}\colon I_{(x,v)}\rightarrow M$ sodass $0\in I_{(x,v)}$, $\gamma(0)=x$ und $\dot{\gamma}(0)=v$.
+			
+			Weiter gilt $\forall x\in M, v\in T_xM,\lambda\in \R$:
+			\begin{enumerate}[label=\arabic* .]
+				\item $I_{(x,\lambda v)}=\lambda I_{(x,v)}$
+				\item $\gamma_{(x,\lambda v)}(t)=\gamma_{(x, v)}(\lambda t)$
+				\item $\mathcal{E}:=\lbrace (x,v)\in TM\mid 1\in I_{(x,v)}\rbrace\subset TM$ ist offen
+				\item $\mathcal{E}_x:=\mathcal{E}\cap T_xM$ ist ein (offenes) Sterngebiet
+			\end{enumerate}		 
+		\end{satz}
+		\begin{defn}
+			Eine Mannigfaltigkeit heißt \emph{geodätisch vollständig}, wenn sich jede Geodäte auf $I=\R$ fortsetzen lässt, also wenn $I_{(x,v)}=\R\quad\forall (x,v)\in TM$ oder äquivalent $\mathcal{E}=TM$ gilt.
+		\end{defn}
+		\begin{defn}[Exponentialabbildung]
+			Die \emph{Exponentialabbildung} ist die Abbildung $\Exp\colon \mathcal{E}\rightarrow M$, die punktweise definiert ist als $\Exp_x\colon \mathcal{E}_x\rightarrow M, v\mapsto \gamma_{(x,v)}(1)$.
+			
+			Für die Exponentialabbildung gilt $\forall(x,v)\in \mathcal{E}$:
+			\begin{enumerate}[label=\arabic* .]
+				\item $\Exp_x(tv)=\gamma_{(x,tv)}(1)=\gamma_{(x,v)}(t) \quad\forall t\in I_{(x,v)}$
+				\item $\DD\Exp_x\vert_0=\id_{T_xM}$
+			\end{enumerate}
+		\end{defn}
+		
 		
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
