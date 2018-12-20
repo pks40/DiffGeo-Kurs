@@ -1055,6 +1055,14 @@ Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar nah
 	\bewUeb
 \end{lemma}
 
+\begin{lemma}
+	Für einen Diffeomorphismus $\phi\colon M \to N$ und Vektorfelder $X, Y \in \mathfrak X(M)$ ist $[\phi_*X,\phi_*Y] = \phi_*[X,Y]$.
+
+	\begin{proof}
+		Für $f \in \sC(M)$ ergibt sich $(\phi_*[X,Y])(\phi_*f) = \phi_*([X,Y](f)) = \phi_*\Big(X(Y(f)) - Y(X(f))\Big) = (\phi_*X)\Big((\phi_*Y)(\phi_*f)\Big) - (\phi_*Y)\Big((\phi_*X)(\phi_*f)\Big) = [\phi_*X,\phi_*Y](\phi_*f)$ mit dem vorigen Lemma. Da sich jedes $g\in \sC(N)$ als $\phi_*f$ schreiben lässt, gilt also $\phi_*[X,Y] = [\phi_*X,\phi_*Y]$ als Abbildungen auf $\sC(N)$.
+	\end{proof}
+\end{lemma}
+
 \begin{lemma}[Pushforward in Koordinaten]
 	Sind $x$ Koordinaten für $M$ und $y$ Koordinaten für $N$, so berechnet sich der Pushforward von $X = X^i \frac{\partial}{\partial x^i}$ zu $\phi_*X = (\phi_*X)^i \frac{\partial}{\partial y^i}$ mit
 	\[(\phi_*X)^i = \left(X^i \frac{\partial (y^j \circ \phi)}{\partial x^i}\right) \circ \phi^{-1}.\]
