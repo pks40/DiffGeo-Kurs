@@ -1050,8 +1050,10 @@ Man tut also das Einzige, was man sinnvoll tun kann, um aus $X$ ein Vektorfeld a
 
 Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar naheliegenderweise als $\phi_*f := f \circ \phi^{-1}$ und $\phi^*g := g \circ \phi$ für einen Diffeomorphismus $\phi\colon M \to N$ und $f \in \sC(M), g \in \sC(N)$.
 
-\begin{lemma}
+\begin{lemma} \label{lemma:transport_VF_funk}
 	Für einen Diffeomorphismus $\phi\colon M \to N$, $f \in \sC(M)$ und $X \in \mathfrak X(M)$ ist $\phi_*(f X) = \phi_*f \cdot \phi_*X$. Außerdem ist $\phi_*(X(f)) = (\phi_*X)(\phi_*f)$
+
+	Die entsprechenden Formeln gelten natürlich auch für Pullbacks.
 	\bewUeb
 \end{lemma}
 
@@ -1079,6 +1081,10 @@ Direkt aus der Definition ist klar, dass im Parameterbereich \glqq verschobene\g
 \begin{lemma}[Verschobene Integralkurven] \label{lemma:int_kurv_versch}
 	Ist $\gamma\colon (a,b) \to M$ Integralkurve von $X\in\mathfrak X(M)$ durch $p\in M$, dann ist für $s \in (a,b)$ die durch $\lambda(t) := \gamma(s + t)$ definierte Kurve $\lambda\colon (a-s,b-s) \to M$ Integralkurve von $X$ durch $\gamma(s)$. \qed
 \end{lemma}
+Laufen wir Integralkurven schneller entlang, so sind sie die Integralkurven des entsprechend skalierten Vektorfeldes:
+\begin{lemma}
+	Ist $\gamma$ Integralkurve von $X$ durch $p$ und $a\in\R$, so definiert $\tilde\gamma(t) := \gamma(at)$ die Integralkurve $\tilde\gamma$ von $aX$ durch $p$. \bewUeb
+\end{lemma}
 Lokal existieren Integralkurven immer:
 \begin{lemma}[Lokale Existenz]
 	Durch jeden Punkt $p$ existiert lokal eine Integralkurve von $X$ (d.\,h. es gibt ein Intervall $(-\varepsilon,\varepsilon)$, auf dem eine Integralkurve existiert), und diese ist lokal eindeutig.
@@ -1105,7 +1111,9 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \begin{defn}[Fluss]
 	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $U_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times U_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
 	\[U_p \ni t \mapsto \Phi(p,t) \in M\]
-	die maximale Integralkurve von $X$ durch $p$ ist.
+	die maximale Integralkurve von $X$ durch $p$ ist. $\Phi$ löst also die gewöhnliche Differentialgleichung
+	\[\frac{\D}{\D t} \Phi(p,t) = X_{\Phi(p,t)}, \quad \Phi(p,0) = p\]
+	auf dem maximal möglichen Gebiet.
 \end{defn}
 
 \begin{satz}[Eigenschaften von Flüssen]
@@ -1139,14 +1147,18 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \end{satz}
 
 \begin{defn}[Lie-Ableitung]
-	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$) definiert durch
-	\[(\mathcal L_X T)(p) := \left.\frac{\D(\Phi_t^* T)(p)}{\D t}\right|_{t=0} = \lim_{t\to 0} \frac{(\Phi_t^* T)(p) - T(p)}{t},\]
-	wobei $\Phi$ der Fluss von $X$ ist. Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir es \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$), definiert als
+	\[\mathcal L_X T := \left.\frac{\D(\Phi_t^* T)}{\D t}\right|_{t=0} = \lim_{t\to 0} \frac{\Phi_t^* T - T}{t},\]
+	wobei $\Phi$ der Fluss von $X$ ist. Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir uns \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
 
-	Lokal um jeden Punkt $p$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn.
+	Lokal um jeden Punkt $p\in M$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn. Die Glattheit von $\mathcal L_X T$ folgt, da der Fluss von $X$ und $T$ glatt sind.
 \end{defn}
 
-\begin{lemma}
+\begin{bem}
+	Ist $\Phi$ der Fluss von $X$ und $a\in\R$, so definiert $\tilde\Phi(p,t) := \Phi(p,at)$ den Fluss $\tilde\Phi$ von $aX$, und folglich ist $\left.\frac{\D(\Phi_{at}^* T)}{\D t}\right|_{t=0} = \mathcal L_{aX} T$. Andererseits ist nach Kettenregel $\left.\frac{\D(\Phi_{at}^* T)}{\D t}\right|_{t=0} = a \left.\frac{\D(\Phi_t^* T)}{\D t}\right|_{t=0} = a \mathcal L_X T$. Also gilt $\mathcal L_{aX} T = a \mathcal L_X T$.
+\end{bem}
+
+\begin{lemma} \label{lemma:lie_abl_funk}
 	Für eine glatte Funktion $f \in \sC(M)$ ist $\mathcal L_X f = X(f)$ die übliche Ableitung.
 
 	\begin{proof}
@@ -1158,7 +1170,21 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	Für ein Vektorfeld $Y \in \mathfrak X(M)$ ist $\mathcal L_X Y = [X,Y]$ der Kommutator.
 
 	\begin{proof}
-		...
+		Für $f\in \sC(M)$ gilt lokal:
+		\begingroup
+		\allowdisplaybreaks
+		\begin{align*}
+			(\mathcal L_X Y)(f) &= \left(\left.\frac{\D}{\D t}\Phi_t^* Y\right|_{t=0}\right)(f)\\
+			\text{($\mathfrak X(M) \ni Z \mapsto Z(f)$ ist $\mathbb R$-linear)} \quad &= \left.\frac{\D}{\D t}(\Phi_t^* Y)(f)\right|_{t=0}\\
+			&= \left.\frac{\D}{\D t}(\Phi_t^* Y)(\Phi_t^* \Phi_{-t}^*f)\right|_{t=0}\\
+			\text{(Lemma \ref{lemma:transport_VF_funk})} \quad &= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(\Phi_{-t}^*f)\Big) \right|_{t=0}\\
+			\text{(siehe oben)} \quad &= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(\Phi_0^*f)\Big) \right|_{t=0} + \left.\frac{\D}{\D t}\Phi_0^* \Big(Y(\Phi_{-t}^*f)\Big) \right|_{t=0}\\
+			&= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(f)\Big) \right|_{t=0} + \left.\frac{\D}{\D t} Y(\Phi_{-t}^*f) \right|_{t=0}\\
+			\text{($\sC(M) \ni g \mapsto Y(g)$ ist $\mathbb R$-linear)} \quad &= \mathcal L_X \Big(Y(f)\Big) + Y\left( \left.\frac{\D}{\D t} \Phi_{-t}^*f \right|_{t=0} \right)\\
+			&= \mathcal L_X \Big(Y(f)\Big) + Y\Big({-}\mathcal L_{X} f\Big)\\
+			\text{(Lemma \ref{lemma:lie_abl_funk})} \quad &= X(Y(f)) - Y(X(f)) = [X,Y](f) \qedhere
+		\end{align*}%
+		\endgroup
 	\end{proof}
 \end{lemma}
 
