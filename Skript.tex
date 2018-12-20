@@ -106,16 +106,16 @@ Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
 \chapter{Mannigfaltigkeiten}
 	\section{Topologie}
 		\begin{defn}[Topologischer Raum]
-			Ein Tupel $(X,\mathcal{T})$ bestehend aus einer Menge $X$ und einer Familie von Teilmengen $\mathcal{T}$ heißt \emph{topologischer Raum}, wenn folgende Eigenschaften erfüllt sind:
+			Ein \emph{topologischer Raum} ist ein Tupel $(X,\mathcal{T})$ bestehend aus einer Menge $X$ und einer Familie von Teilmengen $\mathcal{T}$, die folgende Eigenschaften erfüllen:
 			\begin{enumerate}[label=$T$\arabic*]
 				\item $\emptyset, x\in \mathcal{T}$
 				\item $\forall U_1, U_2\in \mathcal{T} \text{ gilt }U_1\cap U_2\in\mathcal{T}$
 				\item Für jede Familie $\lbrace U_i\rbrace_{i\in I}\subset \mathcal{T}$ gilt $\bigcup_{i\in I}U_i\in\mathcal{T}$
 			\end{enumerate}
-			Die Familie $\mathcal{T}$ heißt \emph{Topologie} auf der Menge $X$, ihre Elemente heißen \emph{offene Mengen}. Eine Menge heißt \emph{abgeschlossen}, wenn ihr Komplement offen ist.
+			Eine \emph{Topologie} auf der Menge $X$ ist eine Familie $\mathcal{T}$, ihre Elemente heißen \emph{offene Mengen}. Eine Menge istt \emph{abgeschlossen}, wenn ihr Komplement offen ist.
 		\end{defn}
 		\begin{defn}[Basis einer Topologie]
-			Eine Familie offener Mengen $\lbrace B_i\rbrace_{i\in I}\subset \mathcal{T}$ heißt \emph{Basis} eines topologischen Raums $(X,\mathcal{T})$, wenn sich jede offene Menge als Vereinigung von Elementen der Basis schreiben lässt, das heißt:
+			Eine \emph{Basis} eines topologischen Raums $(X,\mathcal{T})$ ist eine Familie offener Mengen $\lbrace B_i\rbrace_{i\in I}\subset \mathcal{T}$, sodass sich jede offene Menge als Vereinigung von Elementen der Basis schreiben lässt, das heißt:
 			\begin{equation*}
 				\forall U\in\mathcal{T}\exists \lbrace B_i\rbrace_{i\in J}\subset \mathcal{T}: U=\bigcup_{i\in J}B_i
 			\end{equation*}
@@ -156,16 +156,16 @@ Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
 			\end{equation*}
 		\end{lemma}
 		\begin{defn}[Homöomorphismus]
-			Eine stetige Abbildung $f\colon X\rightarrow Y$ heißt \emph{Homöomorphismus}, wenn sie bijektiv und ihre Umkehrabbildung stetig ist.
+			Ein \emph{Homöomorphismus} ist eine stetige Abbildung $f\colon X\rightarrow Y$, die bijektiv ist und ihre Umkehrabbildung stetig.
 		\end{defn}
 	\section{Mannigfaltigkeiten}
 		\begin{defn}
-			Ein topologischer Raum $(M,\mathcal{T})$ heißt \emph{topologische Mannigfaltigkeit}, wenn er hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:
+			Eine \emph{topologische Mannigfaltigkeit} ist ein topologischer Raum $(M,\mathcal{T})$, der hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:
 			Es existiert eine natürliche Zahl $n\in \mathbb{N}$ (Dimension), sodass für alle Punkte $x\in M$ offene Umgebungen $U\subset M, V\subset \R^n$ mit $x\in U $ und ein Homöomorphismus $ \varphi\colon U\rightarrow V$ existieren.
 
 			Die Dimension der Mannigfaltigkeit ist wohldefiniert (Beachte, dass $n$ unabhängig von der Wahl des Punktes existieren muss).
 
-			Das Tupel $(\varphi,U)$ heißt \emph{Karte} (wobei manchmal die Menge $U$ unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt \emph{Atlas} $\mathcal{A}$.
+			Ein solches Tupel $(\varphi,U)$ heißt \emph{Karte} (wobei manchmal die Menge $U$ unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt \emph{Atlas} $\mathcal{A}$.
 		\end{defn}
 		\begin{bsp}\hfill 
 			\begin{enumerate}
@@ -175,7 +175,7 @@ Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}
-			Für zwei Karten $\varphi_i\colon U_i\rightarrow V_i, i\in\lbrace 1,2 \rbrace$ heißt die folgende Abbildung \emph{Kartenwechsel}:
+			Für zwei Karten $\varphi_i\colon U_i\rightarrow V_i, i\in\lbrace 1,2 \rbrace$ definiert man den \emph{Kartenwechsel}:
 			\begin{equation*}
 				\varphi_2\circ\varphi_1^{-1}\vert_{\varphi_1(U_1\cap U_2)}\colon \varphi_1(U_1\cap U_2)\rightarrow \varphi_2(U_1\cap U_2)
 			\end{equation*}
@@ -183,8 +183,8 @@ Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
 		\end{defn} 
 		\begin{defn}[Differenzierbare Mannigfaltigkeit]\hfill
 			\begin{itemize}
-				\item Zwei Karten heißen \emph{verträglich}, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
-				\item Ein Atlas heißt \emph{differenzierbar}, wenn alle seine Karten paarweise verträglich sind.
+				\item Zwei Karten sind \emph{verträglich}, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
+				\item Ein Atlas ist \emph{differenzierbar}, wenn alle seine Karten paarweise verträglich sind.
 				\item Ein differenzierbarer Atlas heißt \emph{maximal}, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
 				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}. Wenn also von einer Karten auf einer differenzierbaren Mannigfaltigkeit die Rede ist, sind immer solche aus der differenzierbaren Struktur gemeint.
 			\end{itemize}
@@ -192,7 +192,6 @@ Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
 		\begin{bsp}\hfill 
 			\begin{enumerate}
 				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden! (Übung: Zeige allgemein, dass eine Vervollständigung eines nichtleeren Atlanten eindeutig ist)
-				\kommP{Erwähnen, dass jeder dfb. Atlas einen eindeutige dfb. Struktur induziert, mit der er verträglich ist? Übungsaufgabe?}
 				\item Reelle, endlich dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
 				\item Die obigen Beispiele topologischer Mannigfaltigkeiten gelten auch für differenzierbare Mannigfalltigkeiten, allerdings müssen auch hier Atlanten vervollständigt werden.
 				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\mid \|x\|=1\rbrace}$ sind differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
@@ -202,19 +201,20 @@ Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
 		Seien von nun an $M,N$ differenzierbare Mannigfaltigkeiten.
 		\begin{defn}[Differenzierbarkeit]
 			Eine Abbildung $f\colon M\rightarrow N$ zwischen differenzierbaren Mannigfaltigkeiten heißt \emph{glatt}, wenn für alle Punkte $p\in M$ Karten $(\varphi,U)$ um  $p$ und $(\psi,V)$ um $f(p)$ existieren, sodass $f(U)\subset V$ und die folgende Abbildung glatt ist:
-			\kommP{Evtl. $C^k$ definieren?}
 			\begin{equation}
 				\psi\circ f \circ \varphi^{-1}\colon \varphi(U)\rightarrow \psi(V)
 			\end{equation}
 			Diese Definition ist unabhängig von der Wahl der Karte, da Kartenwechsel glatt sind. Äquivalent kann daher auch gefordert werden, dass die obige Abbildung für alle Karten glatt ist.
 
 			Wir schreiben $\sC(M,N)$ für die Menge der glatten Abbildungen.
+			
+			Analog kann man auch $k$-fach differenzierbare Abbildungen definieren und schreibt für diese $\mathcal{C}^k(M,N)$.
 		\end{defn}
 		\begin{nota}
 			$\sm(M):=\sC(M,\R)$ ist die Menge der (glatten) Funktionen auf $M$.
 		\end{nota}
 		\begin{defn}
-			Eine Abbildung $f\in\sC(M,N)$ heißt Diffeomorphismus, wenn $f$ bijektiv ist und $f^{-1}\in\sC(N,M)$ gilt.
+			Ein \emph{Diffeomorphismus} ist eine bijektive Abbildung $f\in\sC(M,N)$ für die $f^{-1}\in\sC(N,M)$ gilt.
 
 			Die Menge der Diffeomorphismen $\Diff(M)\subset\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
@@ -902,7 +902,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 	\begin{proof}
 		Wir zeigen zunächst die Existenz von $w$. Sei $[f] \in \sC_p(M)$ ein Funktionskeim, repräsentiert durch $f\in \sC(U)$. Wir definieren $w([f])$ wie folgt: Wir wählen eine beliebige globale Funktion $\tilde f \in \sC(M)$, die in einer offenen Umgebung $V \subset U$ mit $f$ übereinstimmt, und setzen $w([f]) := v(\tilde f)$. (Für den Fall, dass schon $U=M$ gilt, können wir einfach $\tilde f = f$ wählen und haben damit direkt die geforderte Gleichung $w([f]) = v(f)$ für globale Funktionen $f \in \sC(M)$.)
 
-		Wir müssen natürlich zeigen, dass $w$ von der Wahl der \glqq Fortsetzung\grqq\ $\tilde f$ unabhängig ist. D.\,h. wir müssen zeigen: Stimmen $g,h \in \sC(M)$ in einer offenen Umgebung $V$ von $p$ überein, so ist $v(g) = v(h)$. Um das zu sehen, wähle eine bump function $\psi \in \sC(M)$ für $\supp\{g - h\}$\kommB{Was meinst du hier? Der Träger von $g-h$ ist doch egal...} mit Träger in $M\setminus \{p\}$. Da dann $g-h = (g-h)\psi$ gilt, ist \[v(g-h) = v((g-h)\psi) = v(g-h) \underbrace{\psi(p)}_{=0} + \underbrace{(g-h)(p)}_{=0} v(\psi) = 0.\]
+		Wir müssen natürlich zeigen, dass $w$ von der Wahl der \glqq Fortsetzung\grqq\ $\tilde f$ unabhängig ist. D.\,h. wir müssen zeigen: Stimmen $g,h \in \sC(M)$ in einer offenen Umgebung $V$ von $p$ überein, so ist $v(g) = v(h)$. Um das zu sehen, wähle eine bump function $\psi \in \sC(M)$ für $\supp\{g - h\}$ mit Träger in $M\setminus \{p\}$. Da dann $g-h = (g-h)\psi$ gilt, ist \[v(g-h) = v((g-h)\psi) = v(g-h) \underbrace{\psi(p)}_{=0} + \underbrace{(g-h)(p)}_{=0} v(\psi) = 0.\]
 		Dies zeigt auch, dass $w([f])$ von der Wahl des Repräsentanten $f$ unabhängig ist.
 
 		Die Eindeutigkeit von $w$ ist nun auch klar: Haben wir ein $\hat w \in T_pM$, das $\hat w([g]) = v(g)$ für alle globalen Funktionen $g$ erfüllt, so ist $\hat w([f]) = \hat w([\tilde f]) = v(\tilde f) = w([\tilde f]) = w([f])$.
@@ -912,8 +912,6 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 \begin{bem}
 	Da eine analytische Funktion, die auf einer offenen Menge verschwindet, überall verschwindet, gibt es keine analytischen bump functions. Auf analytischen Mannigfaltigkeiten funktioniert daher der vorherige Beweis nicht, und tatsächlich sind auf einer analytischen Mannigfaltigkeit $M$ im Allgemeinen \glqq punktweise Derivationen\grqq\ von $\mathcal C^\omega(M)$ nicht dasselbe wie Derivationen von analytischen Funktionskeimen $\mathcal C^\omega_p(M)$.
 \end{bem}
-
-\kommB[inline]{Insgesamt finde ich es wichtig, Zerlegungen der Eins und bump functions gesehen zu haben, aber die Beweise hier finde ich alle sehr technisch... Findest du, dass wir das machen müssen (und nicht nur sagen können: Solche Funktionen gibt es)? Also Zerlegung der Eins muss man ja quasi so machen, aber die Funktionen so explizit zu konstruieren bzw. Existenz von Allem zu zeigen ist eben sehr aufwendig, findest du nicht?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Vektorfelder}
