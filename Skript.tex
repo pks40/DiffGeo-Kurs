@@ -1089,20 +1089,20 @@ Insbesondere können wir jede Integralkurve eindeutig auf ein maximales Existenz
 
 Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \begin{defn}[Fluss]
-	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $U_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times U_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
-	\[U_p \ni t \mapsto \Phi(p,t) \in M\] \kommB{Möchtest du das nicht lieber $I_p$ nennen?}
+	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $I_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times I_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
+	\[I_p \ni t \mapsto \Phi(p,t) \in M\]
 	die maximale Integralkurve von $X$ durch $p$ ist. $\Phi$ löst also die gewöhnliche Differentialgleichung
 	\[\frac{\D}{\D t} \Phi(p,t) = X_{\Phi(p,t)}, \quad \Phi(p,0) = p\]
 	auf dem maximal möglichen Gebiet.
 \end{defn}
 
 \begin{satz}[Eigenschaften von Flüssen]
-	Sei $\Phi\colon U \to M$ der Fluss von $X \in \mathfrak X(M)$, und seien $U_p$ wie in der vorigen Definition. Dann gilt:
+	Sei $\Phi\colon U \to M$ der Fluss von $X \in \mathfrak X(M)$, und seien $I_p$ wie in der vorigen Definition. Dann gilt:
 	\begin{enumerate}[label=(\roman*)]
 		\item $U \subset M \times \R$ ist offen und $\Phi$ ist glatt.
-		\item Ist $s \in U_p$, so ist $U_{\Phi(p,s)} = U_p - s = \{t - s : t \in U_p\}$.
+		\item Ist $s \in I_p$, so ist $I_{\Phi(p,s)} = I_p - s = \{t - s : t \in I_p\}$.
 		\item $\Phi(p,0) = p$ für alle $p \in M$.
-		\item Ist $t \in U_p$ und $s \in U_{\Phi(p,t)}$, dann ist $t+s \in U_p$ und es gilt $\Phi(\Phi(p,t),s) = \Phi(p,t+s)$.
+		\item Ist $t \in I_p$ und $s \in I_{\Phi(p,t)}$, dann ist $t+s \in I_p$ und es gilt $\Phi(\Phi(p,t),s) = \Phi(p,t+s)$.
 		\item Für alle $t\in\R$ ist $M_t := \{p \in M : (t,p) \in U\}$ eine offene Teilmenge von $M$. $\Phi_t(p) := \Phi(p,t)$ definiert einen Diffeomorphismus $\Phi_t\colon M_t \to M_{-t}$.
 	\end{enumerate}
 
@@ -1111,7 +1111,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 
 		Um (i) zu zeigen, bemerken wir zunächst, dass aus der Theorie gewöhnlicher Differentialgleichungen folgt, dass es um jeden Punkt der Form $(p,0) \in U$ eine offene Umgebung $V$ in $M\times\R$ gibt, auf der der Fluss $\Phi$ existiert (d.\,h. $V\subset U$) und glatt ist. Mithilfe von Eigenschaft (iv) kann man diese Umgebungen nun auch zu anderen Punkten $(p,t)$ transportieren; die Details sind ein bisschen technisch und bringen kein Mehrverständnis, deshalb lassen wir sie aus.
 
-		Zuletzt zeigen wir noch (v). Offen ist $M_t$ nach Definition. Mit Eigenschaft (ii) gilt $p \in M_t \implies t \in U_p \implies U_{\Phi(p,t)} = U_p - t \overset{0 \in U_p}{\implies} -t \in U_{\Phi(p,t)} \implies \Phi(p,t) \in M_{-t}$, also bildet $\Phi_t$ tatsächlich $M_t$ auf $M_{-t}$ ab. Nach (iv) ist nun $\Phi_{-t} \circ \Phi_t = \Phi_0 \overset{\text{(ii)}}{=} \id_{M_t}$. Analog folgt $\Phi_t \circ \Phi_{-t} \overset{\text{(ii)}}{=} \id_{M_{-t}}$, also sind $\Phi_t$ und $\Phi_{-t}$ zueinander inverse Diffeomorphismen.
+		Zuletzt zeigen wir noch (v). Offen ist $M_t$ nach Definition. Mit Eigenschaft (ii) gilt $p \in M_t \implies t \in I_p \implies I_{\Phi(p,t)} = I_p - t \overset{0 \in I_p}{\implies} -t \in I_{\Phi(p,t)} \implies \Phi(p,t) \in M_{-t}$, also bildet $\Phi_t$ tatsächlich $M_t$ auf $M_{-t}$ ab. Nach (iv) ist nun $\Phi_{-t} \circ \Phi_t = \Phi_0 \overset{\text{(ii)}}{=} \id_{M_t}$. Analog folgt $\Phi_t \circ \Phi_{-t} \overset{\text{(ii)}}{=} \id_{M_{-t}}$, also sind $\Phi_t$ und $\Phi_{-t}$ zueinander inverse Diffeomorphismen.
 	\end{proof}
 \end{satz}
 
@@ -1127,15 +1127,17 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \end{satz}
 
 \begin{defn}[Lie-Ableitung]
-	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$), definiert als
-	\[\mathcal L_X T := \left.\frac{\D(\Phi_t^* T)}{\D t}\right|_{t=0} = \lim_{t\to 0} \frac{\Phi_t^* T - T}{t},\]\kommB[inline]{Vllt möchte man hier noch irgendwas dazu sagen, dass $(\Phi_t^* T)(p)$ für Vektorfelder $T$ eine Kurve im Tangentialbündel beschreibt (und man dann eben punktweise ($\forall p \in M$) die Tangentialräume des Bündels mit den Fasern identifiziert. Ich fand das damals immer irritierend, dass auf einmal überall solche $\frac{d}{dt}$ Ableitungen von Objekten auf Mf standen...}
-	wobei $\Phi$ der Fluss von $X$ ist. Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir uns \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$), definiert durch
+	\[(\mathcal L_X T)(p) := \left.\frac{\D}{\D t}(\Phi_t^* T)(p)\right|_{t=0} = \lim_{t\to 0} \frac{(\Phi_t^* T)(p) - T(p)}{t},\]
+	wobei $\Phi$ der Fluss von $X$ ist. Dabei ist $t \mapsto (\Phi_t^*T)(p) \in \mathbb R$ (oder $\in T_pM$) einfach eine Abbildung von $\mathbb R$ in einen Vektorraum, von der wir die übliche Ableitung nehmen.
+
+	Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir uns \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
 	
-	Lokal um jeden Punkt $p\in M$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn. Die Glattheit von $\mathcal L_X T$ folgt, da der Fluss von $X$ und $T$ glatt sind.
+	Lokal um jeden Punkt $p\in M$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn. Die Glattheit von $\mathcal L_X T$ folgt, da $T$ und der Fluss von $X$ glatt sind.
 \end{defn}
 
 \begin{bem}
-	Ist $\Phi$ der Fluss von $X$ und $a\in\R$, so definiert $\tilde\Phi(p,t) := \Phi(p,at)$ den Fluss $\tilde\Phi$ von $aX$, und folglich ist $\left.\frac{\D(\Phi_{at}^* T)}{\D t}\right|_{t=0} = \mathcal L_{aX} T$. Andererseits ist nach Kettenregel $\left.\frac{\D(\Phi_{at}^* T)}{\D t}\right|_{t=0} = a \left.\frac{\D(\Phi_t^* T)}{\D t}\right|_{t=0} = a \mathcal L_X T$. Also gilt $\mathcal L_{aX} T = a \mathcal L_X T$.
+	Ist $\Phi$ der Fluss von $X$ und $a\in\R$, so definiert $\tilde\Phi(p,t) := \Phi(p,at)$ den Fluss $\tilde\Phi$ von $aX$, und folglich ist $\left.\frac{\D}{\D t} (\Phi_{at}^* T)(p) \right|_{t=0} = (\mathcal L_{aX} T)(p)$. Andererseits ist nach Kettenregel $\left.\frac{\D}{\D t} (\Phi_{at}^* T)(p) \right|_{t=0} = a \left.\frac{\D}{\D t} (\Phi_t^* T)(p) \right|_{t=0} = a (\mathcal L_X T)(p)$. Also gilt $\mathcal L_{aX} T = a \mathcal L_X T$.
 \end{bem}
 
 \begin{lemma} \label{lemma:lie_abl_funk}
@@ -1150,21 +1152,28 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	Für ein Vektorfeld $Y \in \mathfrak X(M)$ ist $\mathcal L_X Y = [X,Y]$ der Kommutator.
 
 	\begin{proof}
-		Für $f\in \sC(M)$ gilt lokal:
+		Zunächst bemerken wir, dass für eine beliebige glatte Abbildung $F \colon U \to \mathbb R$, $U \subset R^2$ eine offene Umgebung von 0, nach Kettenregel $\frac{\D}{\D t} F(t,t) = (\partial_1 F)(t,t) + (\partial_2 F)(t,t)$ gilt, insbesondere also
+		\begin{equation} \label{eq:pf_vf_kommut} \tag{$*$}
+			\left.\frac{\D}{\D t} F(t,t)\right|_{t=0} = \left.\frac{\D}{\D t} F(t,0)\right|_{t=0} + \left.\frac{\D}{\D t} F(0,t)\right|_{t=0}.
+		\end{equation}
+
+		Für jedes $f\in \sC(M)$ und $p\in M$ gilt:
 		\begingroup
 		\allowdisplaybreaks
 		\begin{align*}
-			(\mathcal L_X Y)(f) &= \left(\left.\frac{\D}{\D t}\Phi_t^* Y\right|_{t=0}\right)(f)\\
-			\text{($\mathfrak X(M) \ni Z \mapsto Z(f)$ ist $\mathbb R$-linear)} \quad &= \left.\frac{\D}{\D t}(\Phi_t^* Y)(f)\right|_{t=0}\\
-			&= \left.\frac{\D}{\D t}(\Phi_t^* Y)(\Phi_t^* \Phi_{-t}^*f)\right|_{t=0}\\
-			\text{(Lemma \ref{lemma:transport_VF_funk})} \quad &= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(\Phi_{-t}^*f)\Big) \right|_{t=0}\\
-			\text{(siehe oben)} \quad &= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(\Phi_0^*f)\Big) \right|_{t=0} + \left.\frac{\D}{\D t}\Phi_0^* \Big(Y(\Phi_{-t}^*f)\Big) \right|_{t=0}\\
-			&= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(f)\Big) \right|_{t=0} + \left.\frac{\D}{\D t} Y(\Phi_{-t}^*f) \right|_{t=0}\\
-			\text{($\sC(M) \ni g \mapsto Y(g)$ ist $\mathbb R$-linear)} \quad &= \mathcal L_X \Big(Y(f)\Big) + Y\left( \left.\frac{\D}{\D t} \Phi_{-t}^*f \right|_{t=0} \right)\\
-			&= \mathcal L_X \Big(Y(f)\Big) + Y\Big({-}\mathcal L_{X} f\Big)\\
-			\text{(Lemma \ref{lemma:lie_abl_funk})} \quad &= X(Y(f)) - Y(X(f)) = [X,Y](f) \qedhere
+			(\mathcal L_X Y)_p(f) &= \left(\left.\frac{\D}{\D t}(\Phi_t^* Y)_p\right|_{t=0}\right)(f)\\
+			&= \left.\D f\right|_p \left(\left.\frac{\D}{\D t}(\Phi_t^* Y)_p\right|_{t=0}\right)\\
+			\text{($\left.\D f\right|_p\colon T_pM \to \mathbb R$ ist $\mathbb R$-linear)} \quad &= \left.\frac{\D}{\D t}\left.\D f\right|_p \Big((\Phi_t^* Y)_p\Big)\right|_{t=0}\\
+			&= \left.\frac{\D}{\D t} \Big((\Phi_t^* Y) (f)\Big)(p)\right|_{t=0}\\
+			&= \left.\frac{\D}{\D t}\Big((\Phi_t^* Y)(\Phi_t^* \Phi_{-t}^*f)\Big)(p)\right|_{t=0}\\
+			\text{(Lemma \ref{lemma:transport_VF_funk})} \quad &= \left.\frac{\D}{\D t} \left(\Phi_t^* \Big(Y(\Phi_{-t}^*f)\Big)\right)(p) \right|_{t=0}\\
+			\text{(\eqref{eq:pf_vf_kommut} und $\Phi_0 = \id_M$)} \quad &= \left.\frac{\D}{\D t}\left(\Phi_t^* \Big(Y(f)\Big)\right) (p) \right|_{t=0} + \left.\frac{\D}{\D t} \Big(Y(\Phi_{-t}^*f)\Big) (p) \right|_{t=0}\\
+			\text{(Satz von Schwarz)} \quad &= \left(\mathcal L_X \Big(Y(f)\Big)\right)(p) + \left(Y\left( \left.\frac{\D}{\D t} \Phi_{-t}^*f \right|_{t=0} \right)\right)(p)\\
+			&= \left(\mathcal L_X \Big(Y(f)\Big)\right)(p) + \left(Y\Big( - \mathcal L_X f \Big)\right)(p)\\
+			\text{(Lemma \ref{lemma:lie_abl_funk})} \quad &= \Big(X(Y(f)) - Y(X(f))\Big)(p) = \Big([X,Y](f)\Big)(p)
 		\end{align*}%
 		\endgroup
+		Damit ist $(\mathcal L_X Y)(f) = [X,Y](f)$ für alle $f\in\sC(M)$, also $\mathcal L_X Y = [X,Y]$.
 	\end{proof}
 \end{lemma}
 
