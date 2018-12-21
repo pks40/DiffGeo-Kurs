@@ -1122,7 +1122,11 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	Vektorfelder mit kompakten Träger sind vollständig.
 	
 	\begin{proof}
-		... \todo{Vollständigkeit von kompakt getragenen VF beweisen.}
+		Sei $X \in \mathfrak X(M)$ und $\supp(X)$ kompakt. Sei $\Phi\colon U\to M$ der Fluss von $X$. Da $U$ offen ist, gibt es für jedes $p\in M$ eine offene Umgebung $U_p \subset M$ und ein $\varepsilon_p > 0$, sodass $U_p \times (-\varepsilon_p, \varepsilon_p) \subset U$. Für jedes $q \in U_p$ existiert dann also die Integralkurve durch $q$ auf $(-\varepsilon_p,\varepsilon_p)$. Da $\supp(X)$ kompakt ist, gibt es endlich viele $p_1,\dots,p_k \in \supp(X)$, sodass $\supp(X) \subset \bigcup_{i=1}^k U_{p_i}$. Wir setzen $\varepsilon := \min\{\varepsilon_{p_1}, \dots, \varepsilon_{p_k}\}$. Für alle $p \in \supp(X)$ existiert damit die Integralkurve durch $p$ auf $(-\varepsilon, \varepsilon)$.
+
+		Für $p \in M \setminus \supp(X)$ ist $X_p = 0$, die Integralkurve durch $p$ also die konstante Kurve $t \mapsto p$, die also auch auf $(-\varepsilon, \varepsilon)$ existiert. Damit existieren also alle Integralkurven von $X$ auf $(-\varepsilon, \varepsilon)$.
+
+		Sei nun $p\in M$, und die Integralkurve $\gamma$ durch $p$ existiere auf dem Intervall $(a,b) \supset (-\varepsilon,\varepsilon)$. Setze $q := \gamma(b - \frac{\varepsilon}{2})$. $\tilde\gamma(t) := \gamma(b - \frac{\varepsilon}{2} + t)$ definiert dann nach der Verschiebe-Eigenschaft die Integralkurve $\tilde\gamma$ durch $q$ auf dem Intervall $(a - b + \frac{\varepsilon}{2}, \frac{\varepsilon}{2})$. Nach der obigen Überlegung existiert $\tilde\gamma$ aber auch auf $(-\varepsilon, \varepsilon)$, kann also auf $(a - b + \frac{\varepsilon}{2}, \varepsilon)$ fortgesetzt werden. Indem wir $\tilde\gamma$ wieder zurück verschieben, sehen wir also, dass $\gamma$ auf $(a,b+\frac{\varepsilon}{2})$ existiert. Indem wir dieses Verfahren entsprechend oft wiederholen, können wir damit die obere Grenze des Existenzintervall von $\gamma$ zu beliebig großen reellen Zahlen verschieben. Analog zeigt man, dass $\gamma(t)$ für beliebig kleine negative $t$ existiert.
 	\end{proof}
 \end{satz}
 
