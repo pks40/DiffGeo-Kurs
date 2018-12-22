@@ -801,16 +801,16 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Ein analytischer Trick: Bump functions und Zerlegungen der Eins}
+\chapter{Ein analytischer Trick: Hutfunktionen und Zerlegungen der Eins}
 
-Von recht großer Bedeutung in der (glatten) Differentialgeometrie sind sogenannte \emph{bump functions}, glatte Funktionen, die auf einer gegebenen abgeschlossenen Menge $A$ konstant 1 sind, außerhalb einer größeren offenen Menge $U \supset A$ allerdings 0. Sie ermöglichen, Eigenschaften oder geometrische Objekte zu \glqq lokalisieren\grqq.
+Von recht großer Bedeutung in der (glatten) Differentialgeometrie sind sogenannte \emph{Hutfunktionen}\footnote{Das ist kein Standard-Name. Auf Englisch werden diese Funktionen meist \emph{bump functions}  genannt, eine gute deutsche Entsprechung gibt es nicht wirklich.}, glatte Funktionen, die auf einer gegebenen abgeschlossenen Menge $A$ konstant 1 sind, außerhalb einer größeren offenen Menge $U \supset A$ allerdings 0. Sie ermöglichen, Eigenschaften oder geometrische Objekte zu \glqq lokalisieren\grqq.
 
 Verwandt und ebenso wichtig sind \emph{Zerlegungen der Eins}, Familien von jeweils in den Mengen einer gegebenen offenen Überdeckung getragenen Funktionen, deren Summe die konstante Einsfunktion ergibt. Diese kann man benutzen, um lokale Konstruktionen zu globalen \glqq zusammenzustückeln\grqq.
 
-Wir wollen jetzt die Existenz von bump functions und Zerlegungen der Eins zeigen. Dabei orientieren wir uns stark am entsprechenden Abschnitt im Buch von Lee.
+Wir wollen jetzt die Existenz von Hutfunktionen und Zerlegungen der Eins zeigen. Dabei orientieren wir uns stark am entsprechenden Abschnitt im Buch von Lee.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Abschneidefunktionen auf $\R$ und bump functions im $\R^n$}
+\section{Abschneidefunktionen auf $\R$ und Hutfunktionen im $\R^n$}
 Als erstes brauchen wir die Existenz einer glatten Funktion $\R\to\R$, die auf der negativen reellen Achse konstant 0, auf der positiven aber positiv ist:
 \begin{prop}
 	Die Funktion $f\colon\mathbb R \to \mathbb R$,
@@ -879,7 +879,7 @@ Damit können wir nun sogenannte \emph{Abschneidefunktionen} konstruieren:
 	\end{proof}
 \end{lemma}
 
-Mit Abschneidefunktionen können wir nun \emph{bump functions} auf dem $\R^n$ konstruieren, die Werte in $[0,1]$ annehmen und auf einer gegebenen Kugel konstant 1 sind, außerhalb einer größeren (konzentrischen) aber 0.
+Mit Abschneidefunktionen können wir nun \emph{Hutfunktionen} auf dem $\R^n$ konstruieren, die Werte in $[0,1]$ annehmen und auf einer gegebenen Kugel konstant 1 sind, außerhalb einer größeren (konzentrischen) aber 0.
 \begin{lemma} \label{lemma:bump_fn_kugel}
 	Für beliebige reelle Zahlen $r' > r > 0$ gibt es eine glatte Funktion $H \in \sC(\R^n)$ mit Werten in $[0,1]$, die $H \equiv 1$ auf $\bar B_r(0)$ und $H \equiv 0$ auf $\R^n \setminus B_{r'}(0)$ erfüllt und auf $B_{r'}$ positiv ist.
 
@@ -914,27 +914,27 @@ Das, worum es hier gehen soll, sind nun Zerlegungen der Eins:
 	Zu jeder offenen Überdeckung $\{U_i\}_{i\in I}$ einer differenzierbaren Mannigfaltigkeit $M$ gibt es eine untergeordnete Zerlegung der Eins.
 
 	\begin{proof}[Grobe Beweisidee]
-		Wir überdecken die gegebenen offenen Mengen $U_i$ mit kleinen Kartenumgebungen, deren Bilder Kugeln im $\R^n$ sind, und stückeln die $\psi_i$ aus bump functions auf diesen Kugeln zusammen. Details sind uns hier zu technisch; bei Interesse finden sie sich in Anhang \ref{appendix:details_zerl_eins}.
+		Wir überdecken die gegebenen offenen Mengen $U_i$ mit kleinen Kartenumgebungen, deren Bilder Kugeln im $\R^n$ sind, und stückeln die $\psi_i$ aus Hutfunktionen auf diesen Kugeln zusammen. Details sind uns hier zu technisch; bei Interesse finden sie sich in Anhang \ref{appendix:details_zerl_eins}.
 	\end{proof}
 \end{satz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bump functions auf Mannigfaltigkeiten}
-Jetzt können wir bump functions konstruieren:
-\begin{kor}[Bump functions]
-	Sei $M$ eine differenzierbare Mannigfaltigkeit, $A$ eine abgeschlossene und $U \supset A$ eine offene Teilmenge von $M$. Dann gibt es eine bump function für $A$ mit Träger in $U$, d.\,h. eine glatte Funktion $\psi \in \sC(M)$ mit Werten in $[0,1]$ mit $\psi \equiv 1$ auf $A$ und $\supp(\psi) \subset U$.
+\section{Hutfunktionen auf Mannigfaltigkeiten}
+Jetzt können wir Hutfunktionen konstruieren:
+\begin{kor}[Hutfunktionen]
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $A$ eine abgeschlossene und $U \supset A$ eine offene Teilmenge von $M$. Dann gibt es eine Hutfunktion $\psi$ mit $\psi \equiv 1$ auf $A$ und Träger in $U$, also eine glatte Funktion $\psi \in \sC(M)$ mit Werten in $[0,1]$ mit $\psi \equiv 1$ auf $A$ und $\supp(\psi) \subset U$.
 
 	\begin{proof}
 		Setze $U_0 := U$ und $U_1 := M \setminus A$. Sei $\{\psi_0, \psi_1\}$ eine der offenen Überdeckung $\{U_0, U_1\}$ untergeordnete Zerlegung der Eins. Da $\supp{\psi_1} \subset U_1$ gilt, verschwindet $\psi_1$ auf $A$; dort gilt also $1 = \psi_0 + \psi_1 = \psi_0$. Außerdem ist $\supp(\psi_0) \subset U$, also ist $\psi_0$ eine Funktion mit den gesuchten Eigenschaften.
 	\end{proof}
 \end{kor}
 
-Mit bump functions können wir lokal definierte Funktionen zu globalen Funktionen fortsetzen:
+Mit Hutfunktionen können wir lokal definierte Funktionen zu globalen Funktionen fortsetzen:
 \begin{kor}
 	Seien $M$ eine differenzierbare Mannigfaltigkeit, $V \subset U \subset M$ offene Teilmengen mit $\overline{V} \subset U$ und $f \in \sC(U)$ eine glatte Funktion. Dann gibt es eine globale Funktion $\tilde f \in \sC(M)$, die auf $V$ mit $f$ übereinstimmt.
 
 	\begin{proof}
-		Wir wählen eine bump function $\psi \in \sC(M)$ für $\overline{V}$ mit Träger in $U$ und definieren
+		Wir wählen eine Hutfunktion $\psi \in \sC(M)$ mit Träger in $U$ und $\psi \equiv 1$ auf $\overline{V}$ und definieren
 		\[\tilde f := \begin{cases}
 		f \cdot \psi & \text{auf} \; U\\
 		0 & \text{auf} \; M \setminus \supp(\psi).
@@ -942,14 +942,14 @@ Mit bump functions können wir lokal definierte Funktionen zu globalen Funktione
 	\end{proof}
 \end{kor}
 
-Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktionskeimen $\sC_p(M)$, so lässt sich dieser natürlich insbesondere auf globale Funktionen $f \in \sC(M)$ anwenden. Als Anwendung von bump functions wollen wir zeigen, dass sich auch umgekehrt \glqq punktweise Derivationen\grqq\ von $\sC(M)$ zu Derivationen von Funktionskeimen \glqq lokalisieren\grqq\ lassen:
+Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktionskeimen $\sC_p(M)$, so lässt sich dieser natürlich insbesondere auf globale Funktionen $f \in \sC(M)$ anwenden. Als Anwendung von Hutfunktionen wollen wir zeigen, dass sich auch umgekehrt \glqq punktweise Derivationen\grqq\ von $\sC(M)$ zu Derivationen von Funktionskeimen \glqq lokalisieren\grqq\ lassen:
 \begin{lemma}[Tangentialvektoren als punktweise Derivationen] \label{lemma:tangtvek_punktw_deriv}
 	Sei $M$ eine differenzierbare Mannigfaltigkeit und $p\in M$. Sei $v$ eine Derivation von $\sC(M)$ bzgl. $p$, d.\,h. eine lineare Abbildung $v\colon M \to \R$ mit der Eigenschaft \[v(gh) = v(g) h(p) + g(p) v(h)\] für alle $g,h \in \sC(M)$. Dann gibt es einen eindeutigen Tangentialvektor $w \in T_pM$ mit $w([g]) = v(g)$ für alle globalen Funktionen $g \in \sC(M)$.
 
 	\begin{proof}
 		Wir zeigen zunächst die Existenz von $w$. Sei $[f] \in \sC_p(M)$ ein Funktionskeim, repräsentiert durch $f\in \sC(U)$. Wir definieren $w([f])$ wie folgt: Wir wählen eine beliebige globale Funktion $\tilde f \in \sC(M)$, die in einer offenen Umgebung $V \subset U$ mit $f$ übereinstimmt, und setzen $w([f]) := v(\tilde f)$. (Für den Fall, dass schon $U=M$ gilt, können wir einfach $\tilde f = f$ wählen und haben damit direkt die geforderte Gleichung $w([f]) = v(f)$ für globale Funktionen $f \in \sC(M)$.)
 
-		Wir müssen natürlich zeigen, dass $w$ von der Wahl der \glqq Fortsetzung\grqq\ $\tilde f$ unabhängig ist. D.\,h. wir müssen zeigen: Stimmen $g,h \in \sC(M)$ in einer offenen Umgebung $V$ von $p$ überein, so ist $v(g) = v(h)$. Um das zu sehen, wähle eine bump function $\psi \in \sC(M)$ für $\supp\{g - h\}$ mit Träger in $M\setminus \{p\}$. Da dann $g-h = (g-h)\psi$ gilt, ist \[v(g-h) = v((g-h)\psi) = v(g-h) \underbrace{\psi(p)}_{=0} + \underbrace{(g-h)(p)}_{=0} v(\psi) = 0.\]
+		Wir müssen natürlich zeigen, dass $w$ von der Wahl der \glqq Fortsetzung\grqq\ $\tilde f$ unabhängig ist. D.\,h. wir müssen zeigen: Stimmen $g,h \in \sC(M)$ in einer offenen Umgebung $V$ von $p$ überein, so ist $v(g) = v(h)$. Um das zu sehen, wähle eine Hutfunktion $\psi \in \sC(M)$ mit Träger in $M\setminus \{p\}$ und $\psi \equiv 1$ auf $\supp\{g - h\}$. Da dann $g-h = (g-h)\psi$ gilt, ist \[v(g-h) = v((g-h)\psi) = v(g-h) \underbrace{\psi(p)}_{=0} + \underbrace{(g-h)(p)}_{=0} v(\psi) = 0.\]
 		Dies zeigt auch, dass $w([f])$ von der Wahl des Repräsentanten $f$ unabhängig ist.
 
 		Die Eindeutigkeit von $w$ ist nun auch klar: Haben wir ein $\hat w \in T_pM$, das $\hat w([g]) = v(g)$ für alle globalen Funktionen $g$ erfüllt, so ist $\hat w([f]) = \hat w([\tilde f]) = v(\tilde f) = w([\tilde f]) = w([f])$.
@@ -957,7 +957,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 \end{lemma}
 
 \begin{bem}
-	Da eine analytische Funktion, die auf einer offenen Menge verschwindet, überall verschwindet, gibt es keine analytischen bump functions. Auf analytischen Mannigfaltigkeiten funktioniert daher der vorherige Beweis nicht, und tatsächlich sind auf einer analytischen Mannigfaltigkeit $M$ im Allgemeinen \glqq punktweise Derivationen\grqq\ von $\mathcal C^\omega(M)$ nicht dasselbe wie Derivationen von analytischen Funktionskeimen $\mathcal C^\omega_p(M)$.
+	Da eine analytische Funktion, die auf einer offenen Menge verschwindet, überall verschwindet, gibt es keine analytischen Hutfunktionen. Auf analytischen Mannigfaltigkeiten funktioniert daher der vorherige Beweis nicht, und tatsächlich sind auf einer analytischen Mannigfaltigkeit $M$ im Allgemeinen \glqq punktweise Derivationen\grqq\ von $\mathcal C^\omega(M)$ nicht dasselbe wie Derivationen von analytischen Funktionskeimen $\mathcal C^\omega_p(M)$.
 \end{bem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1560,7 +1560,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			Auf jedem Vektorbündel existiert eine kovariante Ableitung.
 			\begin{proof}
 				Schematisch: Wähle eine Überdeckung des Bündels (vom Rang $k$) durch lokale Trivialisierungen (über offenen Mengen $U$) und eine untergeordnete Zerlegung der Eins. Dann wählen wir auf den $U\times \R^k$ die kovariante Ableitung so, dass die Zusammenhangskoeffizienten in der Standardbasis (also dem globalen Standardrahmen) verschwinden.
-				Durch \glqq kartenweises Zurückziehen\grqq\ (beachte: nur das zweite Argument wird verändert) dieser kovarianten Ableitung entlang der Trivialisierungen erhalten wir eine kovariante Ableitung auf dem Vektorbündel. Die Eigenschaften der kovarianten Ableitung erhält man direkt durch Nachrechnen, wobei hier wichtig ist, dass die Summe der bump functions punktweise $1$ ergibt (sonst verliert man Derivativität).
+				Durch \glqq kartenweises Zurückziehen\grqq\ (beachte: nur das zweite Argument wird verändert) dieser kovarianten Ableitung entlang der Trivialisierungen erhalten wir eine kovariante Ableitung auf dem Vektorbündel. Die Eigenschaften der kovarianten Ableitung erhält man direkt durch Nachrechnen, wobei hier wichtig ist, dass die Summe der Hutfunktionen punktweise $1$ ergibt (sonst verliert man Derivativität).
 			\end{proof}
 		\end{satz}
 	\section{Induzierte Zusammenhänge}
@@ -1824,7 +1824,7 @@ Hier geben wir ein paar mehr Details zur Existenz von Zerlegungen der Eins.
 
 	(ohne Beweis)
 \end{lemma}
-Wie im Haupttext gesagt, ist die Idee des Beweises der Existenz von Zerlegungen der Eins, die $\psi_i$ aus bump functions auf Kugeln zu konstruieren, die Bilder von Kartenumgebungen in den gegebenen offenen Mengen sind. Um das auszuführen, brauchen wir noch einen kleinen technischen Hilfssatz:
+Wie im Haupttext gesagt, ist die Idee des Beweises der Existenz von Zerlegungen der Eins, die $\psi_i$ aus Hutfunktionen auf Kugeln zu konstruieren, die Bilder von Kartenumgebungen in den gegebenen offenen Mengen sind. Um das auszuführen, brauchen wir noch einen kleinen technischen Hilfssatz:
 \begin{lemma}
 	Sei $M$ eine differenzierbare Mannigfaltigkeit und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $M$. Es existieren eine Familie $\{(\varphi_j,V_j)\}_{j\in J}$ von Karten von $M$, die $M$ überdecken, sowie eine weitere offene Überdeckung $\{B_j\}_{j\in J}$ von $M$ mit den folgenden Eigenschaften:
 	\begin{enumerate}[label=(\roman*)]
@@ -1843,7 +1843,7 @@ Wie im Haupttext gesagt, ist die Idee des Beweises der Existenz von Zerlegungen 
 \begin{proof}[Beweis von Satz \ref{satz:zerl_eins} über Existenz von Zerlegungen der Eins]
 	Sei $M$ eine differenzierbaren Mannigfaltigkeit und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $M$. Wir wollen zeigen, dass es eine dieser Überdeckung untergeordnete Zerlegung der Eins gibt.
 
-	Wende das vorige Lemma an, um $\{(\varphi_j,V_j)\}_{j\in J}$, $\{B_j\}_{j\in J}$, $\{r_j\}_{j\in J}$ wie dort zu erhalten. Für jedes $j\in J$ wählen wir eine bump function $H_j \in \sC(\R^n)$, die auf $B_{r_j}(0)$ positiv ist und außerhalb von $B_{r_j}(0)$ verschwindet (diese existiert nach Lemma \ref{lemma:bump_fn_kugel} für $r' = r_j$).
+	Wende das vorige Lemma an, um $\{(\varphi_j,V_j)\}_{j\in J}$, $\{B_j\}_{j\in J}$, $\{r_j\}_{j\in J}$ wie dort zu erhalten. Für jedes $j\in J$ wählen wir eine Hutfunktion $H_j \in \sC(\R^n)$, die auf $B_{r_j}(0)$ positiv ist und außerhalb von $B_{r_j}(0)$ verschwindet (diese existiert nach Lemma \ref{lemma:bump_fn_kugel} für $r' = r_j$).
 
 	Für $j\in J$ definieren wir $f_j \in \sC(M)$ durch
 	\[f_j := \begin{cases}
