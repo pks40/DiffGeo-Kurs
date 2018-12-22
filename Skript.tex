@@ -1290,9 +1290,9 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 		\end{defn}
 		\begin{lemma}\label{lemma:Eigenschaften_exp}
 			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
-			\begin{enumerate}[label=\arabic* .]
+			\begin{enumerate}[label=\arabic*.]
 				\item $\exp(0)=e$
-				\item $\frac{\D}{\D t} \exp(tv)\big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
+				\item Für alle $v \in \mathfrak g$ ist $t \mapsto \exp(tv)$ die Integralkurve von $L(v)$ in $e$.
 				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
 			\end{enumerate}
 			\begin{proof}
@@ -1302,7 +1302,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 		\begin{lemma}[Fluss linksinvarianter Vektorfelder]\label{lemma:Fluss_linksinvarianter_Vektorfelder}
 			Sei $X\in\vf^L(G)$.
 			
-			Der Fluss von $X$ ist durch die Exponentialabbilding wie folgt gegeben:
+			Der Fluss von $X$ ist durch die Exponentialabbildung wie folgt gegeben:
 			\begin{align*}
 				\Phi^X_t(p)=p\cdot \exp(tX_e) \; =l_p(\exp(tX_e))=r_{\exp(tX_e)}(p)
 			\end{align*}
