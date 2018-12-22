@@ -75,6 +75,27 @@
 
 Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Mathematik und auch in quasi allen Anwendungsgebieten, insb. der theoretischen Physik (ART, Eichtheorien, alles!).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Was wir nicht machen werden}
+In einen Einführungskurs der Differentialgeometrie gehören eigentlich auf jeden Fall noch ein paar Themen, die wir aus Zeitgründen auslassen werden. Das sind die folgenden:
+\begin{itemize}
+	\item Eigenschaften von Abbildungen zwischen Mannigfaltigkeiten
+		\begin{itemize}
+			\item Immersionen und Submersionen
+			\item Untermannigfaltigkeiten
+			\item Der Satz vom regulären Wert
+		\end{itemize}
+	\item Integration auf Mannigfaltigkeiten
+		\begin{itemize}
+			\item Orientierbarkeit
+			\item Integration
+			\item Der Satz von Stokes
+		\end{itemize}
+	\item Einführung in Riemann'sche Geometrie
+	\item \dots
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bekannte Konzepte, Notationen etc.}
 
 \subsection{Lineare Algebra}
@@ -544,6 +565,14 @@ $\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim i
 Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{lemma:differential_koord} also
 \[\left[\frac{\partial(y^i \circ f)}{\partial x^j}(p)\right]_{ij}.\]
 
+\begin{satz}[Satz von der inversen Abbildung]
+	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Ist $\left.\DD f\right|_p\colon T_pM \to T_{f(p)}N$ ein Isomorphismus, dann ist $f$ ein lokaler Diffeomorphismus um $p$, d.\,h. es gibt eine offene Umgebung $U\subset M$ von $p$, sodass $f|_U \colon T \to f(U)$ ein Diffeomorphismus ist.
+
+	\begin{proof}
+		Das folgt mit Lemma \ref{lemma:differential_koord}, indem man den Satz von der inversen Abbildung für Abbildungen zwischen Teilmengen des $\R^n$ auf die Kartendarstellung von $f$ anwendet.
+	\end{proof}
+\end{satz}
+
 \begin{lemma}[Transformationsformel für Tangentialvektoren]
 	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p\in M$ und seien $x, \tilde x$ zwei Karten um $p$. Für die Koordinatenvektoren gilt
 	\[\left.\frac{\partial}{\partial \tilde x^i}\right|_p = \frac{\partial x^j}{\partial \tilde x^i}(p) \left.\frac{\partial}{\partial x^j}\right|_p.\]
@@ -569,10 +598,6 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 	gilt (Übung!).
 \end{bsp}
 \todo{Ausarbeiten! Explizite Form der Kettenregel für Ableitungen von Kurven. Zeigen: Jeder Tangentialvektor ist Ableitung einer Kurve. Koordinatenvektoren sind Ableitungen von Koordinatenlinien.}
-
-\section{Untermannigfaltigkeiten}
-\kommP{Weglassen? Brauchen wir nicht später, und wir haben eh zu wenig Zeit, und das Kapitel ist eh zu voll ...}
-\kommB{Ja!}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
