@@ -7,6 +7,7 @@
 \linespread{1.05}
 \usepackage{exscale} % To scale mathematical symbols correctly while using T1
 \usepackage{amsmath,amsthm,amssymb,dsfont}
+\usepackage{chngcntr} % Um im Anhang die Satznummerierung auf kapitelweise umstellen zu können
 \usepackage{tikz}
 	\usetikzlibrary{matrix}
 \usepackage[ngerman]{babel}
@@ -190,6 +191,10 @@ Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
 				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}. Wenn also von einer Karten auf einer differenzierbaren Mannigfaltigkeit die Rede ist, sind immer solche aus der differenzierbaren Struktur gemeint.
 			\end{itemize}
 		\end{defn}
+		\begin{lemma}
+			Jeder differenzierbare Atlas kann eindeutig zu einem maximalen Atlas fortgesetzt werden. \bewUeb
+		\end{lemma}
+		Um eine differenzierbare Struktur anzugeben, reicht es also auch aus, einen nicht-maximalen Atlas anzugeben.
 		\begin{bsp}\hfill 
 			\begin{enumerate}
 				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden! (Übung: Zeige allgemein, dass eine Vervollständigung eines nichtleeren Atlanten eindeutig ist)
@@ -642,7 +647,9 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 		\begin{bsp}\hfill
 			\begin{enumerate}
 				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
-				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$. Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
+				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$: mithilfe von Karten von $M$ kann man auf kanonische Weise einen Bündelatlas konstruieren (Übung).
+
+					Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}[Rahmen]
@@ -862,11 +869,11 @@ Das, worum es hier gehen soll, sind nun Zerlegungen der Eins:
 	Wegen der lokalen Endlichkeit sind in einer Umgebung jedes beliebigen Punktes nur endlich viele der Summanden in \ref{defn:zerl_eins_summe} ungleich 0, die Summe existiert also (ohne dass wir uns Gedanken um Konvergenz machen müssen).
 \end{defn}
 
-\begin{satz}
+\begin{satz} \label{satz:zerl_eins}
 	Zu jeder offenen Überdeckung $\{U_i\}_{i\in I}$ einer differenzierbaren Mannigfaltigkeit $M$ gibt es eine untergeordnete Zerlegung der Eins.
 
 	\begin{proof}[Grobe Beweisidee]
-		Wir überdecken die gegebenen offenen Mengen $U_i$ mit kleinen Kartenumgebungen, deren Bilder Kugeln im $\R^n$ sind, und stückeln die $\psi_i$ aus bump functions auf diesen Kugeln zusammen. Details sind uns hier zu technisch.
+		Wir überdecken die gegebenen offenen Mengen $U_i$ mit kleinen Kartenumgebungen, deren Bilder Kugeln im $\R^n$ sind, und stückeln die $\psi_i$ aus bump functions auf diesen Kugeln zusammen. Details sind uns hier zu technisch; bei Interesse finden sie sich in Anhang \ref{appendix:details_zerl_eins}.
 	\end{proof}
 \end{satz}
 
@@ -1019,7 +1026,7 @@ Hat man einen Diffeomorphismus $\phi\colon M\to N$, dann kann man damit Vektorfe
 Man tut also das Einzige, was man sinnvoll tun kann, um aus $X$ ein Vektorfeld auf $N$ zu erhalten: Man bildet die entsprechenden Tangentialvektoren mit dem Differential von $\phi$ von $M$ nach $N$ ab. In die andere Richtung funktioniert das natürlich auch:
 \begin{defn}
 	Der \emph{Pullback von $X \in \mathfrak X(N)$ entlang von $\phi\colon M \to N$} ist $\phi^*X := (\phi^{-1})_*X$, also
-	\[(\phi^*X)(p) := \DD(\phi^{-1})|_{\phi(p)}(X_{\phi(p)}) \quad \text{für} \; p \in M.\]
+	\[(\phi^*X)_p := \DD(\phi^{-1})|_{\phi(p)}(X_{\phi(p)}) \quad \text{für} \; p \in M.\]
 \end{defn}\kommB{Hier sollte noch eine Anmerkung zum Rückzug von Schnitten hin, damit klar ist, dass das hier eine \glqq echte Erweiterung\grqq\ ist.}
 
 Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar naheliegenderweise als $\phi_*f := f \circ \phi^{-1}$ und $\phi^*g := g \circ \phi$ für einen Diffeomorphismus $\phi\colon M \to N$ und $f \in \sC(M), g \in \sC(N)$.
@@ -1046,7 +1053,7 @@ Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar nah
 \end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Integralkurven und die Lie-Ableitung}
+\section{Integralkurven, Flüsse und die Lie-Ableitung}
 
 \begin{defn}[Integralkurven]
 	Sei $X \in \mathfrak X(M)$ ein Vektorfeld und $p\in M$. Eine \emph{Integralkurve von $X$ durch $p$} ist eine glatte Kurve $\gamma\colon I \to M$, wobei $I \subset \R$ ein offenes Intervall um 0 ist, mit \[\gamma(0) = p, \dot\gamma(t) = X_{\gamma(t)} \; \forall t \in I.\]
@@ -1083,21 +1090,23 @@ Insbesondere können wir jede Integralkurve eindeutig auf ein maximales Existenz
 
 Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \begin{defn}[Fluss]
-	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $U_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times U_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
-	\[U_p \ni t \mapsto \Phi(p,t) \in M\] \kommB{Möchtest du das nicht lieber $I_p$ nennen?}
-	die maximale Integralkurve von $X$ durch $p$ ist. $\Phi$ löst also die gewöhnliche Differentialgleichung
-	\[\frac{\D}{\D t} \Phi(p,t) = X_{\Phi(p,t)}, \quad \Phi(p,0) = p\]
+	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $I_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times I_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi^X\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
+	\[I_p \ni t \mapsto \Phi^X(p,t) \in M\]
+	die maximale Integralkurve von $X$ durch $p$ ist. $\Phi^X$ löst also die gewöhnlichen Differentialgleichungen
+	\[\frac{\D}{\D t} \Phi^X(p,t) = X_{\Phi(p,t)}, \quad \Phi(p,0) = p\]
 	auf dem maximal möglichen Gebiet.
+
+	Oft schreiben wir $\Phi^X_t(p) := \Phi^X(p,t)$.
 \end{defn}
 
 \begin{satz}[Eigenschaften von Flüssen]
-	Sei $\Phi\colon U \to M$ der Fluss von $X \in \mathfrak X(M)$, und seien $U_p$ wie in der vorigen Definition. Dann gilt:
+	Sei $\Phi\colon U \to M$ der Fluss von $X \in \mathfrak X(M)$, und seien $I_p$ wie in der vorigen Definition. Dann gilt:
 	\begin{enumerate}[label=(\roman*)]
 		\item $U \subset M \times \R$ ist offen und $\Phi$ ist glatt.
-		\item Ist $s \in U_p$, so ist $U_{\Phi(p,s)} = U_p - s = \{t - s : t \in U_p\}$.
+		\item Ist $s \in I_p$, so ist $I_{\Phi(p,s)} = I_p - s = \{t - s : t \in I_p\}$.
 		\item $\Phi(p,0) = p$ für alle $p \in M$.
-		\item Ist $t \in U_p$ und $s \in U_{\Phi(p,t)}$, dann ist $t+s \in U_p$ und es gilt $\Phi(\Phi(p,t),s) = \Phi(p,t+s)$.
-		\item Für alle $t\in\R$ ist $M_t := \{p \in M : (t,p) \in U\}$ eine offene Teilmenge von $M$. $\Phi_t(p) := \Phi(p,t)$ definiert einen Diffeomorphismus $\Phi_t\colon M_t \to M_{-t}$.
+		\item Ist $t \in I_p$ und $s \in I_{\Phi(p,t)}$, dann ist $t+s \in I_p$ und es gilt $\Phi_s(\Phi_t(p)) = \Phi_{t+s}(p)$.
+		\item Für alle $t\in\R$ ist $M_t := \{p \in M : (t,p) \in U\}$ eine offene Teilmenge von $M$, und $\Phi_t(p) = \Phi(p,t)$ definiert einen Diffeomorphismus $\Phi_t\colon M_t \to M_{-t}$.
 	\end{enumerate}
 
 	\begin{proof}
@@ -1105,38 +1114,49 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 
 		Um (i) zu zeigen, bemerken wir zunächst, dass aus der Theorie gewöhnlicher Differentialgleichungen folgt, dass es um jeden Punkt der Form $(p,0) \in U$ eine offene Umgebung $V$ in $M\times\R$ gibt, auf der der Fluss $\Phi$ existiert (d.\,h. $V\subset U$) und glatt ist. Mithilfe von Eigenschaft (iv) kann man diese Umgebungen nun auch zu anderen Punkten $(p,t)$ transportieren; die Details sind ein bisschen technisch und bringen kein Mehrverständnis, deshalb lassen wir sie aus.
 
-		Zuletzt zeigen wir noch (v). Offen ist $M_t$ nach Definition. Mit Eigenschaft (ii) gilt $p \in M_t \implies t \in U_p \implies U_{\Phi(p,t)} = U_p - t \overset{0 \in U_p}{\implies} -t \in U_{\Phi(p,t)} \implies \Phi(p,t) \in M_{-t}$, also bildet $\Phi_t$ tatsächlich $M_t$ auf $M_{-t}$ ab. Nach (iv) ist nun $\Phi_{-t} \circ \Phi_t = \Phi_0 \overset{\text{(ii)}}{=} \id_{M_t}$. Analog folgt $\Phi_t \circ \Phi_{-t} \overset{\text{(ii)}}{=} \id_{M_{-t}}$, also sind $\Phi_t$ und $\Phi_{-t}$ zueinander inverse Diffeomorphismen.
+		Zuletzt zeigen wir noch (v). Offen ist $M_t$ nach Definition. Mit Eigenschaft (ii) gilt $p \in M_t \implies t \in I_p \implies I_{\Phi(p,t)} = I_p - t \overset{0 \in I_p}{\implies} -t \in I_{\Phi(p,t)} \implies \Phi(p,t) \in M_{-t}$, also bildet $\Phi_t$ tatsächlich $M_t$ auf $M_{-t}$ ab. Nach (iv) ist nun $\Phi_{-t} \circ \Phi_t = \Phi_0 \overset{\text{(ii)}}{=} \id_{M_t}$. Analog folgt $\Phi_t \circ \Phi_{-t} \overset{\text{(ii)}}{=} \id_{M_{-t}}$, also sind $\Phi_t$ und $\Phi_{-t}$ zueinander inverse Diffeomorphismen.
 	\end{proof}
 \end{satz}
 
 \begin{defn}
 	Ein Vektorfeld heißt \emph{vollständig}, wenn sich alle seine Integralkurven auf ganz $\R$ als Definitionsbereich fortsetzen lassen.
 \end{defn}
+\begin{bem}
+	Ist $X\in\mathfrak X(M)$ vollständig, so ist $\Phi^X_t$ für jedes $t\in\R$ ein Diffeomorphismus $\Phi^X_t\colon M\to M$. Wegen $\Phi^X_0 = \id_M$ und $\Phi_s\circ\Phi_t = \Phi_{t+s}$ ist also
+	\[\R \ni t \mapsto \Phi_t \in \Diff(M)\]
+	ein Gruppenhomomorphismus.
+\end{bem}
 \begin{satz}
 	Vektorfelder mit kompakten Träger sind vollständig.
 	
 	\begin{proof}
-		... \todo{Vollständigkeit von kompakt getragenen VF beweisen.}
+		Sei $X \in \mathfrak X(M)$ und $\supp(X)$ kompakt. Sei $\Phi\colon U\to M$ der Fluss von $X$. Da $U$ offen ist, gibt es für jedes $p\in M$ eine offene Umgebung $U_p \subset M$ und ein $\varepsilon_p > 0$, sodass $U_p \times (-\varepsilon_p, \varepsilon_p) \subset U$. Für jedes $q \in U_p$ existiert dann also die Integralkurve durch $q$ auf $(-\varepsilon_p,\varepsilon_p)$. Da $\supp(X)$ kompakt ist, gibt es endlich viele $p_1,\dots,p_k \in \supp(X)$, sodass $\supp(X) \subset \bigcup_{i=1}^k U_{p_i}$. Wir setzen $\varepsilon := \min\{\varepsilon_{p_1}, \dots, \varepsilon_{p_k}\}$. Für alle $p \in \supp(X)$ existiert damit die Integralkurve durch $p$ auf $(-\varepsilon, \varepsilon)$.
+
+		Für $p \in M \setminus \supp(X)$ ist $X_p = 0$, die Integralkurve durch $p$ also die konstante Kurve $t \mapsto p$, die also auch auf $(-\varepsilon, \varepsilon)$ existiert. Damit existieren also alle Integralkurven von $X$ auf $(-\varepsilon, \varepsilon)$.
+
+		Sei nun $p\in M$, und die Integralkurve $\gamma$ durch $p$ existiere auf dem Intervall $(a,b) \supset (-\varepsilon,\varepsilon)$. Setze $q := \gamma(b - \frac{\varepsilon}{2})$. $\tilde\gamma(t) := \gamma(b - \frac{\varepsilon}{2} + t)$ definiert dann nach der Verschiebe-Eigenschaft die Integralkurve $\tilde\gamma$ durch $q$ auf dem Intervall $(a - b + \frac{\varepsilon}{2}, \frac{\varepsilon}{2})$. Nach der obigen Überlegung existiert $\tilde\gamma$ aber auch auf $(-\varepsilon, \varepsilon)$, kann also auf $(a - b + \frac{\varepsilon}{2}, \varepsilon)$ fortgesetzt werden. Indem wir $\tilde\gamma$ wieder zurück verschieben, sehen wir also, dass $\gamma$ auf $(a,b+\frac{\varepsilon}{2})$ existiert. Indem wir dieses Verfahren entsprechend oft wiederholen, können wir damit die obere Grenze des Existenzintervall von $\gamma$ zu beliebig großen reellen Zahlen verschieben. Analog zeigt man, dass $\gamma(t)$ für beliebig kleine negative $t$ existiert.
 	\end{proof}
 \end{satz}
 
 \begin{defn}[Lie-Ableitung]
-	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$), definiert als
-	\[\mathcal L_X T := \left.\frac{\D(\Phi_t^* T)}{\D t}\right|_{t=0} = \lim_{t\to 0} \frac{\Phi_t^* T - T}{t},\]\kommB[inline]{Vllt möchte man hier noch irgendwas dazu sagen, dass $(\Phi_t^* T)(p)$ für Vektorfelder $T$ eine Kurve im Tangentialbündel beschreibt (und man dann eben punktweise ($\forall p \in M$) die Tangentialräume des Bündels mit den Fasern identifiziert. Ich fand das damals immer irritierend, dass auf einmal überall solche $\frac{d}{dt}$ Ableitungen von Objekten auf Mf standen...}
-	wobei $\Phi$ der Fluss von $X$ ist. Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir uns \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$), definiert durch
+	\[(\mathcal L_X T)(p) := \left.\frac{\D}{\D t}(\Phi_t^* T)(p)\right|_{t=0} = \lim_{t\to 0} \frac{(\Phi_t^* T)(p) - T(p)}{t},\]
+	wobei $\Phi = \Phi^X$ der Fluss von $X$ ist. Dabei ist $t \mapsto (\Phi_t^*T)(p) \in \mathbb R$ (oder $\in T_pM$) einfach eine Abbildung von $\mathbb R$ in einen Vektorraum, von der wir die übliche Ableitung nehmen.
+
+	Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir uns \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
 	
-	Lokal um jeden Punkt $p\in M$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn. Die Glattheit von $\mathcal L_X T$ folgt, da der Fluss von $X$ und $T$ glatt sind.
+	Lokal um jeden Punkt $p\in M$ ist $\Phi_t$ für genügend kleines $t$ ein Diffeomorphismus, der Pullback existiert also und die Definition ergibt Sinn. Die Glattheit von $\mathcal L_X T$ folgt, da $T$ und der Fluss von $X$ glatt sind.
 \end{defn}
 
 \begin{bem}
-	Ist $\Phi$ der Fluss von $X$ und $a\in\R$, so definiert $\tilde\Phi(p,t) := \Phi(p,at)$ den Fluss $\tilde\Phi$ von $aX$, und folglich ist $\left.\frac{\D(\Phi_{at}^* T)}{\D t}\right|_{t=0} = \mathcal L_{aX} T$. Andererseits ist nach Kettenregel $\left.\frac{\D(\Phi_{at}^* T)}{\D t}\right|_{t=0} = a \left.\frac{\D(\Phi_t^* T)}{\D t}\right|_{t=0} = a \mathcal L_X T$. Also gilt $\mathcal L_{aX} T = a \mathcal L_X T$.
+	Ist $\Phi = \Phi^X$ der Fluss von $X$ und $a\in\R$, so ist der Fluss von $aX$ durch $\Phi^{aX}(p,t) = \Phi(p,at)$ gegeben, und folglich ist $\left.\frac{\D}{\D t} (\Phi_{at}^* T)(p) \right|_{t=0} = (\mathcal L_{aX} T)(p)$. Andererseits ist nach Kettenregel $\left.\frac{\D}{\D t} (\Phi_{at}^* T)(p) \right|_{t=0} = a \left.\frac{\D}{\D t} (\Phi_t^* T)(p) \right|_{t=0} = a (\mathcal L_X T)(p)$. Also gilt $\mathcal L_{aX} T = a \mathcal L_X T$.
 \end{bem}
 
 \begin{lemma} \label{lemma:lie_abl_funk}
 	Für eine glatte Funktion $f \in \sC(M)$ ist $\mathcal L_X f = X(f)$ die übliche Ableitung.
 
 	\begin{proof}
-		Es ist $(\mathcal L_X f)(p) = \left.\frac{\D}{\D t}(\Phi_t^* f)(p)\right|_{t=0}  = \left.\frac{\D}{\D t}f(\Phi_t(p))\right|_{t=0} = \left.\D f\right|_p \left( \left.\frac{\D}{\D t}\Phi_t(p)\right|_{t=0} \right) = \left.\D f\right|_p (X_p) = X_p(f)$ nach Kettenregel.
+		Sei $\Phi$ der Fluss von $X$. Es ist $(\mathcal L_X f)(p) = \left.\frac{\D}{\D t}(\Phi_t^* f)(p)\right|_{t=0}  = \left.\frac{\D}{\D t}f(\Phi_t(p))\right|_{t=0} = \left.\D f\right|_p \left( \left.\frac{\D}{\D t}\Phi_t(p)\right|_{t=0} \right) = \left.\D f\right|_p (X_p) = X_p(f)$ nach Kettenregel.
 	\end{proof}
 \end{lemma}
 
@@ -1144,23 +1164,35 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	Für ein Vektorfeld $Y \in \mathfrak X(M)$ ist $\mathcal L_X Y = [X,Y]$ der Kommutator.
 
 	\begin{proof}
-		Für $f\in \sC(M)$ gilt lokal:
+		Zunächst bemerken wir, dass für eine beliebige glatte Abbildung $F \colon U \to \mathbb R$, $U \subset R^2$ eine offene Umgebung von 0, nach Kettenregel $\frac{\D}{\D t} F(t,t) = (\partial_1 F)(t,t) + (\partial_2 F)(t,t)$ gilt, insbesondere also
+		\begin{equation} \label{eq:pf_vf_kommut} \tag{$*$}
+			\left.\frac{\D}{\D t} F(t,t)\right|_{t=0} = \left.\frac{\D}{\D t} F(t,0)\right|_{t=0} + \left.\frac{\D}{\D t} F(0,t)\right|_{t=0}.
+		\end{equation}
+
+		Sei nun $\Phi$ der Fluss von $X$. Für jedes $f\in \sC(M)$ und $p\in M$ gilt:
 		\begingroup
 		\allowdisplaybreaks
 		\begin{align*}
-			(\mathcal L_X Y)(f) &= \left(\left.\frac{\D}{\D t}\Phi_t^* Y\right|_{t=0}\right)(f)\\
-			\text{($\mathfrak X(M) \ni Z \mapsto Z(f)$ ist $\mathbb R$-linear)} \quad &= \left.\frac{\D}{\D t}(\Phi_t^* Y)(f)\right|_{t=0}\\
-			&= \left.\frac{\D}{\D t}(\Phi_t^* Y)(\Phi_t^* \Phi_{-t}^*f)\right|_{t=0}\\
-			\text{(Lemma \ref{lemma:transport_VF_funk})} \quad &= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(\Phi_{-t}^*f)\Big) \right|_{t=0}\\
-			\text{(siehe oben)} \quad &= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(\Phi_0^*f)\Big) \right|_{t=0} + \left.\frac{\D}{\D t}\Phi_0^* \Big(Y(\Phi_{-t}^*f)\Big) \right|_{t=0}\\
-			&= \left.\frac{\D}{\D t}\Phi_t^* \Big(Y(f)\Big) \right|_{t=0} + \left.\frac{\D}{\D t} Y(\Phi_{-t}^*f) \right|_{t=0}\\
-			\text{($\sC(M) \ni g \mapsto Y(g)$ ist $\mathbb R$-linear)} \quad &= \mathcal L_X \Big(Y(f)\Big) + Y\left( \left.\frac{\D}{\D t} \Phi_{-t}^*f \right|_{t=0} \right)\\
-			&= \mathcal L_X \Big(Y(f)\Big) + Y\Big({-}\mathcal L_{X} f\Big)\\
-			\text{(Lemma \ref{lemma:lie_abl_funk})} \quad &= X(Y(f)) - Y(X(f)) = [X,Y](f) \qedhere
+			(\mathcal L_X Y)_p(f) &= \left(\left.\frac{\D}{\D t}(\Phi_t^* Y)_p\right|_{t=0}\right)(f)\\
+			&= \left.\D f\right|_p \left(\left.\frac{\D}{\D t}(\Phi_t^* Y)_p\right|_{t=0}\right)\\
+			\text{($\left.\D f\right|_p\colon T_pM \to \mathbb R$ ist $\mathbb R$-linear)} \quad &= \left.\frac{\D}{\D t}\left.\D f\right|_p \Big((\Phi_t^* Y)_p\Big)\right|_{t=0}\\
+			&= \left.\frac{\D}{\D t} \Big((\Phi_t^* Y) (f)\Big)(p)\right|_{t=0}\\
+			&= \left.\frac{\D}{\D t}\Big((\Phi_t^* Y)(\Phi_t^* \Phi_{-t}^*f)\Big)(p)\right|_{t=0}\\
+			\text{(Lemma \ref{lemma:transport_VF_funk})} \quad &= \left.\frac{\D}{\D t} \left(\Phi_t^* \Big(Y(\Phi_{-t}^*f)\Big)\right)(p) \right|_{t=0}\\
+			\text{(\eqref{eq:pf_vf_kommut} und $\Phi_0 = \id_M$)} \quad &= \left.\frac{\D}{\D t}\left(\Phi_t^* \Big(Y(f)\Big)\right) (p) \right|_{t=0} + \left.\frac{\D}{\D t} \Big(Y(\Phi_{-t}^*f)\Big) (p) \right|_{t=0}\\
+			\text{(Satz von Schwarz)} \quad &= \left(\mathcal L_X \Big(Y(f)\Big)\right)(p) + \left(Y\left( \left.\frac{\D}{\D t} \Phi_{-t}^*f \right|_{t=0} \right)\right)(p)\\
+			&= \left(\mathcal L_X \Big(Y(f)\Big)\right)(p) + \left(Y\Big( - \mathcal L_X f \Big)\right)(p)\\
+			\text{(Lemma \ref{lemma:lie_abl_funk})} \quad &= \Big(X(Y(f)) - Y(X(f))\Big)(p) = \Big([X,Y](f)\Big)(p)
 		\end{align*}%
 		\endgroup
+		Damit ist $(\mathcal L_X Y)(f) = [X,Y](f)$ für alle $f\in\sC(M)$, also $\mathcal L_X Y = [X,Y]$.
 	\end{proof}
 \end{lemma}
+Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y] = \mathcal L_X Y$ gibt an, wie sehr sich $Y$ ändert, wenn wir uns in Richtung von $X$ bewegen.
+\kommP[inline]{Hier könnte man jetzt noch was à la
+	\[\frac{1}{2} \left.\frac{\D^2}{\D t^2} \left(\Phi^Y_{-t} \circ \Phi^X_{-t} \circ \Phi^Y_t \circ \Phi^X_t\right) (p) \right|_{t=0} = [X,Y]_p\]
+	machen, damit man noch mehr geometrische Interpretation hat, aber da muss man erst mal was darüber sagen, dass man für Kurven mit $\gamma'(0) = 0$ sinnvoll $\gamma''(0) \in T_{\gamma(0)}M$ auffassen kann, und das erscheint mir dann doch zu viel.
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1240,14 +1272,15 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\begin{lemma}
 			Linksinvariante Vektorfelder sind vollständig, das heißt, ihre Integralkurven können auf ganz $\R$ fortgesetzt werden.
 			\begin{proof}
-			Die Idee ist hier, dass sich Integralkurven verschieben lassen, wie in Lemma \ref{lemma:int_kurv_versch}, man aber auf Lie-Gruppen auch durch die Linkstranslationen Integralkurven verschieben kann. Sei also $\gamma_g\colon I_g\rightarrow G$ eine maximale Integralkurve von $X\in\vf^L(G)$ in $g\in G$ und $I_g\neq \R$, dann ist auch $\gamma_h\colon I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ eine Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel):
+			Die Idee ist hier, dass sich Integralkurven verschieben lassen, wie in Lemma \ref{lemma:int_kurv_versch}, man aber auf Lie-Gruppen auch durch die Linkstranslationen Integralkurven verschieben kann, was hier aufgrund der Linksinvarianz keinen Unterschied macht. Sei also $\gamma_g\colon I_g\rightarrow G$ eine maximale Integralkurve von $X\in\vf^L(G)$ in $g\in G$ und $I_g\neq \R$, dann ist auch $\gamma_h\colon I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ eine Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel):
 			\begin{align*}
-				\left.\frac{d}{dt}\gamma_h(t)\right\vert_{t=s}&=\DD l_h\vert_{\gamma_g(s)} X_{\gamma_g(s)}\\
+				\left.\frac{\D}{\D t}\gamma_h(t)\right\vert_{t=s}&=\DD l_h\vert_{\gamma_g(s)} X_{\gamma_g(s)}\\
 				&=X_{h\cdot \gamma_g(s)}
 			\end{align*}
-			Damit haben wir also eine Integralkurve $\gamma_h$, die auf $I_g$ definiert ist. Wenn wir nun aber $h$ so wählen, dass $g\in\gamma_h(I_g)$ gilt (und $g=\gamma_h(a)$), dann ist die verschobene Kurve $\lambda(t)=\gamma_h(t+a)\;\forall t\in I_g-a$ auch eine Integralkurve von $X$ in $g$ und wir können den Definitionsbereich von $\gamma_g$ um $a$ verlängern! Dies ist ein Widerspruch zur Annahme der Maximalität, also muss für maximale Integralkurven schon $I=\R$ gelten.
+			Damit haben wir also eine Integralkurve $\gamma_h$, die auf $I_g$ definiert ist. Wenn wir nun aber $a \in I_g$ wählen und $h := \gamma_g(a) \cdot g^{-1}$ setzen, so ist die verschobene Kurve $\lambda(t)=\gamma_g(t+a)\;\forall t\in I_g-a$ auch eine Integralkurve von $X$ in $\gamma_g(a) = h \cdot g$ und wir können den Definitionsbereich von $\gamma_h$ um $a$ verlängern! Indem wir die so erhaltene Kurve wieder zurück verschieben, haben wir den Definitionsbereich von $\gamma_g$ verlängert. Dies ist ein Widerspruch zur Annahme der Maximalität, also muss für maximale Integralkurven schon $I=\R$ gelten.
 			\end{proof}
 		\end{lemma}
+		\kommP[inline]{Den Beweis habe ich ein bisschen klarer gemacht, denn es ist (meiner Ansicht nach) nicht direkt offensichtlich, dass man ein $h$ wählen kann, sodass $g \in \gamma_h(I_g)$ gilt. So muss man zwar einmal mehr verschieben, aber es ist klarer, finde ich.}
 	\section{Die Exponentialabbildung}
 		\begin{defn}[Exponentialabbildung]
 			Die \emph{Exponentialabbildung} $\exp\colon\mathfrak{g}\rightarrow G$ ist durch den Fluss der linksinvarianten Vektorfelder definiert:
@@ -1260,7 +1293,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
 			\begin{enumerate}[label=\arabic* .]
 				\item $\exp(0)=e$
-				\item $\frac{d}{dt}\exp(tv)\big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
+				\item $\frac{\D}{\D t} \exp(tv)\big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
 				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
 			\end{enumerate}
 			\begin{proof}
@@ -1277,7 +1310,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\begin{proof}
 				Es gilt $l_p(\exp(0))=p=\Phi^X_0(p)$. Wir zeigen nun, dass $l_p(\exp(tX_e)$ $X$ erzeugt und die Aussage folgt dann aufgrund der Eindeutigkeit der Lösung von Differentialgleichungen (oder von Integralkurven).
 				\begin{align*}
-					\frac{d}{dt}l_p(\exp(tX_e))&=\frac{d}{ds}l_{p\cdot\exp(tX_e)}(\exp(sX_e))\Big\vert_{s=0}\\
+					\frac{\D}{\D t} l_p(\exp(tX_e))&=\frac{\D}{\D s} l_{p\cdot\exp(tX_e)}(\exp(sX_e))\Big\vert_{s=0}\\
 					&=\DD l_{p\cdot\exp(tX_e)}\vert_eX_e\\
 					&=X_{p\cdot\exp(tX_e)}
 				\end{align*}
@@ -1301,7 +1334,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\begin{proof}
 				Wir wollen zeigen, dass $\exp(D\phi\vert_e v)=\phi(\exp(v))\forall v\in\mathfrak{g}$ gilt. Sei $v\in\mathfrak{g}$, ${\gamma\colon [0,1]\rightarrow G}$,$ \gamma(t):=\phi(\exp(tv))$ und zeige nun, dass $\gamma$ die Integralkurve von $L(\DD\phi\vert_e v)$ in $e\in H$ ist:
 				\begin{align*}
-					\gamma'(t)&=\frac{d}{dt}(\phi(\exp(tv))\\
+					\gamma'(t)&=\frac{\D}{\D t}(\phi(\exp(tv))\\
 					&=\DD\phi\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e v\\
 					&=\DD(\phi\circ l_{\exp(tv)})\vert_e v\\
 					&=\DD(l_{\phi(\exp(tv))}\circ\phi)\vert_e v\\
@@ -1314,8 +1347,8 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\begin{bem}\label{bem:exp_induziert_Abbildungen}
 			Aufgrund von Lemma \ref{lemma:Eigenschaften_exp} lassen sich also die induzierten Lie-Algebrenhomomorphismen $\DD\phi\vert_e$ wie folgt berechnen:
 			\begin{align*}
-				\DD\phi\vert_e v&=\frac{d}{dt}\exp(t \DD\phi\vert_e v)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\phi(\exp(tv))\Big\vert_{t=0}
+				\DD\phi\vert_e v&=\frac{\D}{\D t}\exp(t \DD\phi\vert_e v)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t}\phi(\exp(tv))\Big\vert_{t=0}
 			\end{align*}
 		\end{bem}
 	\section{Wirkungen und Darstellungen}
@@ -1355,12 +1388,12 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\end{align*}
 			Mit Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} und Bemerkung \ref{bem:exp_induziert_Abbildungen} folgt dann:
 			\begin{align*}
-				\ad_v(w)&=\frac{d}{dt}\Ad_{\exp(tv)}(w)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\DD c_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}L(w)_{\exp(tv)}\right)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\DD \Phi_{-t}^{L(v)}\vert_{\Phi^{L(v)}_t(e)}L(w)_{\Phi^{L(v)}_t(e)}\right)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\left(\Phi_{-t}^{L(v)}\right)_*L(w)\right)_e\Big\vert_{t=0}\\
+				\ad_v(w)&=\frac{\D}{\D t} \Ad_{\exp(tv)}(w)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\DD c_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}L(w)_{\exp(tv)}\right)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\DD \Phi_{-t}^{L(v)}\vert_{\Phi^{L(v)}_t(e)}L(w)_{\Phi^{L(v)}_t(e)}\right)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\left(\Phi_{-t}^{L(v)}\right)_*L(w)\right)_e\Big\vert_{t=0}\\
 				&=\mathcal{L}_{L(v)}(L(w))_e\\
 				&=\left[v,w\right]
 			\end{align*}
@@ -1388,7 +1421,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			
 			Das \emph{fundamentale Vektorfeld} $X^v$ zu einem Element der Lie-Algebra $v\in\mathfrak{g}$ ist durch die folgende Gleichung definiert:
 			\begin{align*}
-				X^v_p:=\frac{d}{dt}\exp(tv)\trir p\Big\vert_{t=0} \quad\forall p\in M
+				X^v_p:=\frac{\D}{\D t} \exp(tv)\trir p\Big\vert_{t=0} \quad\forall p\in M
 			\end{align*}
 			Beachte, dass dies für die Linkstranslation gerade dem Fluss aus Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} entspricht! Linksinvariante Vektorfelder sind also die fundamentalen Vektorfelder der Lie-Gruppe selbst.
 		\end{defn}
@@ -1552,7 +1585,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			
 			Der Paralleltransport erfüllt die folgende Eigenschaft:
 			\begin{align*}
-				\frac{d}{dt} P^{-1}_0(t) \sigma(\gamma(t))\Big\vert_{t=0}=(\nabla_{\dot{\gamma}(0)}\sigma) (x)
+				\frac{\D}{\D t} P^{-1}_0(t) \sigma(\gamma(t))\Big\vert_{t=0}=(\nabla_{\dot{\gamma}(0)}\sigma) (x)
 			\end{align*}
 			Aus den obigen Aussagen ist klar, dass dies nur von $\dot{\gamma}(0)$ abhängt, nicht von der ganzen Kurve. Dies erläutert anschaulich, warum man durch diese Formal auch eine kovariante Ableitung definieren kann.
 		\end{lemma}
@@ -1732,6 +1765,60 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Integration auf Mannigfaltigkeiten}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\counterwithout{defn}{section} % Bindung des defn-Counters an section auflösen
+\numberwithin{defn}{chapter} % defn-Counter an chapter binden
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Details zur Existenz von Zerlegungen der Eins}
+\label{appendix:details_zerl_eins}
+Hier geben wir ein paar mehr Details zur Existenz von Zerlegungen der Eins.
+\begin{defn}
+	Sei $M$ ein topologischer Raum und $\{X_i\}_{i\in I}$ eine Überdeckung von $M$. Eine \emph{Verfeinerung} dieser Überdeckung ist eine Überdeckung $\{Y_j\}_{j\in J}$, sodass jedes $Y_j$ in einem der $X_i$ enthalten ist.
+\end{defn}
+\begin{lemma} \label{lemma:lok_endl_abschluss}
+	Sei $\{X_i\}_{i\in I}$ eine Familie von Teilmengen eines topologischen Raums $M$. Ist $\{X_i\}_{i\in I}$ lokal endlich, so ist $\overline{\bigcup_{i\in I} X_i} = \bigcup_{i\in I} \overline{X_i}$. Außerdem ist auch $\{\overline{X_i}\}_{i\in I}$ lokal endlich.
+
+	(ohne Beweis)
+\end{lemma}
+Wie im Haupttext gesagt, ist die Idee des Beweises der Existenz von Zerlegungen der Eins, die $\psi_i$ aus bump functions auf Kugeln zu konstruieren, die Bilder von Kartenumgebungen in den gegebenen offenen Mengen sind. Um das auszuführen, brauchen wir noch einen kleinen technischen Hilfssatz:
+\begin{lemma}
+	Sei $M$ eine differenzierbare Mannigfaltigkeit und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $M$. Es existieren eine Familie $\{(\varphi_j,V_j)\}_{j\in J}$ von Karten von $M$, die $M$ überdecken, sowie eine weitere offene Überdeckung $\{B_j\}_{j\in J}$ von $M$ mit den folgenden Eigenschaften:
+	\begin{enumerate}[label=(\roman*)]
+		\item $\{V_j\}_{j\in J}$ ist eine Verfeinerung von $\{U_i\}_{i\in I}$.
+		\item Für alle $j\in J$ ist $\bar B_j \subset V_j$.
+		\item $\{B_j\}_{j\in J}$ ist lokal endlich.
+		\item Zu jedem $j\in J$ existiert ein $r_j > 0$ mit $\varphi_j(B_j) = B_{r_j}(0)$ (d.\,h. die Karte bildet $B_j$ auf eine Kugel ab).
+	\end{enumerate}
+
+	(ohne Beweis, da zu technisch/topologisch)
+\end{lemma}
+\begin{bem}
+	Dieses Lemma zeigt insbesondere, dass Mannigfaltigkeiten \emph{parakompakt} sind: Jede offene Überdeckung hat eine lokal endliche Verfeinerung.
+\end{bem}
+
+\begin{proof}[Beweis von Satz \ref{satz:zerl_eins} über Existenz von Zerlegungen der Eins]
+	Sei $M$ eine differenzierbaren Mannigfaltigkeit und $\{U_i\}_{i\in I}$ eine offene Überdeckung von $M$. Wir wollen zeigen, dass es eine dieser Überdeckung untergeordnete Zerlegung der Eins gibt.
+
+	Wende das vorige Lemma an, um $\{(\varphi_j,V_j)\}_{j\in J}$, $\{B_j\}_{j\in J}$, $\{r_j\}_{j\in J}$ wie dort zu erhalten. Für jedes $j\in J$ wählen wir eine bump function $H_j \in \sC(\R^n)$, die auf $B_{r_j}(0)$ positiv ist und außerhalb von $B_{r_j}(0)$ verschwindet (diese existiert nach Lemma \ref{lemma:bump_fn_kugel} für $r' = r_j$).
+
+	Für $j\in J$ definieren wir $f_j \in \sC(M)$ durch
+	\[f_j := \begin{cases}
+	H_j \circ \varphi_j & \text{auf} \; V_j\\
+	0 & \text{auf} \; M \setminus \overline{B_j}.
+	\end{cases}\]
+	Auf dem Durchschnitt $V_j \setminus \overline{B_j}$ der beiden Definitionsbereiche ergeben beide Ausdrücke 0, $f_j$ ist also wohldefiniert. Auf $B_j$ ist $f_j$ positiv, außerhalb von $B_j$ ist es 0; also ist $\supp(f_j) = \bar B_j$.
+
+	Wir definieren jetzt $F \in \sC(M)$ durch $F(p) := \sum_{j\in J} f_j(p)$ (wegen der lokalen Endlichkeit von $\{B_j\}_{j\in J}$ existiert die Summe). Da die $f_j$ nichtnegativ und auf $B_j$  jeweils positiv sind, ist $F > 0$ (da jedes $p\in M$ in einem $B_j$ liegt). Wenn wir also $g_j := f_j / F \in \sC(M)$ setzen, dann ist jedes $g_j$ eine nichtnegative Funktion, die auf $B_j$ positiv ist und für die $\supp(g_j) = \bar B_j$ gilt, und es ist $\sum_{j \in J} g_j = F/F = 1$.
+
+	Jetzt müssen wir die konstruierten Funktionen $g_j$ noch zu den gesuchten Funktionen $\{\psi_i\}_{i\in I}$ zusammenfassen. Da $\{V_j\}_{j\in J}$ eine Verfeinerung von $\{U_i\}_{i\in I}$ ist, gibt es zu jedem $j \in J$ ein $\lambda(j) \in I$ mit $V_j \subset U_{\lambda(j)}$. Wir setzen
+	\[\psi_i := \sum_{j\in J: \lambda(j) = i} g_j \in \sC(M).\]
+	Weil die $g_j$ positiv sind und jedes $g_j$ genau auf $B_j$ von 0 verschieden ist, gilt jeweils $\supp(\psi_i) = \overline{\bigcup_{j: \lambda(j) = i} B_j} = \bigcup_{j: \lambda(j) = i} \overline{B_j} \subset U_i$, wobei bei der letzten Gleichheit Lemma \ref{lemma:lok_endl_abschluss} benutzt wurde. Nach diesem Lemma ist außerdem $\{\overline{B_j}\}_{j\in J}$ lokal endlich; da die $\overline{B_j}$ einfach nur zu den Trägern $\supp(\psi_i)$ \glqq zusammengefasst werden\grqq, ist damit auch $\{\supp(\psi_i)\}_{i\in I}$ lokal endlich.
+
+	Nach Konstruktion nehmen die $\psi_i$ Werte in $[0,1]$ an und es gilt $\sum_{i\in I} \psi_i = 1$.
+\end{proof}
 
 
 \end{document}
