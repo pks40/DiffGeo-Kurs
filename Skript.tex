@@ -1261,7 +1261,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\begin{proof}
 			Die Idee ist hier, dass sich Integralkurven verschieben lassen, wie in Lemma \ref{lemma:int_kurv_versch}, man aber auf Lie-Gruppen auch durch die Linkstranslationen Integralkurven verschieben kann, was hier aufgrund der Linksinvarianz keinen Unterschied macht. Sei also $\gamma_g\colon I_g\rightarrow G$ eine maximale Integralkurve von $X\in\vf^L(G)$ in $g\in G$ und $I_g\neq \R$, dann ist auch $\gamma_h\colon I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ eine Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel):
 			\begin{align*}
-				\left.\frac{d}{dt}\gamma_h(t)\right\vert_{t=s}&=\DD l_h\vert_{\gamma_g(s)} X_{\gamma_g(s)}\\
+				\left.\frac{\D}{\D t}\gamma_h(t)\right\vert_{t=s}&=\DD l_h\vert_{\gamma_g(s)} X_{\gamma_g(s)}\\
 				&=X_{h\cdot \gamma_g(s)}
 			\end{align*}
 			Damit haben wir also eine Integralkurve $\gamma_h$, die auf $I_g$ definiert ist. Wenn wir nun aber $a \in I_g$ wählen und $h := \gamma_g(a) \cdot g^{-1}$ setzen, so ist die verschobene Kurve $\lambda(t)=\gamma_g(t+a)\;\forall t\in I_g-a$ auch eine Integralkurve von $X$ in $\gamma_g(a) = h \cdot g$ und wir können den Definitionsbereich von $\gamma_h$ um $a$ verlängern! Indem wir die so erhaltene Kurve wieder zurück verschieben, haben wir den Definitionsbereich von $\gamma_g$ verlängert. Dies ist ein Widerspruch zur Annahme der Maximalität, also muss für maximale Integralkurven schon $I=\R$ gelten.
@@ -1280,7 +1280,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
 			\begin{enumerate}[label=\arabic* .]
 				\item $\exp(0)=e$
-				\item $\frac{d}{dt}\exp(tv)\big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
+				\item $\frac{\D}{\D t} \exp(tv)\big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
 				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
 			\end{enumerate}
 			\begin{proof}
@@ -1297,7 +1297,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\begin{proof}
 				Es gilt $l_p(\exp(0))=p=\Phi^X_0(p)$. Wir zeigen nun, dass $l_p(\exp(tX_e)$ $X$ erzeugt und die Aussage folgt dann aufgrund der Eindeutigkeit der Lösung von Differentialgleichungen (oder von Integralkurven).
 				\begin{align*}
-					\frac{d}{dt}l_p(\exp(tX_e))&=\frac{d}{ds}l_{p\cdot\exp(tX_e)}(\exp(sX_e))\Big\vert_{s=0}\\
+					\frac{\D}{\D t} l_p(\exp(tX_e))&=\frac{\D}{\D s} l_{p\cdot\exp(tX_e)}(\exp(sX_e))\Big\vert_{s=0}\\
 					&=\DD l_{p\cdot\exp(tX_e)}\vert_eX_e\\
 					&=X_{p\cdot\exp(tX_e)}
 				\end{align*}
@@ -1321,7 +1321,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\begin{proof}
 				Wir wollen zeigen, dass $\exp(D\phi\vert_e v)=\phi(\exp(v))\forall v\in\mathfrak{g}$ gilt. Sei $v\in\mathfrak{g}$, ${\gamma\colon [0,1]\rightarrow G}$,$ \gamma(t):=\phi(\exp(tv))$ und zeige nun, dass $\gamma$ die Integralkurve von $L(\DD\phi\vert_e v)$ in $e\in H$ ist:
 				\begin{align*}
-					\gamma'(t)&=\frac{d}{dt}(\phi(\exp(tv))\\
+					\gamma'(t)&=\frac{\D}{\D t}(\phi(\exp(tv))\\
 					&=\DD\phi\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e v\\
 					&=\DD(\phi\circ l_{\exp(tv)})\vert_e v\\
 					&=\DD(l_{\phi(\exp(tv))}\circ\phi)\vert_e v\\
@@ -1334,8 +1334,8 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\begin{bem}\label{bem:exp_induziert_Abbildungen}
 			Aufgrund von Lemma \ref{lemma:Eigenschaften_exp} lassen sich also die induzierten Lie-Algebrenhomomorphismen $\DD\phi\vert_e$ wie folgt berechnen:
 			\begin{align*}
-				\DD\phi\vert_e v&=\frac{d}{dt}\exp(t \DD\phi\vert_e v)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\phi(\exp(tv))\Big\vert_{t=0}
+				\DD\phi\vert_e v&=\frac{\D}{\D t}\exp(t \DD\phi\vert_e v)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t}\phi(\exp(tv))\Big\vert_{t=0}
 			\end{align*}
 		\end{bem}
 	\section{Wirkungen und Darstellungen}
@@ -1375,12 +1375,12 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\end{align*}
 			Mit Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} und Bemerkung \ref{bem:exp_induziert_Abbildungen} folgt dann:
 			\begin{align*}
-				\ad_v(w)&=\frac{d}{dt}\Ad_{\exp(tv)}(w)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\DD c_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}L(w)_{\exp(tv)}\right)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\DD \Phi_{-t}^{L(v)}\vert_{\Phi^{L(v)}_t(e)}L(w)_{\Phi^{L(v)}_t(e)}\right)\Big\vert_{t=0}\\
-				&=\frac{d}{dt}\left(\left(\Phi_{-t}^{L(v)}\right)_*L(w)\right)_e\Big\vert_{t=0}\\
+				\ad_v(w)&=\frac{\D}{\D t} \Ad_{\exp(tv)}(w)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\DD c_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}\DD l_{\exp(tv)}\vert_e w\right)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\DD r_{\exp(-tv)}\vert_{\exp(tv)}L(w)_{\exp(tv)}\right)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\DD \Phi_{-t}^{L(v)}\vert_{\Phi^{L(v)}_t(e)}L(w)_{\Phi^{L(v)}_t(e)}\right)\Big\vert_{t=0}\\
+				&=\frac{\D}{\D t} \left(\left(\Phi_{-t}^{L(v)}\right)_*L(w)\right)_e\Big\vert_{t=0}\\
 				&=\mathcal{L}_{L(v)}(L(w))_e\\
 				&=\left[v,w\right]
 			\end{align*}
@@ -1408,7 +1408,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			
 			Das \emph{fundamentale Vektorfeld} $X^v$ zu einem Element der Lie-Algebra $v\in\mathfrak{g}$ ist durch die folgende Gleichung definiert:
 			\begin{align*}
-				X^v_p:=\frac{d}{dt}\exp(tv)\trir p\Big\vert_{t=0} \quad\forall p\in M
+				X^v_p:=\frac{\D}{\D t} \exp(tv)\trir p\Big\vert_{t=0} \quad\forall p\in M
 			\end{align*}
 			Beachte, dass dies für die Linkstranslation gerade dem Fluss aus Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} entspricht! Linksinvariante Vektorfelder sind also die fundamentalen Vektorfelder der Lie-Gruppe selbst.
 		\end{defn}
@@ -1565,7 +1565,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			
 			Der Paralleltransport erfüllt die folgende Eigenschaft:
 			\begin{align*}
-				\frac{d}{dt} P^{-1}_0(t) \sigma(\gamma(t))\Big\vert_{t=0}=(\nabla_{\dot{\gamma}(0)}\sigma) (x)
+				\frac{\D}{\D t} P^{-1}_0(t) \sigma(\gamma(t))\Big\vert_{t=0}=(\nabla_{\dot{\gamma}(0)}\sigma) (x)
 			\end{align*}
 			Aus den obigen Aussagen ist klar, dass dies nur von $\dot{\gamma}(0)$ abhängt, nicht von der ganzen Kurve. Dies erläutert anschaulich, warum man durch diese Formal auch eine kovariante Ableitung definieren kann.
 		\end{lemma}
