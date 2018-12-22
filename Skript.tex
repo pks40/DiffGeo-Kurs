@@ -170,6 +170,7 @@ Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
 		\begin{bsp}\hfill 
 			\begin{enumerate}
 				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. Ebenso gilt dies für beliebige offene Teilmengen.
+				\item Offene Teilmengen von topologischen Mannigfaltigkeiten sind topologische Mannigfaltigkeiten.
 				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n + m$). Die Produkte offener Mengen bilden dabei eine Basis der Topologie des Produktes.
 				\item Für topologische Mannigfaltigkeiten gleicher Dimension ist die disjunkte Vereinigung eine topologische Mannigfaltigkeit (\emph{topologische Summe}).
 			\end{enumerate}
@@ -1481,6 +1482,13 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			\end{align*}
 			Beachte: Die Zusammenhangskoeffizienten sind nicht Koeffizienten eines Tensors.
 		\end{lemma}\kommB[inline]{Ist das hier zu technisch? Wollen/Brauchen wir das (Abgesehen von Beweisen)?}
+		\begin{satz}
+			Auf jedem Vektorbündel existiert eine kovariante Ableitung.
+			\begin{proof}
+				Schematisch: Wähle eine Überdeckung des Bündels (vom Rang $k$) durch lokale Trivialisierungen (über offenen Mengen $U$) und eine untergeordnete Zerlegung der Eins. Dann wählen wir auf den $U\times \R^k$ die kovariante Ableitung so, dass die Zusammenhangskoeffizienten in der Standardbasis (also dem globalen Standardrahmen) verschwinden.
+				Durch \glqq kartenweises Zurückziehen\grqq\ (beachte: nur das zweite Argument wird verändert) dieser kovarianten Ableitung entlang der Trivialisierungen erhalten wir eine kovariante Ableitung auf dem Vektorbündel. Die Eigenschaften der kovarianten Ableitung erhält man direkt durch Nachrechnen, wobei hier wichtig ist, dass die Summe der bump functions punktweise $1$ ergibt (sonst verliert man Derivativität).
+			\end{proof}
+		\end{satz}
 	\section{Induzierte Zusammenhänge}
 		Insbesondere interessieren uns kovariante Ableitungen entlang von Kurven $\gamma\colon I\rightarrow M$. Dies entspricht einer kovarianten Ableitung auf dem auf das Intervall $I$ zurückgezogenen Bündel. Wir müssen also die kovariante Ableitung ebenfalls zurückziehen.
 		\begin{satz}[Rückzug von kovarianten Ableitungen]
@@ -1553,7 +1561,11 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\begin{defn}
 			Eine \emph{affine kovariante Ableitung} ist eine kovariante Ableitung auf dem Tangentialbündel. Dies bringt zusätzliche Struktur mit sich! Insbesondere lässt sich eine affine kovariante Ableitung als Tensorderivation fortsetzen (mit den nötigen Eigenschaften), wobei $\nabla_Xf=X(f) \quad\forall X\in\vf(M),f\in\sm(M)$.
 			
-			Wir schreiben dafür $X\mapsto\nabla_X\in \mathrm{Der}(\mathcal{T}(M))$.
+			Wir schreiben dafür $X\mapsto\nabla_X\in \mathrm{Der}(\mathcal{T}(M))$. In Koordinaten sieht dies für ein Tensorfeld $A$ vom Typ $(1,1)$ folgendermaßen aus:
+			\begin{align*}
+				(\nabla_{\frac{\partial}{\partial x^k}} A)^i_j=(\partial_k A^i_j+\Gamma^i_{kl}A^l_j-\Gamma^l_{kj}A^i_l
+			\end{align*}
+			mit negativem Vorzeichen für untere Indizes und positivem Vorzeichen für obere Indizes.
 		\end{defn}
 		\begin{defn}[Geodäte]
 			Eine Geodäte ist eine Kurve $\gamma\colon I\rightarrow M$ sodass das Tangentialfeld $\dot{\gamma}\in\Gamma(\gamma^*TM)$ parallel entlang der Kurve ist: $\nabla_{t}\dot{\gamma}=0$.
@@ -1614,6 +1626,9 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\end{bem}
 		\begin{satz}
 			Auf jeder Mannigfaltigkeit existiert eine Riemann'sche Metrik.
+			\begin{proof}
+				Schematisch: Wähle eine Überdeckung der Mannigfaltigkeit $M$ durch Karten und eine untergeordnete Zerlegung der Eins. Dann zieht man die Standard-Metrik von den offenen Teilmengen (Koordinatenumgebungen, diese haben triviale Tangentialbündel) des $\R^n$ ($n=\dim M$) zurück und da der zurückgezogene Tensor ebenfalls punktweise symmetrisch und positiv definit ist, erhält man dadurch eine Riemann'sche Metrik. Dass diese glatt ist, liegt daran, dass die Karten glatt sind.
+			\end{proof}
 		\end{satz}
 		Wie für Vektorräume induziert ein Skalarprodukt einen Isomorphismus zum Dualraum:
 		\begin{defn}
@@ -1626,7 +1641,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 			
 			Es gelten $(v^{\flat})^{\sharp}=v\;\forall v\in T_pM$ und $(\lambda^{\sharp})^{\flat}=\lambda\;\forall\lambda\in T_p^*M$.
 			
-			Man erhält dadurch einen Isomorphismus von Vektorbündeln $TM\cong T^*M$ und einen Isomorphismus von $\sm(M)$-Moduln $\vf(M)\cong \Omega^1(M)$ (Wegen der $\sm(M)$-Linearität der Metrik).
+			Man erhält dadurch einen Isomorphismus von Vektorbündeln $TM\cong T^*M$ und einen Isomorphismus von $\sm(M)$-Moduln $\vf(M)\cong \Omega^1(M)$ (Wegen der $\sm(M)$-Linearität und Glätte der Metrik).
 			
 			In Koordinaten wirkt die metrische Typänderung auf Komponenten auf einfache Weise. Sei $X\in\vf(M), \omega\in\Omega^1(M)$:
 			\begin{align*}
@@ -1634,8 +1649,83 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 				(\omega^{\sharp})^i&=g^{ij}\omega_j
 			\end{align*}
 			wobei $g^{ij}$ wieder die Komponenten der Inversen Matrix bezeichnet.
+			
+			Diese Typänderungen lassen sich auch in natürlicher Weise zu einer Familie von Typänderungen auf Tensorfeldern verallgemeinern, die dann in Komponenten \glqq auf einzelne Indizes wirken\grqq . 
+			
+			Die Verkettung von metrischer Typänderung mit Kontraktion heißt \emph{metrische Kontraktion} und sieht in Komponenten für ein $(0,2)$-Tensorfeld $A$ folgendermaßen aus:
+			\begin{align*}
+				(C_g)_{1,2}A=A_{ij}g^{ij}
+			\end{align*}
 		\end{defn}
-	\section{Metrik und Zusammenhang}
+		Eine Riemann'sche Metrik ist zwar keine Metrik im Sinne metrischer Räume, aber man kann damit einen Begriff der Länge formulieren:
+		\begin{defn}
+			Sei $\gamma\colon I\rightarrow M$ eine Kurve.
+			
+			Die \emph{Bogenlänge} $L_g(\gamma)$ ist das folgende Integral über die Funktion 
+			\begin{align*}
+				I\ni t\mapsto \sqrt{g_{\gamma(t)}(\dot{\gamma(t)},\dot{\gamma(t)}}\in\R:
+				\end{align*}
+			\begin{align*}
+				L_g(\gamma)=\int_I\sqrt{g_{\gamma(t)}(\dot{\gamma(t)},\dot{\gamma(t)}} dt
+			\end{align*}
+		\end{defn}
+		
+		\begin{satz}
+			Sei $(M,g)$ eine zusammenhängende (und damit wegzusammenhängende) Riemann'sche Mannigfaltigkeit. Die Abbildung
+			\begin{align*}
+				d:M\times M&\rightarrow \R,\\
+				(p,q)&\mapsto \mathrm{inf}\lbrace L_g(\gamma)\mid \gamma \text{ ist ein stückweise differenzierbarer Weg von $p$ nach } q\rbrace
+			\end{align*}
+			ist eine Metrik, sodass $(M,d)$ ein metrischer Raum ist.
+			\begin{proof}
+				$d(p,q)\geq 0$ und $d(p,p)=0$ sind klar für beliebige Punkte (da $g$ positiv definit), dass $d(p,q)>0$ für $p\neq q$ folgt ebenso, weil die Riemann'sche Metrik positiv-definit ist und eine Kurve $\gamma$ zwischen zwei verschiedenen Punkten ein offenes Interval im Definitionsbereich hat, sodass $\dot{\gamma}\neq 0$ darauf.
+				
+				Beachte, dass das \glqq Aneinanderhängen\grqq\ (Konkatenation) von Kurven zu einer Addition der Bogenlängen führt. Dementsprechend folgt (da stückweise differenzierbare Kurven zugelassen sind) die Dreiecksungleichung.
+				
+				Die Symmetrie ist klar, da man Kurven in umgekehrter Richtung durchlaufen kann, was den Wert der Bogenlänge nicht beeinträchtigt.
+			\end{proof}
+		\end{satz}
+		Beachte, dass hier zentral ist, dass die Riemann'sche Metrik positiv definit ist! Insbesondere funktioniert diese Konstruktion also nicht für pseudo-Riemann'sche Metriken (die ja physikalisch von Interesse sind).
+	\section{Metrik und kovariante Ableitung}
+		Die Riemann'sche Geometrie lebt von den Zusammenhängen (haha) zwischen Metrik und kovarianten Ableitungen. Wir wollen in diesem Kapitel einige Grundlagen besprechen und sehen, wie wir aus einer Metrik (unter gewissen Annahmen) eine eindeutige kovariante Ableitung erhalten können.
+		
+		Sei von nun an $\nabla$ eine kovariante Ableitung auf dem Tangentialbündel einer Riemann'schen Mannigfaltigkeit $(M,g)$.
+		\begin{defn}
+			Eine \emph{metrische} kovariante Ableitung erfüllt die folgende Eigenschaft:
+			\begin{align*}
+				\nabla g=0
+			\end{align*}
+			also explizit:
+			\begin{align*}
+				(\nabla_X g)(Y,Z)=\nabla_X(g(Y,Z))-g(\nabla_XY,Z)-g(Y,\nabla_XZ)=0\quad\forall X,Y,Z\in\vf(M)
+			\end{align*}
+			Äquivalent dazu ist, dass die Länge $g_p(v,v)$ eines Vektors $v\in T_pM$ invariant unter dem Paralleltransport ist (ohne Beweis). 
+		\end{defn}
+		\begin{defn}[Torsion]
+			Die \emph{Torsion} einer kovarianten Ableitung ist das antisymmetrische Tensorfeld $T$ vom Typ $(1,2)$, definiert durch:
+			\begin{align*}
+				T(X,Y)=\nabla_XY-\nabla_YX-\left[X,Y\right]
+			\end{align*}
+		\end{defn}
+		
+		\begin{satz}[Levi-Civita-Zusammenhang]
+			Auf einer Riemann'schen Mannigfaltigkeit $(M,g)$ existiert eine eindeutige metrische kovariante Ableitung mit verschwindender Torsion $T=0$, der sogannte Levi-Civita-Zusammenhang (LCC).
+			\begin{proof}
+				Seien $X,Y,Z\in\vf(M)$. Angenommen, eine metrische, torsionsfreie kovariante Ableitung existiert, dann erhält man durch wiederholtes Ausnutzen der Metrizität und Torsionsfreiheit:
+				\begin{align*}
+				g(\nabla_XY,Z)&=X(g(Y,Z))-g(Y,\nabla_XZ)=X(g(Y,Z))-g(Y,\nabla_ZX)-g(Y,[X,Z])\\
+				-g(Y,\nabla_ZX)&=-Z(g(Y,X))+g(\nabla_ZY,X)=-Z(g(Y,X))+g(\nabla_YZ,X)+g([Z,Y],X)\\
+				g(\nabla_YZ,X)&=Y(g(Z,X))-g(Z,\nabla_YX)=Y(g(Z,X))-g(Z,\nabla_XY)-g(Z,[Y,X])
+				\end{align*}
+				Man erhält durch Einsetzen dann wegen der Symmetrie der Metrik die \emph{Koszulformel}:
+				\begin{align*}
+					g(\nabla_XY,Z)=\frac{1}{2}( X(g(Y,Z))+Y(g(Z,X))&-Z(g(X,Y))\\
+					&-g(X,[Y,Z])-g(Y,[X,Z])+g(Z,[X,Y]))
+				\end{align*}
+				
+			\end{proof}
+		\end{satz}
+		
 	\section{Der Satz von Hopf-Rinow}
 	\section{Anwendung: Lie-Gruppen}
 
