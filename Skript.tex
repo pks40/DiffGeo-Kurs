@@ -354,46 +354,44 @@ $\left.\partial_v\right|_p$ ist also einfach die Richtungsableitung in Richtung 
 	Die Abbildung \[V \to T_pV, v \mapsto \left.\partial_v\right|_p\] ist ein linearer Isomorphismus.
 	
 	\begin{proof}\let\qed\relax
-		Linearität ist einfach zu zeigen (Übung). Um Surjektivität und Injektivität zu zeigen, fixieren wir eine Basis $\{b_1,\dots,b_n\}$ von $V$. Sei $\{\theta^1, \dots, \theta^n\}$ die dazu duale Basis von $V^*$, also für $i = 1, \dots, n$ jeweils $\theta^i\colon V \to \mathbb R$ die lineare Abbildung definiert durch $\theta^i(b_j) = \delta^i_j$ und lineare Fortsetzung.
+		Linearität ist einfach zu zeigen (Übung). Surjektivität und Injektivität zeigen wir für den Fall $V = \R^n$; der allgemeine Fall folgt daraus durch Wahl einer Basis.
 
-		Für beliebiges $v = \sum_{i=1}^n v^i b_i \in V$ ist $\left.\partial_v\right|_p(\theta^i) = \left.\frac{\D\theta^i(p + h v)}{\D h}\right|_{h=0} = \left.\frac{\D(\theta^i(p) + h v^i)}{\D h}\right|_{h=0} = v^i$ für alle $i$. Falls $\left.\partial_v\right|_p = 0$ gilt, ist also $v^i = \left.\partial_v\right|_p(\theta^i) = 0(\theta^i) = 0$, also $v=0$. Das zeigt, dass der Kern der betrachteten Abbildung nur die 0 enthält, also deren Injektivität. Um die Surjektivität zu zeigen, brauchen wir einen kleinen Trick.
+		Für $i = 1, \dots, n$ sei $\pr^i\colon \R^n\to\R$ die Projektion auf die $i$-te Komponente, also $\pr^i(v) = v^i$. Für beliebiges $v \in \R^n$ ist
+		\begin{equation} \label{eq:pf_tangt_vr}
+			\left.\partial_v\right|_p(\pr^i) = \left.\frac{\D\pr^i(p + h v)}{\D h}\right|_{h=0} = \left.\frac{\D(p^i + h v^i)}{\D h}\right|_{h=0} = v^i
+		\end{equation}
+		für alle $i$. Falls $\left.\partial_v\right|_p = 0$ gilt, ist also $v^i = \left.\partial_v\right|_p(\pr^i) = 0(\pr^i) = 0$, also $v=0$. Das zeigt, dass der Kern der betrachteten Abbildung nur die 0 enthält, also deren Injektivität. Um die Surjektivität zu zeigen, brauchen wir einen kleinen Trick.
 	\end{proof}
 \end{satz}
 
 \begin{lemma}[Hadamard-Lemma] \label{lemma:Hadamard}
-	Seien $U \subset \mathbb R^n$ eine offene Menge, die sternförmig um $x_0$ ist, und $f \in \sC(U)$. Dann gibt es glatte Funktionen $f_i \in \sC(U), i = 1,\dots,n$, sodass \[f(x) = f(x_0) + \sum_{i=1}^n f_i(x) (x^i - x_0^i).\]
+	Seien $U \subset \mathbb R^n$ eine offene Menge, die sternförmig um $p$ ist, und $f \in \sC(U)$. Dann gibt es glatte Funktionen $f_i \in \sC(U), i = 1,\dots,n$, sodass \[f(x) = f(p) + \sum_{i=1}^n f_i(x) (x^i - p^i).\]
 	
 	\begin{proof}
-		Für $x \in U$ setze $y := x - x_0$. Dann ist
+		Für $x \in U$ setze $y := x - p$. Dann ist
 		\begin{align*}
-		f(x) - f(x_0) &= f(x_0 + 1\cdot y) - f(x_0 + 0\cdot y)\\
-		&= \int_0^1 \left(\frac{\D}{\D t} f(x_0 + ty)\right) \D t\\
-		\text{(Kettenregel)} \quad &= \int_0^1 \sum_{i=1}^n (\partial_i f)(x_0 + ty) y^i \D t\\
-		&= \sum_{i=1}^n \left(\int_0^1 (\partial_i f)(x_0 + tx - tx_0) \D t\right) (x^i - x_0^i).
+		f(x) - f(p) &= f(p + 1\cdot y) - f(p + 0\cdot y)\\
+		&= \int_0^1 \left(\frac{\D}{\D t} f(p + ty)\right) \D t\\
+		\text{(Kettenregel)} \quad &= \int_0^1 \sum_{i=1}^n (\partial_i f)(p + ty) y^i \D t\\
+		&= \sum_{i=1}^n \left(\int_0^1 (\partial_i f)(p + tx - tp) \D t\right) (x^i - p^i).
 		\end{align*}
-		Mit \[f_i(x) := \int_0^1 (\partial_i f)(x_0 + tx - tx_0) \D t\] folgt also die Behauptung (die $f_i$ sind glatt wegen Kettenregel und Sätzen über das Differenzieren unter dem Integral).
+		Mit \[f_i(x) := \int_0^1 (\partial_i f)(p + tx - tp) \D t\] folgt also die Behauptung (die $f_i$ sind glatt wegen Kettenregel und Sätzen über das Differenzieren unter dem Integral).
 	\end{proof}
 \end{lemma}
 
-\begin{kor}[Hadamard-Lemma auf Vektorräumen]
-	Sei $\theta = (\theta^1, \dots, \theta^n) \colon V \to \mathbb R^n$ ein linearer Isomorphismus und sei $\alpha \in \sC_p(V)$. Dann gibt es $\alpha_i \in \sC_p(V), i = 1,\dots, n$ mit \[\alpha = \alpha(p) + \sum_{i=1}^n \alpha_i \cdot (\theta^i - \theta^i(p)).\]
-	
-	\begin{proof}
-		Das ist einfach das Hadamard-Lemma \ref{lemma:Hadamard} angewendet auf unseren Vektorraum $V$, der über $\theta$ mit $\mathbb R^n$ identifiziert wurde.
-	\end{proof}
-\end{kor}
-
 \begin{proof}[Zurück zum Beweis von Satz \ref{satz:tangt_vr}]
-	Mit dem Hadamard-Lemma können wir jetzt auch zeigen, dass die Abbildung $v \mapsto \left.\partial_v\right|_p$ surjektiv ist. Seien $w \in T_pV$ und $\alpha \in \sC_p(V)$ beliebig, und seien $\alpha_i \in \sC_p(V)$ zu $\alpha$ mit dem Hadamard-Lemma gewählt. Dann ist
-	\begin{align}\begin{split} \label{eq:pf_tangt_vr}
-		w(\alpha) &= w\left(\alpha(p) + \sum_{i=1}^n \alpha_i \cdot (\theta^i - \theta^i(p))\right)\\
-		\text{(Linearität, $w(\text{const.}) = 0$)} \quad &= \sum_{i=1}^n w(\alpha_i \cdot (\theta^i - \theta^i(p)))\\
-		&= \sum_{i=1}^n \left( w(\alpha_i) \cdot (\theta^i(p) - \theta^i(p)) + \alpha_i(p) \cdot w(\theta^i) \right)\\
-		&= \sum_{i=1}^n \alpha_i(p) \cdot w(\theta^i).
+	Mit dem Hadamard-Lemma können wir jetzt auch zeigen, dass die Abbildung $v \mapsto \left.\partial_v\right|_p$ surjektiv ist. Seien $w \in T_p\R^n$ und $f \in \sC_p(\R^n)$ beliebig, und seien $f_i \in \sC_p(\R^n)$ zu $f$ mit dem Hadamard-Lemma gewählt, sodass also
+	\[f = f(p) + \sum_{i=1}^n f_i \cdot (\pr^i - p^i)\]
+	gilt. Dann ist
+	\begin{align}\begin{split}
+		w(f) &= w\left(f(p) + \sum_{i=1}^n f_i \cdot (\pr^i - p^i)\right)\\
+		\text{(Linearität, $w(\text{const.}) = 0$)} \quad &= \sum_{i=1}^n w(f_i \cdot (\pr^i - p^i))\\
+		&= \sum_{i=1}^n \Big( w(f_i) \cdot {\underbrace{(\pr^i(p) - p^i)}_{=0}} + f_i(p) \cdot w(\pr^i) \Big)\\
+		&= \sum_{i=1}^n f_i(p) \cdot w(\pr^i).
 	\end{split}\end{align}
-	Insbesondere gilt damit auch $\left.\partial_v\right|_p (\alpha) = \sum_{j=1}^n \alpha_i(p) \cdot \left.\partial_v\right|_p (\theta^i) = \sum_{j=1}^n \alpha_i(p) \cdot v^i$ für beliebige Vektoren $v = \sum_{i=1}^n v^i b_i$. Wenn wir also $v := \sum_{i=1}^n w(\theta^i) b_i$ setzen, ist $w(\alpha) = \left.\partial_v\right|_p (\alpha)$.
+	Insbesondere gilt damit auch $\left.\partial_v\right|_p (f) = \sum_{j=1}^n f_i(p) \cdot \left.\partial_v\right|_p (\pr^i) \overset{\eqref{eq:pf_tangt_vr}}{=} \sum_{j=1}^n f_i(p) \cdot v^i$ für beliebige Vektoren $v \in \R^n$. Wir können also $w(f) = \left.\partial_v\right|_p (f)$ erreichen, indem wir $v^i := w(\pr^i)$ setzen.
 
-	Da $\alpha$ beliebig war, gilt also $w = \left.\partial_v\right|_p$. Wir können also jedes $w \in T_pV$ als Richtungsableitung in Richtung eines Vektors $v\in V$ schreiben.
+	Da $f$ beliebig war, gilt also $w = \left.\partial_v\right|_p$. Wir können also jedes $w \in T_p\R^n$ als Richtungsableitung in Richtung eines Vektors $v\in \R^n$ schreiben.
 \end{proof}
 
 Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise zu $V$ selbst isomorph; ein Vektor $v \in V$ wird dabei mit der Richtungsableitung $\left.\partial_v\right|_p$ identifiziert.
@@ -412,7 +410,7 @@ Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise 
 	wobei $\pr^i\colon \mathbb R^n \to \mathbb R, \pr^j(a) = a^j$ die Projektion auf die $i$-te Komponente ist.
 
 	\begin{proof}
-		Das ergibt sich direkt aus dem Beweis von Satz \ref{satz:tangt_vr}, da die Projektionen $\pr^i$ die zu $\e_i$ duale Basis von $(\mathbb R^n)^*$ bilden.
+		Das ergibt sich direkt aus dem Beweis von Satz \ref{satz:tangt_vr}.
 	\end{proof}
 \end{kor}
 
