@@ -510,10 +510,24 @@ $\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim i
 	\[v^i = v(x^i).\]
 
 	\begin{proof}
-		Nach Korollar \ref{kor:entw_tangt_Rn} ist $\left.\DD x\right|_p(v) = \sum_{i=1}^n \Big(\DD x\big|_p(v)\Big) (\pr^i) \left.\partial_i\right|_{x(p)}$. Da nach Definition $\Big(\DD x\big|_p(v)\Big) (\pr^i) = v(\pr^i \circ x) = v(x^i)$ ist, haben wir also $\left.\DD x\right|_p(v) = \sum_{i=1}^n v(x^i) \left.\partial_i\right|_{x(p)}$.
+		Nach Korollar \ref{kor:entw_tangt_Rn} lässt sich $\left.\DD x\right|_p(v) \in T_{x(p)}\R^n$ schreiben als $\left.\DD x\right|_p(v) = \sum_{i=1}^n \Big(\DD x\big|_p(v)\Big) (\pr^i) \left.\partial_i\right|_{x(p)}$. Da nach Definition $\Big(\DD x\big|_p(v)\Big) (\pr^i) = v(\pr^i \circ x) = v(x^i)$ ist, haben wir also $\left.\DD x\right|_p(v) = \sum_{i=1}^n v(x^i) \left.\partial_i\right|_{x(p)}$.
 		Anwenden von $\left(\left.\DD x\right|_p\right)^{-1}$ auf beiden Seiten liefert die Behauptung.
 	\end{proof}
 \end{lemma}
+
+\begin{nota}[Einstein'sche Summenkonvention]
+	Da bei Rechnungen in Koordinaten oder bzgl. Basen oft Summen der Form
+	\[\sum_{i=1}^n v^i b_i\]
+	auftreten, vereinbaren wir, um die Notation zu verkürzen, dass in Zukunft bei solchen Summationen das Summenzeichen weggelassen werden kann; stattdessen schreiben wir in Zukunft also
+	\[v^i b_i.\]
+	Immer, wenn in einem Term ein Index zweimal vorkommt, einmal oben an einem Symbol und einmal unten, wird dieser Term über alle im jeweiligen Kontext möglichen Werte des Index aufsummiert. Ein komplizierteres Beispiel für einen Ausdruck in Summenkonvention und seine Bedeutung ist
+	\[T^{ij}_{kl} S^k_j v^l b_i = \sum_{i,j,k,l = 1}^n T^{ij}_{kl} S^k_j v^l b_i.\]
+
+	Die Komponenten von Tangentialvektoren schreiben wir mit oberen Indizes, Basisvektoren des Tangentialraums dementsprechend mit unteren Indizes. Einen oberen Index, der wie in $\left.\frac{\partial}{\partial x^i}\right|_p$ \glqq im Nenner\grqq\ steht, fassen wir dementsprechend als unteren Index auf.
+
+	Mit Summenkonvention lautet die obigen Entwicklungsformel also
+	\[v = v(x^i) \left.\frac{\partial}{\partial x^i}\right|_p.\]
+\end{nota}
 
 \begin{lemma}[Differential in Kartendarstellung] \label{lemma:differential_koord}
 	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Sei $p\in M$, $x$ eine Karte von $M$ um $p$ und $y$ eine Karte von $N$ um $f(p)$. Dann ist die Darstellungsmatrix des Differentials $\left.\DD f\right|_p$ bzgl. der Koordinatenbasen $\left.\frac{\partial}{\partial x^i}\right|_p$ von $T_pM$ und $\left.\frac{\partial}{\partial y^i}\right|_{f(p)}$ von $T_{f(p)}N$ die Jacobi-Matrix der Kartendarstellung $y \circ f \circ x^{-1}$ von $f$ an der Stelle $x(p)$, also die Matrix
@@ -531,17 +545,15 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 \[\left[\frac{\partial(y^i \circ f)}{\partial x^j}(p)\right]_{ij}.\]
 
 \begin{lemma}[Transformationsformel für Tangentialvektoren]
-	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p\in M$ und seien $x, y$ zwei Karten um $p$. Für die Koordinatenvektoren gilt
-	\[\left.\frac{\partial}{\partial y^i}\right|_p = \sum_{j=1}^n \frac{\partial x^j}{\partial y^i}(p) \left.\frac{\partial}{\partial x^j}\right|_p.\]
-	Die Basiswechselmatrix ist also die Jacobi-Matrix des inversen Kartenwechsels $x \circ y^{-1}$ (an der Stelle $y(p)$).
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p\in M$ und seien $x, \tilde x$ zwei Karten um $p$. Für die Koordinatenvektoren gilt
+	\[\left.\frac{\partial}{\partial \tilde x^i}\right|_p = \frac{\partial x^j}{\partial \tilde x^i}(p) \left.\frac{\partial}{\partial x^j}\right|_p.\]
+	Die Basiswechselmatrix ist also die Jacobi-Matrix des inversen Kartenwechsels $x \circ \tilde x^{-1}$ (an der Stelle $\tilde x(p)$).
 
-	Für einen Tangentialvektor $v = \sum_{i=1}^n v^i \left.\frac{\partial}{\partial x^i}\right|_p = \sum_{i=1}^n \tilde v^i \left.\frac{\partial}{\partial y^i}\right|_p$ gilt dementsprechend
-	\[\tilde v^j = \sum_{i=1}^n \frac{\partial y^j}{\partial x^i}(p) v^i.\]
+	Für einen Tangentialvektor $v = v^i \left.\frac{\partial}{\partial x^i}\right|_p = \tilde v^i \left.\frac{\partial}{\partial \tilde x^i}\right|_p$ gilt dementsprechend
+	\[\tilde v^j = \frac{\partial \tilde x^j}{\partial x^i}(p) v^i.\]
 
 	\bewUeb
 \end{lemma}
-
-\todo{Summenkonvention einführen.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ableitungen von Kurven}
