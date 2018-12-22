@@ -1259,14 +1259,15 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\begin{lemma}
 			Linksinvariante Vektorfelder sind vollständig, das heißt, ihre Integralkurven können auf ganz $\R$ fortgesetzt werden.
 			\begin{proof}
-			Die Idee ist hier, dass sich Integralkurven verschieben lassen, wie in Lemma \ref{lemma:int_kurv_versch}, man aber auf Lie-Gruppen auch durch die Linkstranslationen Integralkurven verschieben kann. Sei also $\gamma_g\colon I_g\rightarrow G$ eine maximale Integralkurve von $X\in\vf^L(G)$ in $g\in G$ und $I_g\neq \R$, dann ist auch $\gamma_h\colon I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ eine Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel):
+			Die Idee ist hier, dass sich Integralkurven verschieben lassen, wie in Lemma \ref{lemma:int_kurv_versch}, man aber auf Lie-Gruppen auch durch die Linkstranslationen Integralkurven verschieben kann, was hier aufgrund der Linksinvarianz keinen Unterschied macht. Sei also $\gamma_g\colon I_g\rightarrow G$ eine maximale Integralkurve von $X\in\vf^L(G)$ in $g\in G$ und $I_g\neq \R$, dann ist auch $\gamma_h\colon I_g\rightarrow G, t\mapsto l_h(\gamma_g(t))$ eine Integralkurve in $h\cdot g\;\forall h\in\gamma_g(I_g)$ (Kettenregel):
 			\begin{align*}
 				\left.\frac{d}{dt}\gamma_h(t)\right\vert_{t=s}&=\DD l_h\vert_{\gamma_g(s)} X_{\gamma_g(s)}\\
 				&=X_{h\cdot \gamma_g(s)}
 			\end{align*}
-			Damit haben wir also eine Integralkurve $\gamma_h$, die auf $I_g$ definiert ist. Wenn wir nun aber $h$ so wählen, dass $g\in\gamma_h(I_g)$ gilt (und $g=\gamma_h(a)$), dann ist die verschobene Kurve $\lambda(t)=\gamma_h(t+a)\;\forall t\in I_g-a$ auch eine Integralkurve von $X$ in $g$ und wir können den Definitionsbereich von $\gamma_g$ um $a$ verlängern! Dies ist ein Widerspruch zur Annahme der Maximalität, also muss für maximale Integralkurven schon $I=\R$ gelten.
+			Damit haben wir also eine Integralkurve $\gamma_h$, die auf $I_g$ definiert ist. Wenn wir nun aber $a \in I_g$ wählen und $h := \gamma_g(a) \cdot g^{-1}$ setzen, so ist die verschobene Kurve $\lambda(t)=\gamma_g(t+a)\;\forall t\in I_g-a$ auch eine Integralkurve von $X$ in $\gamma_g(a) = h \cdot g$ und wir können den Definitionsbereich von $\gamma_h$ um $a$ verlängern! Indem wir die so erhaltene Kurve wieder zurück verschieben, haben wir den Definitionsbereich von $\gamma_g$ verlängert. Dies ist ein Widerspruch zur Annahme der Maximalität, also muss für maximale Integralkurven schon $I=\R$ gelten.
 			\end{proof}
 		\end{lemma}
+		\kommP[inline]{Den Beweis habe ich ein bisschen klarer gemacht, denn es ist (meiner Ansicht nach) nicht direkt offensichtlich, dass man ein $h$ wählen kann, sodass $g \in \gamma_h(I_g)$ gilt. So muss man zwar einmal mehr verschieben, aber es ist klarer, finde ich.}
 	\section{Die Exponentialabbildung}
 		\begin{defn}[Exponentialabbildung]
 			Die \emph{Exponentialabbildung} $\exp\colon\mathfrak{g}\rightarrow G$ ist durch den Fluss der linksinvarianten Vektorfelder definiert:
