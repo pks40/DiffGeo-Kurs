@@ -1093,7 +1093,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	Sei $X \in \mathfrak X(M)$ ein Vektorfeld, und sei $I_p \subset \R$ zu jedem $p \in M$ das maximale Existenzintervall der Integralkurve von $X$ durch $p$. Wir setzen $U := \bigcup_{p\in M} \{p\}\times I_p \subset M \times \R$. Der \emph{Fluss des Vektorfeldes $X$} ist die Abbildung $\Phi^X\colon U \to M$, die so definiert ist, dass zu jedem $p \in M$ die Kurve
 	\[I_p \ni t \mapsto \Phi^X(p,t) \in M\]
 	die maximale Integralkurve von $X$ durch $p$ ist. $\Phi^X$ löst also die gewöhnlichen Differentialgleichungen
-	\[\frac{\D}{\D t} \Phi^X(p,t) = X_{\Phi(p,t)}, \quad \Phi^X(p,0) = p\]
+	\[\frac{\D}{\D t} \Phi^X(p,t) = X_{\Phi(p,t)}, \quad \Phi(p,0) = p\]
 	auf dem maximal möglichen Gebiet.
 
 	Oft schreiben wir $\Phi^X_t(p) := \Phi^X(p,t)$.
@@ -1291,9 +1291,9 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 		\end{defn}
 		\begin{lemma}\label{lemma:Eigenschaften_exp}
 			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
-			\begin{enumerate}[label=\arabic*.]
+			\begin{enumerate}[label=\arabic* .]
 				\item $\exp(0)=e$
-				\item Für alle $v \in \mathfrak g$ ist $t \mapsto \exp(tv)$ die Integralkurve von $L(v)$ in $e$.
+				\item $\frac{\D}{\D t} \exp(tv)\big\vert_{t=0}=v\quad\forall v\in\mathfrak{g}$
 				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
 			\end{enumerate}
 			\begin{proof}
@@ -1303,7 +1303,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 		\begin{lemma}[Fluss linksinvarianter Vektorfelder]\label{lemma:Fluss_linksinvarianter_Vektorfelder}
 			Sei $X\in\vf^L(G)$.
 			
-			Der Fluss von $X$ ist durch die Exponentialabbildung wie folgt gegeben:
+			Der Fluss von $X$ ist durch die Exponentialabbilding wie folgt gegeben:
 			\begin{align*}
 				\Phi^X_t(p)=p\cdot \exp(tX_e) \; =l_p(\exp(tX_e))=r_{\exp(tX_e)}(p)
 			\end{align*}
