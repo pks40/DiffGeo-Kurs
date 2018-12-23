@@ -700,7 +700,9 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 
 	Oft schreibt man auch kurz $\bigotimes_{i=1}^k V_k = V_1 \otimes \dots \otimes V_k$ etc.
 
-	Für \glqq Tensorpotenzen\grqq, also Tensorprodukte eines Vektorraums mit sich selbst, schreiben wir auch $V^{\otimes k} := \underbrace{V \otimes \dots \otimes V}_\text{$k$-mal}$.
+	Für \glqq Tensorpotenzen\grqq, also Tensorprodukte eines Vektorraums mit sich selbst, schreiben wir auch $V^{\otimes k} := \underbrace{V \otimes \dots \otimes V}_\text{$k$-mal}$, wobei wir $V^{\otimes 0} := \mathbb R$ setzen.
+
+	Außerdem setzen wir $V^{(r,s)} := V^{\otimes r} \otimes (V^*)^{\otimes s}$ und nennen Elemente davon \emph{Tensoren vom Typ $(r,s)$ über $V$}.
 \end{defn}
 \begin{bem}
 	Über $(u\otimes v)\otimes w \mapsto u\otimes v\otimes u$ (und lineare Fortsetzung) sind $(U\otimes V)\otimes W$ und $U\otimes V\otimes W$ kanonisch isomorph; analog gilt das natürlich auch für mehr Faktoren.
@@ -780,6 +782,52 @@ Zusammengefasst haben wir also:
 	\end{align*}
 	und linearer Fortsetzung. \qed
 \end{satz}
+\begin{satz}
+	Sei $V$ ein endlich-dimensionaler Vektorraum. $V^{(r,s)}$ ist kanonisch isomorph zum Raum der multilinearen Abbildungen $\underbrace{V^* \times \dots \times V^*}_\text{$r$-mal} \times \underbrace{V \times \dots \times V}_\text{$s$-mal} \to \R$. \qed
+\end{satz}
+
+\begin{defn}[Kontraktion]
+	Seien $V$ ein endlich-dimensionaler Vektorraum und $r,s \in \mathbb N$. Für $1 \le p \le r$ und $1 \le q \le s$ definieren wir die \emph{Kontraktion} $C_{p,q} \colon V^{(r,s)} \to V^{(r-1,s-1)}$ durch
+	\begin{align*}
+		&C_{p,q}(v_1 \otimes \dots \otimes v_r \otimes \eta_1 \otimes \dots \otimes \eta_s) \\& \qquad := \eta_q(v_p) \cdot v_1 \otimes \cdots \widehat{\otimes v_p \otimes} \cdots \otimes v_r \otimes \eta_1 \otimes \cdots \widehat{\otimes \eta_q \otimes} \cdots \otimes \eta_s
+	\end{align*}
+	und lineare Fortsetzung, wobei auf der rechten Seite $\widehat{\otimes X \otimes}$ bedeutet, dass der entsprechende Term ausgelassen wird.
+
+	Für einfache Tensoren wird bei der Kontraktion $C_{p,q}$ also der $p$-te Vektor in die $q$-te Linearform eingesetzt.
+\end{defn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Rechnungen in Komponenten}
+
+\begin{defn}
+	Sei $V$ ein endlich-dimensionaler Vekorraum, $\{e_i\}$ eine Basis von $V$ und $\{\theta^i\}$ die dazu duale Basis von $V^*$. Eine Basis von $V^{(r,s)} = V^{\otimes r} \otimes (V^*)^{\otimes s}$ ist dann gegeben durch $\{e_{i_1} \otimes \dots \otimes e_{i_r} \otimes \theta^{j_1} \otimes \dots \otimes \theta^{j_s}\}$.
+
+	Die Komponenten eines Tensors $T \in V^{(r,s)}$ bzgl. dieser Basis schreiben wir dann als $T^{i_1 \dots i_r}_{j_1 \dots j_s}$, also
+	\[T = T^{i_1 \dots i_r}_{j_1 \dots j_s} e_{i_1} \otimes \dots \otimes e_{i_r} \otimes \theta^{j_1} \otimes \dots \otimes \theta^{j_s}\]
+	(mit Summenkonvention).
+\end{defn}
+\begin{bsp}
+	\begin{enumerate}[label=(\alph*)]
+		\item Die Komponenten eines Vektors $v\in V$ schreiben wir als $v^i$.
+		\item Die Komponenten einer Linearform $\eta \in V^*$ schreiben wir als $\eta_i$.
+		\item Die Komponenten einer linearen Abbildung $f\colon V \to V$, also von $f \in V^*\otimes V \equiv V \otimes V^*$, schreiben wir als $f^i_j$. Es gilt also $f = f^i_j e_j\otimes\theta^i$.
+	\end{enumerate}
+\end{bsp}
+\begin{lemma}
+	In Komponenten gilt:
+	\begin{enumerate}[label=(\alph*)]
+		\item Für Tensorprodukte: $(v\otimes w)^{ij} = v^i w^j$ für $v,w \in V$ (analog für Tensoren höheren Typs)
+		\item Für die Anwendung von Tensoren (als multilineare Abbildungen) auf Linearformen und Vektoren: $T(\eta,v) = T^i_j \eta_i v^j$ für $T \in V^{(1,1)}, \eta \in V^*, v \in V$ (analog für Tensoren höheren Typs)
+		\item Ist $T \in V^{(r,s)}$, so erhält man die Komponenten der Kontraktion $C_{p,q}$, indem man bei den Komponenten von $T$ den $p$-ten oberen Index mit dem $q$-ten unteren Index gleichsetzt und über diesen Index summiert.
+
+			Für $T \in V^{(3,3)}$ ist beispielsweise
+			\[(C_{1,2}T)^{ij}_{kl} = T^{mij}_{kml}.\]
+	\end{enumerate}
+	\bewUeb
+\end{lemma}
+\begin{bsp}
+	Ist $f \in \Hom(V,V) \equiv V^{(1,1)}$ eine lineare Abbildung, so ist $C_{1,1}f = f^i_i = \tr(f)$ die Spur von $f$.
+\end{bsp}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
