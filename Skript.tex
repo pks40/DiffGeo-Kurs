@@ -633,8 +633,9 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 
 			Wir definieren auf $V\otimes W$ eine Skalarmultiplikation durch
 			\[\lambda\left(\sum_{i=1}^k v_i \otimes w_i\right) := \sum_{i=1}^k (\lambda v_i) \otimes w_i = \sum_{i=1}^k v_i \otimes \lambda(w_i).\]
-			Damit wird $V\otimes W$ zu einem Vektorraum.
-		\item Ein Element $x \in V \otimes W$ heißt \emph{einfach}, wenn es in der Form $x = v\otimes w$ geschrieben werden kann.
+			Damit wird $V\otimes W$ zu einem Vektorraum. Die Elemente von $V \otimes W$ nennt man \emph{Tensoren}.
+		\item $v\otimes w \in V \otimes W$ nennt man das \emph{Tensorprodukt} von $v$ und $w$.
+		\item Ein Tensor $x \in V \otimes W$ heißt \emph{einfach}, wenn er in der Form $x = v\otimes w$ geschrieben werden kann.
 	\end{enumerate}
 \end{defn}
 Das Tensorprodukt $V\otimes W$ ist also gewissermaßen die \glqq allgemeinst-mögliche\grqq\ Art, die Elemente von $V$ und von $W$ bilinear zu kombinieren: Die Elemente von $V\otimes W$ sind \glqq bilineare Kombinationen\grqq\ von denen von $V$ und $W$, und mehr als das gilt auch nicht.
@@ -679,6 +680,8 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 	Seien $V_1,V_2, W_1, W_2$ Vektorräume und $f_i\colon V_i \to W_i$ für $i=1,2$ lineare Abbildungen. Wir definieren die lineare Abbildung $f_1\otimes f_2 \colon V_1\otimes V_2 \to W_1\otimes W_2$ durch
 	\[(f_1\otimes f_2)(v_1\otimes v_2) := f_1(v_1) \otimes f_2(v_2)\]
 	und lineare Fortsetzung.
+
+	$f_1\otimes f_2$ heißt das \emph{Tensorprodukt} von $f_1$ und $f_2$.
 \end{defn}
 
 \begin{defn}
@@ -1042,6 +1045,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\phi_a\otimes\phi_b\colon\pi^{-1}(U)&\rightarrow U\times \R^{n_a\cdot n_b}\\
 				v_a\otimes v_b&\mapsto (\pi_a(v_a), \pr_2(\phi_a(v_a))\otimes\pr_2(\phi_b(v_b)))
 			\end{align*}
+			\kommP[inline]{Evtl. sollten wir hier noch hinschreiben, dass dabei $\R^{n_a} \otimes\R^{n_b} \equiv \R^{n_a \cdot n_b}$ identifiziert wird.}
 			Die Übergangsfunktionen des Tensorproduktes sind durch das Tensorprodukt der Übergangsfunktionen gegeben: $\tau=\tau_a\otimes\tau_b$.
 		\end{defn}
 		
