@@ -1799,7 +1799,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Tensorbündel und Tensorfelder}
 	\section{Tensorbündel}
-		Wie wir zuvor gesehen haben, können wir aus zwei Vektorbündeln durch das Tensorprodukt ein neues Bündel erzeugen. In gewisser Weise bilden dabei Tensorprodukte von (Ko-) Tangentialbündeln eine natürliche Erweiterung der einer Mannigfaltigkeit \glqq inhärenten\grqq\ Struktur.
+		Wie wir zuvor gesehen haben, können wir aus zwei Vektorbündeln durch das Tensorprodukt ein neues Bündel erzeugen. In gewisser Weise bilden dabei Tensorprodukte von (Ko-)Tangentialbündeln eine natürliche Erweiterung der einer Mannigfaltigkeit \glqq inhärenten\grqq\ Struktur.
 	\begin{defn}[Tensorbündel]
 	Das \emph{Tensorbündel vom Typ $(r,s)$} über $M$ ist das Vektorbündel
 	\begin{align*}
@@ -1813,17 +1813,19 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			
 			Wie für Tensoren von Vektoren sind \emph{einfache Tensorfelder} solche, die als (Tensor-) Produkt von Vektorfeldern und 1-Formen geschrieben werden können.
 			
-			Aus dem (lokalen) Koordinatenrahmen $\frac{\partial}{\partial x^i}$ (von $\vf(M)$) und dem dualen Rahmen $dx^i$ (von $\Omega^1(M)$) erhält man mit dem Tensorprodukt lokale Rahmen der Tensorfelder (Dies gilt natürlich auch für beliebige lokale Rahmen). Man schreibt dann die Komponenten eines Tensors $A$ vom Typ $(r,s)$ mit $r$ oberen Indizes und $s$ unteren Indizes:
-			\begin{align*}
-				A=A^{i_1\ldots i_r}_{j_1\ldots j_s}\frac{\partial}{\partial x^{i_1}}\otimes\ldots\otimes\frac{\partial}{\partial x^{i_r}}\otimes dx^{j_1}\otimes\ldots\otimes dx^{j_s}
-			\end{align*}
+			Aus dem (lokalen) Koordinatenrahmen $\frac{\partial}{\partial x^i}$ (von $TM$) und dem dualen Rahmen $\D x^i$ (von $T^*M$) erhält man mit dem Tensorprodukt lokale Rahmen des Tensorbündels (dies gilt natürlich auch für beliebige lokale Rahmen). Man schreibt dann die Komponenten eines Tensorfeldes $A$ vom Typ $(r,s)$ mit $r$ oberen Indizes und $s$ unteren Indizes: Es ist
+			\[A = A^{i_1\ldots i_r}_{j_1\ldots j_s} \frac{\partial}{\partial x^{i_1}} \otimes \cdots \otimes \frac{\partial}{\partial x^{i_r}} \otimes \D x^{j_1} \otimes \cdots \otimes \D x^{j_s},\]
+			wobei die Komponenten $A^{i_1\ldots i_r}_{j_1\ldots j_s}$ (lokal definierte) glatte Funktionen sind.
+			\kommP[inline]{Hier habe ich wieder zurückkorrigiert, denn Rahmen gibt es von Bündeln, nicht von Schnitten. Außerdem habe ich wieder dazugeschrieben, dass die Komponenten glatt sind.}
 		\end{defn}
 		
 		\begin{lemma}
-			Die Tensorfelder vom Typ $(r,s)$ $\Gamma(T^{(r,s)}M)$ bilden ein $\sm(M)$-Modul und darüber hinaus bilden alle Tensorfelder mit dem \glqq faserweisen\grqq\ Tensorprodukt $(A\otimes B)_p=A_p\otimes B_p$ eine $\sm$-Algebra (mit der kanonischen Identifizierung $TM\otimes T^*M\cong T^*M\otimes TM$):
+			Die Tensorfelder vom Typ $(r,s)$ $\Gamma(T^{(r,s)}M)$ bilden einen $\sm(M)$-Modul und darüber hinaus bilden alle Tensorfelder mit dem \glqq faserweisen\grqq\ Tensorprodukt $(A\otimes B)_p=A_p\otimes B_p$ eine $\sm$-Algebra (mit der kanonischen Identifizierung $TM\otimes T^*M\cong T^*M\otimes TM$):
 			\begin{align*}
 				\mathcal{T}(M):=\bigoplus_{r,s=0}^{\infty}\Gamma(T^{(r,s)}M)
 			\end{align*}
+			In Komponenten hat das Tensorprodukt von zwei Tensorfeldern $A \in \Gamma(T^{(r,s)}M)$, $B \in \Gamma(T^{(t,u)}M)$ die Form $(A\otimes B)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = A^{i_1 \dots i_r}_{j_1 \dots j_s} B^{k_1 \dots k_t}_{l_1 \dots l_u}$.
+			\kommP{Das hab ich hier hoch geschoben von unten, weil es hier besser hinpasst.}
 			
 			Ebenso können wir durch punktweise Anwendung die Kontraktion von Tensoren zur Kontraktion von Tensorfeldern
 			\[C_{t,u}\colon \Gamma(T^{(r,s)}M) \to \Gamma(T^{(r-1,s-1)}M)\]
@@ -1832,7 +1834,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 		\end{lemma}
 
 		\begin{bem}
-			Haben wir ein Tensorfeld $A \in T^{(r,s)}M$, so können wir bekanntlich punktweise $A_p \in T^{(r,s)}_pM$ als $\R$-multilineare Abbildung
+			Haben wir ein Tensorfeld $A \in \Gamma(T^{(r,s)}M)$, so können wir bekanntlich punktweise $A_p \in T^{(r,s)}_pM$ als $\R$-multilineare Abbildung
 			\[A_p\colon \underbrace{T_p^*M \times \dots \times T_p^*M}_\text{$r$-mal} \times \underbrace{T_pM \times \dots \times T_pM}_\text{$s$-mal} \to \R\]
 			auffassen (Satz \ref{satz:tensorprod_multilin}). Per
 			\[(A(\omega_1,\dots,\omega_r, X_1,\dots,X_s))(p) := A_p\Big((\omega_1)_p,\dots,(\omega_r)_p, (X_1)_p,\dots,(X_s)_p\Big)\]
@@ -1844,9 +1846,8 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 				(A\otimes B)(\omega_1,\ldots,\omega_{r+t},X_1,\ldots,X_{s+u})&=\\
 				A(\omega_1,\ldots,\omega_r,X_1,\ldots,X_s) &B(\omega_{r+1},\ldots,\omega_{r+u},X_{s+1},\ldots,X_{s+u})
 			\end{align*}
-			Und insbesondere in Komponenten bezüglich Koordinatenrahmen: $(A\otimes B)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = A^{i_1 \dots i_r}_{j_1 \dots j_s} B^{k_1 \dots k_t}_{l_1 \dots l_u}$ für $A \in \Gamma(T^{(r,s)}M)$, $T \in \Gamma(T^{(t,u)}M)$.
 		\end{bem}
-		Davon gilt auch die Umkehrung:
+		Von der vorigen Bemerkung gilt auch die Umkehrung:
 		\begin{satz}[Tensorfelder als $\sm(M)$-multilineare Abbildungen]
 			Ist eine $\R$-multilineare Abbildung
 			\begin{align*}
