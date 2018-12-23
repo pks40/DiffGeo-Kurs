@@ -35,6 +35,7 @@
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Exp}{Exp}
 \DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
@@ -639,11 +640,12 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 	\end{enumerate}
 \end{defn}
 Das Tensorprodukt $V\otimes W$ ist also gewissermaßen die \glqq allgemeinst-mögliche\grqq\ Art, die Elemente von $V$ und von $W$ bilinear zu kombinieren: Die Elemente von $V\otimes W$ sind \glqq bilineare Kombinationen\grqq\ von denen von $V$ und $W$, und mehr als das gilt auch nicht.
-\begin{lemma}
+\begin{lemma} \label{lemma:tensor_prod}
 	Seien $V,W$ zwei Vektorräume.
-	\begin{enumerate}[label=(\roman*)]
+	\begin{enumerate}[label=(\alph*)]
 		\item Die Abbildung $\otimes\colon V\times W\to V\otimes W, (v,w) \mapsto v\otimes w$ ist bilinear.
 		\item Ist $\{b_i\}_{i\in I}$ eine Basis von $V$ und $\{c_j\}_{j\in J}$ eine Basis von $W$, dann ist $\{b_i \otimes c_j\}_{i\in I, j\in J}$ eine Basis von $V\otimes W$. Insbesondere ist $\dim(V\otimes W) = \dim(V) \cdot \dim(W)$.
+		\item \label{item:tensor_prod_inj} Sei $X$ ein weiterer Vektorraum. Eine lineare Abbildung $f\colon V\otimes W \to X$ ist genau dann injektiv, wenn $f(e) = 0 \implies e = 0$ für alle einfachen Tensoren $e = v\otimes w \in V\otimes W$ gilt.
 	\end{enumerate}
 	\bewUeb
 \end{lemma}
@@ -675,6 +677,15 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 \begin{bem}
 	Durch die universelle Eigenschaft ist das Tensorprodukt eindeutig festgelegt bis auf eindeutige Isomorphie. D.\,h.: Ist $\theta\colon V\times W\to Y$ eine bilineare Abbildung mit der Eigenschaft, dass es zu jedem bilinearen $B\colon V\times W \to X$ eine eindeutige lineare Abbildung $f\colon Y\to X$ mit $B(v,w) = f(\theta(v,w))$ gibt, so existiert ein eindeutiger Isomorphismus $\Phi\colon V\to W\to Y$ mit $\Phi\circ\otimes = \theta$.
 \end{bem}
+\begin{lemma}
+	\begin{enumerate}[label=(\alph*)]
+		\item $V\otimes\R$ ist kanonisch isomorph zu $V$ via
+		\[v\otimes\lambda \mapsto \lambda v.\]
+		\item $V\otimes W$ ist kanonisch isomorph zu $W\otimes V$ via
+		\[v\otimes w \mapsto w\otimes v.\]
+	\end{enumerate}
+	\bewUeb
+\end{lemma}
 
 \begin{defn}
 	Seien $V_1,V_2, W_1, W_2$ Vektorräume und $f_i\colon V_i \to W_i$ für $i=1,2$ lineare Abbildungen. Wir definieren die lineare Abbildung $f_1\otimes f_2 \colon V_1\otimes V_2 \to W_1\otimes W_2$ durch
@@ -686,6 +697,10 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 
 \begin{defn}
 	Analog zu Tensorprodukten mit zwei Faktoren definiert man Tensorprodukte mit mehreren Faktoren: Für Vektorräume $V_1, \dots, V_k$ besteht $V_1 \otimes \dots \otimes V_k$ aus formalen Summen von Ausdrücken der Form $v_1 \otimes \dots \otimes v_k$ genau so, dass die Abbildung $V_1 \times \dots \times V_k \ni (v_1,\dots,v_n) \mapsto v_1 \otimes \dots \otimes v_n \in V_1 \otimes \dots \otimes V_k$ in jedem Argument linear ist. Es gilt eine universelle Eigenschaft für $k$-lineare Abbildungen analog zur obigen.
+
+	Oft schreibt man auch kurz $\bigotimes_{i=1}^k V_k = V_1 \otimes \dots \otimes V_k$ etc.
+
+	Für \glqq Tensorpotenzen\grqq, also Tensorprodukte eines Vektorraums mit sich selbst, schreiben wir auch $V^{\otimes k} := \underbrace{V \otimes \dots \otimes V}_\text{$k$-mal}$.
 \end{defn}
 \begin{bem}
 	Über $(u\otimes v)\otimes w \mapsto u\otimes v\otimes u$ (und lineare Fortsetzung) sind $(U\otimes V)\otimes W$ und $U\otimes V\otimes W$ kanonisch isomorph; analog gilt das natürlich auch für mehr Faktoren.
@@ -710,6 +725,46 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tensoren als multilineare Abbildungen}
+
+\begin{lemma}
+	Seien $V,W$ Vektorräume. Wir definieren eine lineare Abbildung
+	\[\Psi\colon V^*\otimes W \to \Hom(V,W)\]
+	über
+	\[[\Psi(\eta\otimes w)](v) := \eta(v) \cdot w\]
+	und lineare Fortsetzung. $\Psi$ ist injektiv, und das Bild von $\Psi$ ist die Menge der linearen Abbildungen $V\to W$ mit endlichem Rang.
+
+	Wir können Tensoren in $V^*\otimes W$ also als lineare Abbildungen $V\to W$ (mit endlichem Rang) auffassen.
+
+	\begin{proof}
+		Für $\eta \in V^*$ und $w\in W$ ist $F(\eta,w) := (V \ni v \mapsto \eta(v) \cdot w \in W)$ wirklich ein Element von $\Hom(V,W)$. Außerdem ist der Ausdruck $F(\eta,w)$ offensichtlich in beiden Argumenten linear; also definiert $\Psi$ tatsächlich eine lineare Abbildung $\Psi\colon V^*\otimes W \to \Hom(V,W)$.
+
+		$\Psi$ ist injektiv: Ist $\Psi(\eta \otimes w) = 0$, so ist $0 = \eta(v) \cdot w$ für alle $v\in V$. Dann ist also $w=0$ oder $\eta(v) = 0$ für alle $v\in V$, also $w=0$ oder $\eta=0$. Das heißt aber $\eta \otimes w = 0$. Mit Lemma \ref{lemma:tensor_prod} \ref{item:tensor_prod_inj} folgt die Injektivität.
+
+		Da $\Psi(\eta\otimes w)$ den Rang 0 oder 1 hat (warum?), hat $\Psi\left(\sum_{i=1}^k \eta_i \otimes w_i\right) \in \Hom(V,W)$ maximal Rank $k$; also hat $\Psi(u)$ endlichen Rang für jedes $u\in V^*\otimes W$.
+
+		Ist umgekehrt $f\in\Hom(V,W)$ von endlichem Rang $k$, so können wir eine Basis $\{w_1,\dots,w_k\}$ von $\mathrm{im}(f)$ wählen und $\eta_i \in V^*$, $i=1,\dots,k$ durch die Gleichung $f(v) =: \sum_{i=1}^k \eta_i(v) \cdot w_i$ für $v\in V$ definieren (Übung: mache dir klar, dass die $\eta_i$ wirklich linear sind!), sodass wir $f = \Psi\left(\sum_{i=1}^k \eta_i \otimes w_i\right) \in \mathrm{im}(\Psi)$ sehen.
+	\end{proof}
+\end{lemma}
+\begin{kor}
+	Ist $V$ oder $W$ endlich-dimensional, dann sind $V^* \otimes W \equiv \Hom(V,W)$ kanonisch isomorph. \qed
+\end{kor}
+\begin{nota}
+	Im Folgenden fassen wir Tensoren in $V^* \otimes W$ oft direkt als lineare Abbildungen $V\to W$ auf, d.\,h. wir unterdrücken $\Psi$ und schreiben direkt
+\[(\eta\otimes w)(v) = \eta(v) \cdot w.\]
+\end{nota}
+\begin{bem}
+	Analog kann man Tensoren in $V_1^* \otimes \dots \otimes V_k^* \otimes W$ als $k$-lineare Abbildungen $V_1 \times \dots \times V_k \to W$ auffassen via
+	\[(\eta_1 \otimes \dots \otimes \eta_k \otimes w)(v_1, \dots, v_k) := \eta_1(v_1) \cdots \eta_k(v_k) \cdot w\]
+	und linearer Fortsetzung. Sind die $V_i$ und $W$ endlich-dimensional, dann geht das auch umgekehrt.
+
+	Für den Fall $W = \R$ erhalten wir, dass die Elemente von $V_1^* \otimes \dots \otimes V_k^*$ den $k$-linearen Abbildungen $V_1 \times \dots \times V_k \to \R$ entsprechen.
+
+	Insbesondere kann man beispielsweise zwei multilineare Abbildungen $A\colon V^k \to \R$ und $B\colon V^l \to \R$ auffassen als Tensoren $A \in (V^*)^{\otimes k}$ und $B \in (V^*)^{\otimes l}$, deren Tensorprodukt
+	\[A\otimes B \in \big(\underbrace{V^*\otimes \dots \otimes V^*}_\text{$k$-mal}\big) \otimes \big(\underbrace{V^*\otimes \dots \otimes V^*}_\text{$l$-mal}\big) \equiv (V^*)^{\otimes {k+l}}\]
+	wiederum als $k+l$-lineare Abbildung $V^{k+l} \to \R$ gesehen werden kann. Für diese gilt dann
+	\[(A\otimes B)(v_1,\dots,v_k, v_{k+1},\dots,v_{k+l}) = A(v_1,\dots,v_k) \cdot B(v_{k+1},\dots,v_{k+l})\]
+	(denn das gilt für den Fall, das $A$ und $B$ einfache Tensoren sind, nach Definition der Identifikationen, und folgt damit für den allgemeinen Fall, da diese linear auf die gesamten Tensorprodukte fortgesetzt wurden).
+\end{bem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
