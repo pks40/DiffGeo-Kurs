@@ -611,7 +611,79 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Multilineare Algebra: Das Tensorprodukt}
-\todo{Tensorprodukt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Das Tensorprodukt von Vektorräumen}
+\begin{defn} \label{defn:tensor_prod}
+	Seien $V,W$ zwei Vektorräume.
+	\begin{enumerate}[label=(\alph*)]
+		\item Das \emph{Tensorprodukt} $V\otimes W$ ist ein Vektorraum, der wie folgt definiert wird:
+
+			Die Elemente von $V\otimes W$ sind formale Summen von formalen Ausdrücken der Form $v\otimes w$ mit $v\in V, w\in W$, d.\,h.
+			\[V\otimes W = \left\{\sum_{i=1}^k v_i \otimes w_i : k\in\mathbb N, v_i \in V, w_i \in W\right\}.\]
+			Die formalen Ausdrücke haben dabei genau die folgenden Eigenschaften:
+			\begin{enumerate}[label=(\roman*)]
+				\item $v \otimes (w + \tilde w) = v\otimes w + v \otimes \tilde w$ für alle $v \in V$ und $w, \tilde w \in W$
+				\item $(v + \tilde v) \otimes w = v\otimes w + \tilde v \otimes w$ für alle $v, \tilde v \in V$ und $w \in W$
+				\item $(\lambda v) \otimes w = v \otimes (\lambda w)$ für alle $v\in V, w\in W, \lambda \in \R$
+			\end{enumerate}
+			Das \glqq genau\grqq\ bedeutet dabei, dass zwei Ausdrücke, die nicht mithilfe dieser Eigenschaften ineinander umgeformt werden können, auch wirklich verschieden sind.
+
+			Wir definieren auf $V\otimes W$ eine Skalarmultiplikation durch
+			\[\lambda\left(\sum_{i=1}^k v_i \otimes w_i\right) := \sum_{i=1}^k (\lambda v_i) \otimes w_i = \sum_{i=1}^k v_i \otimes \lambda(w_i).\]
+			Damit wird $V\otimes W$ zu einem Vektorraum.
+		\item Ein Element $x \in V \otimes W$ heißt \emph{einfach}, wenn es in der Form $x = v\otimes w$ geschrieben werden kann.
+	\end{enumerate}
+\end{defn}
+Das Tensorprodukt $V\otimes W$ ist also gewissermaßen die \glqq allgemeinst-mögliche\grqq\ Art, die Elemente von $V$ und von $W$ bilinear zu kombinieren: Die Elemente von $V\otimes W$ sind \glqq bilineare Kombinationen\grqq\ von denen von $V$ und $W$, und mehr als das gilt auch nicht.
+\begin{lemma}
+	Seien $V,W$ zwei Vektorräume.
+	\begin{enumerate}[label=(\roman*)]
+		\item Die Abbildung $\otimes\colon V\times W\to V\otimes W, (v,w) \mapsto v\otimes w$ ist bilinear.
+		\item Ist $\{b_i\}_{i\in I}$ eine Basis von $V$ und $\{c_j\}_{j\in J}$ eine Basis von $W$, dann ist $\{b_i \otimes c_j\}_{i\in I, j\in J}$ eine Basis von $V\otimes W$. Insbesondere ist $\dim(V\otimes W) = \dim(V) \cdot \dim(W)$.
+	\end{enumerate}
+	\bewUeb
+\end{lemma}
+Dass die Abbildung $\otimes\colon V\times W \to V\otimes W$ die \glqq allgemeinst-mögliche bilineare Abbildung\grqq\ auf $V\times W$ ist, zeigt sich in der folgenden universellen Eigenschaft:
+\begin{satz}[Universelle Eigenschaft des Tensorprodukts]
+	Seien $V,W,X$ Vektorräume. Die Abbildung $\otimes\colon V\times W \to V\otimes W$ erfüllt die folgende Eigenschaft:
+
+	Zu jeder bilinearen Abbildung $B\colon V\times W \to X$ gibt es eine eindeutige lineare Abbildung $f_B\colon V\otimes W \to X$ mit $B(v,w) = f_B(v\otimes w) \; \forall v\in V, w\in W$.
+
+	\begin{center}
+		\begin{tikzpicture}
+		\matrix(m)[matrix of math nodes,row sep=4em,column sep=2.5em,minimum width=2em]{V\times W & V\otimes W \\
+			X & \\};
+		\path[-stealth]
+		(m-1-1)	edge node [above]{$\otimes$} (m-1-2)
+		edge node [left]{$B$} (m-2-1);
+		\path[-stealth,dashed]
+		(m-1-2) edge node [below]{$\qquad\exists! f_B$} (m-2-1);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{proof}
+		Da $f_B$ linear sein soll und $f_B(v\otimes w) = B(v,w)$ gelten soll, muss
+		\[f_B\left(\sum_{i=1}^k v_i \otimes w_i\right) = \sum_{i=1}^k f_B(v_i \otimes w_i) = \sum_{i=1}^k B(v_i,w_i)\]
+		gelten. Damit ist $f_B$ aber eine wohldefinierte Abbildung $V\otimes W \to X$ (Übung!) und tatsächlich linear (Übung!).
+	\end{proof}
+\end{satz}
+Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ eindeutig durch $f(v\otimes w) := B(v,w)$ und lineare Fortsetzung definieren, wenn $B(v,w)$ ein bilinearer Ausdruck ist.
+
+\begin{bem}[Bonus: Formale Konstruktion]
+	Die obige informelle Definition \ref{defn:tensor_prod} lässt sich auch als komplett formale Konstruktion ausdrücken: Man betrachtet den freien Vektorraum $Z$ über der Menge $V\times W$. Wir definieren die Teilmengen $A,B,C,D \subset Z$ als
+	\begin{align*}
+		A &:= \left\{(v,w+\tilde w) - (v,w) - (v,\tilde w): v\in V \; \text{und} \; w, \tilde w \in W\right\},\\
+		B &:= \left\{(v+\tilde v,w) - (v,w) - (\tilde v,w): v,\tilde v\in V \; \text{und} \; w\in W\right\},\\
+		C &:= \left\{(\lambda v,w) - \lambda(v,w): v\in V, w \in W, \lambda\in\R\right\},\\
+		D &:= \left\{(v,\lambda w) - \lambda(v,w): v\in V, w \in W, \lambda\in\R\right\}
+	\end{align*}
+	und definieren $V\otimes W$ als den Quotientenraum
+	\[V\otimes W := \raise0.5ex\hbox{$Z$} \Big/ \lower0.5ex\hbox{$\mathrm{span}(A\cup B\cup C\cup D)$}.\]
+	Für $v\in V, w\in W$ ist $v\otimes w \in V\otimes W$ dann gegeben als das Bild von $(v,w) \in Z$ unter der Quotientenprojektion $Z\to V\otimes W$.
+
+	Das bedeutet aber genau dasselbe wie die obige Definition, und die ist einfacher zu verstehen.
+\end{bem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
