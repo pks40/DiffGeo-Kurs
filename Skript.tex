@@ -288,6 +288,8 @@ Zu einem Funktionskeim $[f] \in \sC_p(M)$ ist der Funktionswert $[f](p) := f(p)$
 
 \begin{defn}
 	Eine \emph{Derivation} von $\sC_p(M)$ ist eine lineare Abbildung $v\colon \sC_p(M) \to \mathbb R$, die die \glqq Produktregel\grqq\ \[v(fg) = v(f) g(p) + f(p) v(g)\] erfüllt. Den Raum der Derivationen von $\sC_p(M)$ nennen wir den \emph{Tangentialraum} $T_pM$ an $M$ im Punkt $p$; die Elemente von $T_pM$ heißen auch \emph{Tangentialvektoren} in $p$.
+
+	Der Dualraum von $T_pM$ ist der \emph{Kotangentialraum} $T_p^*M := (T_pM)^*$ an $M$ im Punkt $p$.
 \end{defn}
 
 $T_pM$ ist tatsächlich ein Untervektorraum von $(\sC_p(M))^*$ (Übung).
@@ -501,7 +503,7 @@ Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise 
 \end{lemma}
 
 \begin{defn}
-	Fassen wir für $f \in \sC(M)$ das Differential $\left.\DD f\right|_p$ wie oben als Abbildung nach $\mathbb R$ auf, so schreiben wir es als $\left.\D f\right|_p \colon T_pM \to \mathbb R$.
+	Fassen wir für $f \in \sC(M)$ das Differential $\left.\DD f\right|_p$ wie oben als Abbildung nach $\mathbb R$ auf, so schreiben wir es als $\left.\D f\right|_p \colon T_pM \to \mathbb R$, also $\left.\D f\right|_p \in T_p^*M$.
 \end{defn}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -533,6 +535,10 @@ $\left.\frac{\partial}{\partial x^i}\right|_p$ stellt also einen Funktionskeim i
 	\end{align*}
 	wobei $\pr^j\colon \mathbb R^n \to R, \pr^j(a) = a^j$ die Projektion auf die $j$-te Komponente ist.
 \end{bsp}
+Für die Kovektoren $\left.\D x^i\right|_p \in T_p^*M$ gilt also $\left.\D x^i\right|_p\left(\left.\frac{\partial}{\partial x^j}\right|_p\right) = \delta^i_j$. Damit haben wir gezeigt:
+\begin{lemma}
+	Die zur von $x$ induzierten Koordinatenbasis von $T_pM$ duale Basis von $T_p^*M$ ist gegeben durch die Differentiale $\left\{\left.\D x^i\right|_p \right\}$. \qed
+\end{lemma}
 
 \begin{lemma}[Koordinatendarstellung von Tangentialvektoren]
 	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p \in M$, $v \in T_pM$ und $x$ eine Karte um $p$. Die Darstellung von $v$ in der von $x$ induzierten Koordinatenbasis ist
@@ -704,6 +710,15 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 
 	Außerdem setzen wir $V^{(r,s)} := V^{\otimes r} \otimes (V^*)^{\otimes s}$ und nennen Elemente davon \emph{Tensoren vom Typ $(r,s)$ über $V$}.
 \end{defn}
+\begin{defn}[Kontraktion]
+	Seien $V$ ein endlich-dimensionaler Vektorraum und $r,s \in \mathbb N$. Für $1 \le t \le r$ und $1 \le u \le s$ definieren wir die \emph{Kontraktion} $C_{t,u} \colon V^{(r,s)} \to V^{(r-1,s-1)}$ durch
+	\begin{align*}
+	&C_{t,u}(v_1 \otimes \dots \otimes v_r \otimes \eta_1 \otimes \dots \otimes \eta_s) \\& \qquad := \eta_u(v_t) \cdot v_1 \otimes \cdots \widehat{\otimes v_t \otimes} \cdots \otimes v_r \otimes \eta_1 \otimes \cdots \widehat{\otimes \eta_u \otimes} \cdots \otimes \eta_s
+	\end{align*}
+	und lineare Fortsetzung, wobei auf der rechten Seite $\widehat{\otimes X \otimes}$ bedeutet, dass der entsprechende Term ausgelassen wird.
+	
+	Für einfache Tensoren wird bei der Kontraktion $C_{t,u}$ also der $t$-te Vektor in die $u$-te Linearform eingesetzt.
+\end{defn}
 \begin{bem}
 	Über $(u\otimes v)\otimes w \mapsto u\otimes v\otimes w$ (und lineare Fortsetzung) sind $(U\otimes V)\otimes W$ und $U\otimes V\otimes W$ kanonisch isomorph; analog gilt das natürlich auch für mehr Faktoren.
 
@@ -785,23 +800,19 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 	aus der vorherigen Bemerkung.
 \end{bem}
 Zusammengefasst haben wir also:
-\begin{satz}
+\begin{satz} \label{satz:tensorprod_multilin}
 	Sei $V$ ein endlich-dimensionaler Vektorraum. $V^{(r,s)}$ ist kanonisch isomorph zum Raum der multilinearen Abbildungen $\underbrace{V^* \times \dots \times V^*}_\text{$r$-mal} \times \underbrace{V \times \dots \times V}_\text{$s$-mal} \to \R$ via
 	\begin{align*}
 		(v_1 \otimes \dots \otimes v_r \otimes \eta_1 \otimes \dots \otimes \eta_s ) (\omega_1,\dots,\omega_r, w_1,\dots,w_s) \qquad \\ = \omega_1(v_1)\cdots\omega_r(v_r) \cdot \eta_1(w_1)\cdots\eta_s(w_s).
 	\end{align*}
-	und linearer Fortsetzung. \qed
-\end{satz}
+	und linearer Fortsetzung.
 
-\begin{defn}[Kontraktion]
-	Seien $V$ ein endlich-dimensionaler Vektorraum und $r,s \in \mathbb N$. Für $1 \le p \le r$ und $1 \le q \le s$ definieren wir die \emph{Kontraktion} $C_{p,q} \colon V^{(r,s)} \to V^{(r-1,s-1)}$ durch
+	Bzgl. dieser Auffassung von Tensoren als multilineare Abbildungen ist das Tensorprodukt von $S \in V^{(r,s)}$, $T \in V^{(t,u)}$ gegeben als
 	\begin{align*}
-		&C_{p,q}(v_1 \otimes \dots \otimes v_r \otimes \eta_1 \otimes \dots \otimes \eta_s) \\& \qquad := \eta_q(v_p) \cdot v_1 \otimes \cdots \widehat{\otimes v_p \otimes} \cdots \otimes v_r \otimes \eta_1 \otimes \cdots \widehat{\otimes \eta_q \otimes} \cdots \otimes \eta_s
+		(S\otimes T)(\eta_1,\dots,\eta_r, \omega_1,\dots,\omega_t, v_1,\dots,v_s, w_1,\dots,w_u) \qquad \\ = S(\eta_1,\dots,\eta_r, v_1,\dots,v_s) \cdot T(\omega_1,\dots,\omega_t, w_1,\dots,w_u) ,
 	\end{align*}
-	und lineare Fortsetzung, wobei auf der rechten Seite $\widehat{\otimes X \otimes}$ bedeutet, dass der entsprechende Term ausgelassen wird.
-
-	Für einfache Tensoren wird bei der Kontraktion $C_{p,q}$ also der $p$-te Vektor in die $q$-te Linearform eingesetzt.
-\end{defn}
+	wobei wir $V^{(r,s)} \otimes V^{(t,u)} \equiv V^{(r+t, s+u)}$ identifiziert haben. \qed
+\end{satz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Rechnungen in Komponenten}
@@ -809,9 +820,8 @@ Zusammengefasst haben wir also:
 \begin{defn}
 	Sei $V$ ein endlich-dimensionaler Vekorraum, $\{e_i\}$ eine Basis von $V$ und $\{\theta^i\}$ die dazu duale Basis von $V^*$. Eine Basis von $V^{(r,s)} = V^{\otimes r} \otimes (V^*)^{\otimes s}$ ist dann gegeben durch $\{e_{i_1} \otimes \dots \otimes e_{i_r} \otimes \theta^{j_1} \otimes \dots \otimes \theta^{j_s}\}$.
 
-	Die Komponenten eines Tensors $T \in V^{(r,s)}$ bzgl. dieser Basis schreiben wir dann als $T^{i_1 \dots i_r}_{j_1 \dots j_s}$, also
+	Man schreibt dann die Komponenten eines Tensors $T \in V^{(r,s)}$ mit $r$ oberen Indizes und $s$ unteren Indizes (mit Summenkonvention):
 	\[T = T^{i_1 \dots i_r}_{j_1 \dots j_s} e_{i_1} \otimes \dots \otimes e_{i_r} \otimes \theta^{j_1} \otimes \dots \otimes \theta^{j_s}\]
-	(mit Summenkonvention).
 \end{defn}
 \begin{bsp}
 	\begin{enumerate}[label=(\alph*)]
@@ -825,7 +835,7 @@ Zusammengefasst haben wir also:
 	\begin{enumerate}[label=(\alph*)]
 		\item Für Tensorprodukte: $(S\otimes T)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = S^{i_1 \dots i_r}_{j_1 \dots j_s} T^{k_1 \dots k_t}_{l_1 \dots l_u}$ für $S \in V^{(r,s)}$, $T \in V^{(t,u)}$, wobei wir $V^{(r,s)} \otimes V^{(t,u)} \equiv V^{(r+t, s+u)}$ identifiziert haben
 		\item Für die Anwendung von Tensoren (als multilineare Abbildungen) auf Linearformen und Vektoren: $T(\eta,v) = T^i_j \eta_i v^j$ für $T \in V^{(1,1)}, \eta \in V^*, v \in V$ (analog für Tensoren höheren Typs)
-		\item Ist $T \in V^{(r,s)}$, so erhält man die Komponenten der Kontraktion $C_{p,q}$, indem man bei den Komponenten von $T$ den $p$-ten oberen Index mit dem $q$-ten unteren Index gleichsetzt und über diesen Index summiert, genannt \glqq Kontraktion der Indizes\grqq.
+		\item Ist $T \in V^{(r,s)}$, so erhält man die Komponenten der Kontraktion $C_{t,u}$, indem man bei den Komponenten von $T$ den $t$-ten oberen Index mit dem $u$-ten unteren Index gleichsetzt und über diesen Index summiert, genannt \glqq Kontraktion der Indizes\grqq.
 
 			Für $T \in V^{(3,3)}$ ist beispielsweise
 			\[(C_{1,2}T)^{ij}_{kl} = T^{mij}_{kml}.\]
@@ -1098,15 +1108,17 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			Ein Vektorbündel besitzt genau dann einen globalen Rahmen, wenn es trivial ist (das heißt isomorph zum trivialen Bündel).
 			\bewUeb
 		\end{satz}
-		
-		\begin{lemma}
-			Ein lokaler Schnitt $\sigma\colon U\rightarrow E$ ist genau dann glatt, wenn für einen einen lokalen Rahmen $(\sigma_1,\ldots,\sigma_n)$ mit $\sigma=f^i\sigma_i$ die Koeffizientenfunktionen $f^i\colon U\rightarrow \R$ glatt sind. 
+		Nach Konstruktion gilt folgende Charakterisierung der Glattheit:
+		\begin{lemma} \label{lemma:schnitt_glatt_koeff_glatt}
+			Ein lokaler Schnitt $\sigma\colon U\rightarrow E$ ist genau dann glatt, wenn für einen einen lokalen Rahmen $(\sigma_1,\ldots,\sigma_n)$ mit $\sigma=f^i\sigma_i$ die Koeffizientenfunktionen $f^i\colon U\rightarrow \R$ glatt sind.
+			\bewUeb
 		\end{lemma}
 		
 		Später brauchen wir noch folgendes Ergebnis:
 		\begin{kor}\label{kor:Vektorbündel_über_Intervallen}
 			Vektorbündel über offenen Intervallen sind trivial.
 		\end{kor}
+		\kommP{Woraus folgt das? Ich denke, das ist ziemlich nichttrivial \dots oder?}
 	\section{Konstruktionen von Vektorbündeln}
 		Seien $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.\\
 		\begin{defn}
@@ -1119,7 +1131,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			und für eine Trivialisierung $(\phi,U)$ von $E$, ist die folgende Abbildung eine Trivialisierung des dualen Bündels:
 			\begin{align*}
 				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^*\\
-				\lambda&\mapsto\left(x,\lambda\circ(\pr_2\circ\phi\vert_{\pi^{-1}(\lbrace x\rbrace)})^{-1}\right)
+				\lambda&\mapsto\left(x,\lambda\circ({\pr_2}\circ\phi\vert_{\pi^{-1}(\lbrace x\rbrace)})^{-1}\right)
 			\end{align*}
 			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
@@ -1137,6 +1149,11 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{bem}
 			Tatsächlich ist sogar $\Gamma(E^*)\cong \mathrm{Hom}_{\sm(M)}(\Gamma(E),\sm(M))$ die Menge der Modulhomomorphismen.
 		\end{bem}
+	
+		\begin{lemma} \label{lemma:rahmen_dual}
+			Sei $(\sigma_1,\dots,\sigma_n)$ ein lokaler Rahmen von $E$. Definieren wir lokale Schnitte $\theta^1, \dots, \theta^n$ von $E^*$ dadurch, dass punktweise $\{\theta^i(x)\}$ die duale Basis von $(E_x)^*$ zur Basis $\{\sigma_i(x)\}$ von $E_x$ ist, dann sind die $\theta^i$ glatt, und somit ist $(\theta^1,\dots,\theta^n)$ ein lokaler Rahmen von $E^*$.
+			\bewUeb
+		\end{lemma}
 		
 		\begin{bsp}
 			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das \emph{Kotangentialbündel} $T^*M$ gewinnen. Wie wir später sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
@@ -1229,8 +1246,6 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 \begin{defn}
 	Ein (glattes) \emph{Vektorfeld} auf einer differenzierbaren Mannigfaltigkeit $M$ ist ein (glatter) Schnitt des Tangentialbündels $TM$, also eine (glatte) Abbildung $X\colon M \to TM$, sodass $X(p) \in T_pM$ für alle $p\in M$ gilt. Statt $X(p)$ schreiben wir im Folgenden meist $X_p$.
 
-\kommB{Habe jetzt hier den Teil zu $\mathfrak{X}$ als $\sC(M)$-Modul herausgenommen und im Vektorbündel-Kapitel eingefügt. Ich fand, das fehlt dann an dieser Stelle nicht. Sollen wir es mit der Differenzierbarkeit ebenso machen?}
-
 	Den Raum der glatten Vektorfelder auf $M$ schreiben wir als $\mathfrak X(M) := \Gamma(TM)$
 \end{defn}
 Ein Vektorfeld ordnet also jedem Punkt einer Mannigfaltigkeit einen Vektor im entsprechenden Tangentialraum zu.
@@ -1241,13 +1256,15 @@ Ein Vektorfeld ordnet also jedem Punkt einer Mannigfaltigkeit einen Vektor im en
 	sind lokal definierte Vektorfelder $\frac{\partial}{\partial x^i} \in \mathfrak X(U)$, die von der Karte $x$ \emph{induzierten Koordinatenvektorfelder}; glatt sind sie nach Konstruktion des Tangentialbündels. Sie bilden einen lokalen Rahmen von $TM$ über $U$.
 \end{bsp}
 
-Nach Konstruktion gilt die folgende Charakterisierung der Glattheit:
-\kommP{Das allgemeiner als Bemerkung in das Vektorbündel-Kapitel, also dass Schnitte genau dann glatt sind, wenn die Koeffizienten bzgl. glatter lokaler Rahmen glatte Funktionen sind?}
-\begin{lemma}
-	Sei $(x,U)$ eine Karte von $M$. Ein lokal definiertes Vektorfeld $X\colon U \to TU$ ist genau dann glatt, wenn die Koeffizientenfunktionen $X^i\colon U \to \R$ in der Entwicklung
+\begin{bem}
+	Nach Lemma \ref{lemma:schnitt_glatt_koeff_glatt} ist ein lokal definiertes Vektorfeld $X\colon U \to TU$ also genau dann glatt, wenn die Koeffizientenfunktionen $X^i\colon U \to \R$ in der Entwicklung
 	\[X = X^i \frac{\partial}{\partial x^i}\]
-	glatt sind. \qed
-\end{lemma}
+	glatt sind.
+
+	Da die zur Koordinatenbasis duale Basis von $T_p^*M$ durch die $\left.\D x^i\right|_p$ gebildet wird, bilden nach Lemma \ref{lemma:rahmen_dual} außerdem die Abbildungen
+	\[\D x^i\colon p \mapsto \left.\D x^i\right|_p\]
+	einen lokalen Rahmen von $T^*M$ über $U$.
+\end{bem}
 
 \begin{bem}
 	Ein Vektorfeld $X\colon M \to TM$ kann man auf eine Funktion $f\in\sC(M)$ anwenden: Man erhält eine Funktion $X(f)$ durch $(X(f))(p) := X_p(f)$. Man nennt $X(f)$ die \emph{Ableitung von $f$ in Richtung von $X$} (weil sie eben punktweise genau das ist).
@@ -1702,41 +1719,47 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 		\kommB{Idee: Hier noch fundamentale Vektorfelder und adjungierte Darstellung und dann später bei Geodäten bzgl der Killing-form sehen, dass (die Exponentialabbildungen übereinstimmen und damit) die Geodäten gerade Integralkurven linksinvarianter Vektorfelder sind.}
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Tensorfelder}
+\chapter{Tensorbündel und Tensorfelder}
 	\section{Tensorbündel}
 		Wie wir zuvor gesehen haben, können wir aus zwei Vektorbündeln durch das Tensorprodukt ein neues Bündel erzeugen. In gewisser Weise bilden dabei Tensorprodukte von (Ko-) Tangentialbündeln eine natürliche Erweiterung der einer Mannigfaltigkeit \glqq inhärenten\grqq\ Struktur.
-		\begin{defn}[Tensorbündel]
-			Das \emph{Tensorbündel vom Typ $(r,s)$} ist das Bündel
-			\begin{align*}
-				T^{(r,s)}M:=\bigotimes_{i=1}^rTM\bigotimes_{j=1}^s T^*M
-			\end{align*}
-			vom Rang $n^{r+s}$ und wir setzen $T^{(0,0)}M=M\times \R$.
+	\begin{defn}[Tensorbündel]
+	Das \emph{Tensorbündel vom Typ $(r,s)$} über $M$ ist das Vektorbündel
+	\begin{align*}
+		T^{(r,s)}M := (TM)^{\otimes r} \otimes (T^*M)^{\otimes s}
+	\end{align*}
+	vom Rang $n^{r+s}$. Die Fasern sind also $T^{(r,s)}_pM = (T_pM)^{\otimes r} \otimes (T_p^*M)^{\otimes s} = (T_pM)^{(r,s)}$.
+
+	Ein \emph{Tensorfeld vom Typ $(r,s)$} ist ein Schnitt des Tensorbündels vom Typ $(r,s)$. Wie bei Vektorfeldern schreiben wir bei Auswertung eines Tensorfeldes $A \in \Gamma(T^{(r,s)}M)$ den Punkt $p$ als Subskript: $A_p := A(p)$.
+
+Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)$. Die Schnitte von $T^{(0,1)}M=T^*M$ heißen \emph{1-Formen} und man schreibt für diese auch $\Omega^1(M)$ (siehe Kapitel \ref{chap:Differentialformen}).
 			
-			Ein Tensorfeld vom Typ $(r,s)$ ist ein Schnitt des Tensorbündels vom Typ $(r,s)$. Wie bei Vektorfeldern schreiben wir bei Auswertung eines Tensorfeldes $A$ den Punkt $p$ als Subskript: $A_p:=A(p)$.
-			
-			Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)$. Die Schnitte von $T^{(0,1)}M=T^*M$ heißen \emph{1-Formen} und man schreibt für diese auch $\Omega^1(M)$ (siehe Kapitel \ref{chap:Differentialformen}).
-			
-			Wie für Tensoren von Vektoren sind \emph{einfache Tensorfelder} solche, die als (Tensor-)Produkt von Vektorfeldern und 1-Formen geschrieben werden können.
-		\end{defn}
-		Wie wir sehen werden, lassen sich die meisten Konstruktionen und Identifikationen von Tensoren auf Tensorfelder übertragen.
-		\begin{lemma}
-			Die Tensorfelder vom Typ $(r,s)$ $\Gamma(T^{(r,s)}M)$ bilden ein $\sm(M)$-Modul und darüber hinaus bilden alle Tensorfelder mit dem \glqq faserweisen\grqq\ Tensorprodukt $(A\otimes B)_p=A_p\otimes B_p$ eine Algebra (mit der kanonischen Identifizierung $TM\otimes T^*M\cong T^*M\otimes TM$):
-			\begin{align*}
-				\mathcal{T}(M):=\bigoplus_{r,s=0}^{\infty}\Gamma(T^{(r,s)}M)
-			\end{align*}
+			Wie für Tensoren von Vektoren sind \emph{einfache Tensorfelder} solche, die als (Tensor-) Produkt von Vektorfeldern und 1-Formen geschrieben werden können.
 			
 			Aus dem (lokalen) Koordinatenrahmen $\frac{\partial}{\partial x^i}$ (von $\vf(M)$) und dem dualen Rahmen $dx^i$ (von $\Omega^1(M)$) erhält man mit dem Tensorprodukt lokale Rahmen der Tensorfelder (Dies gilt natürlich auch für beliebige lokale Rahmen). Man schreibt dann die Komponenten eines Tensors $A$ vom Typ $(r,s)$ mit $r$ oberen Indizes und $s$ unteren Indizes:
 			\begin{align*}
 				A=A^{i_1\ldots i_r}_{j_1\ldots j_s}\frac{\partial}{\partial x^{i_1}}\otimes\ldots\otimes\frac{\partial}{\partial x^{i_r}}\otimes dx^{j_1}\otimes\ldots\otimes dx^{j_s}
 			\end{align*}
-		\end{lemma}
+		\end{defn}
 		
-		\begin{lemma}[Tensorfelder als $\sm(M)$-multilineare Abbildungen]
-			Ein Tensorfeld $A$ vom Typ $(r,s)$ lässt sich äquivalent auffassen als $\sm(M)$-multinlineare Abbildung
+		\begin{lemma}
+			Die Tensorfelder vom Typ $(r,s)$ $\Gamma(T^{(r,s)}M)$ bilden ein $\sm(M)$-Modul und darüber hinaus bilden alle Tensorfelder mit dem \glqq faserweisen\grqq\ Tensorprodukt $(A\otimes B)_p=A_p\otimes B_p$ eine $\sm$-Algebra (mit der kanonischen Identifizierung $TM\otimes T^*M\cong T^*M\otimes TM$):
 			\begin{align*}
-				A\colon \underbrace{\Omega^1(M)\times\ldots\times\Omega^1(M)}_{r-mal}\times\underbrace{\vf(M)\times\ldots\vf(M)}_{s-mal}\rightarrow \R,
+				\mathcal{T}(M):=\bigoplus_{r,s=0}^{\infty}\Gamma(T^{(r,s)}M)
 			\end{align*}
-			sodass $A(\omega_1,\ldots,\omega_r,X_1,\ldots,X_s)\in\sm(M)\quad\forall\omega_1,\ldots,\omega_r\in\Omega^1(M),X_1,\ldots,X_s\in\vf(M)$.
+			
+			Ebenso können wir durch punktweise Anwendung die Kontraktion von Tensoren zur Kontraktion von Tensorfeldern
+			\[C_{t,u}\colon \Gamma(T^{(r,s)}M) \to \Gamma(T^{(r-1,s-1)}M)\]
+			fortsetzen. Diese ist eine $\sm(M)$-lineare Abbildung.
+			\bewUeb
+		\end{lemma}
+
+		\begin{bem}
+			Haben wir ein Tensorfeld $A \in T^{(r,s)}M$, so können wir bekanntlich punktweise $A_p \in T^{(r,s)}_pM$ als $\R$-multilineare Abbildung
+			\[A_p\colon \underbrace{T_p^*M \times \dots \times T_p^*M}_\text{$r$-mal} \times \underbrace{T_pM \times \dots \times T_pM}_\text{$s$-mal} \to \R\]
+			auffassen (Satz \ref{satz:tensorprod_multilin}). Per
+			\[(A(\omega_1,\dots,\omega_r, X_1,\dots,X_s))(p) := A_p\Big((\omega_1)_p,\dots,(\omega_r)_p, (X_1)_p,\dots,(X_s)_p\Big)\]
+			können wir $A$ damit insgesamt auffassen als $\sm(M)$-multilineare Abbildung
+			\[A\colon \underbrace{\Omega^1(M) \times \dots \times \Omega^1(M)}_\text{$r$-mal} \times \underbrace{\vf(M) \times \dots \times \vf(M)}_\text{$s$-mal} \to \sm(M).\]
 			
 			In dieser Notation ist das Tensorprodukt zweier Tensorfelder $A\in\Gamma(T^{(r,s)}M), B\in \Gamma(T^{(t,u)}M)$ folgendermaßen gegeben:
 			\begin{align*}
@@ -1744,18 +1767,16 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 				A(\omega_1,\ldots,\omega_r,X_1,\ldots,X_s) &B(\omega_{r+1},\ldots,\omega_{r+u},X_{s+1},\ldots,X_{s+u})
 			\end{align*}
 			Und insbesondere in Komponenten bezüglich Koordinatenrahmen: $(A\otimes B)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = A^{i_1 \dots i_r}_{j_1 \dots j_s} B^{k_1 \dots k_t}_{l_1 \dots l_u}$ für $A \in \Gamma(T^{(r,s)}M)$, $T \in \Gamma(T^{(t,u)}M)$.
-			
-		\end{lemma}
+		\end{bem}
+		Davon gilt auch die Umkehrung:
+		\begin{satz}[Tensorfelder als $\sm(M)$-multilineare Abbildungen]
+			Ist eine $\R$-multilineare Abbildung
+			\begin{align*}
+				A\colon \underbrace{\Omega^1(M)\times\ldots\times\Omega^1(M)}_{r-mal}\times\underbrace{\vf(M)\times\ldots\vf(M)}_{s-mal}\rightarrow \sm(M)
+			\end{align*}
+			$\sm(M)$-multilinear, so ist sie durch ein Tensorfeld $A \in \Gamma(T^{(r,s)}M)$ gegeben.
+		\end{satz}
 		
-		\begin{defn}[Kontraktion]
-			Sei $r,s \in \mathbb N$. Für $1 \le p \le r$ und $1 \le q \le s$ definieren wir die \emph{Kontraktion} $C_{p,q} \colon \Gamma(T^{(r,s)}M) \to \Gamma(T^{(r-1,s-1)}M)$ durch
-	\begin{align*}
-		&C_{i,j}(X_1 \otimes \dots \otimes X_r \otimes \omega_1 \otimes \dots \otimes \omega_s) \\& \qquad := \omega_j(X_i) \cdot X_1 \otimes \cdots \widehat{\otimes X_i \otimes} \cdots \otimes X_r \otimes \omega_1 \otimes \cdots \widehat{\otimes \omega_j \otimes} \cdots \otimes \omega_s
-	\end{align*}
-	und $\sm(M)$-lineare Fortsetzung. Dass dabei alles glatt bleibt, sieht man in Koordinaten (wo die Kontraktion von Tensorfeldern genauso aussieht wie bei Tensoren). 
-
-	Für einfache Tensorfelder wird bei der Kontraktion $C_{i,j}$ also das $i$-te Vektorfeld in die $j$-te $1$-Form eingesetzt (im Sinne von Lemma \ref{lemm:Dualität}).
-\end{defn}
 		\todo{Pullback, Lie Ableitung, Kontraktion, Derivation}
 
 
