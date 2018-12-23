@@ -36,6 +36,7 @@
 \DeclareMathOperator{\Exp}{Exp}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
@@ -99,14 +100,93 @@ In einen Einführungskurs der Differentialgeometrie gehören eigentlich auf jede
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bekannte Konzepte, Notationen etc.}
 
-\subsection{Lineare Algebra}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Grundlegende lineare Algebra}
 
-Vektorräume und Basen grob wiederholen. Dualraum einführen, duale Basis.
+\begin{defn}
+	Ein (reeller) \emph{Vektorraum} ist eine Menge $V$, deren Elemente man in \glqq sinnvoller\grqq\ Art und Weise zueinander addieren (\glqq Vektoraddition\grqq) und mit reellen Zahlen skalieren (\glqq Skalarmultiplikation\grqq) kann.
+\end{defn}
+Man kann Vektorräume auch über allgemeinen Körpern anstelle von $\R$ definieren; wir benötigen allerdings nur reelle Vektorräume.
 
-\begin{nota}
-	Für einen Vektorraum $V$ über einem Körper $K$ bezeichnet \[V^* := \mathrm{Hom}(V,K) = \{f\colon V \to K : f \text{ linear}\}\] den Dualraum von $V$.
-\end{nota}
+\begin{defn}
+	Eine ($\R$-)\emph{lineare Abbildung} $f\colon V\to W$ zwischen zwei Vektorräumen ist eine Abbildung mit $f(\lambda v + \mu \tilde v) = \lambda f(v) + \mu f(\tilde v)$ für alle $\lambda,\mu \in \R$ und $v,\tilde v \in V$.
 
+	Der \emph{Kern} von $f$ ist der Untervektorraum $\ker f := \{v \in V : f(v) = 0\}$ von $V$.
+
+	Das Bild $\im f = f(V)$ von $f$ ist ein Untervektorraum von $W$.
+
+	Die Menge aller linearen Abbildungen von $V$ nach $W$ schreibt man als
+	\[\Hom(V,W) := \{f\colon V \to W : f \; \text{linear}\}.\]
+	Mit punktweiser Addition und Multiplikation ist sie selbst ein Vektorraum.
+	
+	Ein \emph{Isomorphismus} von Vektorräumen ist eine lineare Abbildung $f\colon V\to W$, die sich durch eine lineare Abbildung $g\colon V\to W$ umkehren lässt, also $g\circ f = \id_V$ und $f\circ g = \id_W$. Wenn eine lineare Abbildung bijektiv ist, ist die Umkehrabbildung automatisch linear; also ist ein Isomorphismus äquivalent eine bijektive lineare Abbildung.
+\end{defn}
+
+\begin{lemma}
+	Eine lineare Abbildung $f\colon V \to W$ ist genau dann injektiv, wenn $\ker f = \{0\}$.
+\end{lemma}
+
+\begin{defn}
+	Eine \emph{Basis} von $V$ ist eine Menge $\mathcal B \subset V$ von Vektoren, sodass sich jeder Vektor $v \in V$ in eindeutiger Weise als Linearkombination $v = \sum_{i=1}^k \lambda_i b_i$ schreiben lässt mit Zahlen $\lambda_i \in \R$ und Basisvektoren $b_i \in \mathcal B$.
+
+	Die Kardinalität von $\mathcal B$ ist die \emph{Dimension} von $V$; sie ist unabhängig von der Wahl der Basis.
+\end{defn}
+
+\begin{defn}
+	Der \emph{Rang} einer linearen Abbildung $f\colon V\to W$ ist die Dimension des Bildes, $\mathrm{rk}(f) = \dim\im f$. Er ist höchstens das Minimum von $\dim V$ und $\dim W$.
+\end{defn}
+
+\begin{lemma}
+	Eine lineare Abbildung $f\colon V\to W$ ist eindeutig festgelegt durch die Bilder einer Basis $\mathcal B$ von $V$.
+
+	Die Bilder $f(b)\in W$ für $b \in \mathcal B$ können beliebig gewählt werden; das so definierte $f$ entsteht durch sogenannte \emph{lineare Fortsetzung}.
+\end{lemma}
+
+\begin{defn}
+	Seien $V$ und $W$ endlich-dimensional, $\{b_1,\dots,b_n\}$ eine Basis von $V$ und $\{c_1,\dots,c_m\}$ eine Basis von $W$. Die \emph{Darstellungsmatrix} einer linearen Abbildung $f\colon V \to W$ bzgl. dieser Basen ist die $m\times n$-Matrix
+	\[(f^i_j)_{i,j} = \begin{pmatrix}
+		f^1_1 & \cdots & f^1_n\\
+		\vdots & \ddots & \vdots\\
+		f^m_1 & \cdots & f^m_n
+	\end{pmatrix},\]
+	deren Komponenten durch $f(b_j) =: \sum_{i=1}^m f^i_j c_i$ definiert sind.
+\end{defn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dualräume}
+
+\begin{defn}
+	Für einen reellen Vektorraum $V$ ist
+	\[V^* := \mathrm{Hom}(V,\R) = \{f\colon V \to \R : f \; \text{linear}\}\]
+	der \emph{Dualraum} von $V$.
+\end{defn}
+
+\begin{defn}
+	Für eine lineare Abbildung $f\colon V \to W$ definieren wir die \emph{duale Abbildung} $f' \colon W^* \to V^*$ durch $f'(\eta) := \eta \circ f \in V^*$. $f'$ ist linear (Übung).
+\end{defn}
+
+\begin{lemma}
+	Sei $V$ endlich-dimensional und $\{b_1,\dots,b_n\}$ eine Basis von $V$. Für $i = 1,\dots,n$ definieren wir $\theta^i \in V^*$ durch
+	\[\theta^i(b_j) := \delta^i_j = \begin{cases} 1 & i = j \\ 0 & i \ne j\end{cases}\]
+	und lineare Fortsetzung.
+
+	Dann ist $\{\theta^1, \dots, \theta^n\}$ eine Basis von $V^*$. Man nennt sie die \emph{zu $\{b_i\}$ duale Basis}. Insbesondere ist $\dim V = \dim V^*$.
+
+	\begin{proof}
+		Sei $\eta \in V^*$. Wir müssen zeigen, dass sich $\eta$ in eindeutiger Weise als $\eta = \sum_{i=1}^n \lambda_i \theta^i$ schreiben lässt mit Zahlen $\lambda_i\in\R$. Es ist aber $\left(\sum_{i=1}^n \lambda_i \theta^i\right)(b_j) = \sum_{i=1}^n \lambda_i \theta^i(b_j) = \sum_{i=1}^n \lambda_i \delta^i_j = \lambda_j$; also müssen wir einfach $\lambda_j := \eta(e_j)$ setzen.
+	\end{proof}
+\end{lemma}
+
+\begin{lemma}
+	Sei $V$ ein Vektorraum. Wir definieren eine Abbildung $\Theta\colon V \to V^{**} := (V^*)^*$ durch $(\Theta(v))(\eta) := \eta(v)$ für $v \in V, \eta \in V^*$.
+
+	$\Theta$ ist linear und injektiv.
+
+	\bewUeb
+\end{lemma}
+Wir können $V$ also über $\Theta$ mit einem Unterraum von $V^{**}$ identifizieren. Ist $V$ endlich-dimensional, dann ist $\dim V = \dim V^* = \dim V^{**}$, also ist $\Theta$ ein Isomorphismus.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Mehrdimensionale Analysis}
 \begin{nota}
 	Punkte im $\mathbb R^n$ schreiben wir als $a = (a^1, \dots, a^n)$. Die Vektoren der Standardbasis von $\mathbb R^n$ schreiben wir als $\e_1, \dots, \e_n \in \mathbb R^n$, also \[\e_i = (0,\dots,\underset{i}{1},\dots,0).\]
