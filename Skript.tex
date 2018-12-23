@@ -1363,7 +1363,7 @@ Ein Vektorfeld ordnet also jedem Punkt einer Mannigfaltigkeit einen Vektor im en
 	\[X(fg) = X(f) g + f X(g).\]
 \end{bem}
 Umgekehrt lassen sich Vektorfelder (auf glatten Mannigfaltigkeiten) auch äquivalent als (globale) Derivationen von $\sC(M)$ charakterisieren:
-\begin{satz}[Vektorfelder als globale Derivationen von $\sC(M)$]
+\begin{satz}[Vektorfelder als globale Derivationen von $\sC(M)$]\label{satz:Vektorfelder_globale_Deriv}
 	Sei $M$ eine differenzierbare Mannigfaltigkeit. Ist $F\colon \sC(M) \to \sC(M)$ eine (globale) Derivation, d.\,h. eine $\R$-lineare Abbildung, die $F(fg) = F(f) g + f F(g)$ für alle $f,g \in \sC(M)$ erfüllt, so gibt es ein eindeutiges Vektorfeld $X \in \mathfrak X(M)$ mit $F(f) = X(f)$.
 
 	\begin{proof}
@@ -1866,9 +1866,46 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 				A\colon \underbrace{\Omega^1(M)\times\ldots\times\Omega^1(M)}_{r-mal}\times\underbrace{\vf(M)\times\ldots\vf(M)}_{s-mal}\rightarrow \sm(M)
 			\end{align*}
 			$\sm(M)$-multilinear, so ist sie durch ein Tensorfeld $A \in \Gamma(T^{(r,s)}M)$ gegeben.
+			\begin{proof}
+				Dies folgt für 1-Formen und Vektorfelder aus Lemma \ref{lemm:Dualität} und für Tensorfelder daraus durch Anwendung \glqq auf jedes Argument separat\grqq .
+			\end{proof}
 		\end{satz}
 		
-		\todo{Pullback, Lie Ableitung, Kontraktion, Derivation}
+		\begin{defn}[Tensorderivation]
+			Eine (globale) Tensorderivation ist eine Familie von $\R$-linearen Abbildungen $\delta\colon\Gamma(T^{(r,s)}M)\rightarrow \Gamma(T^{(r,s)}M)$, die die folgenden Eigenschaften erfüllt:
+			\begin{enumerate}[label=\arabic*.]
+				\item $\delta (A\otimes B)=(\delta(A)\otimes B+A\otimes(\delta(B))$ (Produktregel)
+				\item $C_{i,j}(\delta(A))=\delta(C_{i,j}A)$ 
+			\end{enumerate}
+			für beliebige Tensorfelder $A\in \Gamma(T^{(r,s)}M), B\in\Gamma(T^{(t,u)}M)$.
+		\end{defn}
+		
+		\begin{satz}
+			Eine Tensorderivation ist durch ihre Wirkung auf Funktionen $\sm(M)$ und Vektorfeldern $\vf(M)$ eindeutig definiert.
+			\begin{proof}
+				Wir halten zuerst fest, dass jede Tensorderivation $\delta$ auf den glatten Funktionen $\sm(M)$ nach Satz \ref{satz:Vektorfelder_globale_Deriv} durch ein eindeutiges Vektorfeld $X\in\vf(M)$ definiert ist.
+				
+				Auf Vektorfeldern $Y\in\vf(M)$ bedeutet die Produktregel:
+				\begin{align*}
+					\delta(fY)=f\delta(Y)+X(f)Y \quad\forall f\in\sm(M)
+				\end{align*}
+				und für 1-Formen $\omega\in\Omega^1(M)$:
+				\begin{align*}
+					\delta(\omega(Y))&=\delta(C_{1,1}(\omega\otimes Y))\\
+					&=C_{1,1}((\delta(\omega))\otimes Y+\omega\otimes(\delta(Y)))\\
+					&=(\delta(\omega))(Y)+\omega(\delta(Y))
+				\end{align*}
+				Damit können wir also $\delta(\omega)$ eindeutig durch die Wirkung der Tensorderivation auf Funktionen und Vektorfeldern bestimmen.
+				
+				Durch die Produktregel bekommt man eine eindeutige Fortsetzung auf beliebige Tensoren.
+			\end{proof}
+		\end{satz}
+		
+		\begin{kor}[Lie-Ableitung als Tensorderivation]
+			Die Lie-Ableitung $\mathcal{L}_X$ entlang eines Vektorfeldes $X$ lässt sich eindeutig zu einer Tensorderivation fortsetzen.
+			\bewUeb
+		\end{kor}
+		\todo{Pullback, Lie Ableitung}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
