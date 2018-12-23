@@ -947,7 +947,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		
 		
 		\begin{bem}
-			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)_p := f(p) \sigma_p$. Mit dieser Operation wird $\Gamma(E)$ offensichtlich zu einem $\sC(M)$-Modul.
+			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sm(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)_x := f(x) \sigma_x$. Mit dieser Operation wird $\Gamma(E)$ offensichtlich zu einem $\sm(M)$-Modul.
 		\end{bem}
 
 		
@@ -995,6 +995,21 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			\end{align*}
 			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
+		
+		\begin{lemma}[Dualität von Schnitten]
+			Man erhält durch die Konstruktion des dualen Bündels eine $\sm(M)$-bilineare Abbildung:
+			\begin{align*}
+				\Gamma(E)\times\Gamma(E^*)&\rightarrow \sm(M),\quad (\sigma,\rho)\mapsto \sigma(\rho)=\rho(\sigma)
+				\intertext{punktweise definiert als}
+				(\sigma(\rho))(x)&=(\rho(\sigma))(x):=\underbrace{\rho(x)}_{\in E^*_x}(\underbrace{\sigma(x)}_{\in E_x})\in \R
+			\end{align*}
+			\bewUeb
+		\end{lemma}
+		
+		\begin{bem}
+			Tatsächlich ist sogar $\Gamma(E^*)\cong \mathrm{Hom}_{\sm(M)}(\Gamma(E),\sm(M))$ die Menge der Modulhomomorphismen.
+		\end{bem}
+		
 		\begin{bsp}
 			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das \emph{Kotangentialbündel} $T^*M$ gewinnen. Wie wir später sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
 		\end{bsp}
@@ -1029,6 +1044,17 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			\end{align*}
 			Die Übergangsfunktionen des Tensorproduktes sind durch das Tensorprodukt der Übergangsfunktionen gegeben: $\tau=\tau_a\otimes\tau_b$.
 		\end{defn}
+		
+		\begin{lemma}[Schnitte von Tensorprodukt und Whitney-Summe]
+			Für Schnitte $\sigma_a\in\Gamma(E_a)$, $\sigma_b\in\Gamma(E_b)$ erhält man Schnitte der Whitney-Summe und des Tensorproduktes durch \glqq faserweise\grqq\ Verknüpfung:
+			\begin{align*}
+				\Gamma(E_a)\oplus\Gamma(E_b)&\rightarrow\Gamma(E_a\oplus E_b),\\
+				(\sigma_a,\sigma_b)&\mapsto \sigma_a\oplus\sigma_b,\quad (\sigma_a\oplus\sigma_b)(p):=\sigma_a(p)\oplus\sigma_b(p)\\
+				\Gamma(E_a)\otimes\Gamma(E_b)&\rightarrow\Gamma(E_a\otimes E_b),\\
+				(\sigma_a,\sigma_b)&\mapsto \sigma_a\otimes\sigma_b,\quad (\sigma_a\otimes\sigma_b)(p):=\sigma_a(p)\otimes\sigma_b(p)\\
+			\end{align*}
+		\end{lemma}
+		
 		\begin{defn}[Rückzug von Vektorbündeln]
 			Sei $f\colon N\rightarrow M$.
 			
@@ -1416,7 +1442,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			mit dem kanonischen Isomorphismus $L\colon \mathfrak{g}\to \vf^L(G)$ aus Gleichung (\ref{def:kan_Iso}). Diese Verkettung ist bilinear und antisymmetrisch nach Konstruktion.
 		\end{defn}
 		\begin{bsp}\hfill
-			Die Lie-Algebra der $\GL(V)$ ist der Vektorraum der Endomorphismen $\End(V)$. Dies wird klar, wenn man $\GL(n,\R)$ als (offene) Teilmenge des $\R^{n^2}$ betrachtet: Der Tangentialraum ist dann kanonisch $\R^{n^2}\cong\End(\R^n)$ und durch Basiswahl erhält man die Identifizierung für beliebige (reelle) Vektorräume.
+			Die Lie-Algebra der $\GL(V)$ ist der Vektorraum der Endomorphismen $\End(V)$. Dies ist klar, wenn man $\GL(V)$ als (offene) Teilmenge von $\End(V)$ betrachtet: Der Tangentialraum ist dann kanonisch $\End(V)$.
 		\end{bsp}
 		\begin{lemma}
 			Linksinvariante Vektorfelder sind vollständig, das heißt, ihre Integralkurven können auf ganz $\R$ fortgesetzt werden.
@@ -1501,32 +1527,14 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			\end{align*}
 		\end{bem}
 	\section{Wirkungen und Darstellungen}
-		\begin{defn}[Gruppenwirkung]
-			Sei $M$ eine Mannigfaltigkeit, $G$ eine Lie-Gruppe.
-			
-			Eine \emph{Rechtswirkung} ist eine Abbildung 
-			\begin{gather*}
-					\tril\colon M \times G \rightarrow M, \quad (p,g) \mapsto p\tril g 
-				\intertext{die mit der Verknüpfung im folgenden Sinne kompatibel ist:}
-					(p \tril g)\tril h = p\tril (g\cdot h) \quad \forall p\in M, g,h \in G
-				\end{gather*}
-				Außerdem gelte $p\tril e=p$ für alle Punkte $p\in M$.
-				
-				Analog definiert man eine \emph{Linkswirkung} $\trir \colon G \times M \rightarrow M,\; (p,g)\mapsto g\trir p$, sodass 
-				\begin{equation*}
-					h\trir (g\trir p) =(h\cdot g)\trir p \quad \forall p\in M, g,h \in G
-				\end{equation*}
-				wobei die Reihenfolge umgekehrt ist und es gelte $e\trir p=p$ für alle Punkte $p\in M$.
+		\begin{defn}[Darstellung]
+			Eine \emph{Darstellung} ist ein Gruppenhomomorphismus $\rho\colon G\rightarrow \GL(V)$ für einem Vektorraum $V$. Damit ist nach Definition eines Gruppenhomomorphismus gerade $\rho(g)\rho(h)=\rho(g\cdot h) \forall g,h\in G$ und $\rho(e)=\id_V$.
 		\end{defn}
-		\begin{bsp}\hfill
-			\begin{enumerate}
-				\item Rechts- und Linkstranslationen sind Rechts- und Linkswirkungen auf der Lie-Gruppe selbst.
-				\item Eine \emph{Darstellung} ist ein Gruppenhomomorphismus $\rho\colon G\rightarrow \GL(V)$ für einem Vektorraum $V$. Damit ist $V\times G\rightarrow V, (v,g)\mapsto \rho(g)v$ eine Linkswirkung (da nach Definition eines Gruppenhomomorphismus gerade $\rho(g)\rho(h)=\rho(g\cdot h) \forall g,h\in G$ und $\rho(e)=\id_V$ gelten).
-				\item Schreibt man die Elemente der obigen Beispiele von Lie-Gruppen in ihrer üblichen Form als $n\times n$-Matrizen, so erhält man (sogenannte fundamentale) Darstellungen durch die Matrixmultiplikation mit Elementen von $\R^n$ bzw. $\mathbb{C}^n$.
-			\end{enumerate}
+		\begin{bsp}
+			Schreibt man die Elemente der obigen Beispiele von Lie-Gruppen in ihrer üblichen Form als $n\times n$-Matrizen, so erhält man (sogenannte fundamentale) Darstellungen durch die Matrixmultiplikation mit Elementen von $\R^n$ bzw. $\mathbb{C}^n$.
 		\end{bsp}
 		\begin{defn}[Die Adjungierte Darstellung]\hfill
-		
+			
 			Die Konjugation liefert eine Darstellung jeder Lie-Gruppe auf ihrer Lie-Algebra, die sogenannte \emph{Adjungierte Darstellung}:
 			\begin{align*}
 				\Ad\colon G\rightarrow \GL(\mathfrak{g}), g\mapsto \DD c_g\vert_e
@@ -1564,24 +1572,52 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 		\end{satz}
 		\kommB{Idee: Hier noch fundamentale Vektorfelder und adjungierte Darstellung und dann später bei Geodäten bzgl der Killing-form sehen, dass (die Exponentialabbildungen übereinstimmen und damit) die Geodäten gerade Integralkurven linksinvarianter Vektorfelder sind.}
 		
-		Mit Wirkungen lassen sich auch allgemeiner Vektorfelder von Elementen der Lie-Algebra erzeugen:
-		\begin{defn}[Fundamentale Vektorfelder]
-			Sei $\trir:G\times M\rightarrow M$ eine Linkswirkung.
-			
-			Das \emph{fundamentale Vektorfeld} $X^v$ zu einem Element der Lie-Algebra $v\in\mathfrak{g}$ ist durch die folgende Gleichung definiert:
-			\begin{align*}
-				X^v_p:=\frac{\D}{\D t} \exp(tv)\trir p\Big\vert_{t=0} \quad\forall p\in M
-			\end{align*}
-			Beachte, dass dies für die Linkstranslation gerade dem Fluss aus Lemma \ref{lemma:Fluss_linksinvarianter_Vektorfelder} entspricht! Linksinvariante Vektorfelder sind also die fundamentalen Vektorfelder der Lie-Gruppe selbst.
-		\end{defn}
-		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Tensorfelder}
-\todo{Tensorfelder}
+	\section{Tensorbündel}
+		Wie wir zuvor gesehen haben, können wir aus zwei Vektorbündeln durch das Tensorprodukt ein neues Bündel erzeugen. In gewisser Weise bilden dabei Tensorprodukte von (Ko-) Tangentialbündeln eine natürliche Erweiterung der einer Mannigfaltigkeit \glqq inhärenten\grqq\ Struktur.
+		\begin{defn}[Tensorbündel]
+			Das \emph{Tensorbündel vom Typ $(r,s)$} ist das Bündel
+			\begin{align*}
+				T^{(r,s)}M:=\bigotimes_{i=1}^rTM\bigotimes_{j=1}^s T^*M
+			\end{align*}
+			vom Rang $n^{r+s}$ und wir setzen $T^{(0,0)}M=M\times \R$.
+			
+			Ein Tensorfeld vom Typ $(r,s)$ ist ein Schnitt des Tensorbündels vom Typ $(r,s)$. Wie bei Vektorfeldern schreiben wir bei Auswertung eines Tensorfeldes $A$ den Punkt $p$ als Subskript: $A_p:=A(p)$.
+		\end{defn}
+		\begin{lemma}
+			Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)$. Die Schnitte von $T^{(0,1)}M=T^*M$ heißen \emph{1-Formen} und man schreibt für diese auch $\Omega^1(M)$ (siehe Kapitel \ref{chap:Differentialformen}).
+			
+			Die Tensorfelder vom Typ $(r,s)$ $\Gamma(T^{(r,s)}M)$ bilden ein $\sm(M)$-Modul und darüber hinaus bilden alle Tensorfelder mit dem \glqq faserweisen\grqq\ Tensorprodukt $(A\otimes B)_p=A_p\otimes B_p$ eine Algebra (mit der kanonischen Identifizierung $TM\otimes T^*M\cong T^*M\otimes TM$):
+			\begin{align*}
+				\mathcal{T}(M):=\bigoplus_{r,s=0}^{\infty}\Gamma(T^{(r,s)}M)
+			\end{align*}
+			
+			Aus dem (lokalen) Koordinatenrahmen $\frac{\partial}{\partial x^i}$ (von $\vf(M)$) und dem dualen Rahmen $dx^i$ (von $\Omega^1(M)$) erhält man mit dem Tensorprodukt lokale Rahmen der Tensorfelder. Man schreibt dann die Komponenten eines Tensors $A$ vom Typ $(r,s)$ mit $r$ oberen Indizes und $s$ unteren Indizes:
+			\begin{align*}
+				A=A^{i_1\ldots i_r}_{j_1\ldots j_s}\frac{\partial}{\partial x^{i_1}}\otimes\ldots\otimes\frac{\partial}{\partial x^{i_r}}\otimes dx^{j_1}\otimes\ldots\otimes dx^{j_s}
+			\end{align*}
+		\end{lemma}
+		
+		\begin{lemma}[Tensorfelder als $\sm(M)$-multilineare Abbildungen]
+			Ein Tensorfeld $A$ vom Typ $(r,s)$ lässt sich äquivalent auffassen als $\sm(M)$-multinlineare Abbildung
+			\begin{align*}
+				A\colon \underbrace{\Omega^1(M)\times\ldots\times\Omega^1(M)}_{r-mal}\times\underbrace{\vf(M)\times\ldots\vf(M)}_{s-mal}\rightarrow \R,
+			\end{align*}
+			sodass $A(\omega_1,\ldots,\omega_r,X_1,\ldots,X_s)\in\sm(M)\quad\forall\omega_1,\ldots,\omega_r\in\Omega^1(M),X_1,\ldots,X_s\in\vf(M)$.
+			
+			In dieser Notation ist das Tensorprodukt zweier Tensorfelder $A\in\Gamma(T^{(r,s)}M), B\in \Gamma(T^{(r',s')}M)$ folgendermaßen gegeben:
+			\begin{align*}
+				(A\otimes B)(\omega_1,\ldots,\omega_{r+r'},X_1,\ldots,X_{s+s'})&=\\
+				A(\omega_1,\ldots,\omega_r,X_1,\ldots,X_s) &B(\omega_{r+1},\ldots,\omega_{r+r'},X_{s+1},\ldots,X_{s+s'})
+			\end{align*}
+		\end{lemma}
+		
+		\todo{Pullback, Lie Ableitung, Kontraktion, Derivation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Differentialformen}
+\chapter{Differentialformen}\label{chap:Differentialformen}
 \todo{Differentialformen}
 
 
@@ -1606,7 +1642,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 				\end{equation*}
 			\end{enumerate}
 		\end{defn}
-		Die kovariante Ableitung ist im Fall des Tangentialbündels ergibt eine weitere Tensorderivation (definiert als Forsetzung ihrer Wirkung auf Vektorfeldern und Funktionen). Ihren besonderen Nutzen sehen wir später im Kontext der Riemannschen Geometrie.
+		Die kovariante Ableitung ist im Fall des Tangentialbündels eine weitere Tensorderivation (definiert als Forsetzung ihrer Wirkung auf Vektorfeldern und Funktionen). Ihren besonderen Nutzen sehen wir später im Kontext der Riemannschen Geometrie.
 		
 		Sei von nun an $\nabla$ eine kovariante Ableitung auf einem Vektorbündel $(E,\pi)$.
 		\begin{lemma}\label{lemma:Einschränkung_kovarianter_Ableitungen}
