@@ -705,7 +705,7 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 	Außerdem setzen wir $V^{(r,s)} := V^{\otimes r} \otimes (V^*)^{\otimes s}$ und nennen Elemente davon \emph{Tensoren vom Typ $(r,s)$ über $V$}.
 \end{defn}
 \begin{bem}
-	Über $(u\otimes v)\otimes w \mapsto u\otimes v\otimes u$ (und lineare Fortsetzung) sind $(U\otimes V)\otimes W$ und $U\otimes V\otimes W$ kanonisch isomorph; analog gilt das natürlich auch für mehr Faktoren.
+	Über $(u\otimes v)\otimes w \mapsto u\otimes v\otimes w$ (und lineare Fortsetzung) sind $(U\otimes V)\otimes W$ und $U\otimes V\otimes W$ kanonisch isomorph; analog gilt das natürlich auch für mehr Faktoren.
 
 	Im Folgenden identifizieren wir auf diese Weise iterierte binäre Tensorprodukte mit mehrfachen Tensorprodukten.
 
@@ -753,7 +753,7 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 
 		Da $\Psi(\eta\otimes w)$ den Rang 0 oder 1 hat (warum?), hat $\Psi\left(\sum_{i=1}^k \eta_i \otimes w_i\right) \in \Hom(V,W)$ maximal Rank $k$; also hat $\Psi(u)$ endlichen Rang für jedes $u\in V^*\otimes W$.
 
-		Ist umgekehrt $f\in\Hom(V,W)$ von endlichem Rang $k$, so können wir eine Basis $\{w_1,\dots,w_k\}$ von $\mathrm{im}(f)$ wählen und $\eta_i \in V^*$, $i=1,\dots,k$ durch die Gleichung $f(v) =: \sum_{i=1}^k \eta_i(v) \cdot w_i$ für $v\in V$ definieren (Übung: mache dir klar, dass die $\eta_i$ wirklich linear sind!), sodass wir $f = \Psi\left(\sum_{i=1}^k \eta_i \otimes w_i\right) \in \mathrm{im}(\Psi)$ sehen.
+		Ist umgekehrt $f\in\Hom(V,W)$ von endlichem Rang $k$, so können wir eine Basis $\{w_1,\dots,w_k\}$ von $\mathrm{im}(f)$ wählen und $\eta_i \in V^*$, $i=1,\dots,k$ durch die Gleichung $f(v) =: \sum_{i=1}^k \eta_i(v) \cdot w_i$ für $v\in V$ definieren (Übung: mache dir klar, dass die so definierten $\eta_i$ wirklich linear sind, also warum wir sie als Elemente des Dualraums wählen können!), sodass wir $f = \Psi\left(\sum_{i=1}^k \eta_i \otimes w_i\right) \in \mathrm{im}(\Psi)$ sehen.
 	\end{proof}
 \end{lemma}
 \begin{kor}
@@ -766,7 +766,8 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 \begin{bem}
 	Analog kann man Tensoren in $V_1^* \otimes \dots \otimes V_k^* \otimes W$ als $k$-lineare Abbildungen $V_1 \times \dots \times V_k \to W$ auffassen via
 	\[(\eta_1 \otimes \dots \otimes \eta_k \otimes w)(v_1, \dots, v_k) := \eta_1(v_1) \cdots \eta_k(v_k) \cdot w\]
-	und linearer Fortsetzung. Sind die $V_i$ und $W$ endlich-dimensional, dann geht das auch umgekehrt.
+	und linearer Fortsetzung. Sind die $V_i$ und $W$ endlich-dimensional, dann geht das auch umgekehrt.\kommB{\glqq Umgekehrt\grqq\ ist mir
+	 unklar}
 
 	Für den Fall $W = \R$ erhalten wir, dass die Elemente von $V_1^* \otimes \dots \otimes V_k^*$ den $k$-linearen Abbildungen $V_1 \times \dots \times V_k \to \R$ entsprechen.
 
@@ -787,7 +788,7 @@ Zusammengefasst haben wir also:
 \begin{satz}
 	Sei $V$ ein endlich-dimensionaler Vektorraum. $V^{(r,s)}$ ist kanonisch isomorph zum Raum der multilinearen Abbildungen $\underbrace{V^* \times \dots \times V^*}_\text{$r$-mal} \times \underbrace{V \times \dots \times V}_\text{$s$-mal} \to \R$ via
 	\begin{align*}
-		(v_1 \otimes \dots \otimes v_r \otimes \eta_1 \otimes \dots \otimes \eta_s \otimes x) (\omega_1,\dots,\omega_r, w_1,\dots,w_s) \qquad \\ = \omega_1(v_1)\cdots\omega_r(v_r) \cdot \eta_1(w_1)\cdots\eta_s(w_s).
+		(v_1 \otimes \dots \otimes v_r \otimes \eta_1 \otimes \dots \otimes \eta_s ) (\omega_1,\dots,\omega_r, w_1,\dots,w_s) \qquad \\ = \omega_1(v_1)\cdots\omega_r(v_r) \cdot \eta_1(w_1)\cdots\eta_s(w_s).
 	\end{align*}
 	und linearer Fortsetzung. \qed
 \end{satz}
@@ -816,7 +817,7 @@ Zusammengefasst haben wir also:
 	\begin{enumerate}[label=(\alph*)]
 		\item Die Komponenten eines Vektors $v\in V$ schreiben wir als $v^i$.
 		\item Die Komponenten einer Linearform $\eta \in V^*$ schreiben wir als $\eta_i$.
-		\item Die Komponenten einer linearen Abbildung $f\colon V \to V$, also von $f \in V^*\otimes V \equiv V \otimes V^*$, schreiben wir als $f^i_j$. Es gilt also $f = f^i_j e_j\otimes\theta^i$.
+		\item Die Komponenten einer linearen Abbildung $f\colon V \to V$, also von $f \in V^*\otimes V \equiv V \otimes V^*$, schreiben wir als $f^i_j$. Es gilt also $f = f^i_j e_i\otimes\theta^j$.
 	\end{enumerate}
 \end{bsp}
 \begin{lemma}
@@ -1123,7 +1124,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
 		
-		\begin{lemma}[Dualität von Schnitten]
+		\begin{lemma}[Dualität von Schnitten]\label{lemm:Dualität}
 			Man erhält durch die Konstruktion des dualen Bündels eine $\sm(M)$-bilineare Abbildung:
 			\begin{align*}
 				\Gamma(E)\times\Gamma(E^*)&\rightarrow \sm(M),\quad (\sigma,\rho)\mapsto \sigma(\rho)=\rho(\sigma)
@@ -1169,7 +1170,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\phi_a\otimes\phi_b\colon\pi^{-1}(U)&\rightarrow U\times \R^{n_a\cdot n_b}\\
 				v_a\otimes v_b&\mapsto (\pi_a(v_a), \pr_2(\phi_a(v_a))\otimes\pr_2(\phi_b(v_b)))
 			\end{align*}
-			\kommP[inline]{Evtl. sollten wir hier noch hinschreiben, dass dabei $\R^{n_a} \otimes\R^{n_b} \equiv \R^{n_a \cdot n_b}$ identifiziert wird.}
+			mit der kanonischen Identifizierung  $\R^{n_a} \otimes\R^{n_b} \equiv \R^{n_a \cdot n_b}$.
 			Die Übergangsfunktionen des Tensorproduktes sind durch das Tensorprodukt der Übergangsfunktionen gegeben: $\tau=\tau_a\otimes\tau_b$.
 		\end{defn}
 		
@@ -1712,16 +1713,19 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			vom Rang $n^{r+s}$ und wir setzen $T^{(0,0)}M=M\times \R$.
 			
 			Ein Tensorfeld vom Typ $(r,s)$ ist ein Schnitt des Tensorbündels vom Typ $(r,s)$. Wie bei Vektorfeldern schreiben wir bei Auswertung eines Tensorfeldes $A$ den Punkt $p$ als Subskript: $A_p:=A(p)$.
-		\end{defn}
-		\begin{lemma}
+			
 			Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)$. Die Schnitte von $T^{(0,1)}M=T^*M$ heißen \emph{1-Formen} und man schreibt für diese auch $\Omega^1(M)$ (siehe Kapitel \ref{chap:Differentialformen}).
 			
+			Wie für Tensoren von Vektoren sind \emph{einfache Tensorfelder} solche, die als (Tensor-)Produkt von Vektorfeldern und 1-Formen geschrieben werden können.
+		\end{defn}
+		Wie wir sehen werden, lassen sich die meisten Konstruktionen und Identifikationen von Tensoren auf Tensorfelder übertragen.
+		\begin{lemma}
 			Die Tensorfelder vom Typ $(r,s)$ $\Gamma(T^{(r,s)}M)$ bilden ein $\sm(M)$-Modul und darüber hinaus bilden alle Tensorfelder mit dem \glqq faserweisen\grqq\ Tensorprodukt $(A\otimes B)_p=A_p\otimes B_p$ eine Algebra (mit der kanonischen Identifizierung $TM\otimes T^*M\cong T^*M\otimes TM$):
 			\begin{align*}
 				\mathcal{T}(M):=\bigoplus_{r,s=0}^{\infty}\Gamma(T^{(r,s)}M)
 			\end{align*}
 			
-			Aus dem (lokalen) Koordinatenrahmen $\frac{\partial}{\partial x^i}$ (von $\vf(M)$) und dem dualen Rahmen $dx^i$ (von $\Omega^1(M)$) erhält man mit dem Tensorprodukt lokale Rahmen der Tensorfelder. Man schreibt dann die Komponenten eines Tensors $A$ vom Typ $(r,s)$ mit $r$ oberen Indizes und $s$ unteren Indizes:
+			Aus dem (lokalen) Koordinatenrahmen $\frac{\partial}{\partial x^i}$ (von $\vf(M)$) und dem dualen Rahmen $dx^i$ (von $\Omega^1(M)$) erhält man mit dem Tensorprodukt lokale Rahmen der Tensorfelder (Dies gilt natürlich auch für beliebige lokale Rahmen). Man schreibt dann die Komponenten eines Tensors $A$ vom Typ $(r,s)$ mit $r$ oberen Indizes und $s$ unteren Indizes:
 			\begin{align*}
 				A=A^{i_1\ldots i_r}_{j_1\ldots j_s}\frac{\partial}{\partial x^{i_1}}\otimes\ldots\otimes\frac{\partial}{\partial x^{i_r}}\otimes dx^{j_1}\otimes\ldots\otimes dx^{j_s}
 			\end{align*}
@@ -1734,13 +1738,24 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			\end{align*}
 			sodass $A(\omega_1,\ldots,\omega_r,X_1,\ldots,X_s)\in\sm(M)\quad\forall\omega_1,\ldots,\omega_r\in\Omega^1(M),X_1,\ldots,X_s\in\vf(M)$.
 			
-			In dieser Notation ist das Tensorprodukt zweier Tensorfelder $A\in\Gamma(T^{(r,s)}M), B\in \Gamma(T^{(r',s')}M)$ folgendermaßen gegeben:
+			In dieser Notation ist das Tensorprodukt zweier Tensorfelder $A\in\Gamma(T^{(r,s)}M), B\in \Gamma(T^{(t,u)}M)$ folgendermaßen gegeben:
 			\begin{align*}
-				(A\otimes B)(\omega_1,\ldots,\omega_{r+r'},X_1,\ldots,X_{s+s'})&=\\
-				A(\omega_1,\ldots,\omega_r,X_1,\ldots,X_s) &B(\omega_{r+1},\ldots,\omega_{r+r'},X_{s+1},\ldots,X_{s+s'})
+				(A\otimes B)(\omega_1,\ldots,\omega_{r+t},X_1,\ldots,X_{s+u})&=\\
+				A(\omega_1,\ldots,\omega_r,X_1,\ldots,X_s) &B(\omega_{r+1},\ldots,\omega_{r+u},X_{s+1},\ldots,X_{s+u})
 			\end{align*}
+			Und insbesondere in Komponenten bezüglich Koordinatenrahmen: $(A\otimes B)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = A^{i_1 \dots i_r}_{j_1 \dots j_s} B^{k_1 \dots k_t}_{l_1 \dots l_u}$ für $A \in \Gamma(T^{(r,s)}M)$, $T \in \Gamma(T^{(t,u)}M)$.
+			
 		\end{lemma}
 		
+		\begin{defn}[Kontraktion]
+			Sei $r,s \in \mathbb N$. Für $1 \le p \le r$ und $1 \le q \le s$ definieren wir die \emph{Kontraktion} $C_{p,q} \colon \Gamma(T^{(r,s)}M) \to \Gamma(T^{(r-1,s-1)}M)$ durch
+	\begin{align*}
+		&C_{i,j}(X_1 \otimes \dots \otimes X_r \otimes \omega_1 \otimes \dots \otimes \omega_s) \\& \qquad := \omega_j(X_i) \cdot X_1 \otimes \cdots \widehat{\otimes X_i \otimes} \cdots \otimes X_r \otimes \omega_1 \otimes \cdots \widehat{\otimes \omega_j \otimes} \cdots \otimes \omega_s
+	\end{align*}
+	und $\sm(M)$-lineare Fortsetzung. Dass dabei alles glatt bleibt, sieht man in Koordinaten (wo die Kontraktion von Tensorfeldern genauso aussieht wie bei Tensoren). 
+
+	Für einfache Tensorfelder wird bei der Kontraktion $C_{i,j}$ also das $i$-te Vektorfeld in die $j$-te $1$-Form eingesetzt (im Sinne von Lemma \ref{lemm:Dualität}).
+\end{defn}
 		\todo{Pullback, Lie Ableitung, Kontraktion, Derivation}
 
 
