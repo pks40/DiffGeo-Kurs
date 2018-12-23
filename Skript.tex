@@ -785,14 +785,11 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 \end{bem}
 Zusammengefasst haben wir also:
 \begin{satz}
-	Seien $V_1,\dots,V_k, W_1,\dots,W_l, X$ endlich-dimensionale Vektorräume. Das Tensorprodukt $V_1 \otimes \dots \otimes V_k \otimes W_1^* \otimes \dots \otimes W_l^* \otimes X$ ist kanonisch isomorph zum Raum der multilinearen Abbildungen $V_1^* \times \dots \times V_k^* \times W_1 \times \dots \times W_l \to X$ via
+	Sei $V$ ein endlich-dimensionaler Vektorraum. $V^{(r,s)}$ ist kanonisch isomorph zum Raum der multilinearen Abbildungen $\underbrace{V^* \times \dots \times V^*}_\text{$r$-mal} \times \underbrace{V \times \dots \times V}_\text{$s$-mal} \to \R$ via
 	\begin{align*}
-		(v_1 \otimes \dots \otimes v_k \otimes \eta_1 \otimes \dots \otimes \eta_l \otimes x) (\theta_1,\dots,\theta_k, w_1,\dots,w_l) \qquad \\ = \theta_1(v_1)\cdots\theta_k(v_k) \cdot \eta_1(w_1)\cdots\eta_l(w_l) \cdot x
+		(v_1 \otimes \dots \otimes v_r \otimes \eta_1 \otimes \dots \otimes \eta_s \otimes x) (\omega_1,\dots,\omega_r, w_1,\dots,w_s) \qquad \\ = \omega_1(v_1)\cdots\omega_r(v_r) \cdot \eta_1(w_1)\cdots\eta_s(w_s).
 	\end{align*}
 	und linearer Fortsetzung. \qed
-\end{satz}
-\begin{satz}
-	Sei $V$ ein endlich-dimensionaler Vektorraum. $V^{(r,s)}$ ist kanonisch isomorph zum Raum der multilinearen Abbildungen $\underbrace{V^* \times \dots \times V^*}_\text{$r$-mal} \times \underbrace{V \times \dots \times V}_\text{$s$-mal} \to \R$. \qed
 \end{satz}
 
 \begin{defn}[Kontraktion]
@@ -827,7 +824,7 @@ Zusammengefasst haben wir also:
 	\begin{enumerate}[label=(\alph*)]
 		\item Für Tensorprodukte: $(S\otimes T)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = S^{i_1 \dots i_r}_{j_1 \dots j_s} T^{k_1 \dots k_t}_{l_1 \dots l_u}$ für $S \in V^{(r,s)}$, $T \in V^{(t,u)}$, wobei wir $V^{(r,s)} \otimes V^{(t,u)} \equiv V^{(r+t, s+u)}$ identifiziert haben
 		\item Für die Anwendung von Tensoren (als multilineare Abbildungen) auf Linearformen und Vektoren: $T(\eta,v) = T^i_j \eta_i v^j$ für $T \in V^{(1,1)}, \eta \in V^*, v \in V$ (analog für Tensoren höheren Typs)
-		\item Ist $T \in V^{(r,s)}$, so erhält man die Komponenten der Kontraktion $C_{p,q}$, indem man bei den Komponenten von $T$ den $p$-ten oberen Index mit dem $q$-ten unteren Index gleichsetzt und über diesen Index summiert.
+		\item Ist $T \in V^{(r,s)}$, so erhält man die Komponenten der Kontraktion $C_{p,q}$, indem man bei den Komponenten von $T$ den $p$-ten oberen Index mit dem $q$-ten unteren Index gleichsetzt und über diesen Index summiert, genannt \glqq Kontraktion der Indizes\grqq.
 
 			Für $T \in V^{(3,3)}$ ist beispielsweise
 			\[(C_{1,2}T)^{ij}_{kl} = T^{mij}_{kml}.\]
