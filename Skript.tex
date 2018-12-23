@@ -708,6 +708,15 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 	Über $(u\otimes v)\otimes w \mapsto u\otimes v\otimes u$ (und lineare Fortsetzung) sind $(U\otimes V)\otimes W$ und $U\otimes V\otimes W$ kanonisch isomorph; analog gilt das natürlich auch für mehr Faktoren.
 
 	Im Folgenden identifizieren wir auf diese Weise iterierte binäre Tensorprodukte mit mehrfachen Tensorprodukten.
+
+	Damit können wir auch kanonisch
+	\begin{align*}
+		V^{(r,s)} \otimes V^{(t,u)} &\equiv (V^{\otimes r} \otimes (V^*)^{\otimes s}) \otimes (V^{\otimes t} \otimes (V^*)^{\otimes u})\\
+		&\equiv (V^{\otimes r} \otimes V^{\otimes t}) \otimes ((V^*)^{\otimes s} \otimes (V^*)^{\otimes u})\\
+		&\equiv V^{(r+t, s+u)}
+	\end{align*}
+	identifizieren, sodass der Raum aller Tensoren über $V$ mit dem Tensorprodukt eine $\R$-Algebra bildet:
+	\[\mathcal{T}(V) := \bigoplus_{r,s=0}^{\infty} V^{(r,s)}\]
 \end{bem}
 
 \begin{bem}[Bonus: Formale Konstruktion]
@@ -816,7 +825,7 @@ Zusammengefasst haben wir also:
 \begin{lemma}
 	In Komponenten gilt:
 	\begin{enumerate}[label=(\alph*)]
-		\item Für Tensorprodukte: $(v\otimes w)^{ij} = v^i w^j$ für $v,w \in V$ (analog für Tensoren höheren Typs)
+		\item Für Tensorprodukte: $(S\otimes T)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = S^{i_1 \dots i_r}_{j_1 \dots j_s} T^{k_1 \dots k_t}_{l_1 \dots l_u}$ für $S \in V^{(r,s)}$, $T \in V^{(t,u)}$, wobei wir $V^{(r,s)} \otimes V^{(t,u)} \equiv V^{(r+t, s+u)}$ identifiziert haben
 		\item Für die Anwendung von Tensoren (als multilineare Abbildungen) auf Linearformen und Vektoren: $T(\eta,v) = T^i_j \eta_i v^j$ für $T \in V^{(1,1)}, \eta \in V^*, v \in V$ (analog für Tensoren höheren Typs)
 		\item Ist $T \in V^{(r,s)}$, so erhält man die Komponenten der Kontraktion $C_{p,q}$, indem man bei den Komponenten von $T$ den $p$-ten oberen Index mit dem $q$-ten unteren Index gleichsetzt und über diesen Index summiert.
 
