@@ -1118,7 +1118,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{kor}\label{kor:Vektorbündel_über_Intervallen}
 			Vektorbündel über offenen Intervallen sind trivial.
 		\end{kor}
-		\kommP{Woraus folgt das? Ich denke, das ist ziemlich nichttrivial \dots oder?}
+		\kommP{Woraus folgt das? Ich denke, das ist ziemlich nichttrivial \dots oder?}\kommB{In der Tat\ldots Der Beweis ist auch völlig unschön und wenig lehrreich. Man braucht das halt formal für die Sachen zu Geodäten}
 	\section{Konstruktionen von Vektorbündeln}
 		Seien $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.\\
 		\begin{defn}
@@ -1143,12 +1143,10 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\intertext{punktweise definiert als}
 				(\sigma(\rho))(x)&=(\rho(\sigma))(x):=\underbrace{\rho(x)}_{\in E^*_x}(\underbrace{\sigma(x)}_{\in E_x})\in \R
 			\end{align*}
+			
+			Die Menge der Schnitte des dualen Bündels ist gerade die Menge der $\sm(M)$-linearen Abbildungen $\Gamma(E)\rightarrow\sm(M)$, anders gesagt ist diese also die Menge der Modulhomomorphismen$\Gamma(E^*)\cong \mathrm{Hom}_{\sm(M)}(\Gamma(E),\sm(M))$. 
 			\bewUeb
 		\end{lemma}
-		
-		\begin{bem}
-			Tatsächlich ist sogar $\Gamma(E^*)\cong \mathrm{Hom}_{\sm(M)}(\Gamma(E),\sm(M))$ die Menge der Modulhomomorphismen.
-		\end{bem}
 	
 		\begin{lemma} \label{lemma:rahmen_dual}
 			Sei $(\sigma_1,\dots,\sigma_n)$ ein lokaler Rahmen von $E$. Definieren wir lokale Schnitte $\theta^1, \dots, \theta^n$ von $E^*$ dadurch, dass punktweise $\{\theta^i(x)\}$ die duale Basis von $(E_x)^*$ zur Basis $\{\sigma_i(x)\}$ von $E_x$ ist, dann sind die $\theta^i$ glatt, und somit ist $(\theta^1,\dots,\theta^n)$ ein lokaler Rahmen von $E^*$.
@@ -1197,7 +1195,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\Gamma(E_a)\oplus\Gamma(E_b)&\rightarrow\Gamma(E_a\oplus E_b),\\
 				(\sigma_a,\sigma_b)&\mapsto \sigma_a\oplus\sigma_b,\quad (\sigma_a\oplus\sigma_b)(p):=\sigma_a(p)\oplus\sigma_b(p)\\
 				\Gamma(E_a)\otimes\Gamma(E_b)&\rightarrow\Gamma(E_a\otimes E_b),\\
-				(\sigma_a,\sigma_b)&\mapsto \sigma_a\otimes\sigma_b,\quad (\sigma_a\otimes\sigma_b)(p):=\sigma_a(p)\otimes\sigma_b(p)\\
+				(\sigma_a,\sigma_b)&\mapsto \sigma_a\otimes\sigma_b,\quad (\sigma_a\otimes\sigma_b)(p):=\sigma_a(p)\otimes\sigma_b(p)
 			\end{align*}
 		\end{lemma}
 		
