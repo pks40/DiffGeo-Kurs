@@ -765,6 +765,21 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 	\[(A\otimes B)(v_1,\dots,v_k, v_{k+1},\dots,v_{k+l}) = A(v_1,\dots,v_k) \cdot B(v_{k+1},\dots,v_{k+l})\]
 	(denn das gilt für den Fall, das $A$ und $B$ einfache Tensoren sind, nach Definition der Identifikationen, und folgt damit für den allgemeinen Fall, da diese linear auf die gesamten Tensorprodukte fortgesetzt wurden).
 \end{bem}
+\begin{bem}
+	Elemente von $V_1 \otimes \dots \otimes V_k \otimes W$ kann man via
+	\[(v_1 \otimes \dots \otimes v_k \otimes w)(\eta_1, \dots, \eta_k) := \eta_1(v_1) \cdots \eta_k(v_k) \cdot w\]
+	als multilineare Abbildungen $V_1^* \times \dots \times V_k^* \to W$ auffassen. Unter der bekannten Identifikation $V_i^{**} \equiv V_i$ im endlich-dimensionalen Fall entspricht das genau der Identifikation
+	\[V_1^{**} \otimes \dots \otimes V_k^{**} \otimes W \equiv \mathrm{Mult}(V_1^*, \dots, V_k^*; W)\]
+	aus der vorherigen Bemerkung.
+\end{bem}
+Zusammengefasst haben wir also:
+\begin{satz}
+	Seien $V_1,\dots,V_k, W_1,\dots,W_l, X$ endlich-dimensionale Vektorräume. Das Tensorprodukt $V_1 \otimes \dots \otimes V_k \otimes W_1^* \otimes \dots \otimes W_l^* \otimes X$ ist kanonisch isomorph zum Raum der multilinearen Abbildungen $V_1^* \times \dots \times V_k^* \times W_1 \times \dots \times W_l \to X$ via
+	\begin{align*}
+		(v_1 \otimes \dots \otimes v_k \otimes \eta_1 \otimes \dots \otimes \eta_l \otimes x) (\theta_1,\dots,\theta_k, w_1,\dots,w_l) \qquad \\ = \theta_1(v_1)\cdots\theta_k(v_k) \cdot \eta_1(w_1)\cdots\eta_l(w_l) \cdot x
+	\end{align*}
+	und linearer Fortsetzung. \qed
+\end{satz}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
