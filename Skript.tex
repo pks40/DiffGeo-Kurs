@@ -353,9 +353,9 @@ Wir wollen jetzt die Frage beantworten: Was sind \glqq Richtungen\grqq\ auf eine
 
 Eine anschauliche Idee ist wie folgt: Wenn die Mannigfaltigkeit $M$ eingebettet im $\mathbb R^n$ ist, können wir uns in jedem Punkt $p \in M$ eine Tangentialebene vorstellen, in der Tangentialvektoren liegen, die den möglichen Richtungen entsprechen, in die man sich bewegen kann, vgl. Abbildung \ref{fig:tngt_plane}. Hier entsprechen die möglichen Richtungen am Punkt $p$ also Ableitungen von Kurven in $\R^n$, die in der Mannigfaltigkeit verlaufen. Aber wie können wir diese intuitive Idee abstrahieren?
 
-Wir müssen \emph{intrinsisch} über Richtungen in $M$ reden können. Dabei hilft die Beobachtung, dass man das Konzept von Richtungen dazu benutzt, zu beschreiben, wie sich Dinge bei Bewegung in diese Richtung ändern. Die Idee lautet also: Richtung = Richtungsableitung! Wir werden deshalb \glqq Richtungen\grqq\ als Ableitungsoperatoren formalisieren.
+Wir müssen \emph{intrinsisch} über Richtungen in $M$ reden können. Dabei hilft die Beobachtung, dass man das Konzept von Richtungen dazu benutzt, zu beschreiben, wie sich Dinge bei Bewegung in diese Richtung ändern. Die Idee lautet also: Richtung = Richtungsableitung! Wir werden deshalb \glqq Richtungen\grqq\ als Ableitungsoperatoren formalisieren. Dabei ist zum Zwecke der Abstraktion zentral, dass Ableitungen eine Produktregel erfüllen und \glqq lokal\grqq\ wirken.
 
-Die Idee hinter der folgenden abstrakten Formalisierung von Ableitungsoperatoren ist die folgende: Ableitungen erfüllen eine Produktregel und wirken \glqq lokal\grqq. Sei im Folgenden $M$ eine differenzierbare Mannigfaltigkeit.
+	Sei im Folgenden $M$ eine differenzierbare Mannigfaltigkeit.
 
 \begin{defn}[Funktionskeime]
 	Sei $p \in M$. Auf der Menge $X = \{f \in \sC(U) : U \subset M \text{ offene Umgebung von } p\}$ betrachten wir die Äquivalenzrelation $\sim$, die gegeben ist durch
@@ -413,7 +413,7 @@ Mithilfe des Tangentialraumbegriffs können wir nun nicht nur entscheiden, ob Ab
 \end{prop}
 
 \begin{bem}
-	Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $f\circ\gamma \colon I \to N$ eine Kurve in $M$. Der Geschwindigkeitsvektor von dieser Kurve zum Zeitpunkt $s$ ist $(f\circ\gamma)'(s) = \left.\DD f\right|_{\gamma(s)} (\gamma'(s))$ (Übung!).
+	Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $f\circ\gamma \colon I \to N$ eine Kurve in $N$. Der Geschwindigkeitsvektor von dieser Kurve zum Zeitpunkt $s$ ist $(f\circ\gamma)'(s) = \left.\DD f\right|_{\gamma(s)} (\gamma'(s))$ (Übung!).
 	
 	Wenn wir uns auf $M$ also vom Punkt $\gamma(s)$ aus in Richtung $v := \gamma'(s)$ bewegen, dann bewegt sich unser Bild unter $f$ auf $N$ also in Richtung $\left.\DD f\right|_p(v)$. Das Differential beschreibt also in einem sinnvollen Sinne, wie sich \glqq Richtungen\grqq\ unter Abbildungen zwischen Mannigfaltigkeiten verhalten.
 \end{bem}
