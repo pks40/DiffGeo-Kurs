@@ -43,7 +43,6 @@
 	\section{Lineare Algebra und mehrdimensionale Analysis}
 	\begin{enumerate}
 		\item Zeige: Die Abbildung $\Theta\colon V\rightarrow V^{**}$ ist linear und injektiv.
-		\item 
 	\end{enumerate}
 	\section{Mannigfaltigkeiten}
 	\begin{enumerate}
@@ -51,12 +50,30 @@
 		\item Zeige: Die Verkettung stetiger Abbildungen ist stetig.
 		\item Zeige: $f\colon X\rightarrow Y$ stetig , $K\subset X$ kompakt $\Rightarrow f(K)\subset Y$ kompakt.
 		\item Zeige: Die Fortsetzung eines nichtleeren Atlanten zu einem maximalen Atlanten ist eindeutig.
-		\item Zeige: Eine Karte ist eine glatte Abbildung zwischen Mannigfaltigkeiten.
+		\item Zeige: Eine Karte ist ein Diffeomorphismus zwischen Mannigfaltigkeiten.
 		\item Konstruiere aus den Atlanten zweier Mannigfaltigkeiten $M_1$ und $M_2$ einen Atlanten der Produktmannigfaltigkeit.
+		\item Die Verkettung glatter Abbildungen von Mannigfaltigkeiten ist glatt.
 		\item Zeige: Für eine Produktmannigfaltigkeit $M_1\times M_2$ sind die kanonischen Projektionen $\pi_i\colon M_1\times M_2\rightarrow M_i$ ($i=1,2$) differenzierbar und für eine weitere Mannigfaltigkeit $N$ mit Abbildung $f\colon N\rightarrow M_1\times M_2$ gilt:
 		\begin{equation}
 			\text{$f$ ist differenzierbar} \colon\Leftrightarrow \pi_i\circ f \text{ ist differenzierbar für } i=1,2
 		\end{equation}
+	\end{enumerate}
+	\section{Der Tangentialraum und das Differential}
+	\begin{enumerate}
+		\item Zeige: $\sC_p(M)$ ist mit über die Repräsentanten definierter Addition, Skalarmultiplikation und Multiplikation eine $\mathbb R$-Algebra.
+		\item Zeige: $T_pM$ ist ein Untervektorraum von $(\sC_p(M))^*$.
+		\item Zeige: Das Differential ist eine wohldefinierte, lineare Abbildung.
+		\item Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $\tilde\gamma := f\circ\gamma \colon I \to N$ eine Kurve in $M$. Zeige: $\dot{\tilde\gamma}(s) = \left.\DD f\right|_{\gamma(s)} (\dot\gamma(s))$.
+		\item Zeige: $\left.\DD(\id_M)\right|_p = \id_{T_pM}$.
+		\item Zeige: Ist $f\colon M \to N$ ein Diffeomorphismus, so ist $\left.\DD f\right|_p$ für jedes $p\in M$ ein Isomorphismus, und es gilt $\left.\DD f^{-1}\right|_{f(p)} = \left(\left.\DD f\right|_p\right)^{-1}$.
+		\item Zeige: Bezüglich der kanonischen Identifikation $V\equiv T_pV$ gilt $\gamma'(s) \equiv \dot\gamma(s)$ für jede Kurve $\gamma\colon I\rightarrow V$. Dabei bezeichnet $\gamma'$ die Ableitung als Differenzquotienten und $\dot{\gamma}$ den abstrakten Tangentialvektor. (Hinweis: Verwende die mehrdimensionale Kettenregel für vektorwertige Abbildungen!)
+		\item Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Sei $p\in M$, $x$ eine Karte von $M$ um $p$ und $y$ eine Karte von $N$ um $f(p)$. Zeige: \[\mathrm{J}(y\circ f\circ x^{-1})|_{x(p)} = \left[\left(\partial_j(y\circ f\circ x^{-1})^i\right) (x(p)) \right]_{ij}.\]
+		ist die Darstellungsmatrix des Differentials der Kartendarstellung $y\circ f\circ x^{-1}$ von $f$ bezüglich der Koordinatenbasen.
+		\item Rechne die Transformationsformel für Tangentialvektoren nach.
+		\item Für einen Vektorraum $V$ lässt sich die Identifikation $V\equiv T_pV$ folgendermaßen schreiben: 
+		\[V \ni v \equiv \left.\frac{\D}{\D t}(p + tv)\right|_{t=0} \in T_pV.\]
+		\item Zeige: Die Koordinatenvektoren sind durch die Ableitungen der Koordinatenlinien gegeben.
+		\item Zeige: Jeder Tangentialvektor lässt sich als Ableitung einer Kurve schreiben.
 	\end{enumerate}
 	\section{Vektorbündel}
 	\begin{enumerate}
