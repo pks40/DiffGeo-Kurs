@@ -1817,7 +1817,6 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			Aus dem (lokalen) Koordinatenrahmen $\frac{\partial}{\partial x^i}$ (von $TM$) und dem dualen Rahmen $\D x^i$ (von $T^*M$) erhält man mit dem Tensorprodukt lokale Rahmen des Tensorbündels (dies gilt natürlich auch für beliebige lokale Rahmen). Man schreibt dann die Komponenten eines Tensorfeldes $A$ vom Typ $(r,s)$ mit $r$ oberen Indizes und $s$ unteren Indizes: Es ist
 			\[A = A^{i_1\ldots i_r}_{j_1\ldots j_s} \frac{\partial}{\partial x^{i_1}} \otimes \cdots \otimes \frac{\partial}{\partial x^{i_r}} \otimes \D x^{j_1} \otimes \cdots \otimes \D x^{j_s},\]
 			wobei die Komponenten $A^{i_1\ldots i_r}_{j_1\ldots j_s}$ (lokal definierte) glatte Funktionen sind.
-			\kommP[inline]{Hier habe ich wieder zurückkorrigiert, denn Rahmen gibt es von Bündeln, nicht von Schnitten. Außerdem habe ich wieder dazugeschrieben, dass die Komponenten glatt sind.}
 		\end{defn}
 		
 		\begin{lemma}
@@ -1826,7 +1825,6 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 				\mathcal{T}(M):=\bigoplus_{r,s=0}^{\infty}\Gamma(T^{(r,s)}M)
 			\end{align*}
 			In Komponenten hat das Tensorprodukt von zwei Tensorfeldern $A \in \Gamma(T^{(r,s)}M)$, $B \in \Gamma(T^{(t,u)}M)$ die Form $(A\otimes B)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = A^{i_1 \dots i_r}_{j_1 \dots j_s} B^{k_1 \dots k_t}_{l_1 \dots l_u}$.
-			\kommP{Das hab ich hier hoch geschoben von unten, weil es hier besser hinpasst.}
 			
 			Ebenso können wir durch punktweise Anwendung die Kontraktion von Tensoren zur Kontraktion von Tensorfeldern
 			\[C_{t,u}\colon \Gamma(T^{(r,s)}M) \to \Gamma(T^{(r-1,s-1)}M)\]
@@ -1834,7 +1832,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			\bewUeb
 		\end{lemma}
 
-		\begin{bem}
+		\begin{bem}\label{bem:Tensorprodukt_mulitilin}
 			Haben wir ein Tensorfeld $A \in \Gamma(T^{(r,s)}M)$, so können wir bekanntlich punktweise $A_p \in T^{(r,s)}_pM$ als $\R$-multilineare Abbildung
 			\[A_p\colon \underbrace{T_p^*M \times \dots \times T_p^*M}_\text{$r$-mal} \times \underbrace{T_pM \times \dots \times T_pM}_\text{$s$-mal} \to \R\]
 			auffassen (Satz \ref{satz:tensorprod_multilin}). Per
@@ -1852,7 +1850,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 		\begin{satz}[Tensorfelder als $\sm(M)$-multilineare Abbildungen]
 			Ist eine $\R$-multilineare Abbildung
 			\begin{align*}
-				A\colon \underbrace{\Omega^1(M)\times\ldots\times\Omega^1(M)}_{r-mal}\times\underbrace{\vf(M)\times\ldots\vf(M)}_{s-mal}\rightarrow \sm(M)
+				A\colon \underbrace{\Omega^1(M)\times\dots\times\Omega^1(M)}_{r-mal}\times\underbrace{\vf(M)\times\dots\vf(M)}_{s-mal}\rightarrow \sm(M)
 			\end{align*}
 			$\sm(M)$-multilinear, so ist sie durch ein Tensorfeld $A \in \Gamma(T^{(r,s)}M)$ gegeben.
 			\begin{proof}
@@ -1861,15 +1859,15 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 		\end{satz}
 		
 		\begin{defn}[Tensorderivation]
-			Eine (globale) Tensorderivation ist eine Familie von $\R$-linearen Abbildungen $\delta\colon\Gamma(T^{(r,s)}M)\rightarrow \Gamma(T^{(r,s)}M)$, die die folgenden Eigenschaften erfüllt:
+			Eine \emph{(globale) Tensorderivation} ist eine Familie von $\R$-linearen Abbildungen $\delta\colon\Gamma(T^{(r,s)}M)\rightarrow \Gamma(T^{(r,s)}M)$, die die folgenden Eigenschaften erfüllt:
 			\begin{enumerate}[label=\arabic*.]
-				\item $\delta (A\otimes B)=(\delta(A)\otimes B+A\otimes(\delta(B))$ (Produktregel)
+				\item $\delta (A\otimes B)=(\delta(A))\otimes B+A\otimes(\delta(B))$ (Produktregel)
 				\item $C_{i,j}(\delta(A))=\delta(C_{i,j}A)$ 
 			\end{enumerate}
 			für beliebige Tensorfelder $A\in \Gamma(T^{(r,s)}M), B\in\Gamma(T^{(t,u)}M)$.
 		\end{defn}
 		
-		\begin{satz}
+		\begin{satz}\label{satz:Fortsetzung_Derivationen}
 			Eine Tensorderivation ist durch ihre Wirkung auf Funktionen $\sm(M)$ und Vektorfeldern $\vf(M)$ eindeutig definiert.
 			\begin{proof}
 				Wir halten zuerst fest, dass jede Tensorderivation $\delta$ auf den glatten Funktionen $\sm(M)$ nach Satz \ref{satz:Vektorfelder_globale_Deriv} durch ein eindeutiges Vektorfeld $X\in\vf(M)$ definiert ist.
@@ -1894,7 +1892,36 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			Die Lie-Ableitung $\mathcal{L}_X$ entlang eines Vektorfeldes $X$ lässt sich eindeutig zu einer Tensorderivation fortsetzen.
 			\bewUeb
 		\end{kor}
-		\todo{Pullback, Lie Ableitung}
+		
+		\begin{defn}[Pullback von Tensorfeldern]
+			Für einen Diffeomorphismus $f\colon N\rightarrow M$ und ein Tensorfeld $A\in \Gamma(T^{(r,s)}M)$ ist der \emph{Pullback eines Tensorfelds} $f^*A\in\Gamma(T^{(r,s)}N)$ definiert als
+			\begin{align*}
+				(f^*A)_p&(\eta_1,\ldots,\eta_r,v_1,\ldots,v_s):=\\
+				A_{f(p)}&(\eta_1\circ\DD f^{-1}\vert_{f(p)},\ldots,\eta_r\circ\DD f^{-1}\vert_{f(p)},\DD f\vert_pv_1,\ldots,\DD f\vert_pv_s)
+			\end{align*}
+		\end{defn}
+		
+		\begin{satz}[Lie-Ableitung als Pullback]
+			Für ein Vektorfeld $X\in\vf(M)$ mit Fluss $\Phi^X$ ist die Lie-Ableitung eines Tensorfelds $A\in \Gamma(T^{(r,s)}M)$ durch den Pullback gegeben:
+			\begin{align*}
+			\mathcal{L}_X(A)_p=\left.\frac{\D}{\D t}\left((\Phi^X_t)^*A\right)_p\right |_{t=0}
+			\end{align*}
+			\begin{proof}
+				Wir zeigen, dass die über den Pullback definierte Lie-Ableitung die Produktregel erfüllt und mit Kontraktionen vertauscht und folgern dann aus Satz \ref{satz:Fortsetzung_Derivationen} die obige Identität. Dazu schreiben wir $\DD f^{-1}\vert_{f(p)}^* \eta:=\eta\circ\DD f^{-1}\vert_{f(p)}$.
+				
+				$\R$-Linearität ist klar aus der Definition.
+				
+				Die Produktregel folgt aus der Form des \glqq ausgewerteten Tensorproduktes von Tensorfeldern\grqq\ aus Bemerkung \ref{bem:Tensorprodukt_mulitilin} und der Produktregel für Funktionen (bezüglich der Ableitung nach $t$).
+				
+				Für die Kontraktion betrachtet man ein einfaches Tensorfeld $Y\otimes\omega$ und dann ist 
+				\begin{align*}
+					C_{1,1}(\Phi_t^X)^*(Y\otimes\omega)_p&=C_{1,1}\left(\left(Y\circ\DD (\Phi_t^X)^{-1}\vert_{\Phi_t^X(p)}^*\right) \otimes\left(\omega\circ\DD \Phi_t^X\vert_p\right)\right)_{\Phi_t^X(p)}\\
+					&=\left(Y\left(\omega\circ\DD \Phi_t^X\vert_p\circ\DD (\Phi_t^X)^{-1}\vert_{\Phi_t^X(p)}\right)\right)_{\Phi_t^X(p)}\\
+					&=\left((\Phi_t^X(p))^*(Y(\omega))\right)_p
+				\end{align*}
+				Da die Kontraktion mit der Ableitung nach dem Parameter $t$ vertauscht, folgt die gewünschte Eigenschaft. Analog geht man auch für Tensoren von beliebigem Typ vor.
+			\end{proof}
+		\end{satz}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
