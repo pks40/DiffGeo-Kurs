@@ -41,7 +41,6 @@
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\sC}{\mathcal{C}^{\infty}}
-\newcommand{\sm}{\mathcal{F}}
 \newcommand{\vf}{\mathfrak{X}}
 
 \theoremstyle{definition}
@@ -339,15 +338,12 @@ Die formale Definition der Differentiale und von mehrdimensionaler (totaler) Dif
 			\begin{equation}
 				\psi\circ f \circ \varphi^{-1}\colon \varphi(U)\rightarrow \psi(V)
 			\end{equation}
-			Diese Definition ist unabhängig von der Wahl der Karte, da Kartenwechsel glatt sind. Äquivalent kann daher auch gefordert werden, dass die obige Abbildung für alle Karten glatt ist.
+			Diese Definition ist unabhängig von der Wahl der Karte, da Kartenwechsel glatt sind und Verkettungen glatter Abbildungen zwischen Teilmengen des $\R^n$ glatt sind. Äquivalent kann daher auch gefordert werden, dass die obige Abbildung für alle Karten glatt ist.
 
-			Wir schreiben $\sC(M,N)$ für die Menge der glatten Abbildungen.
+			Wir schreiben $\sC(M,N)$ für die Menge der glatten Abbildungen. Wir schreiben $\sC(M) := \sC(M,\R)$ für die Menge der (glatten) Funktionen auf $M$.
 			
 			Analog kann man auch $k$-fach differenzierbare Abbildungen definieren und schreibt für diese $\mathcal{C}^k(M,N)$.
 		\end{defn}
-		\begin{nota}
-			$\sm(M):=\sC(M,\R)$ ist die Menge der (glatten) Funktionen auf $M$.
-		\end{nota}
 		\begin{defn}
 			Ein \emph{Diffeomorphismus} ist eine bijektive Abbildung $f\in\sC(M,N)$ für die $f^{-1}\in\sC(N,M)$ gilt.
 
@@ -1248,7 +1244,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		
 		
 		\begin{bem}
-			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sm(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)_x := f(x) \sigma_x$. Mit dieser Operation wird $\Gamma(E)$ offensichtlich zu einem $\sm(M)$-Modul.
+			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)_x := f(x) \sigma_x$. Mit dieser Operation wird $\Gamma(E)$ offensichtlich zu einem $\sC(M)$-Modul.
 		\end{bem}
 
 		
@@ -1299,17 +1295,19 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
 		
-		\begin{lemma}[Dualität von Schnitten]\label{lemm:Dualität}
-			Man erhält durch die Konstruktion des dualen Bündels eine $\sm(M)$-bilineare Abbildung:
-			\begin{align*}
-				\Gamma(E)\times\Gamma(E^*)&\rightarrow \sm(M),\quad (\sigma,\rho)\mapsto \sigma(\rho)=\rho(\sigma)
-				\intertext{punktweise definiert als}
-				(\sigma(\rho))(x)&=(\rho(\sigma))(x):=\underbrace{\rho(x)}_{\in E^*_x}(\underbrace{\sigma(x)}_{\in E_x})\in \R
-			\end{align*}
+		\begin{satz}[Dualität von Schnitten]\label{satz:Dualität}
+			Man erhält durch die Konstruktion des dualen Bündels eine $\sC(M)$-bilineare Abbildung
+			\[\Gamma(E)\times\Gamma(E^*)\rightarrow \sC(M),\quad (\sigma,\rho)\mapsto \sigma(\rho)=\rho(\sigma),\]
+			punktweise definiert als
+			\[(\sigma(\rho))(x)=(\rho(\sigma))(x):=\underbrace{\rho(x)}_{\in E^*_x}(\underbrace{\sigma(x)}_{\in E_x})\in \R.\]
+			Jeder Schnitt $\rho \in \Gamma(E^*)$ des dualen Bündels kann darüber also aufgefasst werden als $\sC(M)$-lineare Abbildung $\Gamma(E) \to \sC(M)$.
 			
-			Die Menge der Schnitte des dualen Bündels ist gerade die Menge der $\sm(M)$-linearen Abbildungen $\Gamma(E)\rightarrow\sm(M)$, anders gesagt ist diese also die Menge der Modulhomomorphismen$\Gamma(E^*)\cong \mathrm{Hom}_{\sm(M)}(\Gamma(E),\sm(M))$. 
+			Umgekehrt ist auch jede $\sC(M)$-lineare Abbildung $\Gamma(E) \to \sC(M)$ gegeben durch Anwendung eines Schnitts $\rho \in \Gamma(E^*)$.
+			
+			Es gilt also in natürlicher Weise $\Gamma(E^*)\cong \mathrm{Hom}_{\sC(M)}(\Gamma(E),\sC(M))$. 
 			\bewUeb
-		\end{lemma}
+			\todo{Evtl. noch ausarbeiten.}
+		\end{satz}
 	
 		\begin{lemma} \label{lemma:rahmen_dual}
 			Sei $(\sigma_1,\dots,\sigma_n)$ ein lokaler Rahmen von $E$. Definieren wir lokale Schnitte $\theta^1, \dots, \theta^n$ von $E^*$ dadurch, dass punktweise $\{\theta^i(x)\}$ die duale Basis von $(E_x)^*$ zur Basis $\{\sigma_i(x)\}$ von $E_x$ ist, dann sind die $\theta^i$ glatt, und somit ist $(\theta^1,\dots,\theta^n)$ ein lokaler Rahmen von $E^*$.
@@ -1392,7 +1390,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{lemma}\label{lemma:Zurückziehen_von_Schnitten}
 			Sei $f:N\rightarrow M$.
 			
-			Die zurückgezogenen Schnitte $f^*(\Gamma(E))$ erzeugen durch $\sm(N)$-Linearkombination die Schnitte des zurückgezogenen Bündels $\Gamma(f^*E)$.
+			Die zurückgezogenen Schnitte $f^*(\Gamma(E))$ erzeugen durch $\sC(N)$-Linearkombination die Schnitte des zurückgezogenen Bündels $\Gamma(f^*E)$.
 			\begin{proof}
 				Übung. Hinweis: Betrachte lokale Rahmen.
 			\end{proof}
@@ -1892,7 +1890,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 
 	Ein \emph{Tensorfeld vom Typ $(r,s)$} ist ein Schnitt des Tensorbündels vom Typ $(r,s)$. Wie bei Vektorfeldern schreiben wir bei Auswertung eines Tensorfeldes $A \in \Gamma(T^{(r,s)}M)$ den Punkt $p$ als Subskript: $A_p := A(p)$.
 
-Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)$. Die Schnitte von $T^{(0,1)}M=T^*M$ heißen \emph{1-Formen} und man schreibt für diese auch $\Omega^1(M)$ (siehe Kapitel \ref{chap:Differentialformen}).
+Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)$. Die Schnitte von $T^{(0,1)}M=T^*M$ heißen \emph{1-Formen} und man schreibt für diese auch $\Omega^1(M)$ (siehe Kapitel \ref{chap:Differentialformen}).
 			
 			Wie für Tensoren von Vektoren sind \emph{einfache Tensorfelder} solche, die als (Tensor-) Produkt von Vektorfeldern und 1-Formen geschrieben werden können.
 			
@@ -1902,7 +1900,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 		\end{defn}
 		
 		\begin{lemma}
-			Die Tensorfelder vom Typ $(r,s)$ $\Gamma(T^{(r,s)}M)$ bilden einen $\sm(M)$-Modul und darüber hinaus bilden alle Tensorfelder mit dem \glqq faserweisen\grqq\ Tensorprodukt $(A\otimes B)_p=A_p\otimes B_p$ eine $\sm$-Algebra (mit der kanonischen Identifizierung $TM\otimes T^*M\cong T^*M\otimes TM$):
+			Die Tensorfelder vom Typ $(r,s)$ $\Gamma(T^{(r,s)}M)$ bilden einen $\sC(M)$-Modul und darüber hinaus bilden alle Tensorfelder mit dem \glqq faserweisen\grqq\ Tensorprodukt $(A\otimes B)_p=A_p\otimes B_p$ eine $\sC(M)$-Algebra (mit der kanonischen Identifizierung $TM\otimes T^*M\cong T^*M\otimes TM$):
 			\begin{align*}
 				\mathcal{T}(M):=\bigoplus_{r,s=0}^{\infty}\Gamma(T^{(r,s)}M)
 			\end{align*}
@@ -1910,8 +1908,11 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			
 			Ebenso können wir durch punktweise Anwendung die Kontraktion von Tensoren zur Kontraktion von Tensorfeldern
 			\[C_{t,u}\colon \Gamma(T^{(r,s)}M) \to \Gamma(T^{(r-1,s-1)}M)\]
-			fortsetzen. Diese ist eine $\sm(M)$-lineare Abbildung.
-			\bewUeb
+			fortsetzen. Diese ist eine $\sC(M)$-lineare Abbildung.
+			
+			\begin{proof}
+				Das einzige, was zu zeigen ist, ist, dass die Ergebnisse der punktweisen Definitionen glatt sind und dass die Operationen $\sC(M)$ linear sind. Ersteres folgt, da die Komponentendarstellungen offensichtlich neue glatte Funktionen ergeben; zweiteres folgt direkt direkt nach Definition.
+			\end{proof}
 		\end{lemma}
 
 		\begin{bem}\label{bem:Tensorprodukt_mulitilin}
@@ -1919,8 +1920,8 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			\[A_p\colon \underbrace{T_p^*M \times \dots \times T_p^*M}_\text{$r$-mal} \times \underbrace{T_pM \times \dots \times T_pM}_\text{$s$-mal} \to \R\]
 			auffassen (Satz \ref{satz:tensorprod_multilin}). Per
 			\[(A(\omega_1,\dots,\omega_r, X_1,\dots,X_s))(p) := A_p\Big((\omega_1)_p,\dots,(\omega_r)_p, (X_1)_p,\dots,(X_s)_p\Big)\]
-			können wir $A$ damit insgesamt auffassen als $\sm(M)$-multilineare Abbildung
-			\[A\colon \underbrace{\Omega^1(M) \times \dots \times \Omega^1(M)}_\text{$r$-mal} \times \underbrace{\vf(M) \times \dots \times \vf(M)}_\text{$s$-mal} \to \sm(M).\]
+			können wir $A$ damit insgesamt auffassen als $\sC(M)$-multilineare Abbildung
+			\[A\colon \underbrace{\Omega^1(M) \times \dots \times \Omega^1(M)}_\text{$r$-mal} \times \underbrace{\vf(M) \times \dots \times \vf(M)}_\text{$s$-mal} \to \sC(M).\]
 			
 			In dieser Notation ist das Tensorprodukt zweier Tensorfelder $A\in\Gamma(T^{(r,s)}M), B\in \Gamma(T^{(t,u)}M)$ folgendermaßen gegeben:
 			\begin{align*}
@@ -1929,14 +1930,14 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			\end{align*}
 		\end{bem}
 		Von der vorigen Bemerkung gilt auch die Umkehrung:
-		\begin{satz}[Tensorfelder als $\sm(M)$-multilineare Abbildungen]
+		\begin{satz}[Tensorfelder als $\sC(M)$-multilineare Abbildungen]
 			Ist eine $\R$-multilineare Abbildung
 			\begin{align*}
-				A\colon \underbrace{\Omega^1(M)\times\dots\times\Omega^1(M)}_{r-mal}\times\underbrace{\vf(M)\times\dots\vf(M)}_{s-mal}\rightarrow \sm(M)
+				A\colon \underbrace{\Omega^1(M)\times\dots\times\Omega^1(M)}_{r-mal}\times\underbrace{\vf(M)\times\dots\vf(M)}_{s-mal}\rightarrow \sC(M)
 			\end{align*}
-			$\sm(M)$-multilinear, so ist sie durch ein Tensorfeld $A \in \Gamma(T^{(r,s)}M)$ gegeben.
+			$\sC(M)$-multilinear, so ist sie durch ein Tensorfeld $A \in \Gamma(T^{(r,s)}M)$ gegeben.
 			\begin{proof}
-				Dies folgt für 1-Formen und Vektorfelder aus Lemma \ref{lemm:Dualität} und für Tensorfelder daraus durch Anwendung \glqq auf jedes Argument separat\grqq .
+				Dies folgt für 1-Formen und Vektorfelder aus Satz \ref{satz:Dualität} und für Tensorfelder daraus durch Anwendung \glqq auf jedes Argument separat\grqq .
 			\end{proof}
 		\end{satz}
 		
@@ -1950,13 +1951,13 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 		\end{defn}
 		
 		\begin{satz}\label{satz:Fortsetzung_Derivationen}
-			Eine Tensorderivation ist durch ihre Wirkung auf Funktionen $\sm(M)$ und Vektorfeldern $\vf(M)$ eindeutig definiert.
+			Eine Tensorderivation ist durch ihre Wirkung auf Funktionen $\sC(M)$ und Vektorfeldern $\vf(M)$ eindeutig definiert.
 			\begin{proof}
-				Wir halten zuerst fest, dass jede Tensorderivation $\delta$ auf den glatten Funktionen $\sm(M)$ nach Satz \ref{satz:Vektorfelder_globale_Deriv} durch ein eindeutiges Vektorfeld $X\in\vf(M)$ definiert ist.
+				Wir halten zuerst fest, dass jede Tensorderivation $\delta$ auf den glatten Funktionen $\sC(M)$ nach Satz \ref{satz:Vektorfelder_globale_Deriv} durch ein eindeutiges Vektorfeld $X\in\vf(M)$ definiert ist.
 				
 				Auf Vektorfeldern $Y\in\vf(M)$ bedeutet die Produktregel:
 				\begin{align*}
-					\delta(fY)=f\delta(Y)+X(f)Y \quad\forall f\in\sm(M)
+					\delta(fY)=f\delta(Y)+X(f)Y \quad\forall f\in\sC(M)
 				\end{align*}
 				und für 1-Formen $\omega\in\Omega^1(M)$:
 				\begin{align*}
@@ -2026,13 +2027,13 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			\end{align*}
 			die die folgenden Eigenschaften erfüllt:
 			\begin{enumerate}[label=\arabic*]
-				\item $\sm(M)$-Linearität im ersten Argument: 
+				\item $\sC(M)$-Linearität im ersten Argument: 
 				\begin{equation*}
-					\nabla_{X+fY}\sigma=\nabla_X\sigma+f\nabla_Y \sigma\quad\forall X,Y\in\vf(M), f\in\sm(M),\sigma\in\Gamma(E)
+					\nabla_{X+fY}\sigma=\nabla_X\sigma+f\nabla_Y \sigma\quad\forall X,Y\in\vf(M), f\in\sC(M),\sigma\in\Gamma(E)
 				\end{equation*}
 				\item \glqq Derivativität\grqq\ im zweiten Argument: 
 				\begin{equation*}
-					\nabla_X(f\sigma)=\underbrace{X(f)}_{\in\sm(M)} \sigma+f\nabla_X \sigma\quad\forall X\in\vf(M), f\in\sm(M),\sigma\in\Gamma(E)
+					\nabla_X(f\sigma)=\underbrace{X(f)}_{\in\sC(M)} \sigma+f\nabla_X \sigma\quad\forall X\in\vf(M), f\in\sC(M),\sigma\in\Gamma(E)
 				\end{equation*}
 			\end{enumerate}
 		\end{defn}
@@ -2046,7 +2047,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			\begin{proof}
 				Seien $\nabla'$ und $\nabla''$ kovariante Ableitungen, die die obige Bedingung erfüllen. Wir müssen zeigen, dass diese beiden auf beliebigen lokalen Schnitten und Vektorfeldern identisch sind. 
 				
-				Da lokale Schnitte und Vektorfelder von Einschränkungen globaler Schnitte und Vektorfelder erzeugt werden, und die Wirkung von Vektorfeldern auf Funktionen ebenfalls nur lokal vom Vektorfeld abhängt, reicht es (aufgrund der $\sm(U)$-Linearität und der Derivativität), die Gleichheit der kovarianten Ableitungen auf Einschränkungen der Schnitte und Vektorfelder zu zeigen. Diese ist jedoch nach Voraussetzung gegeben.
+				Da lokale Schnitte und Vektorfelder von Einschränkungen globaler Schnitte und Vektorfelder erzeugt werden, und die Wirkung von Vektorfeldern auf Funktionen ebenfalls nur lokal vom Vektorfeld abhängt, reicht es (aufgrund der $\sC(U)$-Linearität und der Derivativität), die Gleichheit der kovarianten Ableitungen auf Einschränkungen der Schnitte und Vektorfelder zu zeigen. Diese ist jedoch nach Voraussetzung gegeben.
 			\end{proof}
 		\end{lemma}
 		\begin{lemma}[Lokalität kovarianter Ableitungen]
@@ -2061,7 +2062,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 		\end{lemma}
 		Wir wollen noch allgemein untersuchen, wie kovariante Ableitungen in lokalen Trivialisierungen aussehen.
 		\begin{lemma}
-			Sei $(\sigma_1,\ldots,\sigma_k)$ ein lokaler Rahmen über $U\subset M$ und $\phi\colon\pi^{-1}(U)\rightarrow U\times \R^k$, sodass $\phi(\sigma_i)=e_i$ die Standardbasis ist. Damit ist dann $\mathrm{span}_{\R}\lbrace (\sigma_1)_x, \ldots,(\sigma_k)_x\rbrace=E_x\cong\R^k$ und $\Gamma(E\vert_U)=\mathrm{span}_{\sm(U)}\lbrace \sigma_1,\ldots,\sigma_k\rbrace$.
+			Sei $(\sigma_1,\ldots,\sigma_k)$ ein lokaler Rahmen über $U\subset M$ und $\phi\colon\pi^{-1}(U)\rightarrow U\times \R^k$, sodass $\phi(\sigma_i)=e_i$ die Standardbasis ist. Damit ist dann $\mathrm{span}_{\R}\lbrace (\sigma_1)_x, \ldots,(\sigma_k)_x\rbrace=E_x\cong\R^k$ und $\Gamma(E\vert_U)=\mathrm{span}_{\sC(U)}\lbrace \sigma_1,\ldots,\sigma_k\rbrace$.
 			
 			Die kovariante Ableitung des Rahmens ist wieder ein Schnitt, lässt sich also in Komponenten bezüglich dieses Rahmens schreiben, sodass die kovariante Ableitung bezüglich eines gegebenen Vektorfeldes $X\in\vf(U)$ wie eine Matrix wirkt:
 			\begin{align*}
@@ -2077,7 +2078,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 			
 			Ist zusätzlich $U$ eine Koordinatenumgebung, dann definiert man die \emph{Zusammenhangskoeffeizienten} $A_{ib}^a:=(A_{\partial_i})^a_b$.
 			
-			Für einen beliebigen lokalen Schnitt $\sigma=f^a\sigma_a\in\Gamma(E\vert_U)$ und ein lokales Vektorfeld $X=g^i\partial_i$ (mit $f^a,g^i\in\sm(U)$) lässt sich die kovariante Ableitung dann folgendermaßen schreiben:
+			Für einen beliebigen lokalen Schnitt $\sigma=f^a\sigma_a\in\Gamma(E\vert_U)$ und ein lokales Vektorfeld $X=g^i\partial_i$ (mit $f^a,g^i\in\sC(U)$) lässt sich die kovariante Ableitung dann folgendermaßen schreiben:
 			\begin{align*}
 				\nabla_X\sigma=\left( X(f^a)+(A_X)^a_bf^b\right)\sigma_a=g^i\left( \partial_i(f^a)+A^a_{ib}f^b\right)\sigma_a
 			\end{align*}
@@ -2171,7 +2172,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sm(M)
 		
 	\section{Geodäten}
 		\begin{defn}
-			Eine \emph{affine kovariante Ableitung} ist eine kovariante Ableitung auf dem Tangentialbündel. Dies bringt zusätzliche Struktur mit sich! Insbesondere lässt sich eine affine kovariante Ableitung als Tensorderivation fortsetzen (mit den nötigen Eigenschaften), wobei $\nabla_Xf=X(f) \quad\forall X\in\vf(M),f\in\sm(M)$.
+			Eine \emph{affine kovariante Ableitung} ist eine kovariante Ableitung auf dem Tangentialbündel. Dies bringt zusätzliche Struktur mit sich! Insbesondere lässt sich eine affine kovariante Ableitung als Tensorderivation fortsetzen (mit den nötigen Eigenschaften), wobei $\nabla_Xf=X(f) \quad\forall X\in\vf(M),f\in\sC(M)$.
 			
 			Wir schreiben dafür $X\mapsto\nabla_X\in \mathrm{Der}(\mathcal{T}(M))$. In Koordinaten sieht dies für ein Tensorfeld $A$ vom Typ $(1,1)$ folgendermaßen aus:
 			\begin{align*}
