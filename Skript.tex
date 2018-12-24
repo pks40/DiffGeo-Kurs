@@ -86,7 +86,6 @@ In einen Einführungskurs der Differentialgeometrie gehören eigentlich auf jede
 	\item Eigenschaften von Abbildungen zwischen Mannigfaltigkeiten
 		\begin{itemize}
 			\item Immersionen und Submersionen
-			\item Untermannigfaltigkeiten
 			\item Der Satz vom regulären Wert
 		\end{itemize}
 	\item Distributionen und der Satz von Frobenius
@@ -291,9 +290,9 @@ Die formale Definition der Differentiale und von mehrdimensionaler (totaler) Dif
 	\section{Mannigfaltigkeiten}
 		\begin{defn}
 			Eine \emph{topologische Mannigfaltigkeit} ist ein topologischer Raum $(M,\mathcal{T})$, der hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:
-			Es existiert eine natürliche Zahl $n\in \mathbb{N}$ (Dimension), sodass für alle Punkte $x\in M$ offene Umgebungen $U\subset M, V\subset \R^n$ mit $x\in U $ und ein Homöomorphismus $ \varphi\colon U\rightarrow V$ existieren.
+			Es existiert eine natürliche Zahl $n\in \mathbb{N}$ (Dimension), sodass für alle Punkte $p\in M$ offene Umgebungen $U\subset M, V\subset \R^n$ mit $p\in U $ und ein Homöomorphismus $ \varphi\colon U\rightarrow V$ existieren.
 
-			Ein solches Tupel $(\varphi,U)$ heißt \emph{Karte} (wobei manchmal die Menge $U$ unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt \emph{Atlas} $\mathcal{A}$.
+			Ein solches Tupel $(\varphi,U)$ heißt \emph{Karte} um $p$ (wobei manchmal die Menge $U$ in der Notation unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt \emph{Atlas} $\mathcal{A}$.
 
 			Die Dimension der Mannigfaltigkeit ist per Definition wohldefiniert (da $n$ unabhängig von der Wahl des Punktes existieren muss).
 		\end{defn}
@@ -358,6 +357,20 @@ Die formale Definition der Differentiale und von mehrdimensionaler (totaler) Dif
 			Sei $M$ eine differenzierbare Mannigfaltigkeit und $(\varphi,U)$ eine Karte von $M$. Dann ist $\varphi\colon U \to \varphi(U) \subset \R^n$ ein Diffeomorphismus.
 			\bewUeb
 		\end{lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Untermannigfaltigkeiten}
+\begin{defn}
+	Sei $M$ eine $n$-dimensionale differenzierbare Mannigfaltigkeit, und sei $0 \le n \le m$. Eine \emph{$k$-dimensionale (eingebettete) Untermannigfaltigkeit} von $M$ ist eine Teilmenge $N \subset M$, sodass es zu jedem Punkt $p \in N$ eine Karte $(\varphi,U)$ von $M$ um $p$ gibt, sodass
+	\[\varphi(U\cap N) = \{a \in \varphi(U) : a^{k+1} = \dots = a^n = 0\}\]
+	gilt. Es gibt also Karten $(\varphi,U)$ von $M$, bzgl. derer $N$ lokal wie eine $k$-dimensionale Ebene im $\R^n$ aussieht.
+\end{defn}
+
+\begin{bem}
+	Ist $N$ eine $k$-dimensionale Untermannigfaltigkeit von $M$, so erhalten wir aus Karten $(\varphi,U)$ von $M$ wie oben durch
+	\[\tilde\varphi := (\varphi^1, \dots, \varphi^k)\]
+	Karten $(\tilde\varphi, U\cap N)$ von $N$. Mit diesen ist $N$ selbst eine differenzierbare Mannigfaltigkeit. Die Inklusionsabbildung $i\colon N \to M, i(p) := p$ ist eine glatte Abbildung.
+\end{bem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -483,7 +496,6 @@ Mithilfe des Tangentialraumbegriffs können wir nun nicht nur entscheiden, ob Ab
 		Diese Abbildung $\sC_p(M) \ni \alpha \mapsto \tilde\alpha \in \sC_p(U)$ ist also für $[f]_{p,M} \in \sC_p(M)$, $f$ definiert auf $V$, gegeben durch $[f]_{p,M} \mapsto \left[\left.f\right|_{U\cap V}\right]_{p,U} \in \sC_p(U)$, was man auch schreiben kann als $[f]_{p,M} \mapsto \left[\left.f\circ i\right|_{U\cap V}\right]_{p,U}$. D.\,h. das oben beschriebene Auffassen von $\alpha$ als Keim auf der kleineren Mannigfaltigkeit $U$ ist die Abbildung $\sC_p(M) \ni \alpha \mapsto \alpha\circ i \in \sC_p(U)$. Wie oben beschrieben lässt sich das umkehren, ist also ein Isomorphismus. Damit ist aber auch $\left.\DD i\right|_p$ ein Isomorphismus, denn es ist definiert als $\left(\left.\DD i\right|_p(v)\right)(\alpha) = v(\alpha\circ i)$.
 	\end{proof}
 \end{prop}
-
 Da $\left.\DD i\right|_p(v)$ einfach dieselbe Derivation wie $v$ ist (sie unterscheiden sich nur darin, ob man die Keime, auf die sie wirkt, als Keime an $M$ oder an $U$ betrachtet), werden wir im Folgenden $T_pU$ und $T_pM$ (meistens) miteinander identifizieren.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -715,6 +727,22 @@ Für die Kovektoren $\left.\D x^i\right|_p \in T_p^*M$ gilt also $\left.\D x^i\r
 
 Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{lemma:differential_koord} also
 \[\left[\frac{\partial(y^i \circ f)}{\partial x^j}(p)\right]_{ij}.\]
+
+\begin{lemma}[Tangentialraum von Untermannigfaltigkeiten]
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $N \subset M$ eine eingebettete Untermannigfaltigkeit und $i\colon N \to M, i(p) := p$ die Inklusionsabbildung. Für jedes $p \in N$ ist das Differential $\left.\DD i\right|_{p} \colon T_pN \to T_pM$ der Inklusion injektiv.
+
+	\begin{proof}
+		Sei $(x,U)$, $x = (x^1,\dots,x^n)$ eine Karte von $M$ um $p$, sodass $U\cap N$ durch $x^{k+1} = \dots = x^n = 0$ gegeben ist (solche Karten gibt es nach Definition von Untermannigfaltigkeiten). Dann definiert $\tilde x = (\tilde x^1, \dots, \tilde x^k) := (x^1, \dots, x^k)$ eine Karte $(\tilde x, \tilde U)$ von $N$ um $p$.
+		
+		Die Kartendarstellung $x \circ i \circ \tilde x^{-1} \colon \tilde U \to U$ von $i$ bzgl. dieser Karten ist dann aber gegeben durch $\R^k \supset \tilde U \ni (a^1,\dots,a^k) \mapsto (a^1,\dots,a^k, 0,\dots,0) \in U \subset \R^n$. Die Jacobi-Matrix dieser Abbildung ist also die $n\times k$-Matrix
+		\[\begin{pmatrix}
+		\mathds{1}_k \\
+		0
+		\end{pmatrix},\]
+		deren Kern offensichtlich $\{0\}$ ist. Das ist aber die Darstellungsmatrix des Differentials $\left.\DD i\right|_{p}$, dieses ist also injektiv.
+	\end{proof}
+\end{lemma}
+Über das Differential der Inklusion können wir den Tangentialraum an eine Untermannigfaltigkeit $N\subset M$ also kanonisch mit einem Unterraum des Tangentialraums an $M$ identifizieren.
 
 \begin{satz}[Satz von der inversen Abbildung]
 	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Ist $\left.\DD f\right|_p\colon T_pM \to T_{f(p)}N$ ein Isomorphismus, dann ist $f$ ein lokaler Diffeomorphismus um $p$, d.\,h. es gibt eine offene Umgebung $U\subset M$ von $p$, sodass $f|_U \colon T \to f(U)$ ein Diffeomorphismus ist.
