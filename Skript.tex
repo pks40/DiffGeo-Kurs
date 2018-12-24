@@ -55,10 +55,6 @@
 
 \newcommand{\bewUeb}{\begin{proof}Übung.\end{proof}}
 
-% Kommentare
-\newcommand{\kommP}[2][noinline]{\todo[#1,color=green!40]{#2}}
-\newcommand{\kommB}[2][noinline]{\todo[#1,color=blue!20]{#2}}
-
 \title{Einführung in die Differentialgeometrie}
 \subtitle{Kurs auf der CdE-WinterAkademie 2018/19}
 \author{Benjamin Haake, Philip Schwartz}
@@ -410,7 +406,7 @@ $T_pM$ ist tatsächlich ein Untervektorraum von $(\sC_p(M))^*$ (Übung).
 \begin{bsp} \label{bsp:kurve_geschw}
 	Sei $I\subset\mathbb R$ offen und $\gamma\colon I \to M$ eine glatte Kurve mit $\gamma(s) = p$ für ein $s \in I$. Wir definieren den Tangentialvektor $\dot\gamma(s) \in T_pM$ durch \[(\dot\gamma(s))(f) := (f\circ\gamma)'(s),\] wobei wir auf der rechten Seite die Ableitung der Funktion $f\circ\gamma \colon I \to \mathbb R, I \subset \mathbb R$ gebildet haben.
 
-	$\dot\gamma(s)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\dot\gamma(s)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen. \kommB{Soll dazu noch eine konkrete Rechnung folgen? Vllt. als Übung? (Also dass man konkret im $\R^n$ nachrechnet, dass da so etwas wie eine Richtung herauskommt (unter Identifikation blabla)}
+	$\dot\gamma(s)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\dot\gamma(s)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen.
 
 	$\dot\gamma(s)$ ist wohldefiniert und tatsächlich eine Derivation: Wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ\gamma$ und $g\circ\gamma$ in einer Umgebung von $s$ überein und haben insbesondere dieselbe Ableitung an der Stelle $s$. Die Linearität von $\dot\gamma(s)$ folgt aus der Linearität der Ableitung, und die Derivations-Produktregel folgt aus der Produktregel für Ableitungen.
 \end{bsp}
@@ -939,9 +935,7 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 \begin{bem}
 	Analog kann man Tensoren in $V_1^* \otimes \dots \otimes V_k^* \otimes W$ als $k$-lineare Abbildungen $V_1 \times \dots \times V_k \to W$ auffassen via
 	\[(\eta_1 \otimes \dots \otimes \eta_k \otimes w)(v_1, \dots, v_k) := \eta_1(v_1) \cdots \eta_k(v_k) \cdot w\]
-	und linearer Fortsetzung. Sind die $V_i$ und $W$ endlich-dimensional, dann geht das auch umgekehrt.
-	\kommB{\glqq Umgekehrt\grqq\ ist mir unklar}
-	\kommP{Das \glqq Umgekehrte\grqq\ (also dass jede multilineare Abbildung durch einen Tensor gegeben ist) folgt wie oben, weil man jede multilineare Abb. bzgl. einer Basis entwickeln kann.}
+	und linearer Fortsetzung. Sind die $V_i$ und $W$ endlich-dimensional, dann erhält man auf diese Weise auch jede $k$-lineare Abbildung.
 
 	Für den Fall $W = \R$ erhalten wir, dass die Elemente von $V_1^* \otimes \dots \otimes V_k^*$ den $k$-linearen Abbildungen $V_1 \times \dots \times V_k \to \R$ entsprechen.
 
@@ -1272,12 +1266,6 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			Ein lokaler Schnitt $\sigma\colon U\rightarrow E$ ist genau dann glatt, wenn für einen einen lokalen Rahmen $(\sigma_1,\ldots,\sigma_n)$ mit $\sigma=f^i\sigma_i$ die Koeffizientenfunktionen $f^i\colon U\rightarrow \R$ glatt sind.
 			\bewUeb
 		\end{lemma}
-		
-		Später brauchen wir noch folgendes Ergebnis:
-		\begin{kor}\label{kor:Vektorbündel_über_Intervallen}
-			Vektorbündel über offenen Intervallen sind trivial.
-		\end{kor}
-		\kommP{Woraus folgt das? Ich denke, das ist ziemlich nichttrivial \dots oder?}\kommB{In der Tat\ldots Der Beweis ist auch völlig unschön und wenig lehrreich. Man braucht das halt formal für die Sachen zu Geodäten}
 	\section{Konstruktionen von Vektorbündeln}
 		Seien $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.\\
 		\begin{defn}
@@ -1505,7 +1493,11 @@ Man tut also das Einzige, was man sinnvoll tun kann, um aus $X$ ein Vektorfeld a
 \begin{defn}
 	Der \emph{Pullback von $X \in \mathfrak X(N)$ entlang von $\phi\colon M \to N$} ist $\phi^*X := (\phi^{-1})_*X$, also
 	\[(\phi^*X)_p := \DD(\phi^{-1})|_{\phi(p)}(X_{\phi(p)}) \quad \text{für} \; p \in M.\]
-\end{defn}\kommB{Hier sollte noch eine Anmerkung zum Rückzug von Schnitten hin, damit klar ist, dass das hier eine \glqq echte Erweiterung\grqq\ ist.}
+\end{defn}
+
+\begin{bem}
+	Der Pullback $\phi^*X$ ist, trotz gleicher Notation, etwas anderes als der Rückzug von Schnitten: Im Gegensatz zu letzterem werden hier die einzelnen Vektoren aus $T_{\phi(p)}N$ noch nach $T_pM$ geholt mithilfe des Differentials von $\phi^{-1}$.
+\end{bem}
 
 Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar naheliegenderweise als $\phi_*f := f \circ \phi^{-1}$ und $\phi^*g := g \circ \phi$ für einen Diffeomorphismus $\phi\colon M \to N$ und $f \in \sC(M), g \in \sC(N)$.
 
@@ -1669,10 +1661,6 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	\end{proof}
 \end{lemma}
 Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y] = \mathcal L_X Y$ gibt an, wie sehr sich $Y$ ändert, wenn wir uns in Richtung von $X$ bewegen.
-\kommP[inline]{Hier könnte man jetzt noch was à la
-	\[\frac{1}{2} \left.\frac{\D^2}{\D t^2} \left(\Phi^Y_{-t} \circ \Phi^X_{-t} \circ \Phi^Y_t \circ \Phi^X_t\right) (p) \right|_{t=0} = [X,Y]_p\]
-	machen, damit man noch mehr geometrische Interpretation hat, aber da muss man erst mal was darüber sagen, dass man für Kurven mit $\gamma'(0) = 0$ sinnvoll $\gamma''(0) \in T_{\gamma(0)}M$ auffassen kann, und das erscheint mir dann doch zu viel.
-}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1715,7 +1703,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 				\begin{align}
 					\Psi&\colon\vf^L(G)\to T_eG, X\mapsto X_e\nonumber\\
 					L&\colon T_eG\rightarrow \vf^L(G), v\mapsto (g\mapsto \DD l_g\vert_e v)\label{def:kan_Iso}
-				\end{align}\kommB{Ist $L$ ein guter Name bzw. gibt es da einen üblichen?}
+				\end{align}
 				$L$ ist wohldefiniert, denn für $v\in T_eG$ und $g,h\in G$ gilt:
 				\begin{align*}
 					\left((l_g)_*L(v)\right)_h&=\DD l_g\vert_{g^{-1}\cdot h}L(v)_{g^{-1}\cdot h}\\
@@ -1760,7 +1748,6 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			Damit haben wir also eine Integralkurve $\gamma_h$, die auf $I_g$ definiert ist. Wenn wir nun aber $a \in I_g$ wählen und $h := \gamma_g(a) \cdot g^{-1}$ setzen, so ist die verschobene Kurve $\lambda(t)=\gamma_g(t+a)\;\forall t\in I_g-a$ auch eine Integralkurve von $X$ in $\gamma_g(a) = h \cdot g$ und wir können den Definitionsbereich von $\gamma_h$ um $a$ verlängern! Indem wir die so erhaltene Kurve wieder zurück verschieben, haben wir den Definitionsbereich von $\gamma_g$ verlängert. Dies ist ein Widerspruch zur Annahme der Maximalität, also muss für maximale Integralkurven schon $I=\R$ gelten.
 			\end{proof}
 		\end{lemma}
-		\kommP[inline]{Den Beweis habe ich ein bisschen klarer gemacht, denn es ist (meiner Ansicht nach) nicht direkt offensichtlich, dass man ein $h$ wählen kann, sodass $g \in \gamma_h(I_g)$ gilt. So muss man zwar einmal mehr verschieben, aber es ist klarer, finde ich.}
 	\section{Die Exponentialabbildung}
 		\begin{defn}[Exponentialabbildung]
 			Die \emph{Exponentialabbildung} $\exp\colon\mathfrak{g}\rightarrow G$ ist durch den Fluss der linksinvarianten Vektorfelder definiert:
@@ -1777,7 +1764,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
 			\end{enumerate}
 			\begin{proof}
-				Übung. (Für die dritte Eigenschaft, konstruiere zwei Integralkurven in $\exp(sv)$) \kommB{Hinweis: Zum Beweis der dritten Eigenschaft hilft der Beweis der Vollständigkeit von linksinvarianten Vektorfeldern und die Eigenschaften von Integralkurven bzgl. Skalierung.}
+				Übung. (Für die zweite Eigenschaft helfen die Eigenschaften von Integralkurven bei Skalierung. Für die dritte Eigenschaft konstruiere zwei Integralkurven in $\exp(sv)$)
 			\end{proof}
 		\end{lemma}
 		\begin{lemma}[Fluss linksinvarianter Vektorfelder]\label{lemma:Fluss_linksinvarianter_Vektorfelder}
@@ -1868,6 +1855,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			\end{align*}
 			Die Bilinearität folgt aufgrund der Linearität der Spur und $\ad$ und die Symmetrie aufgrund der Zyklizität der Spur.
 		\end{defn}
+		Die Killing-Form ist in der Theorie der Lie-Gruppen und -Algebren sehr wichtig. Beispielsweise gilt:
 		\begin{satz}
 			Die Killing-Form ist negativ definit genau dann, wenn die Lie-Gruppe kompakt und das Zentrum der Lie-Algebra
 			\begin{equation*}
@@ -1875,7 +1863,6 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			\end{equation*}
 			trivial ($=\lbrace 0\rbrace$) ist.
 		\end{satz}
-		\kommB{Idee: Hier noch fundamentale Vektorfelder und adjungierte Darstellung und dann später bei Geodäten bzgl der Killing-form sehen, dass (die Exponentialabbildungen übereinstimmen und damit) die Geodäten gerade Integralkurven linksinvarianter Vektorfelder sind.}
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Tensorbündel und Tensorfelder}
@@ -2094,7 +2081,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 				&=\frac{\partial x^i}{\partial y^j} \left(\partial_i(\tau^a_d)+A^a_{ib}\tau^b_d\right)\sigma_a=\frac{\partial x^i}{\partial y^j} \left(\partial_i(\tau^a_d)+A^a_{ib}\tau^b_d\right)(\tau^{-1})^c_a\rho_c
 			\end{align*}
 			Beachte: Die Zusammenhangskoeffizienten sind nicht Koeffizienten eines Tensors.
-		\end{lemma}\kommB[inline]{Ist das hier zu technisch? Wollen/Brauchen wir das (Abgesehen von Beweisen)?}
+		\end{lemma}
 		\begin{satz}
 			Auf jedem Vektorbündel existiert eine kovariante Ableitung.
 			\begin{proof}
