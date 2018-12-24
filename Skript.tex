@@ -14,6 +14,7 @@
 \usepackage{enumitem}
 \usepackage{microtype} % Microtypography!
 \usepackage{epigraph}
+\usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{todonotes}
 
@@ -342,15 +343,19 @@ Wir können $V$ also über $\Theta$ mit einem Unterraum von $V^{**}$ identifizie
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Der Tangentialraum}
-Idee: Was sind \glqq Richtungen\grqq\ auf einer Mannigfaltigkeit?
+Wir wollen jetzt die Frage beantworten: Was sind \glqq Richtungen\grqq\ auf einer Mannigfaltigkeit?
 
-Anschaulich: Wenn Mf. eingebettet im $\mathbb R^n$, können wir uns eine Tangentialebene vorstellen (Bild: $S^2$ in $\mathbb R^3$). Also: Mögliche Richtungen = Ableitungen von Kurven. Aber abstrakt?
+\begin{figure} \label{fig:tngt_plane}
+	\centering
+	\includegraphics[width=0.4\textwidth]{Image_Tangent-plane}
+	\caption{Anschauliche Tangentialebene an $S^2$ in $\R^3$.}
+\end{figure}
 
-Müssen intrinsisch darüber reden können. Dabei hilft die Beobachtung, dass man Richtungen dazu benutzt, zu beschreiben, wie sich Dinge bei Bewegung in diese Richtung ändern. Also: Richtung = Richtungsableitung! \todo{Ableitung entlang von Kurven im $\mathbb R^n$ als Motivation.} Wir werden deshalb \glqq Richtungen\grqq\ als Ableitungsoperatoren formalisieren.
+Eine anschauliche Idee ist wie folgt: Wenn die Mannigfaltigkeit $M$ eingebettet im $\mathbb R^n$ ist, können wir uns in jedem Punkt $p \in M$ eine Tangentialebene vorstellen, in der Tangentialvektoren liegen, die den möglichen Richtungen entsprechen, in die man sich bewegen kann, vgl. Abbildung \ref{fig:tngt_plane}. Hier entsprechen die möglichen Richtungen am Punkt $p$ also Ableitungen von Kurven in $\R^n$, die in der Mannigfaltigkeit verlaufen. Aber wie können wir diese intuitive Idee abstrahieren?
 
-Idee: Ableitungen erfüllen eine Produktregel und wirken \glqq lokal\grqq.
+Wir müssen \emph{intrinsisch} über Richtungen in $M$ reden können. Dabei hilft die Beobachtung, dass man das Konzept von Richtungen dazu benutzt, zu beschreiben, wie sich Dinge bei Bewegung in diese Richtung ändern. Die Idee lautet also: Richtung = Richtungsableitung! Wir werden deshalb \glqq Richtungen\grqq\ als Ableitungsoperatoren formalisieren.
 
-Sei im Folgenden $M$ eine differenzierbare Mannigfaltigkeit, $\dim M = n$.
+Die Idee hinter der folgenden abstrakten Formalisierung von Ableitungsoperatoren ist die folgende: Ableitungen erfüllen eine Produktregel und wirken \glqq lokal\grqq. Sei im Folgenden $M$ eine differenzierbare Mannigfaltigkeit.
 
 \begin{defn}[Funktionskeime]
 	Sei $p \in M$. Auf der Menge $X = \{f \in \sC(U) : U \subset M \text{ offene Umgebung von } p\}$ betrachten wir die Äquivalenzrelation $\sim$, die gegeben ist durch
@@ -406,6 +411,12 @@ Mithilfe des Tangentialraumbegriffs können wir nun nicht nur entscheiden, ob Ab
 \begin{prop}
 	$\left.\DD f\right|_p(v)$ ist tatsächlich wohldefiniert und eine Derivation von $\sC_{f(p)}(N)$, und $\left.\DD f\right|_p$ ist linear. \bewUeb
 \end{prop}
+
+\begin{bem}
+	Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $f\circ\gamma \colon I \to N$ eine Kurve in $M$. Der Geschwindigkeitsvektor von dieser Kurve zum Zeitpunkt $s$ ist $(f\circ\gamma)'(s) = \left.\DD f\right|_{\gamma(s)} (\gamma'(s))$ (Übung!).
+	
+	Wenn wir uns auf $M$ also vom Punkt $\gamma(s)$ aus in Richtung $v := \gamma'(s)$ bewegen, dann bewegt sich unser Bild unter $f$ auf $N$ also in Richtung $\left.\DD f\right|_p(v)$. Das Differential beschreibt also in einem sinnvollen Sinne, wie sich \glqq Richtungen\grqq\ unter Abbildungen zwischen Mannigfaltigkeiten verhalten.
+\end{bem}
 
 \begin{satz}[Kettenregel]
 	Seien $f\colon M \to N, g\colon N \to L$ glatte Abbildungen zwischen differenzierbaren Mannigfaltigkeiten, und $p \in M$. Dann gilt \[\left.\DD(g\circ f)\right|_p = \left.\DD g\right|_{f(p)} \circ \left.\DD f\right|_p.\]
