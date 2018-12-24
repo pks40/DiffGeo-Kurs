@@ -1,0 +1,67 @@
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[sc]{mathpazo}
+\linespread{1.05}
+\usepackage{exscale} % To scale mathematical symbols correctly while using T1
+\usepackage{amsmath,amsthm,amssymb,dsfont}
+\usepackage{tikz}
+	\usetikzlibrary{matrix}
+\usepackage[ngerman]{babel}
+\usepackage{enumitem}
+\usepackage{microtype} % Microtypography!
+\usepackage{epigraph}
+\usepackage{hyperref}
+
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\DD}{\mathrm{D}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\diff}{:\Longleftrightarrow}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Exp}{Exp}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\sC}{\mathcal{C}^{\infty}}
+\newcommand{\sm}{\mathcal{F}}
+\newcommand{\vf}{\mathfrak{X}}
+\newcommand{\tril}{\vartriangleleft}
+\newcommand{\trir}{\vartriangleright}
+
+\title{Übungsaufgaben}
+\begin{document}
+	\maketitle
+	\section{Mannigfaltigkeiten}
+	\begin{enumerate}
+		\item Beweise alle Aussagen in Abschnitt 1.1.
+		\item Zeige: Die Fortsetzung eines nichtleeren Atlanten zu einem maximalen Atlanten ist eindeutig.
+		\item Zeige: Eine Karte ist eine glatte Abbildung zwischen Mannigfaltigkeiten.
+		\item Zeige: Für eine Produktmannigfaltigkeit $M_1\times M_2$ sind die kanonischen Projektionen $\pi_i\colon M_1\times M_2\rightarrow M_i$ ($i=1,2$) differenzierbar und für eine weitere Mannigfaltigkeit $N$ mit Abbildung $f\colon N\rightarrow M_1\times M_2$ gilt:
+		\begin{equation}
+			\text{$f$ ist differenzierbar} \colon\Leftrightarrow \pi_i\circ f \text{ ist differenzierbar für } i=1,2
+		\end{equation}
+	\end{enumerate}
+	\section{Vektorbündel}
+	\begin{enumerate}
+		\item Zeige: Ein Vektorbündel ist genau dann trivial, wenn es einen globalen Rahmen besitzt.
+		\item Gib das Tangentialbündel $TS^1$ der $1$-Sphäre an, indem Du $S^1$ als Teilmenge der komplexen Zahlen auffasst und durch Kurven die Tangentialräume punktweise erzeugst.
+		\item Mache Dir klar, dass ein zurückgezogener Schnitt tatsächlich ein Schnitt des zurückgezogenen Bündels ist (dabei gilt es zwei Eigenschaften zu prüfen).
+		\item Zeige, dass die zurückgezogenen Schnitte die Schnitte des zurückgezogenen Bündels erzeugen. (Mit bump functions!)
+		\item Konstruiere aus Karten einer Mannigfaltigkeit einen Bündelatlas des Tangentialbündels.
+	\end{enumerate}
+	\section{Lie-Gruppen}
+	\begin{enumerate}
+		\item Mache Dir noch einmal die Schritte zur Konstruktion der Lie-Algebra bewusst und entwickle ein konzeptionelles Verständnis.
+		\item Zeige, dass der Kommutator von linksinvarianten Vektorfeldern linksinvariant ist.
+		\item Berechne eine Basis der linksinvarianten Vektorfelder von $S^1$. Hinweis: Betrachte dazu $S^1$ wie zuvor als Teilmenge von $\mathbb{C}$ und überlege Dir zuerst anschaulich, wie das Differential der Linkstranslationen auf das Tangentialbündel wirkt.
+		\item Beweise die Eigenschaften der Exponentialabbildung.
+	\end{enumerate}
+\end{document}
