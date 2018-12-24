@@ -192,18 +192,33 @@ Wir können $V$ also über $\Theta$ mit einem Unterraum von $V^{**}$ identifizie
 \begin{nota}
 	Punkte im $\mathbb R^n$ schreiben wir als $a = (a^1, \dots, a^n)$. Die Vektoren der Standardbasis von $\mathbb R^n$ schreiben wir als $\e_1, \dots, \e_n \in \mathbb R^n$, also \[\e_i = (0,\dots,\underset{i}{1},\dots,0).\]
 
-	Sei $U \subset \mathbb R^n$ eine offene Menge und $f\colon U \to \mathbb R$ eine differenzierbare Abbildung. Die partielle Ableitung von $f$ nach der $i$-ten Komponente schreiben wir als $\partial_i f$, d.\,h. es ist
+	Sei $U \subset \mathbb R^n$ eine offene Menge und $f\colon U \to \mathbb R$ eine Funktion. Die partielle Ableitung von $f$ nach der $i$-ten Komponente schreiben wir als $\partial_i f$, d.\,h. es ist
 	\[(\partial_i f)(a) = \left.\frac{\D f(a + h \e_i)}{\D h}\right|_{h=0} = \lim_{h\to 0} \frac{f(a + h \e_i) - f(a)}{h}.\]
+
+	Ist allgemeiner $A \subset V$ eine offene Teilmenge eines endlich-dimensionalen Vektorraums und $f\colon A \to \mathbb W$ eine Abbildung in einen endlich-dimensionalen Vektorraum $W$, so schreiben wir die Richtungsableitung von $f$ in Richtung eines Vektors $v\in V$ als $\partial_v f$, d.\,h. es ist
+	\[(\partial_v f)(a) = \left.\frac{\D f(a + h v)}{\D h}\right|_{h=0} = \lim_{h\to 0} \frac{f(a + h v) - f(a)}{h}\]
+	für $a \in A$.
 \end{nota}
 
-\begin{satz}[Mehrdimensionale Kettenregel]
-	Seien $U \subset \mathbb R^l, V \subset \mathbb R^m, W \subset \mathbb R^n$ offene Mengen und $f\colon U\to V, g\colon V \to W$ differenzierbare Abbildungen. Dann ist auch $g\circ f\colon U \to W$ differenzierbar, und für die Differentiale gilt
+\begin{satz}[Mehrdimensionale Kettenregel für vektorwertige Abbildungen]
+	Seien $A \subset U, B \subset V, C \subset W$ offene Teilmengen von endlich-dimensionalen Vektorräumen und $f\colon A\to B, g\colon B \to C$ differenzierbare Abbildungen. Dann ist auch $g\circ f\colon A \to C$ differenzierbar, und für die Differentiale gilt
 	\[\DD(g\circ f)|_a = \DD g|_{f(a)} \circ \DD f|_a\]
-	für $a \in U$. Für die partiellen Ableitungen der Komponenten gilt also
-	\[\partial_i(g\circ f) = \sum_{j = 1}^m ((\partial_j g)\circ f) \cdot \partial_i f^j,\]
-	d.\,h.
-	\[(\partial_i(g\circ f))(a) = \sum_{j = 1}^m (\partial_j g)(f(a)) \cdot (\partial_i f^j)(a).\]
+	für $a \in A$. Mit Richtungsableitungen geschrieben heißt das
+	\[\Big(\partial_u(g\circ f)\Big)(a) = \Big(\partial_{(\partial_u f)(a)} g\Big)(f(a))\]
+	für $u \in U, a\in A$.
+
+	Speziell für den Fall $U = \R$ erhalten wir
+	\[(g\circ f)'(a) = \Big(\partial_{f'(a)} g\Big)(f(a)).\]
 \end{satz}
+Die formale Definition der Differentiale und von mehrdimensionaler (totaler) Differenzierbarkeit brauchen wir nicht; uns reicht die Aussage, dass letztere von stetiger partieller Differenzierbarkeit impliziert wird.
+
+\begin{defn}
+	Seien $U \subset \mathbb R^m, V \subset \mathbb R^n$ offene Mengen. Eine Abbildung $f\colon U\to V$ heißt \emph{$k$-fach stetig (partiell) differenzierbar} oder auch \emph{von der Klasse $\mathcal C^k$}, wenn alle partiellen Ableitungen $\partial_{i_1} \dots \partial_{i_k} f$ der Ordnung $k$ existieren und stetige Funktionen auf $U$ sind.
+
+	$f$ heißt \emph{glatt}, \emph{von der Klasse $\sC$} oder auch \emph{beliebig/unendlich oft differenzierbar}, wenn es $\mathcal C^k$ für jedes $k\in\mathbb N$ ist.
+
+	Nach Kettenregel (iterativ) sind Verkettungen glatter Funktionen wieder glatt.
+\end{defn}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -388,14 +403,14 @@ $T_pM$ ist tatsächlich ein Untervektorraum von $(\sC_p(M))^*$ (Übung).
 \end{lemma}
 
 \begin{bsp} \label{bsp:kurve_geschw}
-	Sei $I\subset\mathbb R$ offen und $\gamma\colon I \to M$ eine glatte Kurve mit $\gamma(s) = p$ für ein $s \in I$. Wir definieren den Tangentialvektor $\gamma'(s) \in T_pM$ durch \[(\gamma'(s))(f) := (f\circ\gamma)'(s),\] wobei wir auf der rechten Seite die Ableitung der Funktion $f\circ\gamma \colon I \to \mathbb R, I \subset \mathbb R$ gebildet haben.
+	Sei $I\subset\mathbb R$ offen und $\gamma\colon I \to M$ eine glatte Kurve mit $\gamma(s) = p$ für ein $s \in I$. Wir definieren den Tangentialvektor $\dot\gamma(s) \in T_pM$ durch \[(\dot\gamma(s))(f) := (f\circ\gamma)'(s),\] wobei wir auf der rechten Seite die Ableitung der Funktion $f\circ\gamma \colon I \to \mathbb R, I \subset \mathbb R$ gebildet haben.
 
-	$\gamma'(s)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\gamma'(s)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen. \kommB{Soll dazu noch eine konkrete Rechnung folgen? Vllt. als Übung? (Also dass man konkret im $\R^n$ nachrechnet, dass da so etwas wie eine Richtung herauskommt (unter Identifikation blabla)}
+	$\dot\gamma(s)$ leitet also die Funktionskeime, auf die es angewendet wird, entlang der Kurve ab; wir können $\dot\gamma(s)$ also als \glqq Geschwindigkeitsvektor\grqq\ der Kurve auffassen. \kommB{Soll dazu noch eine konkrete Rechnung folgen? Vllt. als Übung? (Also dass man konkret im $\R^n$ nachrechnet, dass da so etwas wie eine Richtung herauskommt (unter Identifikation blabla)}
 
-	$\gamma'(s)$ ist wohldefiniert und tatsächlich eine Derivation: Wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ\gamma$ und $g\circ\gamma$ in einer Umgebung von $s$ überein und haben insbesondere dieselbe Ableitung an der Stelle $s$. Die Linearität von $\gamma'(s)$ folgt aus der Linearität der Ableitung, und die Derivations-Produktregel folgt aus der Produktregel für Ableitungen.
+	$\dot\gamma(s)$ ist wohldefiniert und tatsächlich eine Derivation: Wenn $[f] = [g]$ gilt, dann stimmen $f$ und $g$ in einer Umgebung von $p$ überein, und damit stimmen $f\circ\gamma$ und $g\circ\gamma$ in einer Umgebung von $s$ überein und haben insbesondere dieselbe Ableitung an der Stelle $s$. Die Linearität von $\dot\gamma(s)$ folgt aus der Linearität der Ableitung, und die Derivations-Produktregel folgt aus der Produktregel für Ableitungen.
 \end{bsp}
 
-Später werden wir sehen, dass sich tatsächlich \emph{jeder} Tangentialvektor als Ableitung einer Kurve schreiben lässt.
+Später werden wir sehen, dass sich tatsächlich \emph{jeder} Tangentialvektor als Geschwindigkeitsvektor einer Kurve schreiben lässt.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Das Differential}
@@ -413,9 +428,9 @@ Mithilfe des Tangentialraumbegriffs können wir nun nicht nur entscheiden, ob Ab
 \end{prop}
 
 \begin{bem}
-	Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $f\circ\gamma \colon I \to N$ eine Kurve in $M$. Der Geschwindigkeitsvektor von dieser Kurve zum Zeitpunkt $s$ ist $(f\circ\gamma)'(s) = \left.\DD f\right|_{\gamma(s)} (\gamma'(s))$ (Übung!).
+	Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $\tilde\gamma := f\circ\gamma \colon I \to N$ eine Kurve in $M$. Der Geschwindigkeitsvektor von dieser Kurve zum Zeitpunkt $s$ ist $\dot{\tilde\gamma}(s) = \left.\DD f\right|_{\gamma(s)} (\dot\gamma(s))$ (Übung!).
 	
-	Wenn wir uns auf $M$ also vom Punkt $\gamma(s)$ aus in Richtung $v := \gamma'(s)$ bewegen, dann bewegt sich unser Bild unter $f$ auf $N$ also in Richtung $\left.\DD f\right|_p(v)$. Das Differential beschreibt also in einem sinnvollen Sinne, wie sich \glqq Richtungen\grqq\ unter Abbildungen zwischen Mannigfaltigkeiten verhalten.
+	Wenn wir uns auf $M$ also vom Punkt $\gamma(s)$ aus in Richtung $v := \dot\gamma(s)$ bewegen, dann bewegt sich unser Bild unter $f$ auf $N$ also in Richtung $\left.\DD f\right|_p(v)$. Das Differential beschreibt also in einem sinnvollen Sinne, wie sich \glqq Richtungen\grqq\ unter Abbildungen zwischen Mannigfaltigkeiten verhalten.
 \end{bem}
 
 \begin{satz}[Kettenregel]
@@ -524,7 +539,22 @@ $\left.\partial_v\right|_p$ ist also einfach die Richtungsableitung in Richtung 
 	Da $\alpha$ beliebig war, gilt also $w = \left.\partial_v\right|_p$. Wir können also jedes $w \in T_pV$ als Richtungsableitung in Richtung eines Vektors $v\in V$ schreiben.
 \end{proof}
 
-Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise zu $V$ selbst isomorph; ein Vektor $v \in V$ wird dabei mit der Richtungsableitung $\left.\partial_v\right|_p$ identifiziert.
+Der Tangentialraum $T_pV$ an einen endlich-dimensionalen Vektorraum $V$ ist also in kanonischer Weise zu $V$ selbst isomorph; ein Vektor $v \in V$ wird dabei mit der Richtungsableitung $\left.\partial_v\right|_p$ identifiziert.
+
+Bzgl. dieser Identifikation ist der in Beispiel \ref{bsp:kurve_geschw} definierte abstrakte \glqq Geschwindigkeitsvektors\grqq\ einer Kurve identisch zur üblichen Ableitung der Kurve als vektorwertige Funktion:
+\begin{lemma}
+	Sei $I\subset \R$ eine offene Menge, $s\in I$, $\gamma\colon I\to V$ eine Kurve und $p := \gamma(s)$.
+
+	Von dieser Kurve können wir einerseits die übliche Ableitung
+	\[\gamma'(s) = \lim_{h\to 0} \frac{\gamma(s+h) - p}{h} \in V\]
+	bilden; andererseits können wir den abstrakten Geschwindigkeitsvektor $\dot\gamma(s) \in T_pV$ bilden.
+
+	Bzgl. der kanonischen Identifikation $V \equiv T_pV$ ist dann $\gamma'(s) \equiv \dot\gamma(s)$.
+
+	\begin{proof}
+		Übung. (Tipp: Verwende die mehrdimensionale Kettenregel für vektorwertige Abbildungen!)
+	\end{proof}
+\end{lemma}
 
 \begin{kor}
 	Auf dem $\mathbb R^n$ bilden die partiellen Ableitungsoperatoren $\left.\partial_1\right|_p, \dots, \left.\partial_n\right|_p$ eine Basis des Tangentialraums $T_p\mathbb R^n$.
@@ -577,12 +607,12 @@ Der Tangentialraum $T_pV$ an einen Vektorraum $V$ ist also in kanonischer Weise 
 	\end{proof}
 \end{satz}
 
-\begin{bsp}
+\begin{bsp} \label{bsp:abl_kurve_differential}
 	Sei $I \subset \mathbb R$ eine offene Menge, $s \in I$ und $\left.\partial_1\right|_s$ der kanonische Ableitungsoperator, der eine Basis von $T_s I$ bildet.
 
-	Ist $M$ eine differenzierbare Mannigfaltigkeit und $\gamma\colon I \to M$ eine glatte Kurve, so können wir das Differential $\left.\DD \gamma\right|_s \colon T_sI \to T_{\gamma(s)} M$ betrachten. Dieses bildet den Basisvektor $\left.\partial_1\right|_s$ ab auf die Derivation $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)$, die wirkt als $\left(\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)\right)(f) = \left.\partial_1\right|_s (f\circ\gamma) = \left.\frac{\D(f\circ\gamma)(s + h)}{\D h}\right|_{h=0} = (f\circ\gamma)'(s)$. Das ist aber genau die Wirkung des in Beispiel \ref{bsp:kurve_geschw} definierten \glqq Geschwindigkeitsvektors\grqq\ $\gamma'(s) \in T_{\gamma(s)} M$, also gilt $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s) = \gamma'(s)$.
+	Ist $M$ eine differenzierbare Mannigfaltigkeit und $\gamma\colon I \to M$ eine glatte Kurve, so können wir das Differential $\left.\DD \gamma\right|_s \colon T_sI \to T_{\gamma(s)} M$ betrachten. Dieses bildet den Basisvektor $\left.\partial_1\right|_s$ ab auf die Derivation $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)$, die wirkt als $\left(\left.\DD \gamma\right|_s(\left.\partial_1\right|_s)\right)(f) = \left.\partial_1\right|_s (f\circ\gamma) = \left.\frac{\D(f\circ\gamma)(s + h)}{\D h}\right|_{h=0} = (f\circ\gamma)'(s)$. Das ist aber genau die Wirkung des in Beispiel \ref{bsp:kurve_geschw} definierten \glqq Geschwindigkeitsvektors\grqq\ $\dot\gamma(s) \in T_{\gamma(s)} M$, also gilt $\left.\DD \gamma\right|_s(\left.\partial_1\right|_s) = \dot\gamma(s)$.
 
-	Der \glqq Geschwindigkeitsvektor\grqq\ $\gamma'(s)$ ist also tatsächlich in einem formalen Sinne die Ableitung der Kurve $\gamma$ an der Stelle $s$, nämlich das Differential von $\gamma$ an dieser Stelle angewendet auf den kanonischen Basisvektor von $T_sI$.
+	Der \glqq Geschwindigkeitsvektor\grqq\ $\dot\gamma(s)$ ist also tatsächlich in einem formalen Sinne die Ableitung der Kurve $\gamma$ an der Stelle $s$, nämlich das Differential von $\gamma$ an dieser Stelle angewendet auf den kanonischen Basisvektor von $T_sI$.
 \end{bsp}
 
 \begin{lemma}[Differential von glatten Funktionen als Anwendung der Derivation]
@@ -693,18 +723,50 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ableitungen von Kurven}
-\begin{bsp}
-	Für eine offene Menge $I\subset\mathbb R$ schreibt man die kanonische Karte $\id_I\colon I \to I$ oft als $t$ und den davon induzierten Koordinatenvektor dann als $\left.\frac{\D}{\D t}\right|_s \in T_sI$. Das ist natürlich einfach der normale Ableitungsoperator an der Stelle $s$, den wir oben schon als $\left.\partial_1\right|_s$ geschrieben haben. Für eine glatte Kurve $\gamma\colon I \to M$ ist also
-	\[\gamma'(s) = \left.\DD\gamma\right|_s \left(\left.\frac{\D}{\D t}\right|_s\right).\]
+\begin{bem}
+	Für eine offene Menge $I\subset\mathbb R$ schreibt man die kanonische Karte $\id_I\colon I \to I$ oft als $t$ und den davon induzierten Koordinatenvektor dann als $\left.\frac{\D}{\D t}\right|_s \in T_sI$. Das ist natürlich einfach der normale Ableitungsoperator an der Stelle $s$, den wir oben schon als $\left.\partial_1\right|_s$ geschrieben haben. Für eine glatte Kurve $\gamma\colon I \to M$ ist also (vgl. Beispiel \ref{bsp:abl_kurve_differential})
+	\[\dot\gamma(s) = \left.\DD\gamma\right|_s \left(\left.\frac{\D}{\D t}\right|_s\right).\]
 
-	Statt $\gamma'(s)$ schreiben wir für die Ableitung einer Kurve an der Stelle $s$ in Zukunft auch
-	\[\gamma'(s) = \left.\frac{\D}{\D t}\gamma(t)\right|_{t = s}.\]
+	Statt $\dot\gamma(s)$ schreiben wir für die Ableitung einer Kurve an der Stelle $s$ in Zukunft auch
+	\[\dot\gamma(s) = \left.\frac{\D}{\D t}\gamma(t)\right|_{t = s}.\]
 
 	Man kann sich überlegen, dass
-	\[\gamma'(s) = \left.\frac{\D}{\D t}\gamma(s + t)\right|_{t = 0}\]
+	\[\dot\gamma(s) = \left.\frac{\D}{\D t}\gamma(s + t)\right|_{t = 0}\]
 	gilt (Übung!).
-\end{bsp}
-\todo{Ausarbeiten! Explizite Form der Kettenregel für Ableitungen von Kurven. Zeigen: Jeder Tangentialvektor ist Ableitung einer Kurve. Koordinatenvektoren sind Ableitungen von Koordinatenlinien.}
+\end{bem}
+Mit dieser Schreibweise nimmt die Identifikation eines endlich-dimensionalen Vektorraums mit seinem Tangentialraum eine sehr suggestive Form an:
+\begin{lemma}
+	Sei $V$ ein endlich-dimensionaler Vektorraum und $p, v\in V$. Die Identifikation $V \equiv T_pV$ lässt sich schreiben als
+	\[V \ni v \equiv \left.\frac{\D}{\D t}(p + tv)\right|_{t=0} \in T_pV.\]
+	\bewUeb
+\end{lemma}
+
+Die folgende Form der Kettenregel ist oft sehr hilfreich.
+\begin{lemma}[Kettenregel für Ableitungen von Kurven]
+	Sei $I \subset\R$ eine offene Umgebung von 0, $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ eine glatte Abbildung. Dann gilt
+	\[\left.\frac{\D}{\D t}f(\gamma(t))\right|_{t=0} = \left.\DD f\right|_{\gamma(0)} \left(\left.\frac{\D}{\D t}\gamma(t)\right|_{t=0}\right).\]
+
+	\begin{proof}
+		Mit der obigen Bemerkung folgt das direkt aus der Kettenregel.
+	\end{proof}
+\end{lemma}
+
+\begin{lemma}[Koordinatenvektoren sind Ableitungen von Koordinatenlinien]
+	Sei $M$ eine differenzierbare Mannigfaltigkeit und $(x,U)$ eine Karte um $p$. Sei $i \in \{1,\dots,n\}$.
+
+	Für genügend kleine $t$ liegt $x(p) + t \e_i$ in $x(U) \subset \R^n$, d.\,h. $t \mapsto x^{-1}(x(p) + t\e_i)$ ist eine Kurve durch $p$ in $U$. Dies ist gerade die \emph{$i$-te Koordinatenlinie} durch $p$, d.\,h. die Kurve durch $p$, entlang derer die Koordinate $x^i$ variiert und die anderen Koordinaten $x^j, j\ne i$ konstant bleiben.
+
+	Die Ableitung dieser Koordinatenlinie ist der $i$-te Koordinatenvektor,
+	\[\left.\frac{\D}{\D t} x^{-1}(x(p) + t\e_i) \right|_{t=0} = \left.\frac{\partial}{\partial x^i}\right|_p.\]
+
+	\bewUeb
+\end{lemma}
+Damit kann man jetzt sehr leicht zeigen, dass jeder Tangentialvektor sich als Ableitung einer Kurve schreiben lässt.
+\begin{lemma}
+	Sei $M$ eine differenzierbare Mannigfaltigkeit und $p\in M$. Jeder Tangentialvektor $v\in T_pM$ ist Ableitung einer Kurve.
+
+	\bewUeb
+\end{lemma}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
