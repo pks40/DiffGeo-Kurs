@@ -317,7 +317,7 @@ Die formale Definition der Differentiale und von mehrdimensionaler (totaler) Dif
 				\item Zwei Karten sind \emph{verträglich}, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
 				\item Ein Atlas ist \emph{differenzierbar}, wenn alle seine Karten paarweise verträglich sind.
 				\item Ein differenzierbarer Atlas heißt \emph{maximal}, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
-				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}. Wenn also von einer Karten auf einer differenzierbaren Mannigfaltigkeit die Rede ist, sind immer solche aus der differenzierbaren Struktur gemeint.
+				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}. Wenn im Folgenden von Karten auf einer differenzierbaren Mannigfaltigkeit die Rede ist, sind immer solche aus der differenzierbaren Struktur gemeint.
 			\end{itemize}
 		\end{defn}
 		\begin{lemma}
@@ -345,11 +345,19 @@ Die formale Definition der Differentiale und von mehrdimensionaler (totaler) Dif
 			
 			Analog kann man auch $k$-fach differenzierbare Abbildungen definieren und schreibt für diese $\mathcal{C}^k(M,N)$.
 		\end{defn}
+		\begin{lemma}
+			Sind $f\colon M\to N$ und $g\colon N \to L$ glatte Abbildungen, so ist auch $g\circ f \colon M \to L$ glatt.
+			\bewUeb
+		\end{lemma}
 		\begin{defn}
 			Ein \emph{Diffeomorphismus} ist eine bijektive Abbildung $f\in\sC(M,N)$ für die $f^{-1}\in\sC(N,M)$ gilt.
 
 			Die Menge der Diffeomorphismen $\Diff(M)\subset\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
+		\begin{lemma} \label{lemma:karte_diffeo}
+			Sei $M$ eine differenzierbare Mannigfaltigkeit und $(\varphi,U)$ eine Karte von $M$. Dann ist $\varphi\colon U \to \varphi(U) \subset \R^n$ ein Diffeomorphismus.
+			\bewUeb
+		\end{lemma}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -638,7 +646,7 @@ Bzgl. dieser Identifikation ist der in Beispiel \ref{bsp:kurve_geschw} definiert
 
 Haben wir auf einer Mannigfaltigkeit $M$ eine Karte $(x,U)$ gegeben, dann ermöglicht sie uns, $U$ mit einer offenen Teilmenge des $\mathbb R^n$ zu identifizieren. Das gilt auch für die Tangentialräume:
 \begin{defn}
-	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p\in M$ und $(x,U)$ eine Karte um $p$. Wir schreiben $V = x(U) \subset \mathbb R^n$. Als Abbildung $x\colon U \to V$ ist $x$ ein Diffeomorphismus (Übung!). Nach Lemma \ref{lemma:differential_diffeo} ist dann also
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p\in M$ und $(x,U)$ eine Karte um $p$. Wir schreiben $V = x(U) \subset \mathbb R^n$. Als Abbildung $x\colon U \to V$ ist $x$ nach Lemma \ref{lemma:karte_diffeo} ein Diffeomorphismus. Nach Lemma \ref{lemma:differential_diffeo} ist dann also
 	\[\left.\DD x\right|_p \colon T_pM \to T_{x(p)} \mathbb R^n\]
 	ein Isomorphismus, wobei wir die Identifikationen $T_pM = T_pU$, $T_{x(p)}\mathbb R^n = T_{x(p)} x(U)$ benutzt haben. Diesen benutzen wir, um aus der kanonischen Basis $\{\left.\partial_i\right|_{x(p)}\}$ von $T_{x(p)}\mathbb R^n$ eine Basis von $T_pM$ zu erhalten: Für $i = 1,\dots, n$ definieren wir
 	\[\left.\frac{\partial}{\partial x^i}\right|_p := \left(\left.\DD x\right|_p\right)^{-1} \left(\left.\partial_i\right|_{x(p)}\right) = \left.\DD x^{-1}\right|_{x(p)} \left(\left.\partial_i\right|_{x(p)}\right)\]
@@ -1273,18 +1281,17 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\end{lemma}
 		
 	\section{Konstruktionen von Vektorbündeln}
-		Seien $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.\\
 		\begin{defn}
-			Das zu $(E,M,\pi,\R^{n})$ \emph{duale Bündel} $(E^*,M,\pi^{\prime},(\R^n)^*)$ ist gegeben durch
+			Das zu $(E,M,\pi,\R^{n})$ \emph{duale Bündel} $(E^*,M,\pi^{\prime},(\R^n)^*)$ ist wie folgt gegeben: Wir setzen
 			\begin{align*}
 				E^*&:=\bigcup_{x\in M}(E_{x})^*\\
 				\pi^{\prime}&\colon E^*\rightarrow M\\
-				(\pi^{\prime})^{-1}(x)&=E^*_x=(E_{x})^*\quad \forall x\in M
+				(\pi^{\prime})^{-1}(x)&=E^*_x=(E_{x})^*\quad \forall x\in M,
 			\end{align*}
-			und für eine Trivialisierung $(\phi,U)$ von $E$, ist die folgende Abbildung eine Trivialisierung des dualen Bündels:
+			und für eine Trivialisierung $(\phi,U)$ von $E$ ist die folgende Abbildung eine Trivialisierung des dualen Bündels:
 			\begin{align*}
 				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^*\\
-				\lambda&\mapsto\left(x,\lambda\circ({\pr_2}\circ\phi\vert_{\pi^{-1}(\lbrace x\rbrace)})^{-1}\right)
+				\lambda&\mapsto\left(x,\lambda\circ({\pr_2}\circ\phi\vert_{\pi^{-1}(\lbrace x\rbrace)})^{-1}\right),
 			\end{align*}
 			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
@@ -1309,16 +1316,17 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			Sei $(\sigma_1,\dots,\sigma_n)$ ein lokaler Rahmen von $E$. Definieren wir lokale Schnitte $\theta^1, \dots, \theta^n$ von $E^*$ dadurch, dass punktweise $\{\theta^i(x)\}$ die duale Basis von $(E_x)^*$ zur Basis $\{\sigma_i(x)\}$ von $E_x$ ist, dann sind die $\theta^i$ glatt, und somit ist $(\theta^1,\dots,\theta^n)$ ein lokaler Rahmen von $E^*$.
 			\bewUeb
 		\end{lemma}
-		
 		\begin{bsp}
 			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das \emph{Kotangentialbündel} $T^*M$ gewinnen. Wie wir später sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
 		\end{bsp}
+		
+		Seien nun $(E_a,M,\pi_a,\R^{n_a}),(E_b,M,\pi_b,\R^{n_b})$ Vektorbündel.
 		\begin{defn}[Whitney-Summe]
-			Die \emph{Whitney-Summe} $(E_a\oplus E_b ,M,\pi,\R^{n_a+n_b})$ ist ein Vektorbündel gegeben durch
+			Die \emph{Whitney-Summe} $(E_a\oplus E_b ,M,\pi,\R^{n_a+n_b})$ ist ein wie folgt gegebenes Vektorbündel:
 			\begin{align*}
 				E_a\oplus E_b&:=\bigcup_{x\in M}E_{a,x}\oplus E_{b,x}\\
 				\pi&\colon E_a\oplus E_b\rightarrow M\\
-				(\pi)^{-1}(x)&=(E_a\oplus E_b)_x=E_{a,x}\oplus E_{b,x}\quad \forall x\in M
+				(\pi)^{-1}(x)&=(E_a\oplus E_b)_x=E_{a,x}\oplus E_{b,x}\quad \forall x\in M,
 			\end{align*}
 			und für Trivialisierungen $(\phi_a,U),(\phi_b,U)$ ist die folgende Abbildung eine Trivialisierung der Whitney-Summe:
 			\begin{align*}
@@ -1331,11 +1339,11 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			\end{equation}
 		\end{defn}
 		\begin{defn}[Tensorprodukt]
-			Das \emph{Tensorprodukt} $(E_a\otimes E_b ,M,\pi,\R^{n_a\cdot n_b})$ von Vektorbündeln ist ein Vektorbündel gegeben durch
+			Das \emph{Tensorprodukt} $(E_a\otimes E_b, M, \pi, \R^{n_a\cdot n_b})$ ist das wie folgt gegebene Vektorbündel: Wir setzen
 			\begin{align*}
 				E_a\otimes E_b&:=\bigcup_{x\in M}E_{a,x}\otimes E_{b,x}\\
 				\pi&\colon E_a\otimes E_b\rightarrow M\\
-				(\pi)^{-1}(x)&=(E_a\otimes E_b)_x=E_{a,x}\otimes E_{b,x}\quad \forall x\in M
+				(\pi)^{-1}(x)&=(E_a\otimes E_b)_x=E_{a,x}\otimes E_{b,x}\quad \forall x\in M,
 			\end{align*}
 			und für Trivialisierungen $(\phi_a,U),(\phi_b,U)$ ist die folgende Abbildung eine Trivialisierung des Tensorprodukts:
 			\begin{align*}
@@ -1359,13 +1367,13 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{defn}[Rückzug von Vektorbündeln]
 			Sei $f\colon N\rightarrow M$.
 			
-			Das \emph{entlang $f$ zurückgezogene Vektoründel} $(f^*E,\pi_f,N, F)$ ist gegeben durch:
+			Das \emph{entlang $f$ zurückgezogene Vektorbündel} $(f^*E,\pi_f,N, F)$ ist gegeben durch:
 			\begin{align*}
 				f^*E&:=\bigcup _{x\in N} E_{f(x)}\\
 				\pi_f&\colon f^*E\rightarrow N\\
 				(\pi_f)^{-1}(x)&=(f^*E)_x=E_{f(x)}\quad\forall x\in N
 			\end{align*}
-			und für $x\in N$ existiert eine Trivialisierung $(\phi,U)$ um $f(x)\in M$ und dannist die folgende Abbildung eine Trivialisierung $(\phi_f,f^{-1}(U))$ des zurückgezogenen Bündels um $x\in N$:
+			Für $x\in N$ existiert eine Trivialisierung $(\phi,U)$ um $f(x)\in M$, und dann definieren wir die folgende Abbildung als eine Trivialisierung $(\phi_f,f^{-1}(U))$ des zurückgezogenen Bündels um $x\in N$:
 			\begin{align*}
 				\phi_f \colon (\pi_f)^{-1}(f^{-1}(U))&\rightarrow f^{-1}(U)\times\R^n\\
 				\underbrace{v}_{\in (f^*(E))_x=E_{f(x)}}&\mapsto (\pi_f(v),\pr_2(\phi(v)))
@@ -1668,7 +1676,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		Damit ist $(\mathcal L_X Y)(f) = [X,Y](f)$ für alle $f\in\sC(M)$, also $\mathcal L_X Y = [X,Y]$.
 	\end{proof}
 \end{lemma}
-Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y] = \mathcal L_X Y$ gibt an, wie sehr sich $Y$ ändert, wenn wir uns in Richtung von $X$ bewegen.
+Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y] = \mathcal L_X Y$ gibt an, wie sehr sich $Y$ ändert, wenn wir uns entlang von $X$ fließen lassen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
