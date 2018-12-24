@@ -58,7 +58,7 @@
 \title{Einführung in die Differentialgeometrie}
 \subtitle{Kurs auf der CdE-WinterAkademie 2018/19}
 \author{Benjamin Haake, Philip Schwartz}
-\date{November 2018}
+\date{}
 
 \begin{document}
 
@@ -1935,75 +1935,85 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 				Dies folgt für 1-Formen und Vektorfelder aus Satz \ref{satz:Dualität} und für Tensorfelder daraus durch Anwendung \glqq auf jedes Argument separat\grqq .
 			\end{proof}
 		\end{satz}
-		
+
+	\section{Tensorderivationen, Pullback und die Lie-Ableitung}
 		\begin{defn}[Tensorderivation]
 			Eine \emph{(globale) Tensorderivation} ist eine Familie von $\R$-linearen Abbildungen $\delta\colon\Gamma(T^{(r,s)}M)\rightarrow \Gamma(T^{(r,s)}M)$, die die folgenden Eigenschaften erfüllt:
 			\begin{enumerate}[label=\arabic*.]
 				\item $\delta (A\otimes B)=(\delta(A))\otimes B+A\otimes(\delta(B))$ (Produktregel)
-				\item $C_{i,j}(\delta(A))=\delta(C_{i,j}A)$ 
+				\item $C_{i,j}(\delta(A))=\delta(C_{i,j}A)$ (Vertauschen mit Kontraktionen)
 			\end{enumerate}
 			für beliebige Tensorfelder $A\in \Gamma(T^{(r,s)}M), B\in\Gamma(T^{(t,u)}M)$.
 		\end{defn}
 		
 		\begin{satz}\label{satz:Fortsetzung_Derivationen}
-			Eine Tensorderivation ist durch ihre Wirkung auf Funktionen $\sC(M)$ und Vektorfeldern $\vf(M)$ eindeutig definiert.
+			Eine Tensorderivation ist durch ihre Wirkung auf Funktionen $\sC(M)$ und Vektorfeldern $\vf(M)$ eindeutig festgelegt.
 			\begin{proof}
 				Wir halten zuerst fest, dass jede Tensorderivation $\delta$ auf den glatten Funktionen $\sC(M)$ nach Satz \ref{satz:Vektorfelder_globale_Deriv} durch ein eindeutiges Vektorfeld $X\in\vf(M)$ definiert ist.
 				
-				Auf Vektorfeldern $Y\in\vf(M)$ bedeutet die Produktregel:
+				Auf Vektorfeldern $Y\in\vf(M)$ bedeutet die Produktregel
 				\begin{align*}
-					\delta(fY)=f\delta(Y)+X(f)Y \quad\forall f\in\sC(M)
+					\delta(fY)=f\delta(Y)+X(f)Y \quad\forall f\in\sC(M),
 				\end{align*}
-				und für 1-Formen $\omega\in\Omega^1(M)$:
+				und für 1-Formen $\omega\in\Omega^1(M)$ haben wir
 				\begin{align*}
-					\delta(\omega(Y))&=\delta(C_{1,1}(\omega\otimes Y))\\
-					&=C_{1,1}((\delta(\omega))\otimes Y+\omega\otimes(\delta(Y)))\\
-					&=(\delta(\omega))(Y)+\omega(\delta(Y))
+					\delta(\omega(Y)) &= \delta(C_{1,1}(Y\otimes\omega))\\
+					&= C_{1,1}\Big( (\delta(Y))\otimes\omega + Y\otimes(\delta(\omega)) \Big)\\
+					&= \omega(\delta(Y)) + (\delta(\omega))(Y)
 				\end{align*}
 				Damit können wir also $\delta(\omega)$ eindeutig durch die Wirkung der Tensorderivation auf Funktionen und Vektorfeldern bestimmen.
 				
-				Durch die Produktregel bekommt man eine eindeutige Fortsetzung auf beliebige Tensoren.
+				Durch die Produktregel bekommt man entsprechend eine eindeutige Fortsetzung auf beliebige Tensoren.
 			\end{proof}
 		\end{satz}
 		
 		\begin{kor}[Lie-Ableitung als Tensorderivation]
-			Die Lie-Ableitung $\mathcal{L}_X$ entlang eines Vektorfeldes $X$ lässt sich eindeutig zu einer Tensorderivation fortsetzen.
-			\bewUeb
+			Die Lie-Ableitung $\mathcal{L}_X$ entlang eines Vektorfeldes $X$ lässt sich eindeutig zu einer Tensorderivation fortsetzen. \qed
 		\end{kor}
 		
 		\begin{defn}[Pullback von Tensorfeldern]
 			Für einen Diffeomorphismus $f\colon N\rightarrow M$ und ein Tensorfeld $A\in \Gamma(T^{(r,s)}M)$ ist der \emph{Pullback eines Tensorfelds} $f^*A\in\Gamma(T^{(r,s)}N)$ definiert als
 			\begin{align*}
 				(f^*A)_p&(\eta_1,\ldots,\eta_r,v_1,\ldots,v_s):=\\
-				A_{f(p)}&(\eta_1\circ\DD f^{-1}\vert_{f(p)},\ldots,\eta_r\circ\DD f^{-1}\vert_{f(p)},\DD f\vert_pv_1,\ldots,\DD f\vert_pv_s)
+				A_{f(p)}&(\eta_1\circ\DD f^{-1}\vert_{f(p)},\ldots,\eta_r\circ\DD f^{-1}\vert_{f(p)},\DD f\vert_pv_1,\ldots,\DD f\vert_pv_s)\\
+				= A_{f(p)}& \Big((\DD f^{-1}\vert_{f(p)})' \eta_1, \ldots, (\DD f^{-1}\vert_{f(p)})' \eta_r, \DD f\vert_pv_1,\ldots,\DD f\vert_pv_s \Big)
 			\end{align*}
+			für Kovektoren $\eta_1,\dots,\eta_r \in T_p^*N$ und Vektoren $v_1,\dots,v_s \in T_pM$. Dabei bezeichnet $(\DD f^{-1}\vert_{f(p)})' \colon T_p^*N \to T_{f(p)}^*M$ die duale Abbildung zu $\DD f^{-1}\vert_{f(p)}\colon T_{f(p)}M \to T_pN$.
 		\end{defn}
 		
-		\begin{satz}[Lie-Ableitung als Pullback]
-			Für ein Vektorfeld $X\in\vf(M)$ mit Fluss $\Phi^X$ ist die Lie-Ableitung eines Tensorfelds $A\in \Gamma(T^{(r,s)}M)$ durch den Pullback gegeben:
-			\begin{align*}
-			\mathcal{L}_X(A)_p=\left.\frac{\D}{\D t}\left((\Phi^X_t)^*A\right)_p\right |_{t=0}
-			\end{align*}
+		\begin{lemma}
+			Sei $f\colon N\to M$ ein Diffeomorphismus. Der Pullback entlang $f$ erfüllt die folgenden Eigenschaften:
+			\begin{enumerate}[label=(\roman*)]
+				\item Auf Funktionen und Vektorfeldern entspricht der hier definierte Pullback dem bereits bekannten, also $f^*g = g\circ f$ für $g\in\sC(M)$ und $(f^*X)_p = \DD f^{-1}|_{f(p)} (X_{f(p)})$ für $X \in \vf(M)$.
+				\item $f^*(A\otimes B) = (f^*A) \otimes (f^*B)$ für beliebige Tensorfelder $A,B$ auf $M$ (Verträglichkeit mit Tensorprodukten)
+				\item $f^*(C_{i,j}A) = C_{i,j}(f^*A)$ (Vertauschen mit Kontraktionen)
+			\end{enumerate}
+			
 			\begin{proof}
-				Wir zeigen, dass die über den Pullback definierte Lie-Ableitung die Produktregel erfüllt und mit Kontraktionen vertauscht und folgern dann aus Satz \ref{satz:Fortsetzung_Derivationen} die obige Identität. Dazu schreiben wir $\DD f^{-1}\vert_{f(p)}^* \eta:=\eta\circ\DD f^{-1}\vert_{f(p)}$.
+				Die Form des Pullbacks für Funktionen und Vektorfelder rechnet man direkt nach.
 				
-				$\R$-Linearität ist klar aus der Definition.
+				Die Verträglichkeit mit Tensorprodukten folgt aus der Form des \glqq ausgewerteten Tensorproduktes von Tensorfeldern\grqq\ aus Bemerkung \ref{bem:Tensorprodukt_mulitilin}.
 				
-				Die Produktregel folgt aus der Form des \glqq ausgewerteten Tensorproduktes von Tensorfeldern\grqq\ aus Bemerkung \ref{bem:Tensorprodukt_mulitilin} und der Produktregel für Funktionen (bezüglich der Ableitung nach $t$).
-				
-				Für die Kontraktion betrachtet man ein einfaches Tensorfeld $Y\otimes\omega$ und dann ist 
+				Für die Kontraktion betrachten wir beispielhaft ein einfaches Tensorfeld $\omega \otimes X \in \Gamma(T^{(1,1)}M)$. Für dieses ist
 				\begin{align*}
-					C_{1,1}(\Phi_t^X)^*(Y\otimes\omega)_p&=C_{1,1}\left(\left(Y\circ\DD (\Phi_t^X)^{-1}\vert_{\Phi_t^X(p)}^*\right) \otimes\left(\omega\circ\DD \Phi_t^X\vert_p\right)\right)_{\Phi_t^X(p)}\\
-					&=\left(Y\left(\omega\circ\DD \Phi_t^X\vert_p\circ\DD (\Phi_t^X)^{-1}\vert_{\Phi_t^X(p)}\right)\right)_{\Phi_t^X(p)}\\
-					&=\left((\Phi_t^X(p))^*(Y(\omega))\right)_p
+					C_{1,1}f^*(X\otimes\omega)_p &= C_{1,1} \left( (f^*X)_p \otimes \left(\omega_{f(p)} \circ \DD f\vert_p \right) \right)\\
+					&= C_{1,1} \left( \left(\DD f^{-1}|_{f(p)} (X_{f(p)})\right) \otimes \left(\omega_{f(p)} \circ \DD f\vert_p \right) \right)\\
+					&= \left(\omega_{f(p)} \circ \DD f\vert_p \right) \left(\DD f^{-1}|_{f(p)} (X_{f(p)})\right)\\
+					&= (\omega(X))(f(p))\\
+					&= \Big( f^*(X(\omega)) \Big)_p\\
+					&= \Big( f^*(C_{1,1}(X\otimes\omega)) \Big)_p.
 				\end{align*}
-				Da die Kontraktion mit der Ableitung nach dem Parameter $t$ vertauscht, folgt die gewünschte Eigenschaft. Analog geht man auch für Tensoren von beliebigem Typ vor.
+				Damit folgt die gewünschte Eigenschaft für beliebige Tensorfelder vom Typ $(1,1)$. Analog geht man auch für Tensoren von beliebigem Typ vor.
+			\end{proof}
+		\end{lemma}
+		
+		\begin{satz}[Lie-Ableitung als Pullback]
+			Für ein Vektorfeld $X\in\vf(M)$ mit Fluss $\Phi^X$ ist die Lie-Ableitung eines Tensorfelds $A\in \Gamma(T^{(r,s)}M)$ durch die Ableitung des Pullback gegeben:
+			\[(\mathcal{L}_X A)_p = \left.\frac{\D}{\D t} \left((\Phi^X_t)^*A\right)_p \right|_{t=0}\]
+			\begin{proof}
+				Mit dem vorigen Lemma folgt leicht, dass die über den Pullback definierte Lie-Ableitung eine Tensorderivation ist (Übung). Damit folgern wir aus Satz \ref{satz:Fortsetzung_Derivationen} die obige Identität.
 			\end{proof}
 		\end{satz}
-		
-		\begin{bem}
-			Wir haben hier sogar gezeigt, dass der Pullback allgemein mit der Kontraktion vertauscht.
-		\end{bem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
