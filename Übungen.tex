@@ -57,6 +57,7 @@
 		\begin{equation}
 			\text{$f$ ist differenzierbar} \colon\Leftrightarrow \pi_i\circ f \text{ ist differenzierbar für } i=1,2
 		\end{equation}
+		\item Wir betrachten die komplexen Zahlen $\mathbb{C}$ als $2$-dimensionale Mannigfaltigkeit. Dazu verwenden wir die offene Menge $U=\mathbb{C}\setminus\{z\mid \mathrm{Re}z\leq 0, \mathrm{Im}z=0\}$ zur Konstruktion von Karten. Neben der üblichen Identifizierung $\mathbb{C}\cong\R^2$ sind die Polarkoordinaten eine natürliche Wahl. Die Karte ist dann $x\colon U\rightarrow (-\pi,\pi)\times (0,\infty), z\mapsto (\lvert z\rvert, \mathrm{Arg}(z))$ und die inverse Abbildung ist $x^{-1}\colon (-\pi,\pi)\times (0,\infty)\rightarrow U, (\varphi,r)\mapsto re^{i\phi}$. Mache Dir klar, dass $S^1$ eine Untermannigfaltigkeit von $\mathbb{C}$ ist.
 	\end{enumerate}
 	\section{Der Tangentialraum und das Differential}
 	\begin{enumerate}
@@ -66,19 +67,20 @@
 		\item Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $\tilde\gamma := f\circ\gamma \colon I \to N$ eine Kurve in $M$. Zeige: $\dot{\tilde\gamma}(s) = \left.\DD f\right|_{\gamma(s)} (\dot\gamma(s))$.
 		\item Zeige: $\left.\DD(\id_M)\right|_p = \id_{T_pM}$.
 		\item Zeige: Ist $f\colon M \to N$ ein Diffeomorphismus, so ist $\left.\DD f\right|_p$ für jedes $p\in M$ ein Isomorphismus, und es gilt $\left.\DD f^{-1}\right|_{f(p)} = \left(\left.\DD f\right|_p\right)^{-1}$.
-		\item Zeige: Bezüglich der kanonischen Identifikation $V\equiv T_pV$ gilt $\gamma'(s) \equiv \dot\gamma(s)$ für jede Kurve $\gamma\colon I\rightarrow V$. Dabei bezeichnet $\gamma'$ die Ableitung als Differenzquotienten und $\dot{\gamma}$ den abstrakten Tangentialvektor. (Hinweis: Verwende die mehrdimensionale Kettenregel für vektorwertige Abbildungen!)
 		\item Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Sei $p\in M$, $x$ eine Karte von $M$ um $p$ und $y$ eine Karte von $N$ um $f(p)$. Zeige: \[\mathrm{J}(y\circ f\circ x^{-1})|_{x(p)} = \left[\left(\partial_j(y\circ f\circ x^{-1})^i\right) (x(p)) \right]_{ij}.\]
 		ist die Darstellungsmatrix des Differentials der Kartendarstellung $y\circ f\circ x^{-1}$ von $f$ bezüglich der Koordinatenbasen.
 		\item Rechne die Transformationsformel für Tangentialvektoren nach.
-		\item Für einen Vektorraum $V$ lässt sich die Identifikation $V\equiv T_pV$ folgendermaßen schreiben: 
+		\item Zeige: Bezüglich der kanonischen Identifikation $V\equiv T_pV$ gilt $\gamma'(s) \equiv \dot\gamma(s)$ für jede Kurve $\gamma\colon I\rightarrow V$. Dabei bezeichnet $\gamma'$ die Ableitung als Differenzquotienten und $\dot{\gamma}$ den abstrakten Tangentialvektor. (Hinweis: Verwende die mehrdimensionale Kettenregel für vektorwertige Abbildungen!)
+		\item Beweise, dass sich die Identifikation $V\equiv T_pV$ für einen Vektorraum $V$ folgendermaßen schreiben lässt: 
 		\[V \ni v \equiv \left.\frac{\D}{\D t}(p + tv)\right|_{t=0} \in T_pV.\]
 		\item Zeige: Die Koordinatenvektoren sind durch die Ableitungen der Koordinatenlinien gegeben.
+		\item Fasse $S^1$ als Untermannigfaltigkeit der komplexen Zahlen auf und erzeuge die Tangentialräume $T_pS^1$ durch Kurven.
 		\item Zeige: Jeder Tangentialvektor lässt sich als Ableitung einer Kurve schreiben.
 	\end{enumerate}
+	\section{Multilineare Algebra: Das Tensorprodukt}
 	\section{Vektorbündel}
 	\begin{enumerate}
 		\item Zeige: Ein Vektorbündel ist genau dann trivial, wenn es einen globalen Rahmen besitzt.
-		\item Gib das Tangentialbündel $TS^1$ der $1$-Sphäre an, indem Du $S^1$ als Teilmenge der komplexen Zahlen auffasst und durch Kurven die Tangentialräume punktweise erzeugst.
 		\item Mache Dir klar, dass ein zurückgezogener Schnitt tatsächlich ein Schnitt des zurückgezogenen Bündels ist (dabei gilt es zwei Eigenschaften zu prüfen).
 		\item Zeige, dass die zurückgezogenen Schnitte die Schnitte des zurückgezogenen Bündels erzeugen. (Mit bump functions!)
 		\item Konstruiere aus Karten einer Mannigfaltigkeit einen Bündelatlas des Tangentialbündels.
@@ -87,7 +89,8 @@
 	\begin{enumerate}
 		\item Mache Dir noch einmal die Schritte zur Konstruktion der Lie-Algebra bewusst und entwickle ein konzeptionelles Verständnis.
 		\item Zeige, dass der Kommutator von linksinvarianten Vektorfeldern linksinvariant ist.
-		\item Berechne eine Basis der linksinvarianten Vektorfelder von $S^1$. Hinweis: Betrachte dazu $S^1$ wie zuvor als Teilmenge von $\mathbb{C}$ und überlege Dir zuerst anschaulich, wie das Differential der Linkstranslationen auf das Tangentialbündel wirkt.
+		\item Berechne eine Basis der linksinvarianten Vektorfelder von $\mathrm{U}(1)$. Hinweis: Betrachte dazu $\mathrm{U}(1)\cong S^1$ wie zuvor als Untermannigfaltigkeit von $\mathbb{C}$ und überlege Dir zuerst anschaulich, wie das Differential der Linkstranslationen auf das Tangentialbündel wirkt.
+		\item Zeige: Lie-Gruppen sind parallelisierbar (d.\,h. ihr Tangentialbündel ist trivial).
 		\item Beweise die Eigenschaften der Exponentialabbildung.
 	\end{enumerate}
 \end{document}
