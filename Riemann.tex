@@ -1,0 +1,161 @@
+% !TeX spellcheck = de_DE
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[sc]{mathpazo}
+\linespread{1.05}
+\usepackage{exscale} % To scale mathematical symbols correctly while using T1
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[ngerman]{babel}
+\usepackage{microtype} % Microtypography!
+\usepackage{hyperref}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\sC}{\mathcal{C}^{\infty}}
+\newcommand{\sm}{\mathcal{F}}
+\newcommand{\vf}{\mathfrak{X}}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{satz}[defn]{Satz}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{bem}[defn]{Bemerkung}
+
+
+\title{Riemann'sche Geometrie}
+\subtitle{Einführung in die Differentialgeometrie}
+\author{Benjamin Haake}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Grundlagen}
+		Wir wollen das Konzept eines Skalarproduktes auf Vektorräumen auf Vektorbündel übertragen.
+		\begin{defn}[Bündelmetrik]
+			Sei $(E,\pi)$ ein Vektorbündel über $M$.
+			
+			
+			Eine \emph{Bündelmetrik} ist ein eine Abbildung
+			\begin{equation*}
+				g\colon \Gamma(E)\times\Gamma(E)\rightarrow \sm(M), (\sigma^1,\sigma^2)\mapsto (p\mapsto g_p(\sigma^1_p,\sigma^2_p)),
+			\end{equation*}
+			(also $g\in\Gamma(E^*\otimes E^*)$) sodass an jedem Punkt $p\in M$ die Abbildung $g_p\colon E_p\times E_p\rightarrow \R$ eine nicht-degenerierte, symmetrische Bilinearform mit von $p$ unabhängiger Signatur ist.
+		\end{defn}
+		\begin{defn}[Riemann'sche Metrik]
+			Eine \emph{Riemann'sche Metrik} ist ein Bündelmetrik $g$ auf dem Tangentialbündel, sodass $g_p$ fü jeden Punkt $p\in M$ ein Skalarprodukt ist (also insbesondere positiv definit).
+			
+			In Koordinaten ist die Metrik durch eine positiv definite, symmetrische Matrix $g_{ij}$ gegeben, sodass $g=g_{ij}dx^i\otimes dx^j$ gilt. Die (Komponenten der) Inversen Matrix werden mit $g^{ij}$ bezeichnet, sodass $g_{ij}g^{jk}=\delta^k_i$.
+		\end{defn}
+		\begin{bem}
+			Man sagt auch \emph{pseudo-Riemann'sche Metrik} für eine beliebige Bündelmetrik auf dem Tangentialbündel. Physik!
+		\end{bem}
+		\begin{satz}
+			Auf jeder Mannigfaltigkeit existiert eine Riemann'sche Metrik.
+			\begin{proof}
+				Schematisch: Wähle eine Überdeckung der Mannigfaltigkeit $M$ durch Karten und eine untergeordnete Zerlegung der Eins. Dann zieht man die Standard-Metrik von den offenen Teilmengen (Koordinatenumgebungen, diese haben triviale Tangentialbündel) des $\R^n$ ($n=\dim M$) zurück und da der zurückgezogene Tensor ebenfalls punktweise symmetrisch und positiv definit ist, erhält man dadurch eine Riemann'sche Metrik. Dass diese glatt ist, liegt daran, dass die Karten glatt sind.
+			\end{proof}
+		\end{satz}
+		Wie für Vektorräume induziert ein Skalarprodukt einen Isomorphismus zum Dualraum:
+		\begin{defn}
+			Die \emph{metrischen Typänderungen} sind die folgenden punktweise definierten Abbildungen:
+			\begin{align*}
+				^{\flat}&\colon T_pM\rightarrow T_p^*M, v\mapsto v^{\flat}:=g_p(v,\cdot)\\
+				^{\sharp}&\colon T_p^*M\rightarrow T_pM, \lambda\mapsto \lambda^{\sharp}
+			\end{align*}
+			wobei $\lambda^{\sharp}\in T_pM$ der durch die Gleichung $\lambda(v)=g_p(\lambda^{\sharp},v)\forall v\in T_pM$ eindeutig definierte Vektor ist.
+			
+			Es gelten $(v^{\flat})^{\sharp}=v\;\forall v\in T_pM$ und $(\lambda^{\sharp})^{\flat}=\lambda\;\forall\lambda\in T_p^*M$.
+			
+			Man erhält dadurch einen Isomorphismus von Vektorbündeln $TM\cong T^*M$ und einen Isomorphismus von $\sm(M)$-Moduln $\vf(M)\cong \Omega^1(M)$ (Wegen der $\sm(M)$-Linearität und Glätte der Metrik).
+			
+			In Koordinaten wirkt die metrische Typänderung auf Komponenten auf einfache Weise. Sei $X\in\vf(M), \omega\in\Omega^1(M)$:
+			\begin{align*}
+				(X^{\flat})_i&=g_{ij}X^j\\
+				(\omega^{\sharp})^i&=g^{ij}\omega_j
+			\end{align*}
+			wobei $g^{ij}$ wieder die Komponenten der Inversen Matrix bezeichnet.
+			
+			Diese Typänderungen lassen sich auch in natürlicher Weise zu einer Familie von Typänderungen auf Tensorfeldern verallgemeinern, die dann in Komponenten \glqq auf einzelne Indizes wirken\grqq . 
+			
+			Die Verkettung von metrischer Typänderung mit Kontraktion heißt \emph{metrische Kontraktion} und sieht in Komponenten für ein $(0,2)$-Tensorfeld $A$ folgendermaßen aus:
+			\begin{align*}
+				(C_g)_{1,2}A=A_{ij}g^{ij}
+			\end{align*}
+		\end{defn}
+		Eine Riemann'sche Metrik ist zwar keine Metrik im Sinne metrischer Räume, aber man kann damit einen Begriff der Länge formulieren:
+		\begin{defn}
+			Sei $\gamma\colon I\rightarrow M$ eine Kurve.
+			
+			Die \emph{Bogenlänge} $L_g(\gamma)$ ist das folgende Integral über die Funktion 
+			\begin{align*}
+				I\ni t\mapsto \sqrt{g_{\gamma(t)}(\dot{\gamma(t)},\dot{\gamma(t)}}\in\R:
+				\end{align*}
+			\begin{align*}
+				L_g(\gamma)=\int_I\sqrt{g_{\gamma(t)}(\dot{\gamma(t)},\dot{\gamma(t)}} dt
+			\end{align*}
+		\end{defn}
+		
+		\begin{satz}
+			Sei $(M,g)$ eine zusammenhängende (und damit wegzusammenhängende) Riemann'sche Mannigfaltigkeit. Die Abbildung
+			\begin{align*}
+				d:M\times M&\rightarrow \R,\\
+				(p,q)&\mapsto \mathrm{inf}\lbrace L_g(\gamma)\mid \gamma \text{ ist ein stückweise differenzierbarer Weg von $p$ nach } q\rbrace
+			\end{align*}
+			ist eine Metrik, sodass $(M,d)$ ein metrischer Raum ist.
+			\begin{proof}
+				$d(p,q)\geq 0$ und $d(p,p)=0$ sind klar für beliebige Punkte (da $g$ positiv definit), dass $d(p,q)>0$ für $p\neq q$ folgt ebenso, weil die Riemann'sche Metrik positiv-definit ist und eine Kurve $\gamma$ zwischen zwei verschiedenen Punkten ein offenes Interval im Definitionsbereich hat, sodass $\dot{\gamma}\neq 0$ darauf.
+				
+				Beachte, dass das \glqq Aneinanderhängen\grqq\ (Konkatenation) von Kurven zu einer Addition der Bogenlängen führt. Dementsprechend folgt (da stückweise differenzierbare Kurven zugelassen sind) die Dreiecksungleichung.
+				
+				Die Symmetrie ist klar, da man Kurven in umgekehrter Richtung durchlaufen kann, was den Wert der Bogenlänge nicht beeinträchtigt.
+			\end{proof}
+		\end{satz}
+		Beachte, dass hier zentral ist, dass die Riemann'sche Metrik positiv definit ist! Insbesondere funktioniert diese Konstruktion also nicht für pseudo-Riemann'sche Metriken (die ja physikalisch von Interesse sind).
+	\section{Metrik und kovariante Ableitung}
+		Die Riemann'sche Geometrie lebt von den Zusammenhängen (haha) zwischen Metrik und kovarianten Ableitungen. Wir wollen in diesem Kapitel einige Grundlagen besprechen und sehen, wie wir aus einer Metrik (unter gewissen Annahmen) eine eindeutige kovariante Ableitung erhalten können.
+		
+		Sei von nun an $\nabla$ eine kovariante Ableitung auf dem Tangentialbündel einer Riemann'schen Mannigfaltigkeit $(M,g)$.
+		\begin{defn}
+			Eine \emph{metrische} kovariante Ableitung erfüllt die folgende Eigenschaft:
+			\begin{align*}
+				\nabla g=0
+			\end{align*}
+			also explizit:
+			\begin{align*}
+				(\nabla_X g)(Y,Z)=\nabla_X(g(Y,Z))-g(\nabla_XY,Z)-g(Y,\nabla_XZ)=0\quad\forall X,Y,Z\in\vf(M)
+			\end{align*}
+			Äquivalent dazu ist, dass die Länge $g_p(v,v)$ eines Vektors $v\in T_pM$ invariant unter dem Paralleltransport ist (ohne Beweis). 
+		\end{defn}
+		\begin{defn}[Torsion]
+			Die \emph{Torsion} einer kovarianten Ableitung ist das antisymmetrische Tensorfeld $T$ vom Typ $(1,2)$, definiert durch:
+			\begin{align*}
+				T(X,Y)=\nabla_XY-\nabla_YX-\left[X,Y\right]
+			\end{align*}
+		\end{defn}
+		
+		\begin{satz}[Levi-Civita-Zusammenhang]
+			Auf einer Riemann'schen Mannigfaltigkeit $(M,g)$ existiert eine eindeutige metrische kovariante Ableitung mit verschwindender Torsion $T=0$, der sogannte Levi-Civita-Zusammenhang (LCC).
+			\begin{proof}
+				Seien $X,Y,Z\in\vf(M)$. Angenommen, eine metrische, torsionsfreie kovariante Ableitung existiert, dann erhält man durch wiederholtes Ausnutzen der Metrizität und Torsionsfreiheit:
+				\begin{align*}
+				g(\nabla_XY,Z)&=X(g(Y,Z))-g(Y,\nabla_XZ)=X(g(Y,Z))-g(Y,\nabla_ZX)-g(Y,[X,Z])\\
+				-g(Y,\nabla_ZX)&=-Z(g(Y,X))+g(\nabla_ZY,X)=-Z(g(Y,X))+g(\nabla_YZ,X)+g([Z,Y],X)\\
+				g(\nabla_YZ,X)&=Y(g(Z,X))-g(Z,\nabla_YX)=Y(g(Z,X))-g(Z,\nabla_XY)-g(Z,[Y,X])
+				\end{align*}
+				Man erhält durch Einsetzen dann wegen der Symmetrie der Metrik die \emph{Koszulformel}:
+				\begin{align*}
+					g(\nabla_XY,Z)=\frac{1}{2}( X(g(Y,Z))+Y(g(Z,X))&-Z(g(X,Y))\\
+					&-g(X,[Y,Z])-g(Y,[X,Z])+g(Z,[X,Y]))
+				\end{align*}
+				
+			\end{proof}
+		\end{satz}
+		
+	\section{Der Satz von Hopf-Rinow}
+	\section{Anwendung: Lie-Gruppen}
+	
+\end{document}
