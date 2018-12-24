@@ -312,7 +312,7 @@ Die formale Definition der Differentiale und von mehrdimensionaler (totaler) Dif
 				\item Zwei Karten sind \emph{verträglich}, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
 				\item Ein Atlas ist \emph{differenzierbar}, wenn alle seine Karten paarweise verträglich sind.
 				\item Ein differenzierbarer Atlas heißt \emph{maximal}, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
-				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}. Wenn also von einer Karten auf einer differenzierbaren Mannigfaltigkeit die Rede ist, sind immer solche aus der differenzierbaren Struktur gemeint.
+				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}. Wenn im Folgenden von Karten auf einer differenzierbaren Mannigfaltigkeit die Rede ist, sind immer solche aus der differenzierbaren Struktur gemeint.
 			\end{itemize}
 		\end{defn}
 		\begin{lemma}
@@ -340,11 +340,19 @@ Die formale Definition der Differentiale und von mehrdimensionaler (totaler) Dif
 			
 			Analog kann man auch $k$-fach differenzierbare Abbildungen definieren und schreibt für diese $\mathcal{C}^k(M,N)$.
 		\end{defn}
+		\begin{lemma}
+			Sind $f\colon M\to N$ und $g\colon N \to L$ glatte Abbildungen, so ist auch $g\circ f \colon M \to L$ glatt.
+			\bewUeb
+		\end{lemma}
 		\begin{defn}
 			Ein \emph{Diffeomorphismus} ist eine bijektive Abbildung $f\in\sC(M,N)$ für die $f^{-1}\in\sC(N,M)$ gilt.
 
 			Die Menge der Diffeomorphismen $\Diff(M)\subset\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
+		\begin{lemma} \label{lemma:karte_diffeo}
+			Sei $M$ eine differenzierbare Mannigfaltigkeit und $(\varphi,U)$ eine Karte von $M$. Dann ist $\varphi\colon U \to \varphi(U) \subset \R^n$ ein Diffeomorphismus.
+			\bewUeb
+		\end{lemma}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -633,7 +641,7 @@ Bzgl. dieser Identifikation ist der in Beispiel \ref{bsp:kurve_geschw} definiert
 
 Haben wir auf einer Mannigfaltigkeit $M$ eine Karte $(x,U)$ gegeben, dann ermöglicht sie uns, $U$ mit einer offenen Teilmenge des $\mathbb R^n$ zu identifizieren. Das gilt auch für die Tangentialräume:
 \begin{defn}
-	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p\in M$ und $(x,U)$ eine Karte um $p$. Wir schreiben $V = x(U) \subset \mathbb R^n$. Als Abbildung $x\colon U \to V$ ist $x$ ein Diffeomorphismus (Übung!). Nach Lemma \ref{lemma:differential_diffeo} ist dann also
+	Sei $M$ eine differenzierbare Mannigfaltigkeit, $p\in M$ und $(x,U)$ eine Karte um $p$. Wir schreiben $V = x(U) \subset \mathbb R^n$. Als Abbildung $x\colon U \to V$ ist $x$ nach Lemma \ref{lemma:karte_diffeo} ein Diffeomorphismus. Nach Lemma \ref{lemma:differential_diffeo} ist dann also
 	\[\left.\DD x\right|_p \colon T_pM \to T_{x(p)} \mathbb R^n\]
 	ein Isomorphismus, wobei wir die Identifikationen $T_pM = T_pU$, $T_{x(p)}\mathbb R^n = T_{x(p)} x(U)$ benutzt haben. Diesen benutzen wir, um aus der kanonischen Basis $\{\left.\partial_i\right|_{x(p)}\}$ von $T_{x(p)}\mathbb R^n$ eine Basis von $T_pM$ zu erhalten: Für $i = 1,\dots, n$ definieren wir
 	\[\left.\frac{\partial}{\partial x^i}\right|_p := \left(\left.\DD x\right|_p\right)^{-1} \left(\left.\partial_i\right|_{x(p)}\right) = \left.\DD x^{-1}\right|_{x(p)} \left(\left.\partial_i\right|_{x(p)}\right)\]
