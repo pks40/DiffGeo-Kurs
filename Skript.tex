@@ -76,7 +76,15 @@
 \chapter{Einleitung}
 \epigraph{Differentialgeometrie ist die Lehre von Invarianz unter Notationswechsel.}{\textsc{Altes chinesisches Sprichwort}}
 
-Verallgemeinerung von Kurven, Flächen und so. Extrem wichtig innerhalb der Mathematik und auch in quasi allen Anwendungsgebieten, insb. der theoretischen Physik (ART, Eichtheorien, alles!).
+Die moderne/abstrakte Differentialgeometrie beschäftigt sich mit sogenannten \emph{Mannigfaltigkeiten}, das sind Verallgemeinerungen von Kurven und Flächen auf höhere Dimensionen. Sie untersucht diese Objekte mit Methoden der Differentialrechnung, die auf diese verallgemeinert werden.
+
+Differentialgeometrische Methoden sind extrem wichtig innerhalb der Mathematik und auch in quasi allen ihren Anwendungsgebieten. Insbesondere aus der theoretischen Physik sind sie nicht wegzudenken -- die allgemeine Relativitätstheorie und die klassische Formulierung von sogenannten Eichtheorien für die Quantenfeldtheorie/Elementarteilchenphysik basieren auf Differentialgeometrie, und auch ein fundamentales Verständnis allein schon der klassischen Mechanik benötigt differentialgeometrische Begriffe (symplektische Geometrie).
+
+Historisch wurde die abstrakte Differentialgeometrie entwickelt, als \textsc{Bernhard Riemann} Mannigfaltigkeiten einführte, um klassische Ideen von \textsc{Carl Friedrich Gauß} zu Kurven und Flächen zu verallgemeinern, und \textsc{Gregorio Ricci-Curbastro} und \textsc{Tullio Levi-Civita} den Tensorkalkül entwickelten. Die moderne, koordinatenfreie Sprache geht in ihren Ursprüngen auf \textsc{Élie Cartan} zurück.
+
+Wir werden in diesem Kurs die grundlegenden Begriffe der Differentialgeometrie Schritt für Schritt entwickeln und dabei versuchen, einen möglichst generellen Überblick zu geben. Dabei konzentrieren wir uns auf Konzepte, die sich aufbauend nur auf Mannigfaltigkeiten definieren lassen und ohne Zusatzstrukturen auskommen.
+
+Dieses Skript ist an den meisten Stellen recht detailliert. Für Themen, die wir nicht behandeln, oder mehr Details bietet es sich an, in gute Lehrbücher zu gucken. Ein sehr gutes, sehr detailliertes Lehrbuch für grundlegende moderne Differentialgeometrie ist \emph{Introduction to	Smooth Manifolds} von John M. Lee, Band 218 der Reihe \emph{Graduate Texts in Mathematics} des Springer Verlags, DOI \href{https://doi.org/10.1007/978-1-4419-9982-5}{10.1007/978-1-4419-9982-5}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Was wir nicht machen werden}
@@ -88,18 +96,21 @@ In einen Einführungskurs der Differentialgeometrie gehören eigentlich auf jede
 			\item Untermannigfaltigkeiten
 			\item Der Satz vom regulären Wert
 		\end{itemize}
+	\item Distributionen und der Satz von Frobenius
+	\item Differentialformen und die äußere Ableitung
 	\item Integration auf Mannigfaltigkeiten
 		\begin{itemize}
 			\item Orientierbarkeit
 			\item Integration
 			\item Der Satz von Stokes
 		\end{itemize}
-	\item Einführung in Riemann'sche Geometrie
+	\item Einführung in die Riemann'sche Geometrie
 	\item \dots
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bekannte Konzepte, Notationen etc.}
+Hier werden wir ein paar Konzepte der linearen Algebra und mehrdimensionalen Analysis wiederholen.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Grundlegende lineare Algebra}
