@@ -941,7 +941,7 @@ Das Tensorprodukt $V\otimes W$ ist also gewissermaßen die \glqq allgemeinst-mö
 	\begin{enumerate}[label=(\alph*)]
 		\item Die Abbildung $\otimes\colon V\times W\to V\otimes W, (v,w) \mapsto v\otimes w$ ist bilinear.
 		\item Ist $\{b_i\}_{i\in I}$ eine Basis von $V$ und $\{c_j\}_{j\in J}$ eine Basis von $W$, dann ist $\{b_i \otimes c_j\}_{i\in I, j\in J}$ eine Basis von $V\otimes W$. Insbesondere ist $\dim(V\otimes W) = \dim(V) \cdot \dim(W)$.
-		\item \label{item:tensor_prod_inj} Sei $X$ ein weiterer Vektorraum. Eine lineare Abbildung $f\colon V\otimes W \to X$ ist genau dann injektiv, wenn $f(e) = 0 \implies e = 0$ für alle einfachen Tensoren $e = v\otimes w \in V\otimes W$ gilt.
+		\item \label{item:tensor_prod_inj} Sei $X$ ein weiterer Vektorraum. Eine lineare Abbildung $f\colon V\otimes W \to X$ ist genau dann injektiv, wenn $f(u) = 0 \implies u = 0$ für alle einfachen Tensoren $u = v\otimes w \in V\otimes W$ gilt.
 	\end{enumerate}
 	\bewUeb
 \end{lemma}
@@ -971,7 +971,7 @@ Dass die Abbildung $\otimes\colon V\times W \to V\otimes W$ die \glqq allgemeins
 \end{satz}
 Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ eindeutig durch $f(v\otimes w) := B(v,w)$ und lineare Fortsetzung definieren, wenn $B(v,w)$ ein bilinearer Ausdruck ist.
 \begin{bem}
-	Durch die universelle Eigenschaft ist das Tensorprodukt eindeutig festgelegt bis auf eindeutige Isomorphie. D.\,h.: Ist $\theta\colon V\times W\to Y$ eine bilineare Abbildung mit der Eigenschaft, dass es zu jedem bilinearen $B\colon V\times W \to X$ eine eindeutige lineare Abbildung $f\colon Y\to X$ mit $B(v,w) = f(\theta(v,w))$ gibt, so existiert ein eindeutiger Isomorphismus $\Phi\colon V\to W\to Y$ mit $\Phi\circ\otimes = \theta$.
+	Durch die universelle Eigenschaft ist das Tensorprodukt eindeutig festgelegt bis auf eindeutige Isomorphie. D.\,h.: Ist $\theta\colon V\times W\to Y$ eine bilineare Abbildung mit der Eigenschaft, dass es zu jedem bilinearen $B\colon V\times W \to X$ eine eindeutige lineare Abbildung $f\colon Y\to X$ mit $B(v,w) = f(\theta(v,w))$ gibt, so existiert ein eindeutiger Isomorphismus $\Phi\colon V\otimes W\to Y$ mit $\Phi\circ\otimes = \theta$.
 \end{bem}
 \begin{lemma}
 	\begin{enumerate}[label=(\alph*)]
@@ -1387,16 +1387,35 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}[Rahmen]
-			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_n)\in\Gamma(P\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet. 
-			
-			Beachte: Ist $(\phi,U)$ eine Trivialisierung und $(e_1,\ldots,e_n)$ die Standardbasis von $\R^n$, dann ist mit $\sigma_i(x):=\phi^{-1}(x,e_i)$ das Tupel $(\sigma_1,\ldots,\sigma_n)$ ein lokaler Rahmen über $U$.
+			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_n)\in\Gamma(P\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet.
 			
 			Natürlicherweise ist ein \emph{globaler Rahmen} ein lokaler Rahmen über $M$.
+			
+			Beachte: Ist $(\phi,U)$ eine Trivialisierung und $(e_1,\ldots,e_n)$ die Standardbasis von $\R^n$, dann ist mit $\sigma_i(x):=\phi^{-1}(x,e_i)$ das Tupel $(\sigma_1,\ldots,\sigma_n)$ ein lokaler Rahmen über $U$.
 		\end{defn}
+		Umgekehrt können wir auch aus lokalen Rahmen lokale Trivialisierungen gewinnen:
 		\begin{satz}
+			Sei $(\sigma_1,\ldots,\sigma_n)\in\Gamma(P\vert_U)$ ein lokaler Rahmen. Dann existiert eine lokale Trivialisierung $\phi\colon \pi^{-1}(U)\rightarrow U\times\R^n$, sodass $\sigma_i(x)=\phi^{-1}(x,e_i)$.
+			\begin{proof}
+				Die inverse Abbildung zur gesuchten Trivialisierung ist 
+				\begin{align*}
+					\Psi\colon U\times\R^n\rightarrow \pi^{-1}(U),\quad (x,(v^1,\ldots,v^n))\mapsto v^i\sigma_i(x).
+				\end{align*}
+				Da der Rahmen per Definition punktweise eine Basis der Fasern bildet, ist die Abbildung faserweise ein Isomorphismus und damit bijektiv. Es gilt also zu zeigen, dass $\Psi$ ein (lokaler) Diffeomorphismus ist.
+				
+				Sei $x_0\in U$ und $\Phi\colon \pi^{-1}(V)\rightarrow V\times \R^n$ eine Trivialisierung mit $x_0\in V\subset U$. Wir schreiben nun für die Verkettung $\left.\Phi\circ \sigma_i\right|_V(x)=(x,(\sigma^1_i(x),\ldots,\sigma^n_i(x))$ mit glatten Funktionen $\sigma^j_i\colon V\rightarrow \R$. Daraus sieht man direkt, dass 
+				\[\left(\left.\Phi\circ\Psi\right|_{V\times\R^n}\right)(x,(v^1,\ldots,v^n))=(x,(v^i\sigma^1_i(x),\ldots,v^i\sigma_i^n(x)))\]
+				glatt ist.
+				
+				Beachte, dass diese Abbildung nach obiger Anmerkung und der Definition von Trivialisierungen auf den Fasern wieder ein Isomorphismus ist und die Darstellungsmatrix $\sigma^j_i(x)$ besitzt. Diese ist also invertierbar, wobei das (punktweise) Inverse mit $\tau^j_i(x)$ bezeichnet wird. Da sich die Inverse allerdings durch die Adjunkte (also durch Berechnung von Determinanten) schreiben lässt, ist die Inversion ein glatter Diffeomorphismus $\GL(n,\R)\rightarrow \GL(n,\R)$, und damit ist auch 
+				\[\left(\left.\Phi\circ\Psi\right|_{V\times\R^n}\right)^{-1}(x,(w^1,\ldots,w^n))=(x,(w^i\tau_i^1(x),\ldots,w^i\tau_i^n(x)))\]
+				glatt. $\left.\Psi\right|_{V\times\R^n}$ ist dementsprechend glatt, da $\Phi$ ein glatter Diffeomorphismus ist und damit ist dann auch $\Psi$ ein Diffeomorphismus, da $x_0$ beliebig war. 
+			\end{proof}
+		\end{satz}
+		\begin{kor}
 			Ein Vektorbündel besitzt genau dann einen globalen Rahmen, wenn es trivial ist (das heißt isomorph zum trivialen Bündel).
 			\bewUeb
-		\end{satz}
+		\end{kor}
 		Nach Konstruktion gilt folgende Charakterisierung der Glattheit:
 		\begin{lemma} \label{lemma:schnitt_glatt_koeff_glatt}
 			Ein lokaler Schnitt $\sigma\colon U\rightarrow E$ ist genau dann glatt, wenn für einen einen lokalen Rahmen $(\sigma_1,\ldots,\sigma_n)$ mit $\sigma=f^i\sigma_i$ die Koeffizientenfunktionen $f^i\colon U\rightarrow \R$ glatt sind.
