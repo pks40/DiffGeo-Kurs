@@ -1,4 +1,4 @@
-\documentclass[a4paper]{scrartcl}
+\documentclass[a4paper,headsepline,headheight=30pt,numbers=enddot]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -6,13 +6,18 @@
 \linespread{1.05}
 \usepackage{exscale} % To scale mathematical symbols correctly while using T1
 \usepackage{amsmath,amsthm,amssymb,dsfont}
-\usepackage{tikz}
-	\usetikzlibrary{matrix}
 \usepackage[ngerman]{babel}
 \usepackage{enumitem}
 \usepackage{microtype} % Microtypography!
-\usepackage{epigraph}
 \usepackage{hyperref}
+
+\usepackage{scrlayer-scrpage}
+\ihead{\normalfont CdE-WinterAkademie 2018/19\\Einführung in die Differentialgeometrie: Übungen}
+\automark{section}
+\ohead{\normalfont\rightmark}
+\chead{}
+\cfoot{}
+\setkomafont{section}{\normalfont\bfseries\sffamily\LARGE\centering}
 
 \newcommand{\D}{\mathrm{d}}
 \newcommand{\DD}{\mathrm{D}}
@@ -33,22 +38,22 @@
 \newcommand{\sC}{\mathcal{C}^{\infty}}
 \newcommand{\sm}{\mathcal{F}}
 \newcommand{\vf}{\mathfrak{X}}
-\newcommand{\tril}{\vartriangleleft}
-\newcommand{\trir}{\vartriangleright}
 
 \title{Übungsaufgaben zu \glqq Einführung in die Differentialgeometrie\grqq}
 \author{Benjamin Haake, Philip Schwartz}
 \date{}
 \begin{document}
-	\maketitle
+
 \setcounter{section}{-1}
-	\section{Lineare Algebra und mehrdimensionale Analysis}
+	\section[LinA und Ana]{Lineare Algebra und mehrdimensionale Analysis}
 	\begin{enumerate}
 		\item Beweise Lemma 0.2.11.
 	\end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
 	\section{Mannigfaltigkeiten}
-	\subsection{Übungen aus dem Skript}
+	\subsection*{Übungen aus dem Skript}
 	\begin{enumerate}
 		\item Zeige: In einem Hausdorffraum sind kompakte Mengen abgeschlossen (Lemma 1.1.7).
 		\item Zeige: Die Verkettung stetiger Abbildungen ist stetig (Lemma 1.1.10).
@@ -57,7 +62,7 @@
 		\item Zeige: Die Verkettung glatter Abbildungen von Mannigfaltigkeiten ist glatt (Lemma 1.3.2).
 		\item Zeige: Eine Karte ist ein Diffeomorphismus zwischen Mannigfaltigkeiten (Lemma 1.3.4).
 	\end{enumerate}
-	\subsection{Zusätzliche Übungen}
+	\subsection*{Zusätzliche Übungen}
 	\begin{enumerate}
 		\item Konstruiere aus den Atlanten zweier Mannigfaltigkeiten $M_1$ und $M_2$ einen Atlanten der Produktmannigfaltigkeit.
 		\item Zeige: Für eine Produktmannigfaltigkeit $M_1\times M_2$ sind die kanonischen Projektionen $\pi_i\colon M_1\times M_2\rightarrow M_i$ ($i=1,2$) glatt und für eine weitere Mannigfaltigkeit $N$ mit Abbildung $f\colon N\rightarrow M_1\times M_2$ gilt:
@@ -67,8 +72,10 @@
 		\item Wir betrachten die komplexen Zahlen $\mathbb{C}$ als $2$-dimensionale Mannigfaltigkeit. Neben der üblichen Identifikation $\mathbb{C}\cong\R^2$ sind die \emph{Polarkoordinaten} eine natürliche Wahl. Dazu betrachten wir die offene Menge $U = \mathbb{C}\setminus\{z\mid \mathrm{Re}\,z\leq 0, \mathrm{Im}\,z=0\}$ zur Konstruktion von Karten.  Die Karte ist dann $x\colon U\rightarrow (-\pi,\pi)\times (0,\infty), z\mapsto (\lvert z\rvert, \mathrm{Arg}(z))$ und die inverse Abbildung ist $x^{-1}\colon (-\pi,\pi)\times (0,\infty)\rightarrow U, (\varphi,r)\mapsto re^{i\phi}$. Mache Dir klar, dass $S^1$ eine Untermannigfaltigkeit von $\mathbb{C}$ ist.
 	\end{enumerate}
 
-	\section{Der Tangentialraum und das Differential}
-	\subsection{Übungen aus dem Skript}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
+	\section[Der Tangentialraum]{Der Tangentialraum und das Differential}
+	\subsection*{Übungen aus dem Skript}
 	\begin{enumerate}
 		\item Zeige: $\sC_p(M)$ ist mit über die Repräsentanten definierter Addition, Skalarmultiplikation und Multiplikation eine $\mathbb R$-Algebra. (Prop. 2.1.2)
 		\item Zeige: $T_pM$ ist ein Untervektorraum von $(\sC_p(M))^*$. (Def. 2.1.3)
@@ -84,7 +91,7 @@
 		\item Zeige: Die Koordinatenvektoren sind durch die Ableitungen der Koordinatenlinien gegeben (Lemma 2.5.4).
 		\item Zeige: Jeder Tangentialvektor lässt sich als Ableitung einer Kurve schreiben (Lemma 2.5.5).
 	\end{enumerate}
-	\subsection{Zusätzliche Übungen}
+	\subsection*{Zusätzliche Übungen}
 	\begin{enumerate}
 		\item Nach Lemma 2.4.10:
 			Wir betrachten auf $\R^2$ die offene Menge $U = \R^2 \setminus\{(x,y) \mid x \le 0\}$. Die \emph{Polarkoordinaten} auf $\R^2$ sind die Karte $\Phi = (\varphi,r) \colon U \to (-\pi,\pi) \times (0,\infty)$, die durch die Umkehrabbildung $\Phi^{-1}\colon (-\pi,\pi)\times(0,\infty), (\varphi,r) \mapsto (r\cos(\varphi), r\sin(\varphi))$ gegeben ist (dabei haben wir die \glqq böse Notation\grqq\ benutzt, die Punkte im Bildbereich der Karte genauso zu nennen wie die Kartenabbildungen selbst). Berechne mithilfe der Transformationsformel die Koordinatenvektoren $\left.\frac{\partial}{\partial\varphi}\right|_p$, $\left.\frac{\partial}{\partial r}\right|_p$ in der Koordinatenbasis der Standardkoordinaten auf $\R^2$.
@@ -94,7 +101,9 @@
 			Sei $M \subset \R^n$ eine eingebettete Untermannigfaltigkeit, und sei $(y,U)$ eine Karte von $M$. Die durch die Identität gegebene Karte von $\R^n$ bezeichnen wir mit $x$. Berechne die Koordinatenvektoren $\left.\frac{\partial}{\partial y^i}\right|_p$ so konkret wie möglich als Vektoren in $T_pM \subset T_p\R^n \equiv \R^n$.
 	\end{enumerate}
 
-	\section{Multilineare Algebra: Das Tensorprodukt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
+	\section[Das Tensorprodukt]{Multilineare Algebra: Das Tensorprodukt}
 	\begin{enumerate}
 		\item Beweise Lemma 3.1.2 über die Eigenschaften des Tensorprodukts $V\otimes W$.
 		\item Zu Satz 3.1.3: Sei $B\colon V\times W \to X$ eine bilineare Abbildung, und die Abbildung $f_B$ definiert durch 
@@ -105,7 +114,10 @@
 		\item Beweise Lemma 3.3.3 über die Komponentendarstellungen von Operationen mit Tensoren.
 	\end{enumerate}
 
-	\stepcounter{section}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\stepcounter{section}
+	\newpage
 	\section{Vektorbündel}
 	\begin{enumerate}
 		\item Zeige: Ein Vektorbündel ist genau dann trivial, wenn es einen globalen Rahmen besitzt.
@@ -114,8 +126,10 @@
 		\item Konstruiere aus Karten einer Mannigfaltigkeit einen Bündelatlas des Tangentialbündels.
 	\end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
 	\section{Vektorfelder}
-	\subsection{Übungen aus dem Skript}
+	\subsection*{Übungen aus dem Skript}
 	\begin{enumerate}
 		\item Zeige, dass der Kommutator eine Derivation ist, also ein Vektorfeld definiert. (Def. 6.2.2)
 		\item Beweise die Eigenschaften des Kommutators. (Lemma 6.2.3)
@@ -123,12 +137,14 @@
 		\item Beweise die Formel für die Koordinatendarstellung von Pushforwards (Lemma 6.3.6).
 		\item Beweise die Skalierungseigenschaft von Integralkurven (Lemma 6.4.3).
 	\end{enumerate}
-	\subsection{Weitere Übungen}
+	\subsection*{Weitere Übungen}
 	\begin{enumerate}
 		\item Nach Abschnitt 6.2: Wir betrachten $\R^2$ mit der Standard-Karte $(x,y)$ und die beiden Vektorfelder $X := \frac{\partial}{\partial x}, Y := x \frac{\partial}{\partial x} + y \frac{\partial}{\partial y}$. Berechne den Kommutator $[X,Y]$.
 		\item Seien $X,Y$ wie in der vorherigen Aufgabe. Bestimme die Flüsse von $X$ und $Y$.
 	\end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
 	\section{Lie-Gruppen}
 	\begin{enumerate}
 		\item Mache Dir noch einmal die Schritte zur Konstruktion der Lie-Algebra bewusst und entwickle ein konzeptionelles Verständnis.
