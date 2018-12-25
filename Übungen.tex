@@ -60,6 +60,7 @@
 		\item Wir betrachten die komplexen Zahlen $\mathbb{C}$ als $2$-dimensionale Mannigfaltigkeit. Neben der üblichen Identifikation $\mathbb{C}\cong\R^2$ sind die \emph{Polarkoordinaten} eine natürliche Wahl. Dazu betrachten wir die offene Menge $U = \mathbb{C}\setminus\{z\mid \mathrm{Re}\,z\leq 0, \mathrm{Im}\,z=0\}$ zur Konstruktion von Karten.  Die Karte ist dann $x\colon U\rightarrow (-\pi,\pi)\times (0,\infty), z\mapsto (\lvert z\rvert, \mathrm{Arg}(z))$ und die inverse Abbildung ist $x^{-1}\colon (-\pi,\pi)\times (0,\infty)\rightarrow U, (\varphi,r)\mapsto re^{i\phi}$. Mache Dir klar, dass $S^1$ eine Untermannigfaltigkeit von $\mathbb{C}$ ist.
 	\end{enumerate}
 	\section{Der Tangentialraum und das Differential}
+	\subsection{Übungen aus dem Skript}
 	\begin{enumerate}
 		\item Zeige: $\sC_p(M)$ ist mit über die Repräsentanten definierter Addition, Skalarmultiplikation und Multiplikation eine $\mathbb R$-Algebra. (Prop. 2.1.2)
 		\item Zeige: $T_pM$ ist ein Untervektorraum von $(\sC_p(M))^*$.
@@ -70,14 +71,21 @@
 		\item Zeige Lemma 2.3.6: Bezüglich der kanonischen Identifikation $V\equiv T_pV$ gilt $\gamma'(s) \equiv \dot\gamma(s)$ für jede Kurve $\gamma\colon I\rightarrow V$. Dabei bezeichnet $\gamma'$ die Ableitung als Differentialquotienten und $\dot{\gamma}$ den abstrakten Tangentialvektor. (Hinweis: Verwende die mehrdimensionale Kettenregel für vektorwertige Abbildungen!)
 		\item Sei $f\colon M \to N$ glatt, $x$ eine Karte von $M$ und $y$ eine Karte von $N$. Zeige, dass die Darstellungsmatrix des Differentials von $f$ bzgl. der Koordinatenbasen die Jacobi-Matrix der Kartendarstellung von $f$ ist. (Lemma 2.4.8)
 		\item Rechne die Transformationsformel für Tangentialvektoren nach. (Lemma 2.4.10)
-		\item Wir betrachten auf $\R^2$ die offene Menge $U = \R^2 \setminus\{(x,y) \mid x \le 0\}$. Die \emph{Polarkoordinaten} auf $\R^2$ sind die Karte $\Phi = (\varphi,r) \colon U \to (-\pi,\pi) \times (0,\infty)$, die durch die Umkehrabbildung $\Phi^{-1}\colon (-\pi,\pi)\times(0,\infty), (\varphi,r) \mapsto (r\cos(\varphi), r\sin(\varphi))$ gegeben ist (dabei haben wir die \glqq böse Notation\grqq\ benutzt, die Punkte im Bildbereich der Karte genauso zu nennen wie die Kartenabbildungen selbst). Berechne mithilfe der Transformationsformel die Koordinatenvektoren $\left.\frac{\partial}{\partial\varphi}\right|_p$, $\left.\frac{\partial}{\partial r}\right|_p$ in der Koordinatenbasis der Standardkoordinaten auf $\R^2$.
 		\item Beweise, dass sich die Identifikation $V\equiv T_pV$ für einen Vektorraum $V$ folgendermaßen schreiben lässt (Lemma 2.5.2): 
 		\[V \ni v \equiv \left.\frac{\D}{\D t}(p + tv)\right|_{t=0} \in T_pV.\]
 		\item Zeige: Die Koordinatenvektoren sind durch die Ableitungen der Koordinatenlinien gegeben (Lemma 2.5.4).
 		\item Zeige: Jeder Tangentialvektor lässt sich als Ableitung einer Kurve schreiben (Lemma 2.5.5).
-		\item Fasse $S^1$ als Untermannigfaltigkeit der komplexen Zahlen auf und erzeuge die Tangentialräume $T_pS^1$ durch Kurven.
-		\item Sei $M \subset \R^n$ eine eingebettete Untermannigfaltigkeit, und sei $(y,U)$ eine Karte von $M$. Die durch die Identität gegebene Karte von $\R^n$ bezeichnen wir mit $x$. Berechne die Koordinatenvektoren $\left.\frac{\partial}{\partial y^i}\right|_p$ so konkret wie möglich als Vektoren in $T_pM \subset T_p\R^n \equiv \R^n$.
 	\end{enumerate}
+	\subsection{Zusätzliche Übungen}
+	\begin{enumerate}
+		\item Nach Lemma 2.4.10:
+			Wir betrachten auf $\R^2$ die offene Menge $U = \R^2 \setminus\{(x,y) \mid x \le 0\}$. Die \emph{Polarkoordinaten} auf $\R^2$ sind die Karte $\Phi = (\varphi,r) \colon U \to (-\pi,\pi) \times (0,\infty)$, die durch die Umkehrabbildung $\Phi^{-1}\colon (-\pi,\pi)\times(0,\infty), (\varphi,r) \mapsto (r\cos(\varphi), r\sin(\varphi))$ gegeben ist (dabei haben wir die \glqq böse Notation\grqq\ benutzt, die Punkte im Bildbereich der Karte genauso zu nennen wie die Kartenabbildungen selbst). Berechne mithilfe der Transformationsformel die Koordinatenvektoren $\left.\frac{\partial}{\partial\varphi}\right|_p$, $\left.\frac{\partial}{\partial r}\right|_p$ in der Koordinatenbasis der Standardkoordinaten auf $\R^2$.
+		\item Nach Abschnitt 2.5:
+			Fasse $S^1$ als Untermannigfaltigkeit der komplexen Zahlen auf und erzeuge die Tangentialräume $T_pS^1$ durch Kurven.
+		\item Nach Lemma 2.6.2:
+			Sei $M \subset \R^n$ eine eingebettete Untermannigfaltigkeit, und sei $(y,U)$ eine Karte von $M$. Die durch die Identität gegebene Karte von $\R^n$ bezeichnen wir mit $x$. Berechne die Koordinatenvektoren $\left.\frac{\partial}{\partial y^i}\right|_p$ so konkret wie möglich als Vektoren in $T_pM \subset T_p\R^n \equiv \R^n$.
+	\end{enumerate}
+
 	\section{Multilineare Algebra: Das Tensorprodukt}
 	\begin{enumerate}
 		\item Beweise die folgenden Eigenschaften des Tensorprodukts von Vektorräumen $V,W$:
@@ -87,7 +95,7 @@
 		\item Sei $X$ ein weiterer Vektorraum. Eine lineare Abbildung $f\colon V\otimes W \to X$ ist genau dann injektiv, wenn $f(u) = 0 \implies u = 0$ für alle einfachen Tensoren $u = v\otimes w \in V\otimes W$ gilt.
 		\end{enumerate}
 			\item Sei $B\colon V\times W \to X$ eine bilineare Abbildung, und die Abbildung $f_B$ definiert durch 
-		\[f_B\left(\sum_{i=1}^k v_i \otimes w_i\right) = \sum_{i=1}^k f_B(v_i \otimes w_i) = \sum_{i=1}^k B(v_i,w_i).\]
+		\[f_B\left(\sum_{i=1}^k v_i \otimes w_i\right) := \sum_{i=1}^k B(v_i,w_i).\]
 			Zeige, dass $f_B\colon V\otimes W\rightarrow X$ wohldefiniert und linear ist.
 			\item Zeige, dass $V\otimes W\rightarrow W\otimes V,\quad v\otimes w \mapsto w\otimes v$ ein Isomorphismus ist.
 			\item Beweise die Transformationsformel für Tensorkomponenten unter Basiswechsel.
