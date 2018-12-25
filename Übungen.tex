@@ -69,7 +69,7 @@
 	\subsection{Übungen aus dem Skript}
 	\begin{enumerate}
 		\item Zeige: $\sC_p(M)$ ist mit über die Repräsentanten definierter Addition, Skalarmultiplikation und Multiplikation eine $\mathbb R$-Algebra. (Prop. 2.1.2)
-		\item Zeige: $T_pM$ ist ein Untervektorraum von $(\sC_p(M))^*$.
+		\item Zeige: $T_pM$ ist ein Untervektorraum von $(\sC_p(M))^*$. (Def. 2.1.3)
 		\item Zeige: Ist $\gamma\colon I\to M, \gamma(s) = p$ eine konstante Kurve, so ist der abstrakte Geschrindigkeitsvektor $\dot\gamma(s) = 0$.
 		\item Zeige: Das Differential ist eine wohldefinierte, lineare Abbildung. (Prop. 2.2.2)
 		\item Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $\tilde\gamma := f\circ\gamma \colon I \to N$ eine Kurve in $M$. Zeige: $\dot{\tilde\gamma}(s) = \left.\DD f\right|_{\gamma(s)} (\dot\gamma(s))$. (Bem. 2.2.3)
@@ -94,18 +94,14 @@
 
 	\section{Multilineare Algebra: Das Tensorprodukt}
 	\begin{enumerate}
-		\item Beweise die folgenden Eigenschaften des Tensorprodukts von Vektorräumen $V,W$:
-			\begin{enumerate}[label=(\alph*)]
-		\item Die Abbildung $\otimes\colon V\times W\to V\otimes W, (v,w) \mapsto v\otimes w$ ist bilinear.
-		\item Ist $\{b_i\}_{i\in I}$ eine Basis von $V$ und $\{c_j\}_{j\in J}$ eine Basis von $W$. $\{b_i \otimes c_j\}_{i\in I, j\in J}$ ist dann eine Basis von $V\otimes W$ und insbesondere gilt $\dim(V\otimes W) = \dim(V) \cdot \dim(W)$.
-		\item Sei $X$ ein weiterer Vektorraum. Eine lineare Abbildung $f\colon V\otimes W \to X$ ist genau dann injektiv, wenn $f(u) = 0 \implies u = 0$ für alle einfachen Tensoren $u = v\otimes w \in V\otimes W$ gilt.
-		\end{enumerate}
-			\item Sei $B\colon V\times W \to X$ eine bilineare Abbildung, und die Abbildung $f_B$ definiert durch 
-		\[f_B\left(\sum_{i=1}^k v_i \otimes w_i\right) := \sum_{i=1}^k B(v_i,w_i).\]
+		\item Beweise Lemma 3.1.2.
+		\item Zu Satz 3.1.3: Sei $B\colon V\times W \to X$ eine bilineare Abbildung, und die Abbildung $f_B$ definiert durch 
+			\[f_B\left(\sum_{i=1}^k v_i \otimes w_i\right) := \sum_{i=1}^k B(v_i,w_i).\]
 			Zeige, dass $f_B\colon V\otimes W\rightarrow X$ wohldefiniert und linear ist.
-			\item Zeige, dass $V\otimes W\rightarrow W\otimes V,\quad v\otimes w \mapsto w\otimes v$ ein Isomorphismus ist.
-			\item Beweise die Transformationsformel für Tensorkomponenten unter Basiswechsel.
+		\item Zu Lemma 3.1.5: Zeige, dass $V\otimes W\rightarrow W\otimes V,\quad v\otimes w \mapsto w\otimes v$ ein Isomorphismus ist.
+		\item Zu Def. 3.3.1: Beweise die Transformationsformel für Tensorkomponenten unter Basiswechsel.
 	\end{enumerate}
+
 	\section{Vektorbündel}
 	\begin{enumerate}
 		\item Zeige: Ein Vektorbündel ist genau dann trivial, wenn es einen globalen Rahmen besitzt.
