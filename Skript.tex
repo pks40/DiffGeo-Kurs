@@ -1,5 +1,5 @@
 % !TeX spellcheck = de_DE
-\documentclass[a4paper]{scrreprt}
+\documentclass[a4paper]{scrbook}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -64,6 +64,7 @@
 \begin{document}
 
 \maketitle
+\tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{chapter}{-1}
@@ -316,7 +317,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 			
 			Beachte: Anders als bei linearen Abbildungen sind hier Bijektivität und Stetigkeit nicht hinreichend.
 		\end{defn}
-	\section{Mannigfaltigkeiten}
+	\section{Topologische und differenzierbare Mannigfaltigkeiten}
 		\begin{defn}
 			Eine \emph{topologische Mannigfaltigkeit} ist ein topologischer Raum $(M,\mathcal{T})$, der hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:
 			Es existiert eine natürliche Zahl $n\in \mathbb{N}$ (Dimension), sodass für alle Punkte $p\in M$ offene Umgebungen $U\subset M, V\subset \R^n$ mit $p\in U $ und ein Homöomorphismus $ \varphi\colon U\rightarrow V$ existieren.
@@ -806,9 +807,9 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 	Statt $\dot\gamma(s)$ schreiben wir für die Ableitung einer Kurve an der Stelle $s$ in Zukunft auch
 	\[\dot\gamma(s) = \left.\frac{\D}{\D t}\gamma(t)\right|_{t = s}.\]
 
-	Man kann sich überlegen, dass
+	Mit der Kettenregel folgt, dass
 	\[\dot\gamma(s) = \left.\frac{\D}{\D t}\gamma(s + t)\right|_{t = 0}\]
-	gilt (Übung!).
+	gilt.
 \end{bem}
 Mit dieser Schreibweise nimmt die Identifikation eines endlich-dimensionalen Vektorraums mit seinem Tangentialraum eine sehr suggestive Form an:
 \begin{lemma}
@@ -1582,7 +1583,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 {\textsc{James Clerk Maxwell}\\\emph{A Treatise on Electricity and Magnetism} (1873)}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Grundlegendes}
+\section{Grundlagen}
 \begin{defn}
 	Ein (glattes) \emph{Vektorfeld} auf einer differenzierbaren Mannigfaltigkeit $M$ ist ein (glatter) Schnitt des Tangentialbündels $TM$, also eine (glatte) Abbildung $X\colon M \to TM$, sodass $X(p) \in T_pM$ für alle $p\in M$ gilt. Statt $X(p)$ schreiben wir im Folgenden meist $X_p$.
 
@@ -2204,7 +2205,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Kovariante Ableitungen}
+\chapter{Wenn noch Zeit ist: Kovariante Ableitungen}
 	\section{Grundlagen}
 		\begin{defn}[Kovariante Ableitung]Sei $E$ ein Vektorbündel über $M$.
 		
