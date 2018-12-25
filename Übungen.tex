@@ -52,30 +52,31 @@
 		\item Zeige: Die Fortsetzung eines nichtleeren Atlanten zu einem maximalen Atlanten ist eindeutig.
 		\item Zeige: Eine Karte ist ein Diffeomorphismus zwischen Mannigfaltigkeiten.
 		\item Konstruiere aus den Atlanten zweier Mannigfaltigkeiten $M_1$ und $M_2$ einen Atlanten der Produktmannigfaltigkeit.
-		\item Die Verkettung glatter Abbildungen von Mannigfaltigkeiten ist glatt.
-		\item Zeige: Für eine Produktmannigfaltigkeit $M_1\times M_2$ sind die kanonischen Projektionen $\pi_i\colon M_1\times M_2\rightarrow M_i$ ($i=1,2$) differenzierbar und für eine weitere Mannigfaltigkeit $N$ mit Abbildung $f\colon N\rightarrow M_1\times M_2$ gilt:
+		\item Zeige: Die Verkettung glatter Abbildungen von Mannigfaltigkeiten ist glatt.
+		\item Zeige: Für eine Produktmannigfaltigkeit $M_1\times M_2$ sind die kanonischen Projektionen $\pi_i\colon M_1\times M_2\rightarrow M_i$ ($i=1,2$) glatt und für eine weitere Mannigfaltigkeit $N$ mit Abbildung $f\colon N\rightarrow M_1\times M_2$ gilt:
 		\begin{equation}
-			\text{$f$ ist differenzierbar} \colon\Leftrightarrow \pi_i\circ f \text{ ist differenzierbar für } i=1,2
+			\text{$f$ ist glatt} \colon\Leftrightarrow \pi_i\circ f \text{ ist glatt für } i=1,2
 		\end{equation}
-		\item Wir betrachten die komplexen Zahlen $\mathbb{C}$ als $2$-dimensionale Mannigfaltigkeit. Dazu verwenden wir die offene Menge $U=\mathbb{C}\setminus\{z\mid \mathrm{Re}z\leq 0, \mathrm{Im}z=0\}$ zur Konstruktion von Karten. Neben der üblichen Identifizierung $\mathbb{C}\cong\R^2$ sind die Polarkoordinaten eine natürliche Wahl. Die Karte ist dann $x\colon U\rightarrow (-\pi,\pi)\times (0,\infty), z\mapsto (\lvert z\rvert, \mathrm{Arg}(z))$ und die inverse Abbildung ist $x^{-1}\colon (-\pi,\pi)\times (0,\infty)\rightarrow U, (\varphi,r)\mapsto re^{i\phi}$. Mache Dir klar, dass $S^1$ eine Untermannigfaltigkeit von $\mathbb{C}$ ist.
+		\item Wir betrachten die komplexen Zahlen $\mathbb{C}$ als $2$-dimensionale Mannigfaltigkeit. Neben der üblichen Identifikation $\mathbb{C}\cong\R^2$ sind die \emph{Polarkoordinaten} eine natürliche Wahl. Dazu betrachten wir die offene Menge $U = \mathbb{C}\setminus\{z\mid \mathrm{Re}\,z\leq 0, \mathrm{Im}\,z=0\}$ zur Konstruktion von Karten.  Die Karte ist dann $x\colon U\rightarrow (-\pi,\pi)\times (0,\infty), z\mapsto (\lvert z\rvert, \mathrm{Arg}(z))$ und die inverse Abbildung ist $x^{-1}\colon (-\pi,\pi)\times (0,\infty)\rightarrow U, (\varphi,r)\mapsto re^{i\phi}$. Mache Dir klar, dass $S^1$ eine Untermannigfaltigkeit von $\mathbb{C}$ ist.
 	\end{enumerate}
 	\section{Der Tangentialraum und das Differential}
 	\begin{enumerate}
-		\item Zeige: $\sC_p(M)$ ist mit über die Repräsentanten definierter Addition, Skalarmultiplikation und Multiplikation eine $\mathbb R$-Algebra.
+		\item Zeige: $\sC_p(M)$ ist mit über die Repräsentanten definierter Addition, Skalarmultiplikation und Multiplikation eine $\mathbb R$-Algebra. (Prop. 2.1.2)
 		\item Zeige: $T_pM$ ist ein Untervektorraum von $(\sC_p(M))^*$.
-		\item Zeige: Das Differential ist eine wohldefinierte, lineare Abbildung.
-		\item Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $\tilde\gamma := f\circ\gamma \colon I \to N$ eine Kurve in $M$. Zeige: $\dot{\tilde\gamma}(s) = \left.\DD f\right|_{\gamma(s)} (\dot\gamma(s))$.
-		\item Zeige: $\left.\DD(\id_M)\right|_p = \id_{T_pM}$.
-		\item Zeige: Ist $f\colon M \to N$ ein Diffeomorphismus, so ist $\left.\DD f\right|_p$ für jedes $p\in M$ ein Isomorphismus, und es gilt $\left.\DD f^{-1}\right|_{f(p)} = \left(\left.\DD f\right|_p\right)^{-1}$.
-		\item Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Sei $p\in M$, $x$ eine Karte von $M$ um $p$ und $y$ eine Karte von $N$ um $f(p)$. Zeige: \[\mathrm{J}(y\circ f\circ x^{-1})|_{x(p)} = \left[\left(\partial_j(y\circ f\circ x^{-1})^i\right) (x(p)) \right]_{ij}.\]
-		ist die Darstellungsmatrix des Differentials der Kartendarstellung $y\circ f\circ x^{-1}$ von $f$ bezüglich der Koordinatenbasen.
-		\item Rechne die Transformationsformel für Tangentialvektoren nach.
-		\item Zeige: Bezüglich der kanonischen Identifikation $V\equiv T_pV$ gilt $\gamma'(s) \equiv \dot\gamma(s)$ für jede Kurve $\gamma\colon I\rightarrow V$. Dabei bezeichnet $\gamma'$ die Ableitung als Differenzquotienten und $\dot{\gamma}$ den abstrakten Tangentialvektor. (Hinweis: Verwende die mehrdimensionale Kettenregel für vektorwertige Abbildungen!)
-		\item Beweise, dass sich die Identifikation $V\equiv T_pV$ für einen Vektorraum $V$ folgendermaßen schreiben lässt: 
+		\item Zeige: Ist $\gamma\colon I\to M, \gamma(s) = p$ eine konstante Kurve, so ist der abstrakte Geschrindigkeitsvektor $\dot\gamma(s) = 0$.
+		\item Zeige: Das Differential ist eine wohldefinierte, lineare Abbildung. (Prop. 2.2.2)
+		\item Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $\tilde\gamma := f\circ\gamma \colon I \to N$ eine Kurve in $M$. Zeige: $\dot{\tilde\gamma}(s) = \left.\DD f\right|_{\gamma(s)} (\dot\gamma(s))$. (Bem. 2.2.3)
+		\item Beweise Lemma 2.2.5. Tipp: Verwende die Kettenregel.
+		\item Zeige Lemma 2.3.6: Bezüglich der kanonischen Identifikation $V\equiv T_pV$ gilt $\gamma'(s) \equiv \dot\gamma(s)$ für jede Kurve $\gamma\colon I\rightarrow V$. Dabei bezeichnet $\gamma'$ die Ableitung als Differentialquotienten und $\dot{\gamma}$ den abstrakten Tangentialvektor. (Hinweis: Verwende die mehrdimensionale Kettenregel für vektorwertige Abbildungen!)
+		\item Sei $f\colon M \to N$ glatt, $x$ eine Karte von $M$ und $y$ eine Karte von $N$. Zeige, dass die Darstellungsmatrix des Differentials von $f$ bzgl. der Koordinatenbasen die Jacobi-Matrix der Kartendarstellung von $f$ ist. (Lemma 2.4.8)
+		\item Rechne die Transformationsformel für Tangentialvektoren nach. (Lemma 2.4.10)
+		\item Wir betrachten auf $\R^2$ die offene Menge $U = \R^2 \setminus\{(x,y) \mid x \le 0\}$. Die \emph{Polarkoordinaten} auf $\R^2$ sind die Karte $\Phi = (\varphi,r) \colon U \to (-\pi,\pi) \times (0,\infty)$, die durch die Umkehrabbildung $\Phi^{-1}\colon (-\pi,\pi)\times(0,\infty), (\varphi,r) \mapsto (r\cos(\varphi), r\sin(\varphi))$ gegeben ist (dabei haben wir die \glqq böse Notation\grqq\ benutzt, die Punkte im Bildbereich der Karte genauso zu nennen wie die Kartenabbildungen selbst). Berechne mithilfe der Transformationsformel die Koordinatenvektoren $\left.\frac{\partial}{\partial\varphi}\right|_p$, $\left.\frac{\partial}{\partial r}\right|_p$ in der Koordinatenbasis der Standardkoordinaten auf $\R^2$.
+		\item Beweise, dass sich die Identifikation $V\equiv T_pV$ für einen Vektorraum $V$ folgendermaßen schreiben lässt (Lemma 2.5.2): 
 		\[V \ni v \equiv \left.\frac{\D}{\D t}(p + tv)\right|_{t=0} \in T_pV.\]
-		\item Zeige: Die Koordinatenvektoren sind durch die Ableitungen der Koordinatenlinien gegeben.
+		\item Zeige: Die Koordinatenvektoren sind durch die Ableitungen der Koordinatenlinien gegeben (Lemma 2.5.4).
+		\item Zeige: Jeder Tangentialvektor lässt sich als Ableitung einer Kurve schreiben (Lemma 2.5.5).
 		\item Fasse $S^1$ als Untermannigfaltigkeit der komplexen Zahlen auf und erzeuge die Tangentialräume $T_pS^1$ durch Kurven.
-		\item Zeige: Jeder Tangentialvektor lässt sich als Ableitung einer Kurve schreiben.
+		\item Sei $M \subset \R^n$ eine eingebettete Untermannigfaltigkeit, und sei $(y,U)$ eine Karte von $M$. Die durch die Identität gegebene Karte von $\R^n$ bezeichnen wir mit $x$. Berechne die Koordinatenvektoren $\left.\frac{\partial}{\partial y^i}\right|_p$ so konkret wie möglich als Vektoren in $T_pM \subset T_p\R^n \equiv \R^n$.
 	\end{enumerate}
 	\section{Multilineare Algebra: Das Tensorprodukt}
 	\begin{enumerate}
