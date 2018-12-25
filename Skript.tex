@@ -393,15 +393,18 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 \begin{bem}
 	Ist $N$ eine $k$-dimensionale Untermannigfaltigkeit von $M$, so erhalten wir aus Karten $(\varphi,U)$ von $M$ wie oben durch
 	\[\tilde\varphi := (\varphi^1, \dots, \varphi^k)\]
-	Karten $(\tilde\varphi, U\cap N)$ von $N$. Mit diesen ist $N$ selbst eine differenzierbare Mannigfaltigkeit. Die Inklusionsabbildung $i\colon N \to M, i(p) := p$ ist eine glatte Abbildung.
+	Karten $(\tilde\varphi, U\cap N)$ von $N$. Mit diesen ist $N$ selbst eine differenzierbare Mannigfaltigkeit. Die Inklusionsabbildung $i\colon N \to M, i(p) := p$ ist dann eine glatte Abbildung.
+
+	Die von diesen Karten induzierte differenzierbare Struktur auf $N$ ist die eindeutige differenzierbare Struktur auf $N$ mit der Eigenschaft, dass $i$ glatt ist.
 \end{bem}
 
+Äquivalent sind Untermannigfaltigkeiten Mengen, die lokal wie Graphen von glatten Abbildungen aussehen.
 \begin{lemma} \label{lemma:umf_lokal_graph}
 	Sei $M$ eine $n$-dimensionale differenzierbare Mannigfaltigkeit und $0 \le k \le n$. $N\subset M$ sei eine Teilmenge, die sich lokal als Graph von glatten Abbildungen $\R^k \to \R^{n-k}$ schreiben lässt, d.\,h. zu jedem Punkt $p\in N$ gebe es eine Karte $(\varphi,U)$ von $M$ um $p$ mit $\varphi(U) = A \times B$, $A \subset \R^k, B \subset \R^{n-k}$ offen, und eine glatte Abbildung $F\colon A \to B$, sodass
 	\[\varphi(U\cap N) = \{(a^1,\dots,a^k, b^1, \dots, b^{n-k}) : b = F(a)\}\]
 	gilt.
 
-	Dann ist $N$ in kanonischer Weise eine $k$-dimensionale eingebettete Untermannigfaltigkeit von $M$.
+	Dann ist $N$ eine $k$-dimensionale eingebettete Untermannigfaltigkeit von $M$.
 
 	\begin{proof}
 		Wir müssen $N$ lokal als eine Ebene im $\R^n$ darstellen.
@@ -865,7 +868,7 @@ Unter einer Immersion werden also unabhängige Richtungen auf unabhängige Richt
 		deren Kern offensichtlich $\{0\}$ ist. Das ist aber die Darstellungsmatrix des Differentials $\left.\DD i\right|_{p}$, dieses ist also injektiv.
 	\end{proof}
 \end{satz}
-Über das Differential der Inklusion können wir den Tangentialraum an eine Untermannigfaltigkeit $N\subset M$ also kanonisch mit einem Unterraum des Tangentialraums an $M$ identifizieren, $T_pN \subset T_pM$.
+Über das Differential der Inklusion können wir den Tangentialraum an eine Untermannigfaltigkeit $N\subset M$ also kanonisch mit einem Unterraum des Tangentialraums an $M$ identifizieren, $T_pN \subset T_pM$. Anschaulich ist das klar: Liegt $N$ in $M$, so sind die Richtungen entlang von $N$ spezielle Richtungen in $M$.
 
 \begin{satz}[Satz von der inversen Abbildung für Mannigfaltigkeiten]
 	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Ist $\left.\DD f\right|_p\colon T_pM \to T_{f(p)}N$ ein Isomorphismus, dann ist $f$ ein lokaler Diffeomorphismus um $p$, d.\,h. es gibt eine offene Umgebung $U\subset M$ von $p$, sodass $f|_U \colon U \to f(U)$ ein Diffeomorphismus ist.
@@ -875,6 +878,7 @@ Unter einer Immersion werden also unabhängige Richtungen auf unabhängige Richt
 	\end{proof}
 \end{satz}
 
+Eine der wichtigsten Methoden, neue Mannigfaltigkeiten zu erhalten, ist der sogenannte \emph{Satz vom regulären Wert}. Dieser gibt ein vergleichsweise einfaches Kriterium dafür an, dass eine Teilmenge einer gegebenen Mannigfaltigkeit eine Untermannigfaltigkeit ist.
 \begin{defn}
 	Seien $M,N$ differenzierbare Mannigfaltigkeiten, $\dim M \ge \dim N$, und sei $f \in \sC(M)$.
 	\begin{enumerate}[label=(\alph*)]
