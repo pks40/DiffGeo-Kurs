@@ -1454,7 +1454,12 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			\end{align*}
 			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
-		
+	
+		\begin{lemma} \label{lemma:rahmen_dual}
+			Sei $(\sigma_1,\dots,\sigma_n)$ ein lokaler Rahmen von $E$. Definieren wir lokale Schnitte $\theta^1, \dots, \theta^n$ von $E^*$ dadurch, dass punktweise $\{\theta^i(x)\}$ die duale Basis von $(E_x)^*$ zur Basis $\{\sigma_i(x)\}$ von $E_x$ ist, dann sind die $\theta^i$ glatt, und somit ist $(\theta^1,\dots,\theta^n)$ ein lokaler Rahmen von $E^*$.
+			\bewUeb
+		\end{lemma}
+	
 		\begin{satz}[Dualität von Schnitten]\label{satz:Dualität}
 			Man erhält durch die Konstruktion des dualen Bündels eine $\sC(M)$-bilineare Abbildung
 			\[\Gamma(E)\times\Gamma(E^*)\rightarrow \sC(M),\quad (\sigma,\rho)\mapsto \sigma(\rho)=\rho(\sigma),\]
@@ -1462,19 +1467,23 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			\[(\sigma(\rho))(x)=(\rho(\sigma))(x):=\underbrace{\rho(x)}_{\in E^*_x}(\underbrace{\sigma(x)}_{\in E_x})\in \R.\]
 			Jeder Schnitt $\rho \in \Gamma(E^*)$ des dualen Bündels kann darüber also aufgefasst werden als $\sC(M)$-lineare Abbildung $\Gamma(E) \to \sC(M)$.
 			
-			Umgekehrt ist auch jede $\sC(M)$-lineare Abbildung $\Gamma(E) \to \sC(M)$ gegeben durch Anwendung eines Schnitts $\rho \in \Gamma(E^*)$.
+			Umgekehrt ist auch jede $\sC(M)$-lineare Abbildung $\Gamma(E) \to \sC(M)$ gegeben durch Anwendung eines eindeutig bestimmten Schnitts $\rho \in \Gamma(E^*)$.
 			
 			Es gilt also in natürlicher Weise $\Gamma(E^*)\cong \mathrm{Hom}_{\sC(M)}(\Gamma(E),\sC(M))$. 
 			
 			Man beachte, dass die \glqq Anwendung der Schnitte auf die Schnitte des dualen Bündels\grqq\ punktweise den Homomorphismus aus Lemma \ref{lemma:Bidualraum} verwendet, der in der Notation unterdrückt wurde.
-			\bewUeb
-			\todo{Evtl. noch ausarbeiten.}
+			
+			\begin{proof}
+				Die $\sC(M)$-Bilinearität von $(\sigma,\rho) \mapsto \rho(\sigma)$ ist aufgrund der punktweisen Definition klar.
+				
+				Haben wir eine $\sC(M)$-lineare Abbildung $F\colon \Gamma(E)\to\sC(M)$ gegeben, so wollen wir daraus einen Schnitt $\rho$ von $E^*$ konstruieren mit $F(\sigma) = \rho(\sigma)$ für alle $\sigma \in \Gamma(E)$, und wir wollen sehen, dass dieser Schnitt eindeutig ist. Für $x\in M$ muss dann also $\rho_x(\sigma_x) = (F(\sigma))(x)$ gelten.
+				
+				Die Idee ist also, $\rho_x\colon E_x \to \R$ durch diese Gleichung zu definieren. Wir müssen zeigen, dass das tatsächlich möglich ist, dass sich also einerseits jedes $s \in E_x$ zu einem Schnitt $\sigma \in \Gamma(E)$ fortsetzen lässt mit $\sigma_x = s$ und dass dann andererseits $\rho_x(\sigma_x)$ von der Wahl dieser Fortsetzung unabhängig ist. Beides geht mit Hutfunktionen, ähnlich zum Beweis von Lemma \ref{lemma:tangtvek_punktw_deriv} (Übung).
+				
+				Die Glattheit von $\rho$ folgt dann durch Anwendung auf einen lokalen Rahmen mit Lemma \ref{lemma:schnitt_glatt_koeff_glatt}.
+			\end{proof}
 		\end{satz}
-	
-		\begin{lemma} \label{lemma:rahmen_dual}
-			Sei $(\sigma_1,\dots,\sigma_n)$ ein lokaler Rahmen von $E$. Definieren wir lokale Schnitte $\theta^1, \dots, \theta^n$ von $E^*$ dadurch, dass punktweise $\{\theta^i(x)\}$ die duale Basis von $(E_x)^*$ zur Basis $\{\sigma_i(x)\}$ von $E_x$ ist, dann sind die $\theta^i$ glatt, und somit ist $(\theta^1,\dots,\theta^n)$ ein lokaler Rahmen von $E^*$.
-			\bewUeb
-		\end{lemma}
+		
 		\begin{bsp}
 			Mit obiger Konstruktion können wir aus dem Tangentialbündel $TM$ das \emph{Kotangentialbündel} $T^*M$ gewinnen. Wie wir später sehen werden, ergeben sich in Kombination mit den folgenden Konstruktionen viele neue Strukturen.
 		\end{bsp}
