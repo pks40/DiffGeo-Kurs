@@ -1121,6 +1121,12 @@ Zusammengefasst haben wir also:
 
 	Man schreibt dann die Komponenten eines Tensors $T \in V^{(r,s)}$ mit $r$ oberen Indizes und $s$ unteren Indizes (mit Summenkonvention):
 	\[T = T^{i_1 \dots i_r}_{j_1 \dots j_s} e_{i_1} \otimes \dots \otimes e_{i_r} \otimes \theta^{j_1} \otimes \dots \otimes \theta^{j_s}\]
+
+	Die Komponenten berechnen sich wie folgt (Übung):
+	\[T^{i_1 \dots i_r}_{j_1 \dots j_s} = T(\theta^{i_1}, \dots, \theta^{i_r}, e_{j_1}, \dots, e_{j_s})\]
+
+	Ist $\{\tilde e_i\}$ eine weitere Basis von $V$ mit $\tilde e_i = A^j_i e_j$, so sind die Komponenten von $T$ bzgl. $\{\tilde e_i\}$ und der dazu dualen Basis $\{\tilde \theta^i\}$ gegeben durch (Übung):
+	\[\tilde T^{i_1 \dots i_r}_{j_1 \dots j_s} = T^{k_1 \dots k_r}_{l_1 \dots l_s} (A^{-1})^{i_1}_{k_1} \dots (A^{-1})^{i_r}_{k_r} A^{l_1}_{j_1} \dots A^{l_s}_{j_s}\]
 \end{defn}
 \begin{bsp}
 	\begin{enumerate}[label=(\alph*)]
