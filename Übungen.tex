@@ -73,7 +73,7 @@
 		\item Zeige: Ist $\gamma\colon I\to M, \gamma(s) = p$ eine konstante Kurve, so ist der abstrakte Geschrindigkeitsvektor $\dot\gamma(s) = 0$.
 		\item Zeige: Das Differential ist eine wohldefinierte, lineare Abbildung. (Prop. 2.2.2)
 		\item Ist $\gamma\colon I \to M$ eine glatte Kurve und $f\colon M \to N$ glatt, so ist $\tilde\gamma := f\circ\gamma \colon I \to N$ eine Kurve in $M$. Zeige: $\dot{\tilde\gamma}(s) = \left.\DD f\right|_{\gamma(s)} (\dot\gamma(s))$. (Bem. 2.2.3)
-		\item Beweise Lemma 2.2.5. Tipp: Verwende die Kettenregel.
+		\item Beweise Lemma 2.2.5 über das Zusammenspiel des Differentials mit Diffeomorphismen. Tipp: Verwende die Kettenregel.
 		\item Zeige Lemma 2.3.6: Bezüglich der kanonischen Identifikation $V\equiv T_pV$ gilt $\gamma'(s) \equiv \dot\gamma(s)$ für jede Kurve $\gamma\colon I\rightarrow V$. Dabei bezeichnet $\gamma'$ die Ableitung als Differentialquotienten und $\dot{\gamma}$ den abstrakten Tangentialvektor. (Hinweis: Verwende die mehrdimensionale Kettenregel für vektorwertige Abbildungen!)
 		\item Sei $f\colon M \to N$ glatt, $x$ eine Karte von $M$ und $y$ eine Karte von $N$. Zeige, dass die Darstellungsmatrix des Differentials von $f$ bzgl. der Koordinatenbasen die Jacobi-Matrix der Kartendarstellung von $f$ ist. (Lemma 2.4.8)
 		\item Rechne die Transformationsformel für Tangentialvektoren nach. (Lemma 2.4.10)
@@ -94,7 +94,7 @@
 
 	\section{Multilineare Algebra: Das Tensorprodukt}
 	\begin{enumerate}
-		\item Beweise Lemma 3.1.2.
+		\item Beweise Lemma 3.1.2 über die Eigenschaften des Tensorprodukts $V\otimes W$.
 		\item Zu Satz 3.1.3: Sei $B\colon V\times W \to X$ eine bilineare Abbildung, und die Abbildung $f_B$ definiert durch 
 			\[f_B\left(\sum_{i=1}^k v_i \otimes w_i\right) := \sum_{i=1}^k B(v_i,w_i).\]
 			Zeige, dass $f_B\colon V\otimes W\rightarrow X$ wohldefiniert und linear ist.
@@ -102,6 +102,7 @@
 		\item Zu Def. 3.3.1: Beweise die Transformationsformel für Tensorkomponenten unter Basiswechsel.
 	\end{enumerate}
 
+	\stepcounter{section}	
 	\section{Vektorbündel}
 	\begin{enumerate}
 		\item Zeige: Ein Vektorbündel ist genau dann trivial, wenn es einen globalen Rahmen besitzt.
