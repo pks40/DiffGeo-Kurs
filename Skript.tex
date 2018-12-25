@@ -260,7 +260,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 	\section{Topologie}
 		\begin{defn}[Topologischer Raum]
 			Ein \emph{topologischer Raum} ist ein Tupel $(X,\mathcal{T})$ bestehend aus einer Menge $X$ und einer Familie von Teilmengen $\mathcal{T}$, die folgende Eigenschaften erfüllen:
-			\begin{enumerate}[label=$T$\arabic*]
+			\begin{enumerate}[label=(\roman*)]
 				\item $\emptyset, x\in \mathcal{T}$
 				\item $\forall U_1, U_2\in \mathcal{T} \text{ gilt }U_1\cap U_2\in\mathcal{T}$
 				\item Für jede Familie $\lbrace U_i\rbrace_{i\in I}\subset \mathcal{T}$ gilt $\bigcup_{i\in I}U_i\in\mathcal{T}$
@@ -326,7 +326,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 			Die Dimension der Mannigfaltigkeit ist per Definition wohldefiniert (da $n$ unabhängig von der Wahl des Punktes existieren muss).
 		\end{defn}
 		\begin{bsp}\hfill 
-			\begin{enumerate}
+			\begin{enumerate}[label=(\alph*)]
 				\item Der euklidische Raum $\R^n$ ist eine $n$-dimensionale topologische Mannigfaltigkeit, beispielsweise mit dem Atlas $\lbrace (id_{\R^n},\R^n)\rbrace$. Ebenso gilt dies für beliebige offene Teilmengen.
 				\item Offene Teilmengen von topologischen Mannigfaltigkeiten sind topologische Mannigfaltigkeiten.
 				\item Das kartesische Produkt zweier topologischer Mannigfaltigkeiten (der Dimensionen $n$ und $m$) ist eine topologische Mannigfaltigkeit (der Dimension $n + m$). Die Produkte offener Mengen bilden dabei eine Basis der Topologie des Produktes.
@@ -353,9 +353,9 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 		\end{lemma}
 		Um eine differenzierbare Struktur anzugeben, reicht es also auch aus, einen nicht-maximalen Atlas anzugeben.
 		\begin{bsp}\hfill 
-			\begin{enumerate}
+			\begin{enumerate}[label=(\alph*)]
 				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden! (Übung: Zeige allgemein, dass eine Vervollständigung eines nichtleeren Atlanten eindeutig ist)
-				\item Reelle, endlich dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
+				\item Reelle, endlich-dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
 				\item Die obigen Beispiele topologischer Mannigfaltigkeiten gelten auch für differenzierbare Mannigfalltigkeiten, allerdings müssen auch hier Atlanten vervollständigt werden.
 				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\mid \|x\|=1\rbrace}$ sind differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
 			\end{enumerate}
@@ -1335,7 +1335,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\end{nota}
 		Sei von nun an $(P,M,\pi ,F)$ ein Faserbündel.
 		\begin{bsp}\hfill
-			\begin{enumerate}
+			\begin{enumerate}[label=(\alph*)]
 				\item Das triviale Bündel mit typischer Faser $F$ und Basis $M$ ist das kartesische Produkt $M\times F$ (genauer gesagt das Bündel $(M\times F,\pr_1))$.
 				\item Für eine offene Menge $U\subset M$ und $P\vert_U:=\pi^{-1}(U)$ ist $(P\vert_U,U,\pi\vert_{P_U},F)$ ein Faserbündel.
 			\end{enumerate}
@@ -1389,7 +1389,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 
 		
 		\begin{bsp}\hfill
-			\begin{enumerate}
+			\begin{enumerate}[label=(\alph*)]
 				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
 				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$: mithilfe von Karten von $M$ kann man auf kanonische Weise einen Bündelatlas konstruieren (Übung).
 
@@ -1622,7 +1622,7 @@ Später werden wir eine geometrische Interpretation des Kommutators kennenlernen
 
 \begin{lemma}[Eigenschaften des Kommutators] \label{lemma:kommut}
 	Der Kommutator von Vektorfeldern erfüllt die folgenden Eigenschaften:
-	\begin{enumerate}[label=(\alph*)]
+	\begin{enumerate}[label=(\roman*)]
 		\item \label{lemma:kommut_1} $[\cdot,\cdot] \colon \mathfrak X(M) \times \mathfrak X(M) \to \mathfrak X(M)$ ist $\R$-bilinear.
 		\item \label{lemma:kommut_2} Für beliebige Vektorfelder $X,Y \in \mathfrak X(M)$ gilt $[X,Y] = -[Y,X]$ (\emph{Antisymmetrie}).
 		\item \label{lemma:kommut_3} Für beliebige Vektorfelder $X,Y,Z \in \mathfrak X(M)$ gilt $[X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0$ (\emph{Jacobi-Identität}).
@@ -1847,10 +1847,10 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			Analog lassen sich auch die \emph{Rechtstranslation} $r_g$ (mit $r_g\circ r_h=r_{h\cdot g}$) und die \emph{Konjugation} $c_g:= r_{g^{-1}}\circ l_g$ definieren. Rechts- und Linkstranslationen kommutieren und sind (Anti-) Automorphismen der Lie-Gruppe.
 		\end{defn}
 		\begin{bsp}\hfill
-			\begin{enumerate}
+			\begin{enumerate}[label=(\alph*)]
 				\item $\R^n$ ist zusammen mit der Addition von Vektoren eine Lie-Gruppe.
 				\item $\GL(V)$ ist für $n=\dim_{\R} V$ eine $n^2$-dimensionale und $\mathrm{SL}(n,\R)$ eine $(n^2-1)$-dimensionale Lie-Gruppe (Die komplexen Versionen haben die doppelte Dimension). Weitere Beispiele sind die orthogonalen und unitären Gruppen $\mathrm{O}(n)$ ($n(n-1)/2$-dimensional), $\mathrm{SO}(n)$ ($n(n-1)/2$), $\mathrm{U}(n)$ ($n^2$) und $\mathrm{SU}(n)$ ($n^2-1$).
-				\item $S^1\cong \lbrace z\in \mathbb{C}\mid zz^*=1\rbrace$ bekommt durch die Multiplikation in der komplexen Ebene eine Gruppenstruktur und ist damit eine Lie-Gruppe (nämlich gerade $\mathrm{U}(1)$). 
+				\item $S^1\cong \lbrace z\in \mathbb{C}\mid \bar z z = 1\rbrace$ bekommt durch die Multiplikation in der komplexen Ebene eine Gruppenstruktur und ist damit eine Lie-Gruppe (nämlich gerade $\mathrm{U}(1)$). 
 			\end{enumerate}
 			
 		\end{bsp}
@@ -1926,7 +1926,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 		\end{defn}
 		\begin{lemma}\label{lemma:Eigenschaften_exp}
 			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
-			\begin{enumerate}[label=\arabic*.]
+			\begin{enumerate}[label=(\roman*)]
 				\item $\exp(0)=e$
 				\item Für alle $v \in \mathfrak g$ ist $t \mapsto \exp(tv)$ die Integralkurve von $L(v)$ in $e$.
 				\item $\exp((s+t)v)=\exp(sv)\cdot\exp(tv) \quad\forall v\in\mathfrak{g}, s,t\in \R$
@@ -2099,7 +2099,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 	\section{Tensorderivationen, Pullback und die Lie-Ableitung}
 		\begin{defn}[Tensorderivation]
 			Eine \emph{(globale) Tensorderivation} ist eine Familie von $\R$-linearen Abbildungen $\delta\colon\Gamma(T^{(r,s)}M)\rightarrow \Gamma(T^{(r,s)}M)$, die die folgenden Eigenschaften erfüllt:
-			\begin{enumerate}[label=\arabic*.]
+			\begin{enumerate}[label=(\roman*)]
 				\item $\delta (A\otimes B)=(\delta(A))\otimes B+A\otimes(\delta(B))$ (Produktregel)
 				\item $C_{i,j}(\delta(A))=\delta(C_{i,j}A)$ (Vertauschen mit Kontraktionen)
 			\end{enumerate}
@@ -2186,7 +2186,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 				\nabla\colon \vf(M)\times\Gamma(E)\rightarrow\Gamma(E), (X,\sigma)\mapsto \nabla_X \sigma,
 			\end{align*}
 			die die folgenden Eigenschaften erfüllt:
-			\begin{enumerate}[label=\arabic*]
+			\begin{enumerate}[label=(\roman*)]
 				\item $\sC(M)$-Linearität im ersten Argument: 
 				\begin{equation*}
 					\nabla_{X+fY}\sigma=\nabla_X\sigma+f\nabla_Y \sigma\quad\forall X,Y\in\vf(M), f\in\sC(M),\sigma\in\Gamma(E)
@@ -2211,8 +2211,8 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 			\end{proof}
 		\end{lemma}
 		\begin{lemma}[Lokalität kovarianter Ableitungen]
-			Seien $X_1,X_2\in\vf(M)$ und $\sigma_1,\sigma_2\in\Gamma(E)$ auf einer Umgebung von $p\in M$ identisch, so gilt:
-			\begin{enumerate}
+			Sind $X_1,X_2\in\vf(M)$ und $\sigma_1,\sigma_2\in\Gamma(E)$ auf einer Umgebung von $p\in M$ identisch, so gilt:
+			\begin{enumerate}[label=(\alph*)]
 				\item $\left(\nabla_{X_1}\sigma_1\right)(p)=\left(\nabla_{X_2}\sigma_1\right)(p)$
 				\item $\left(\nabla_{X_1}\sigma_1\right)(p)=\left(\nabla_{X_1}\sigma_2\right)(p)$
 			\end{enumerate}
@@ -2221,40 +2221,40 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 			\end{proof}
 		\end{lemma}
 		Wir wollen noch allgemein untersuchen, wie kovariante Ableitungen in lokalen Trivialisierungen aussehen.
-		\begin{lemma}
-			Sei $(\sigma_1,\ldots,\sigma_k)$ ein lokaler Rahmen über $U\subset M$ und $\phi\colon\pi^{-1}(U)\rightarrow U\times \R^k$, sodass $\phi(\sigma_i)=e_i$ die Standardbasis ist. Damit ist dann $\mathrm{span}_{\R}\lbrace (\sigma_1)_x, \ldots,(\sigma_k)_x\rbrace=E_x\cong\R^k$ und $\Gamma(E\vert_U)=\mathrm{span}_{\sC(U)}\lbrace \sigma_1,\ldots,\sigma_k\rbrace$.
-			
-			Die kovariante Ableitung des Rahmens ist wieder ein Schnitt, lässt sich also in Komponenten bezüglich dieses Rahmens schreiben, sodass die kovariante Ableitung bezüglich eines gegebenen Vektorfeldes $X\in\vf(U)$ wie eine Matrix wirkt:
-			\begin{align*}
-				(A_X)^a_b\sigma_a=\nabla_X\sigma_b
-			\end{align*}
-			
-			Man erhält punktweise ($x\in M$) lineare Abbildungen
-			\begin{align*}
-				(A_X)_x\colon\R^k&\rightarrow\R^k,\\
-				(v^1,\ldots,v^k)&\mapsto \pr_2(\phi((\nabla_X v^i\sigma_i)(x)))=((A_X)_{b,x}^av^b)e_a
-			\end{align*}
-			wobei die letzte Gleichheit wegen der $\R$-Linearität der kovarianten Ableitung und der Kompatibilität von Rahmen und Trivialisierung folgt. Damit ist $A_X$ ein Schnitt des trivialen Bündels $U\times \End(\R^k)$. Die \emph{Zusammenhangs(eins)form} ist die Abbildung $X\mapsto A_X\in\Gamma(U\times \R^k)$.
-			
-			Ist zusätzlich $U$ eine Koordinatenumgebung, dann definiert man die \emph{Zusammenhangskoeffeizienten} $A_{ib}^a:=(A_{\partial_i})^a_b$.
-			
-			Für einen beliebigen lokalen Schnitt $\sigma=f^a\sigma_a\in\Gamma(E\vert_U)$ und ein lokales Vektorfeld $X=g^i\partial_i$ (mit $f^a,g^i\in\sC(U)$) lässt sich die kovariante Ableitung dann folgendermaßen schreiben:
-			\begin{align*}
-				\nabla_X\sigma=\left( X(f^a)+(A_X)^a_bf^b\right)\sigma_a=g^i\left( \partial_i(f^a)+A^a_{ib}f^b\right)\sigma_a
-			\end{align*}
-			
-			Für Elemente $\rho_c=\tau_c^d\sigma_d$ eines anderen lokalen Rahmens und $\frac{\partial}{\partial y^j}=\frac{\partial x^i}{\partial y^j}\frac{\partial}{\partial x^i}$ einer Koordinatenbasis (wobei im ersten Faktor rechts mit $x^i$ die Koordinatenfunktionen $\varphi^i$ gemeint sind), lassen sich damit auch die Zusammenhangskoeffizienten $B^c_{jd}$ bezüglich des Rahmens $\rho$ und der Koordinaten $y$ berechnen:
-			\begin{align*}
-				B^c_{jd}&=\frac{\partial x^i}{\partial y^j}\left((\tau^{-1})^c_a\frac{\partial \tau^a_d}{\partial x^i}+(\tau^{-1})^c_aA^a_{ib}\tau^b_d\right)\\
-				B_j&= \frac{\partial x^i}{\partial y^j}\left(\tau^{-1}\frac{\partial \tau}{\partial x^i}+\tau^{-1}A_{i}\tau\right)\quad\text{als Matrizen}
-			\end{align*}
-			Man sieht dies durch Vergleich der Koeffizienten bezüglich der Basen:
-			\begin{align*}
-				\nabla_{\frac{\partial}{\partial y^j}}\rho_d&=B_{jd}^c\rho_c=B_{jd}^c\tau_c^d\sigma_d\\
-				&=\frac{\partial x^i}{\partial y^j} \left(\partial_i(\tau^a_d)+A^a_{ib}\tau^b_d\right)\sigma_a=\frac{\partial x^i}{\partial y^j} \left(\partial_i(\tau^a_d)+A^a_{ib}\tau^b_d\right)(\tau^{-1})^c_a\rho_c
-			\end{align*}
-			Beachte: Die Zusammenhangskoeffizienten sind nicht Koeffizienten eines Tensors.
-		\end{lemma}
+		
+		Sei $(\sigma_1,\ldots,\sigma_k)$ ein lokaler Rahmen über $U\subset M$ und $\phi\colon\pi^{-1}(U)\rightarrow U\times \R^k$, sodass $\phi(\sigma_i)=e_i$ die Standardbasis ist. Damit ist dann $\mathrm{span}_{\R}\lbrace (\sigma_1)_x, \ldots,(\sigma_k)_x\rbrace=E_x\cong\R^k$ und $\Gamma(E\vert_U)=\mathrm{span}_{\sC(U)}\lbrace \sigma_1,\ldots,\sigma_k\rbrace$.
+		
+		Die kovariante Ableitung des Rahmens ist wieder ein Schnitt, lässt sich also in Komponenten bezüglich dieses Rahmens schreiben, sodass die kovariante Ableitung bezüglich eines gegebenen Vektorfeldes $X\in\vf(U)$ wie eine Matrix wirkt:
+		\begin{align*}
+			(A_X)^a_b\sigma_a=\nabla_X\sigma_b
+		\end{align*}
+		
+		Man erhält punktweise ($x\in M$) lineare Abbildungen
+		\begin{align*}
+			(A_X)_x\colon\R^k&\rightarrow\R^k,\\
+			(v^1,\ldots,v^k)&\mapsto \pr_2(\phi((\nabla_X v^i\sigma_i)(x)))=((A_X)_{b,x}^av^b)e_a
+		\end{align*}
+		wobei die letzte Gleichheit wegen der $\R$-Linearität der kovarianten Ableitung und der Kompatibilität von Rahmen und Trivialisierung folgt. Damit ist $A_X$ ein Schnitt des trivialen Bündels $U\times \End(\R^k)$. Die \emph{Zusammenhangs(eins)form} ist die Abbildung $X\mapsto A_X\in\Gamma(U\times \R^k)$.
+		
+		Ist zusätzlich $U$ eine Koordinatenumgebung, dann definiert man die \emph{Zusammenhangskoeffizienten} $A_{ib}^a:=(A_{\partial_i})^a_b$.
+		
+		Für einen beliebigen lokalen Schnitt $\sigma=f^a\sigma_a\in\Gamma(E\vert_U)$ und ein lokales Vektorfeld $X=g^i\partial_i$ (mit $f^a,g^i\in\sC(U)$) lässt sich die kovariante Ableitung dann folgendermaßen schreiben:
+		\begin{align*}
+			\nabla_X\sigma=\left( X(f^a)+(A_X)^a_bf^b\right)\sigma_a=g^i\left( \partial_i(f^a)+A^a_{ib}f^b\right)\sigma_a
+		\end{align*}
+		
+		Für Elemente $\rho_c=\tau_c^d\sigma_d$ eines anderen lokalen Rahmens und $\frac{\partial}{\partial y^j}=\frac{\partial x^i}{\partial y^j}\frac{\partial}{\partial x^i}$ einer Koordinatenbasis (wobei im ersten Faktor rechts mit $x^i$ die Koordinatenfunktionen $\varphi^i$ gemeint sind), lassen sich damit auch die Zusammenhangskoeffizienten $B^c_{jd}$ bezüglich des Rahmens $\rho$ und der Koordinaten $y$ berechnen:
+		\begin{align*}
+			B^c_{jd}&=\frac{\partial x^i}{\partial y^j}\left((\tau^{-1})^c_a\frac{\partial \tau^a_d}{\partial x^i}+(\tau^{-1})^c_aA^a_{ib}\tau^b_d\right)\\
+			B_j&= \frac{\partial x^i}{\partial y^j}\left(\tau^{-1}\frac{\partial \tau}{\partial x^i}+\tau^{-1}A_{i}\tau\right)\quad\text{als Matrizen}
+		\end{align*}
+		Man sieht dies durch Vergleich der Koeffizienten bezüglich der Basen:
+		\begin{align*}
+			\nabla_{\frac{\partial}{\partial y^j}}\rho_d&=B_{jd}^c\rho_c=B_{jd}^c\tau_c^d\sigma_d\\
+			&=\frac{\partial x^i}{\partial y^j} \left(\partial_i(\tau^a_d)+A^a_{ib}\tau^b_d\right)\sigma_a=\frac{\partial x^i}{\partial y^j} \left(\partial_i(\tau^a_d)+A^a_{ib}\tau^b_d\right)(\tau^{-1})^c_a\rho_c
+		\end{align*}
+		Beachte: Die Zusammenhangskoeffizienten sind nicht Koeffizienten eines Tensors.
+		
 		\begin{satz}
 			Auf jedem Vektorbündel existiert eine kovariante Ableitung.
 			\begin{proof}
@@ -2353,7 +2353,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 			Für $x\in M$, $v\in T_xM$ existiert eine eindeutige maximal fortgesetzte Geodäte $\gamma_{(x,v)}\colon I_{(x,v)}\rightarrow M$ sodass $0\in I_{(x,v)}$, $\gamma(0)=x$ und $\dot{\gamma}(0)=v$.
 			
 			Weiter gilt $\forall x\in M, v\in T_xM,\lambda\in \R$:
-			\begin{enumerate}[label=\arabic* .]
+			\begin{enumerate}[label=(\alph*)]
 				\item $I_{(x,\lambda v)}=\lambda I_{(x,v)}$
 				\item $\gamma_{(x,\lambda v)}(t)=\gamma_{(x, v)}(\lambda t)$
 				\item $\mathcal{E}:=\lbrace (x,v)\in TM\mid 1\in I_{(x,v)}\rbrace\subset TM$ ist offen
@@ -2367,7 +2367,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 			Die \emph{Exponentialabbildung} ist die Abbildung $\Exp\colon \mathcal{E}\rightarrow M$, die punktweise definiert ist als $\Exp_x\colon \mathcal{E}_x\rightarrow M, v\mapsto \gamma_{(x,v)}(1)$.
 			
 			Für die Exponentialabbildung gilt $\forall(x,v)\in \mathcal{E}$:
-			\begin{enumerate}[label=\arabic* .]
+			\begin{enumerate}[label=(\roman*)]
 				\item $\Exp_x(tv)=\gamma_{(x,tv)}(1)=\gamma_{(x,v)}(t) \quad\forall t\in I_{(x,v)}$
 				\item $\DD\Exp_x\vert_0=\id_{T_xM}$
 			\end{enumerate}
