@@ -1370,6 +1370,14 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			\end{equation*}
 			wobei die Einschränkung unterdrückt wurde. Die Abbildung $\tau\colon U\cap V\rightarrow \GL(n,\R)$ ist glatt und wird als \emph{Übergangsfunktion} bezeichnet.
 		\end{defn}
+		\begin{bsp}\hfill
+			\begin{enumerate}[label=(\alph*)]
+				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
+				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$: mithilfe von Karten von $M$ kann man auf kanonische Weise einen Bündelatlas konstruieren (Übung).
+				
+				Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
+			\end{enumerate}
+		\end{bsp}
 		\begin{defn}[Vektorbündelhomomorphismen]\hfill\\
 			Seien $(E_a,M_a,\pi_a,\R^{n_a}),(E_b,M_b,\pi_b,\R^{n_b})$ Vektorbündel.
 			
@@ -1389,20 +1397,18 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			also $\pi_b\circ F=f\circ\pi_a$.
 		\end{defn}
 		
+		\begin{bsp}
+			Ist $f\in\sC(M,N)$, dann können wir das Differential als eine Abbildung $\DD f\colon TM \to TN$ auffassen: Wir setzen
+			\[\DD f(v) := \left.\DD f\right|_{\pi(v)}(v) \quad \text{für} \; v \in TM,\]
+			wobei $\pi\colon TM\to M$ die Projektion ist.
+			
+			Nach Konstruktion des Tangentialbündels ist $\DD f$ glatt. $(\DD f,f)$ ist ein Vektorbündelhomomorphismus $TM \to TN$.
+		\end{bsp}
 		
 		\begin{bem}
 			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)_x := f(x) \sigma_x$. Mit dieser Operation wird $\Gamma(E)$ offensichtlich zu einem $\sC(M)$-Modul.
 		\end{bem}
 
-		
-		\begin{bsp}\hfill
-			\begin{enumerate}[label=(\alph*)]
-				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
-				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$: mithilfe von Karten von $M$ kann man auf kanonische Weise einen Bündelatlas konstruieren (Übung).
-
-					Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
-			\end{enumerate}
-		\end{bsp}
 		\begin{defn}[Rahmen]
 			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_n)\in\Gamma(P\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet.
 			
