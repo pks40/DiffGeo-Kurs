@@ -214,16 +214,16 @@ Wir können $V$ also über $\Theta$ mit einem Unterraum von $V^{**}$ identifizie
 \end{nota}
 
 \begin{satz}[Mehrdimensionale Kettenregel für vektorwertige Abbildungen]
-	Seien $A \subset U, B \subset V, C \subset W$ offene Teilmengen von endlich-dimensionalen Vektorräumen und $f\colon A\to B, g\colon B \to C$ differenzierbare Abbildungen. Dann ist auch $g\circ f\colon A \to C$ differenzierbar, und für die Differentiale gilt
-	\[\DD(g\circ f)|_a = \DD g|_{f(a)} \circ \DD f|_a\]
+	Seien $A \subset \R^l, B \subset \R^m, C \subset \R^n$ offen und $f\colon A\to B, g\colon B \to C$ differenzierbare Abbildungen. Dann ist auch $g\circ f\colon A \to C$ differenzierbar, und für die Jacobi-Matrizen gilt
+	\[\mathrm{J}(g\circ f)|_a = \mathrm{J}g|_{f(a)} \cdot \mathrm{J}f|_a\]
 	für $a \in A$. Mit Richtungsableitungen geschrieben heißt das
-	\[\Big(\partial_u(g\circ f)\Big)(a) = \Big(\partial_{(\partial_u f)(a)} g\Big)(f(a))\]
-	für $u \in U, a\in A$.
+	\[\Big(\partial_v(g\circ f)\Big)(a) = \Big(\partial_{(\partial_v f)(a)} g\Big)(f(a))\]
+	für $v \in \R^l, a\in A$. In dieser Form gilt die Kettenregel auch allgemeiner für Abbildungen zwischen offenen Teilmengen von endlich-dimensionalen Vektorräumen, die nicht $\R^n$ sind.
 
-	Speziell für den Fall $U = \R$ erhalten wir
+	Speziell für den Fall $l=1$, also $A\subset\R$, erhalten wir
 	\[(g\circ f)'(a) = \Big(\partial_{f'(a)} g\Big)(f(a)).\]
 \end{satz}
-Die formale Definition der Differentiale und von mehrdimensionaler (totaler) Differenzierbarkeit brauchen wir nicht; uns reicht die Aussage, dass letztere von stetiger partieller Differenzierbarkeit impliziert wird.
+Die formale Definition von mehrdimensionaler (totaler) Differenzierbarkeit brauchen wir nicht; uns reicht die Aussage, dass sie von stetiger partieller Differenzierbarkeit impliziert wird.
 
 \begin{defn}
 	Seien $U \subset \mathbb R^m, V \subset \mathbb R^n$ offene Mengen. Eine Abbildung $f\colon U\to V$ heißt \emph{$k$-fach stetig (partiell) differenzierbar} oder auch \emph{von der Klasse $\mathcal C^k$}, wenn alle partiellen Ableitungen $\partial_{i_1} \dots \partial_{i_k} f$ der Ordnung $k$ existieren und stetige Funktionen auf $U$ sind.
