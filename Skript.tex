@@ -118,12 +118,12 @@ Man kann Vektorräume auch über allgemeinen Körpern anstelle von $\R$ definier
 \begin{defn}
 	Eine ($\R$-)\emph{lineare Abbildung} $f\colon V\to W$ zwischen zwei Vektorräumen ist eine Abbildung mit $f(\lambda v + \mu \tilde v) = \lambda f(v) + \mu f(\tilde v)$ für alle $\lambda,\mu \in \R$ und $v,\tilde v \in V$.
 
-	Der \emph{Kern} von $f$ ist der Untervektorraum $\ker f := \{v \in V : f(v) = 0\}$ von $V$.
+	Der \emph{Kern} von $f$ ist der Untervektorraum $\ker f := \{v \in V \mid f(v) = 0\}$ von $V$.
 
 	Das \emph{Bild} $\im f = f(V)$ von $f$ ist ein Untervektorraum von $W$.
 
 	Die Menge aller linearen Abbildungen von $V$ nach $W$ schreibt man als
-	\[\Hom(V,W) := \{f\colon V \to W : f \; \text{linear}\}.\]
+	\[\Hom(V,W) := \{f\colon V \to W \mid f \; \text{linear}\}.\]
 	Mit punktweiser Addition und Multiplikation ist sie selbst ein Vektorraum.
 	
 	Ein \emph{Isomorphismus} von Vektorräumen ist eine lineare Abbildung $f\colon V\to W$, die sich durch eine lineare Abbildung $g\colon V\to W$ umkehren lässt, also $g\circ f = \id_V$ und $f\circ g = \id_W$. Wenn eine lineare Abbildung bijektiv ist, ist die Umkehrabbildung automatisch linear; also ist ein Isomorphismus äquivalent eine bijektive lineare Abbildung.
@@ -164,7 +164,7 @@ Man kann Vektorräume auch über allgemeinen Körpern anstelle von $\R$ definier
 
 \begin{defn}
 	Für einen reellen Vektorraum $V$ ist
-	\[V^* := \mathrm{Hom}(V,\R) = \{f\colon V \to \R : f \; \text{linear}\}\]
+	\[V^* := \mathrm{Hom}(V,\R) = \{f\colon V \to \R \mid f \; \text{linear}\}\]
 	der \emph{Dualraum} von $V$.
 \end{defn}
 
@@ -391,7 +391,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 \section{Untermannigfaltigkeiten}
 \begin{defn}
 	Sei $M$ eine $n$-dimensionale differenzierbare Mannigfaltigkeit, und sei $0 \le k \le n$. Eine \emph{$k$-dimensionale (eingebettete) Untermannigfaltigkeit} von $M$ ist eine Teilmenge $N \subset M$, sodass es zu jedem Punkt $p \in N$ eine Karte $(\varphi,U)$ von $M$ um $p$ gibt, sodass
-	\[\varphi(U\cap N) = \{a \in \varphi(U) : a^{k+1} = \dots = a^n = 0\}\]
+	\[\varphi(U\cap N) = \{a \in \varphi(U) \mid a^{k+1} = \dots = a^n = 0\}\]
 	gilt. Es gibt also Karten $(\varphi,U)$ von $M$, bzgl. derer $N$ lokal wie eine $k$-dimensionale Ebene im $\R^n$ aussieht.
 \end{defn}
 
@@ -406,7 +406,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 Äquivalent sind Untermannigfaltigkeiten Mengen, die lokal wie Graphen von glatten Abbildungen aussehen.
 \begin{lemma} \label{lemma:umf_lokal_graph}
 	Sei $M$ eine $n$-dimensionale differenzierbare Mannigfaltigkeit und $0 \le k \le n$. $N\subset M$ sei eine Teilmenge, die sich lokal als Graph von glatten Abbildungen $\R^k \to \R^{n-k}$ schreiben lässt, d.\,h. zu jedem Punkt $p\in N$ gebe es eine Karte $(\varphi,U)$ von $M$ um $p$ mit $\varphi(U) = A \times B$, $A \subset \R^k, B \subset \R^{n-k}$ offen, und eine glatte Abbildung $F\colon A \to B$, sodass
-	\[\varphi(U\cap N) = \{(a^1,\dots,a^k, b^1, \dots, b^{n-k}) : b = F(a)\}\]
+	\[\varphi(U\cap N) = \{(a^1,\dots,a^k, b^1, \dots, b^{n-k}) \mid b = F(a)\}\]
 	gilt.
 
 	Dann ist $N$ eine $k$-dimensionale eingebettete Untermannigfaltigkeit von $M$.
@@ -414,9 +414,9 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 	\begin{proof}
 		Wir müssen $N$ lokal als eine Ebene im $\R^n$ darstellen.
 
-		Zu $p \in N$ seien dazu $\varphi = (\varphi_A,\varphi_B)\colon U \to A\times B$ und $F\colon A\to B$ wie oben, also $\varphi$ eine Karte von $M$ mit $\varphi(U\cap N) = \{(a,b) : b = F(a)\}$. Die Idee ist, die Karte umzudefinieren, indem man den $F$-Teil einfach abzieht.
+		Zu $p \in N$ seien dazu $\varphi = (\varphi_A,\varphi_B)\colon U \to A\times B$ und $F\colon A\to B$ wie oben, also $\varphi$ eine Karte von $M$ mit $\varphi(U\cap N) = \{(a,b) \mid b = F(a)\}$. Die Idee ist, die Karte umzudefinieren, indem man den $F$-Teil einfach abzieht.
 
-		Wir definieren also durch $\tilde\varphi := (\varphi_A, \varphi_B - F\circ\varphi_A)$ eine neue Karte $\tilde\varphi = (\tilde\varphi_A, \tilde\varphi_B) \colon U \to \{(\tilde a,\tilde b) : \tilde a \in A, \tilde b + F(\tilde a) \in B\}$. Nach Definition ist dann $q \in U\cap N \iff \varphi_B(q) = F(\varphi_A(q)) \iff \tilde\varphi_B(q) = 0$, also $\tilde\varphi(U\cap N) = \{(\tilde a,\tilde b) : \tilde b = 0\}$ wie gewünscht.
+		Wir definieren also durch $\tilde\varphi := (\varphi_A, \varphi_B - F\circ\varphi_A)$ eine neue Karte $\tilde\varphi = (\tilde\varphi_A, \tilde\varphi_B) \colon U \to \{(\tilde a,\tilde b) \mid \tilde a \in A, \tilde b + F(\tilde a) \in B\}$. Nach Definition ist dann $q \in U\cap N \iff \varphi_B(q) = F(\varphi_A(q)) \iff \tilde\varphi_B(q) = 0$, also $\tilde\varphi(U\cap N) = \{(\tilde a,\tilde b) \mid \tilde b = 0\}$ wie gewünscht.
 
 		Wir müssen noch zeigen, dass $\tilde\varphi$ tatsächlich eine Karte von $M$ ist. Dazu genügt es zu zeigen, dass $\tilde\varphi \circ \varphi^{-1}$ ein Diffeomorphismus ist. Da aber $(\tilde\varphi \circ \varphi^{-1})(a,b) = (a, b - F(a))$ gilt, ist die Jacobi-Matrix von $\tilde\varphi \circ \varphi^{-1}$ gegeben durch
 		\[\left.\mathrm{J}(\tilde\varphi \circ \varphi^{-1})\right|_{(a,b)} = \begin{pmatrix}
@@ -455,7 +455,7 @@ Wir müssen \emph{intrinsisch} über Richtungen in $M$ reden können. Dabei hilf
 	Sei im Folgenden $M$ eine differenzierbare Mannigfaltigkeit.
 
 \begin{defn}[Funktionskeime]
-	Sei $p \in M$. Auf der Menge $X = \{f \in \sC(U) : U \subset M \text{ offene Umgebung von } p\}$ betrachten wir die Äquivalenzrelation $\sim$, die gegeben ist durch
+	Sei $p \in M$. Auf der Menge $X = \{f \in \sC(U) \mid U \subset M \text{ offene Umgebung von } p\}$ betrachten wir die Äquivalenzrelation $\sim$, die gegeben ist durch
 	\[f \sim g \diff \exists \text{ offene Umgebung } V \text{ von } p \text{ mit } f = g \text{ auf } V.\]
 	Die Äquivalenzklassen bzgl. dieser Relation heißen glatte \emph{Funktionskeime} an $M$ im Punkt $p$. Zwei um $p$ definierte Funktionen definieren also genau dann denselben Keim, wenn sie in einer Umgebung von $p$ übereinstimmen.
 
@@ -929,7 +929,7 @@ Eine der wichtigsten Methoden, neue Mannigfaltigkeiten zu erhalten, ist der soge
 		\item Das \emph{Tensorprodukt} $V\otimes W$ ist ein Vektorraum, der wie folgt definiert wird:
 
 			Die Elemente von $V\otimes W$ sind formale Summen von formalen Ausdrücken der Form $v\otimes w$ mit $v\in V, w\in W$, d.\,h.
-			\[V\otimes W = \left\{\sum_{i=1}^k v_i \otimes w_i : k\in\mathbb N, v_i \in V, w_i \in W\right\}.\]
+			\[V\otimes W = \left\{\sum_{i=1}^k v_i \otimes w_i \mid k\in\mathbb N, v_i \in V, w_i \in W\right\}.\]
 			Die formalen Ausdrücke haben dabei genau die folgenden Eigenschaften:
 			\begin{enumerate}[label=(\roman*)]
 				\item $v \otimes (w + \tilde w) = v\otimes w + v \otimes \tilde w$ für alle $v \in V$ und $w, \tilde w \in W$
@@ -1037,10 +1037,10 @@ Anders gesagt kann man also eine lineare Abbildung $f\colon V\otimes W\to X$ ein
 \begin{bem}[Bonus: Formale Konstruktion]
 	Die obige informelle Definition \ref{defn:tensor_prod} lässt sich auch als komplett formale Konstruktion ausdrücken: Man betrachtet den freien Vektorraum $Z$ über der Menge $V\times W$. Wir definieren die Teilmengen $A,B,C,D \subset Z$ als
 	\begin{align*}
-		A &:= \left\{(v,w+\tilde w) - (v,w) - (v,\tilde w): v\in V \; \text{und} \; w, \tilde w \in W\right\},\\
-		B &:= \left\{(v+\tilde v,w) - (v,w) - (\tilde v,w): v,\tilde v\in V \; \text{und} \; w\in W\right\},\\
-		C &:= \left\{(\lambda v,w) - \lambda(v,w): v\in V, w \in W, \lambda\in\R\right\},\\
-		D &:= \left\{(v,\lambda w) - \lambda(v,w): v\in V, w \in W, \lambda\in\R\right\}
+		A &:= \left\{(v,w+\tilde w) - (v,w) - (v,\tilde w) \mid v\in V \; \text{und} \; w, \tilde w \in W\right\},\\
+		B &:= \left\{(v+\tilde v,w) - (v,w) - (\tilde v,w) \mid v,\tilde v\in V \; \text{und} \; w\in W\right\},\\
+		C &:= \left\{(\lambda v,w) - \lambda(v,w) \mid v\in V, w \in W, \lambda\in\R\right\},\\
+		D &:= \left\{(v,\lambda w) - \lambda(v,w) \mid v\in V, w \in W, \lambda\in\R\right\}
 	\end{align*}
 	und definieren $V\otimes W$ als den Quotientenraum
 	\[V\otimes W := \raise0.5ex\hbox{$Z$} \Big/ \lower0.5ex\hbox{$\mathrm{span}(A\cup B\cup C\cup D)$}.\]
@@ -1730,7 +1730,7 @@ Integralkurven sind auch global eindeutig:
 	Sind $\gamma\colon I \to M$ und $\tilde\gamma\colon \tilde I \to M$ Integralkurven von $X$ durch $p$, so ist $\gamma = \tilde \gamma$ auf dem gemeinsamen Definitionsbereich $I \cap \tilde I$.
 
 	\begin{proof}
-		Wir setzen $S := \{t \in I \cap \tilde I: \gamma(t) = \tilde \gamma(t)\} \subset I \cap \tilde I$. $S$ ist nichtleer, da $0 \in S$. Nach Definition ist $S$ wegen der Stetigkeit von $\gamma$ und $\tilde \gamma$ abgeschlossen\footnote{Genauer: Da $M$ hausdorffsch ist, ist die Diagonale $\{(p,p) : p \in M\} \subset M \times M$ abgeschlossen. $S$ ist das Urbild der Diagonalen unter der glatten, insb. stetigen Abbildung $(\gamma,\tilde \gamma) \colon I \cap \tilde I \to M \times M$ und damit auch abgeschlossen.} Wenn wir noch zeigen können, dass $S$ offen ist, dann folgt, da $I \cap \tilde I$ ein Intervall, also zusammenhängend ist, dass $S = I \cap \tilde I$.
+		Wir setzen $S := \{t \in I \cap \tilde I \mid \gamma(t) = \tilde \gamma(t)\} \subset I \cap \tilde I$. $S$ ist nichtleer, da $0 \in S$. Nach Definition ist $S$ wegen der Stetigkeit von $\gamma$ und $\tilde \gamma$ abgeschlossen\footnote{Genauer: Da $M$ hausdorffsch ist, ist die Diagonale $\{(p,p) \mid p \in M\} \subset M \times M$ abgeschlossen. $S$ ist das Urbild der Diagonalen unter der glatten, insb. stetigen Abbildung $(\gamma,\tilde \gamma) \colon I \cap \tilde I \to M \times M$ und damit auch abgeschlossen.} Wenn wir noch zeigen können, dass $S$ offen ist, dann folgt, da $I \cap \tilde I$ ein Intervall, also zusammenhängend ist, dass $S = I \cap \tilde I$.
 
 		Ist $s \in S$, so sind aber in einer Umgebung von $\gamma(s) =: q$ die Kartendarstellungen von sowohl $\gamma$ als auch $\tilde \gamma$ Lösungen derselben gewöhnlichen Differentialgleichung mit demselben Anfangswert $\gamma(s) = \tilde\gamma(s) = q$; nach der lokalen Eindeutigkeitsaussage im Satz von Picard-Lindelöf gibt es also ein offenes Intervall $J$ um $s$, auf dem sie übereinstimmen. Das heißt aber $J \subset S$; es folgt, dass $S$ offen ist.
 	\end{proof}
@@ -1752,10 +1752,10 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	Sei $\Phi\colon U \to M$ der Fluss von $X \in \mathfrak X(M)$, und seien $I_p$ wie in der vorigen Definition. Dann gilt:
 	\begin{enumerate}[label=(\roman*)]
 		\item $U \subset M \times \R$ ist offen und $\Phi$ ist glatt.
-		\item Ist $s \in I_p$, so ist $I_{\Phi(p,s)} = I_p - s = \{t - s : t \in I_p\}$.
+		\item Ist $s \in I_p$, so ist $I_{\Phi(p,s)} = I_p - s = \{t - s \mid t \in I_p\}$.
 		\item $\Phi(p,0) = p$ für alle $p \in M$.
 		\item Ist $t \in I_p$ und $s \in I_{\Phi(p,t)}$, dann ist $t+s \in I_p$ und es gilt $\Phi_s(\Phi_t(p)) = \Phi_{t+s}(p)$.
-		\item Für alle $t\in\R$ ist $M_t := \{p \in M : (t,p) \in U\}$ eine offene Teilmenge von $M$, und $\Phi_t(p) = \Phi(p,t)$ definiert einen Diffeomorphismus $\Phi_t\colon M_t \to M_{-t}$.
+		\item Für alle $t\in\R$ ist $M_t := \{p \in M \mid (t,p) \in U\}$ eine offene Teilmenge von $M$, und $\Phi_t(p) = \Phi(p,t)$ definiert einen Diffeomorphismus $\Phi_t\colon M_t \to M_{-t}$.
 	\end{enumerate}
 
 	\begin{proof}
