@@ -889,17 +889,15 @@ Unter einer Immersion werden also unabhängige Richtungen auf unabhängige Richt
 	\begin{proof}
 		Falls $S$ leer ist, ist nichts zu zeigen. Sei also $S$ nichtleer. Außerdem setzen wir $m := \dim M, n := \dim N$ und wählen eine Karte $(y,V)$, $y = (y^1,\dots,y^n)$ von $N$ um $q$ mit $y(q) = 0$.
 
-		Sei nun $p \in S$. Wir wählen eine Karte $(x,U)$, $x = (x^1, \dots, x^m)$ von $M$ um $p$. Die lokale Kartendarstellung von $f$ ist $F := y \circ f \circ x^{-1} \colon x(U) \to y(V)$. Da nach Voraussetzung $p$ ein regulärer Punkt ist, hat $\left.\DD f\right|_p$ maximalen Rang $n$, d.\,h. die Jacobi-Matrix
+		Sei nun $p \in S$ und $(x,U)$ eine Karte von $M$ um $p$. Die lokale Kartendarstellung von $f$ ist $F := y \circ f \circ x^{-1} \colon x(U) \to y(V)$. Für $\tilde p\in U$ gilt also $\tilde p \in S \iff f(\tilde p) = 0 \iff F(x(\tilde p)) = 0$.
+
+		Da nach Voraussetzung $p$ ein regulärer Punkt ist, hat $\left.\DD f\right|_p$ maximalen Rang $n$, d.\,h. die Jacobi-Matrix
 		\[\left.\mathrm{J}F\right|_{x(p)} = \begin{pmatrix}
 			\partial_1 F^1 & \dots & \partial_n F^1 & \partial_{n+1} F^1 & \dots & \partial_m F^1 \\
 			\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
 			\partial_1 F^n & \dots & \partial_n F^n & \partial_{n+1} F^n & \dots & \partial_m F^n
 		\end{pmatrix}(x(p))\]
-		hat Rang $n$. oBdA können wir annehmen, dass die ersten $n$ Spalten dieser Matrix linear unabhängig sind (durch Vertauschen von Spalten, d.\,h. Vertauschen von Komponenten von $x$). Das bedeutet aber, dass die linke $n\times n$-Teilmatrix invertierbar ist.
-
-		Nach dem Satz von der impliziten Funktion (Satz \ref{satz:impl_fkt}) lässt sich dann aber die Gleichung $F(a^1,\dots,a^n, b^1,\dots,b^{m-n}) = 0$ in einer Umgebung von $x(p)$ nach $b$ auflösen. D.\,h. es gibt offene Mengen $A \subset \R^n, B \subset \R^{m-n}$ mit $x(p) \in A\times B \subset x(U)$ und eine glatte Abbildung $G\colon A\to B$, sodass $F(a,b) = 0 \iff b = G(a)$ gilt.
-
-		Anders gesagt gilt für $\tilde p \in x^{-1}(A\times B)$ also $\tilde p \in S \iff f(\tilde p) = q \iff F(x(\tilde p)) = 0 \iff (x^{n+1}(\tilde p), \dots, x^{m}(\tilde p)) = G(x^1(\tilde p), \dots, x^n(\tilde p))$. Wir haben $S$ also lokal um $p$ als Graph der glatten Abbildung $G$ dargestellt; nach Lemma \ref{lemma:umf_lokal_graph} ist $S$ also eine eingebettete Untermannigfaltigkeit der Dimension $m-n$.
+		hat Rang $n$. oBdA können wir annehmen, dass die ersten $n$ Spalten dieser Matrix linear unabhängig sind (durch Vertauschen von Spalten, d.\,h. Vertauschen von Komponenten von $x$). Das bedeutet aber, dass die linke $n\times n$-Teilmatrix invertierbar ist. Nach dem Satz von der impliziten Funktion (Satz \ref{satz:impl_fkt}) lässt sich also die Gleichung $F(a,b) = 0$ für $a\in \R^n, b \in \R^{m-n}$ in einer Umgebung von $x(p)$ nach $b$ auflösen, d.\,h. es gibt eine lokal definierte glatte Abbildung $G\colon \R^n \to \R^{m-n}$ mit $F(a,b) = 0 \iff b = G(a)$. Wir haben $S$ also lokal um $p$ als Graph der glatten Abbildung $G$ dargestellt; nach Lemma \ref{lemma:umf_lokal_graph} ist $S$ also eine eingebettete Untermannigfaltigkeit der Dimension $m-n$.
 
 		\todo{Tangentialraum.}
 	\end{proof}
