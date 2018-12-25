@@ -791,7 +791,7 @@ Mit dieser Notation ist die Darstellungsmatrix des Differentials aus Lemma \ref{
 	\[\left.\frac{\partial}{\partial \tilde x^i}\right|_p = \frac{\partial x^j}{\partial \tilde x^i}(p) \left.\frac{\partial}{\partial x^j}\right|_p.\]
 	Die Basiswechselmatrix ist also die Jacobi-Matrix des inversen Kartenwechsels $x \circ \tilde x^{-1}$ (an der Stelle $\tilde x(p)$).
 
-	Für die Komponenten eines Tangentialvektor $v = v^i \left.\frac{\partial}{\partial x^i}\right|_p = \tilde v^i \left.\frac{\partial}{\partial \tilde x^i}\right|_p$ gilt dementsprechend
+	Für die Komponenten eines Tangentialvektors $v = v^i \left.\frac{\partial}{\partial x^i}\right|_p = \tilde v^i \left.\frac{\partial}{\partial \tilde x^i}\right|_p$ gilt dementsprechend
 	\[\tilde v^j = \frac{\partial \tilde x^j}{\partial x^i}(p) v^i.\]
 
 	\bewUeb
@@ -901,7 +901,7 @@ Eine der wichtigsten Methoden, neue Mannigfaltigkeiten zu erhalten, ist der soge
 	\begin{proof}
 		Falls $S$ leer ist, ist nichts zu zeigen. Sei also $S$ nichtleer. Außerdem setzen wir $m := \dim M, n := \dim N$ und wählen eine Karte $(y,V)$, $y = (y^1,\dots,y^n)$ von $N$ um $q$ mit $y(q) = 0$.
 
-		Sei nun $p \in S$ und $(x,U)$ eine Karte von $M$ um $p$. Die lokale Kartendarstellung von $f$ ist $F := y \circ f \circ x^{-1} \colon x(U) \to y(V)$. Für $\tilde p\in U$ gilt also $\tilde p \in S \iff f(\tilde p) = 0 \iff F(x(\tilde p)) = 0$.
+		Sei nun $p \in S$ und $(x,U)$ eine Karte von $M$ um $p$. Die lokale Kartendarstellung von $f$ ist $F := y \circ f \circ x^{-1} \colon x(U) \to y(V)$. Für $\tilde p\in U$ gilt also $\tilde p \in S \iff f(\tilde p)= q \iff F(x(\tilde p)) = 0$.
 
 		Da nach Voraussetzung $p$ ein regulärer Punkt ist, hat $\left.\DD f\right|_p$ maximalen Rang $n$, d.\,h. die Jacobi-Matrix
 		\[\left.\mathrm{J}F\right|_{x(p)} = \begin{pmatrix}
