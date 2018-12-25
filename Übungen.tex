@@ -78,6 +78,19 @@
 		\item Zeige: Jeder Tangentialvektor lässt sich als Ableitung einer Kurve schreiben.
 	\end{enumerate}
 	\section{Multilineare Algebra: Das Tensorprodukt}
+	\begin{enumerate}
+		\item Beweise die folgenden Eigenschaften des Tensorprodukts von Vektorräumen $V,W$:
+			\begin{enumerate}[label=(\alph*)]
+		\item Die Abbildung $\otimes\colon V\times W\to V\otimes W, (v,w) \mapsto v\otimes w$ ist bilinear.
+		\item Ist $\{b_i\}_{i\in I}$ eine Basis von $V$ und $\{c_j\}_{j\in J}$ eine Basis von $W$. $\{b_i \otimes c_j\}_{i\in I, j\in J}$ ist dann eine Basis von $V\otimes W$ und insbesondere gilt $\dim(V\otimes W) = \dim(V) \cdot \dim(W)$.
+		\item Sei $X$ ein weiterer Vektorraum. Eine lineare Abbildung $f\colon V\otimes W \to X$ ist genau dann injektiv, wenn $f(u) = 0 \implies u = 0$ für alle einfachen Tensoren $u = v\otimes w \in V\otimes W$ gilt.
+		\item Sei $B\colon V\times W \to X$ eine bilineare Abbildung, und die Abbildung $f_B$ definiert durch 
+		\[f_B\left(\sum_{i=1}^k v_i \otimes w_i\right) = \sum_{i=1}^k f_B(v_i \otimes w_i) = \sum_{i=1}^k B(v_i,w_i).\]
+			Zeige, dass $f_B\colon V\otimes W\rightarrow X$ wohldefiniert und linear ist.
+		\item Zeige, dass $V\otimes W\rightarrow W\otimes V,\quad v\otimes w \mapsto w\otimes v$ ein Isomorphismus ist.
+		\item 
+		\end{enumerate}
+	\end{enumerate}
 	\section{Vektorbündel}
 	\begin{enumerate}
 		\item Zeige: Ein Vektorbündel ist genau dann trivial, wenn es einen globalen Rahmen besitzt.
