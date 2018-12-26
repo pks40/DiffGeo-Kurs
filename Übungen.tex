@@ -99,6 +99,7 @@
 			Fasse $S^1$ als Untermannigfaltigkeit der komplexen Zahlen auf und erzeuge die Tangentialräume $T_pS^1$ durch Kurven.
 		\item Nach Lemma 2.6.2:
 			Sei $M \subset \R^n$ eine eingebettete Untermannigfaltigkeit, und sei $(y,U)$ eine Karte von $M$. Die durch die Identität gegebene Karte von $\R^n$ bezeichnen wir mit $x$. Berechne die Koordinatenvektoren $\left.\frac{\partial}{\partial y^i}\right|_p$ so konkret wie möglich als Vektoren in $T_pM \subset T_p\R^n \equiv \R^n$.
+		\item Nach Abschnitt 2.6: Zeige mit dem Satz vom regulären Wert, dass die Sphären $S^n$ Untermannigfaltigkeiten der euklidischen Räume $\R^n$ sind.
 	\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -145,7 +146,7 @@
 	\subsection*{Weitere Übungen}
 	\begin{enumerate}
 		\item Nach Abschnitt 6.2: Wir betrachten $\R^2$ mit der Standard-Karte $(x,y)$ und die beiden Vektorfelder $X := \frac{\partial}{\partial x}, Y := x \frac{\partial}{\partial x} + y \frac{\partial}{\partial y}$. Berechne den Kommutator $[X,Y]$.
-		\item Seien $X,Y$ wie in der vorherigen Aufgabe. Bestimme die Flüsse von $X$ und $Y$.
+		\item Nach Abschnitt 6.3: Seien $X,Y$ wie in der vorherigen Aufgabe. Bestimme die Flüsse von $X$ und $Y$. Berechne die Lie-Ableitungen $\mathcal L_X Y$ und $\mathcal L_Y X$ anhand der Definition über den Fluss.
 	\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,6 +160,10 @@
 	\end{enumerate}
 	\subsection*{Weitere Übungen}
 	\begin{enumerate}
+		\item Zu Beispiel 7.1.2: Zeige, dass $\mathrm{SL}(n) \subset \mathrm{GL}(n)$ eine Untermannigfaltigkeit ist, und zeige damit, dass $\mathrm{SL}(n)$ eine Lie-Gruppe ist. Berechne außerdem den Tangentialraum $T_\mathds{1}\mathrm{SL}(n) \subset T_\mathds{1}\mathrm{GL}(n) = \End(\R^n) = M(n\times n)$. (Tipp: Benutze den Satz vom regulären Wert!)
+		\item Zu Beispiel 6.1.7: Zeige, dass für $A,B \in \mathfrak{gl}(n) = \End(\R^n) = M(n\times n)$ die Lie-Klammer durch den Kommutator von Matrizen gegeben ist, $[A,B] = AB - BA$. (Anleitung: Bestimme $L(A) \in \vf^L(\mathrm{GL}(n))$ und rechne dann die Definition der Lie-Klammer nach. Du musst in Koordinaten rechnen.)
+		\item Bestimme die Exponentialabbildung der Lie-Gruppe $(\R,+)$.
+		\item Bestimme die Exponentialabbildung der Lie-Gruppe $(\R\setminus\{0\},\cdot)$.
 		\item Berechne eine Basis der linksinvarianten Vektorfelder von $\mathrm{U}(1)$. Hinweis: Betrachte dazu $\mathrm{U}(1)\cong S^1$ wie zuvor als Untermannigfaltigkeit von $\mathbb{C}$ und überlege Dir zuerst anschaulich, wie das Differential der Linkstranslationen auf das Tangentialbündel wirkt.
 		\item Zeige: Lie-Gruppen sind parallelisierbar (d.\,h. ihr Tangentialbündel ist trivial).
 	\end{enumerate}
@@ -168,6 +173,6 @@
 	\section{Tensorbündel und Tensorfelder}
 	\subsection*{Übungen aus dem Skript}
 	\begin{enumerate}
-		\item Beweise Satz 8.2.6: Die durch den Puulback definierte Lie-Ableitung von Tensoren ist eine Derivation.
+		\item Beweise Satz 8.2.6: Die durch den Pullback definierte Lie-Ableitung von Tensoren ist eine Tensorderivation.
 	\end{enumerate}
 \end{document}
