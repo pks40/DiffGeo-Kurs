@@ -60,6 +60,8 @@
 \subtitle{Kurs auf der CdE-WinterAkademie 2018/19}
 \author{Benjamin Haake, Philip Schwartz}
 \date{}
+\titlehead{\centering\includegraphics[height=.4\textheight]{logo}}
+\lowertitleback{Dieses Skript wurde mit \LaTeXe\ und der \KOMAScript-Klasse \textsf{scrbook} gesetzt.}
 
 \begin{document}
 
@@ -403,6 +405,18 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 
 	Die von diesen Karten induzierte differenzierbare Struktur auf $N$ ist die eindeutige differenzierbare Struktur auf $N$ mit der Eigenschaft, dass $i$ glatt ist.
 \end{bem}
+Einschränkungen von glatten Abbildungen auf Untermannigfaltigkeiten sind glatt:
+\begin{lemma}
+	Seien $N$ bzw. $L$ Untermannigfaltigkeiten von $M$ bzw. $K$. Ist $f\colon M\to K$ eine glatte Abbildung mit $f(N) \subset L$, dann ist auch $f|_N \colon N \to L$ glatt.
+
+	\begin{proof}
+		Sei $\dim M = m$ etc. Für $p_0 \in N$ wählen wir Karten $(\varphi,U)$ von $M$ um $p_0$ bzw. $(\psi,V)$ von $K$ um $f(p_0)$ wie oben, bzgl. derer $N$ bzw. $L$ also lokal die Form $\{p \in M \mid \varphi^{n+1}(p) = \dots = \varphi^{m}(p) = 0\}$ bzw. $\{q \in K \mid \psi^{n+1}(qp) = \dots = \psi^{m}(q) = 0\}$ haben. Dann sind also $\tilde\varphi = (\varphi^1, \dots, \varphi^n)$ eine Karte von $N$ und $\tilde\psi = (\psi^1, \dots, \psi^n)$ eine Karte von $L$.
+
+		Sei $F := \psi \circ f|_N \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ die Kartendarstellung von $f$ bzgl. $\varphi$ und $\psi$. Die Kartendarstellung von $f|_N$ bzgl. $\tilde\varphi$ und $\tilde\psi$ ist dann gegeben durch
+		\[(\tilde\psi \circ f|_N \circ \tilde\varphi^{-1}) (a^1,\dots,a^n) = (F^1(a,0), \dots, F^l(a,0), 0,\dots,0).\]
+		Da $F$ nach Voraussetzung glatt ist, ist also auch $\tilde\psi \circ f|_N \circ \tilde\varphi^{-1}$ glatt und wir sind fertig.
+	\end{proof}
+\end{lemma}
 
 Äquivalent sind Untermannigfaltigkeiten Mengen, die lokal wie Graphen von glatten Abbildungen aussehen.
 \begin{lemma} \label{lemma:umf_lokal_graph}
@@ -1387,7 +1401,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\begin{align*}
 					(x,y) \sim (x',y') \diff \exists n\in\mathbb{Z}: (x',y')=(x+n,(-1)^ny)
 				\end{align*}
-				und definieren das Möbiusbündel als den Quotienten
+				und definieren das \emph{Möbiusbündel} als den Quotienten
 				\begin{align*}
 					\mathrm{Mb}=\raise0.5ex\hbox{$\R^2$} \Big/ \lower0.5ex\hbox{$\sim$}.
 				\end{align*}
@@ -1942,11 +1956,11 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			\end{proof}
 		\end{satz}
 		\begin{defn}[Lie-Algebra]
-			Die \emph{Lie-Algebra} einer Lie-Gruppe ist der Vektorraum $\mathfrak{g}:=T_eG$ mit der folgenden Verknüpfung:
+			Die \emph{Lie-Algebra} einer Lie-Gruppe ist der Vektorraum $\mathfrak{g}:=T_eG$ mit der Verknüpfung
 			\begin{align*}
-				\left[.,.\right]\mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}, (v,w)\mapsto \left[v,w\right]:=\left[L(v),L(w)\right]_e
+				\left[.,.\right]\colon \mathfrak{g}\times \mathfrak{g}\rightarrow \mathfrak{g}, (v,w)\mapsto \left[v,w\right]:=\left[L(v),L(w)\right]_e,
 			\end{align*}
-			mit dem kanonischen Isomorphismus $L\colon \mathfrak{g}\to \vf^L(G)$ aus Gleichung (\ref{def:kan_Iso}). Diese Verkettung ist bilinear und antisymmetrisch nach Konstruktion.
+			wobei wir den kanonischen Isomorphismus $L\colon \mathfrak{g}\to \vf^L(G)$ aus Gleichung (\ref{def:kan_Iso}) benutzt haben. Nach Konstruktion ist diese Verkettung bilinear, antisymmetrisch und erfüllt die Jacobi-Identität (siehe Lemma \ref{lemma:kommut}). Sie heißt die \emph{Lie-Klammer} von $\mathfrak{g}$.
 		\end{defn}
 		\begin{bsp}\hfill
 			Die Lie-Algebra der $\GL(V)$ ist der Vektorraum der Endomorphismen $\End(V)$. Dies ist klar, wenn man $\GL(V)$ als (offene) Teilmenge von $\End(V)$ betrachtet: Der Tangentialraum ist dann kanonisch $\End(V)$.
