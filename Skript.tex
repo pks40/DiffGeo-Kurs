@@ -149,7 +149,7 @@ Man kann Vektorräume auch über allgemeinen Körpern anstelle von $\R$ definier
 \begin{lemma}
 	Eine lineare Abbildung $f\colon V\to W$ ist eindeutig festgelegt durch die Bilder einer Basis $\mathcal B$ von $V$.
 
-	Die Bilder $f(b)\in W$ für $b \in \mathcal B$ können beliebig gewählt werden; das so definierte $f$ entsteht durch sogenannte \emph{lineare Fortsetzung}.
+	Um eine lineare Abbildung $f$ zu definieren, können die Bilder $f(b)\in W$ für $b \in \mathcal B$ beliebig gewählt werden; die Abbildung entsteht durch sogenannte \emph{lineare Fortsetzung}.
 \end{lemma}
 
 \begin{defn}
@@ -269,6 +269,8 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 				\item Für jede Familie $\lbrace U_i\rbrace_{i\in I}\subset \mathcal{T}$ gilt $\bigcup_{i\in I}U_i\in\mathcal{T}$
 			\end{enumerate}
 			Eine \emph{Topologie} auf der Menge $X$ ist eine Familie $\mathcal{T}$ wie oben. Die Elemente von $\mathcal{T}$ heißen \emph{offene Mengen}. Eine Menge ist \emph{abgeschlossen}, wenn ihr Komplement offen ist.
+			
+			Man beachte, dass schon per Definition eine Menge genau dann offen ist, wenn jeder Punkt eine offene Umgebung besitzt, die in der Menge liegt (die Vereinigung über alle Umgebungen ist dann die Menge selbst).
 		\end{defn}
 		\begin{defn}[Basis einer Topologie]
 			Eine \emph{Basis} einer Topologie $\mathcal{T}$ ist eine Familie offener Mengen $\lbrace B_i\rbrace_{i\in I}\subset \mathcal{T}$, sodass sich jede offene Menge als Vereinigung von Elementen der Basis schreiben lässt, das heißt:
@@ -277,13 +279,13 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 			\end{equation*}
 		\end{defn}
 		\begin{bsp}
-			Ist $(X,d)$ ein metrischer Raum, so bilden die bzgl. der Metrik offenen Mengen eine Topologie mit den $\varepsilon$-Bällen $\lbrace B_{\varepsilon}(x)\mid x\in X, \varepsilon >0\rbrace$ als Basis. Dies gilt per Definition: In einem metrischen Raum ist eine Menge offen, wenn für jeden Punkt in der Menge ein $\varepsilon$-Ball noch ganz in der Menge liegt. Diese Definition erfüllt die Axiome eines topologischen Raumes: $T1$ ist klar, für $T2$ kann man punktweise das Minimum der $\varepsilon$ nehmen und bei $T3$ kann man für jeden Punkt eine Menge wählen, in dem dieser Punkt liegt und dann liegt der $\varepsilon$-Ball, der in dieser Menge enthalten ist, auch in der gesamten Menge.
+			Ist $(X,d)$ ein metrischer Raum, so bilden die bzgl. der Metrik offenen Mengen eine Topologie mit den $\varepsilon$-Bällen $\lbrace B_{\varepsilon}(x)\mid x\in X, \varepsilon >0\rbrace$ als Basis. Dies gilt per Definition: In einem metrischen Raum ist eine Menge offen, wenn für jeden Punkt in der Menge ein $\varepsilon$-Ball noch ganz in der Menge liegt. Diese Definition erfüllt die Axiome eines topologischen Raumes: $(i)$ ist klar, für $(ii)$ kann man punktweise das Minimum der $\varepsilon$ nehmen und bei $(iii)$ kann man für jeden Punkt eine Menge wählen, in dem dieser Punkt liegt und dann liegt der $\varepsilon$-Ball, der in dieser Menge enthalten ist, auch in der gesamten Menge.
 		\end{bsp}
 		\begin{defn}[Zweitabzählbarkeit]
 			Ein topologischer Raum $(X,\mathcal{T})$ heißt \emph{zweitabzählbar}, wenn für die Topologie $\mathcal{T}$ eine abzählbare Basis existiert. 
 		\end{defn}
 		\begin{defn}[Kompaktheit]
-			Eine Teilmenge $K\subset X$ heißt \emph{kompakt}, wenn jede offene Überdeckung (das heißt jede Familie offener Mengen $\lbrace U_i\rbrace_{i\in I}$ mit $K\subset \bigcup_{i\in I}U_i$) eine endliche Teilüberdeckung hat (also endlich viele $U_1,\ldots,U_n$ existieren, sodass schon $K\subset \bigcup_{i=1}^n U_i$ gilt).
+			Eine Teilmenge $K\subset X$ heißt \emph{kompakt}, wenn jede offene Überdeckung (das heißt jede Familie offener Mengen $\lbrace U_i\rbrace_{i\in I}$ mit $K\subset \bigcup_{i\in I}U_i$) eine endliche Teilüberdeckung hat (also endlich viele $U_1,\ldots,U_n\in\lbrace U_i\rbrace_{i\in I}$ existieren, sodass schon $K\subset \bigcup_{i=1}^n U_i$ gilt).
 		\end{defn}
 		\begin{defn}[Hausdorffraum]
 			Ein topologischer Raum $(X,\mathcal{T})$ heißt \emph{hausdorffsch} oder \emph{Hausdorffraum}, falls für je zwei Punkte $x,y\in X, x\neq y$ offene Umgebungen ${U_x,U_y\in\mathcal{T}}$, ${x\in U_x}, {y\in U_y}$ existieren sodass $U_x\cap U_y=\emptyset$. Zwei Punkte können also durch offene Mengen \glqq getrennt\grqq\ werden.
@@ -321,7 +323,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 		\end{defn}
 	\section{Topologische und differenzierbare Mannigfaltigkeiten}
 		\begin{defn}
-			Eine \emph{topologische Mannigfaltigkeit} ist ein topologischer Raum $(M,\mathcal{T})$, der hausdorffsch, zweitabzählbar und lokal euklidisch ist, das heißt:
+			Eine \emph{topologische Mannigfaltigkeit} ist ein topologischer Raum $(M,\mathcal{T})$, der hausdorffsch, zweitabzählbar und \emph{lokal euklidisch} ist, das heißt:
 			Es existiert eine natürliche Zahl $n\in \mathbb{N}$ (Dimension), sodass für alle Punkte $p\in M$ offene Umgebungen $U\subset M, V\subset \R^n$ mit $p\in U $ und ein Homöomorphismus $ \varphi\colon U\rightarrow V$ existieren.
 
 			Ein solches Tupel $(\varphi,U)$ heißt \emph{Karte} um $p$ (wobei manchmal die Menge $U$ in der Notation unterdrückt wird). Eine Familie von Karten, die die Mannigfaltigkeit überdecken, heißt \emph{Atlas} $\mathcal{A}$.
@@ -345,7 +347,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 		\end{defn} 
 		\begin{defn}[Differenzierbare Mannigfaltigkeit]\hfill
 			\begin{itemize}
-				\item Zwei Karten sind \emph{verträglich}, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist (das heißt, der Kartenwechsel und sein Inverses sind glatt).
+				\item Zwei Karten sind \emph{verträglich}, wenn ihr Kartenwechsel ein (glatter) Diffeomorphismus ist.
 				\item Ein Atlas ist \emph{differenzierbar}, wenn alle seine Karten paarweise verträglich sind.
 				\item Ein differenzierbarer Atlas heißt \emph{maximal}, wenn es keine Karte gibt, die mit allen Karten des Atlanten verträglich und nicht in ihm enthalten ist.
 				\item Eine \emph{differenzierbare Struktur} auf einer topologischen Mannigfaltigkeit $M$ ist ein maximaler differenzierbarer Atlas $\mathcal{A}$ und das Tupel $(M,\mathcal{A})$ heißt \emph{differenzierbare Mannigfaltigkeit}. Wenn im Folgenden von Karten auf einer differenzierbaren Mannigfaltigkeit die Rede ist, sind immer solche aus der differenzierbaren Struktur gemeint.
@@ -360,7 +362,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden!
 				\item Reelle, endlich-dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
 				\item Die obigen Beispiele topologischer Mannigfaltigkeiten gelten auch für differenzierbare Mannigfalltigkeiten, allerdings müssen auch hier Atlanten vervollständigt werden.
-				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\mid \|x\|=1\rbrace}$ sind differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
+				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\mid \|x\|=1\rbrace}$ sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
 			\end{enumerate}
 		\end{bsp}
 	\section{Differenzierbare Abbildungen}
@@ -377,7 +379,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 			Analog kann man auch $k$-fach differenzierbare Abbildungen definieren und schreibt für diese $\mathcal{C}^k(M,N)$.
 		\end{defn}
 		\begin{lemma}
-			Sind $f\colon M\to N$ und $g\colon N \to L$ glatte Abbildungen, so ist auch $g\circ f \colon M \to L$ glatt.
+			Sind $f\colon M\to N$ und $g\colon N \to L$ glatte Abbildungen zwischen differenzierbaren Mannigfaltigkeiten, so ist auch $g\circ f \colon M \to L$ glatt.
 			\bewUeb
 		\end{lemma}
 		\begin{defn}
@@ -410,9 +412,9 @@ Einschränkungen von glatten Abbildungen auf Untermannigfaltigkeiten sind glatt:
 	Seien $N$ bzw. $L$ Untermannigfaltigkeiten von $M$ bzw. $K$. Ist $f\colon M\to K$ eine glatte Abbildung mit $f(N) \subset L$, dann ist auch $f|_N \colon N \to L$ glatt.
 
 	\begin{proof}
-		Sei $\dim M = m$ etc. Für $p_0 \in N$ wählen wir Karten $(\varphi,U)$ von $M$ um $p_0$ bzw. $(\psi,V)$ von $K$ um $f(p_0)$ wie oben, bzgl. derer $N$ bzw. $L$ also lokal die Form $\{p \in M \mid \varphi^{n+1}(p) = \dots = \varphi^{m}(p) = 0\}$ bzw. $\{q \in K \mid \psi^{n+1}(qp) = \dots = \psi^{m}(q) = 0\}$ haben. Dann sind also $\tilde\varphi = (\varphi^1, \dots, \varphi^n)$ eine Karte von $N$ und $\tilde\psi = (\psi^1, \dots, \psi^n)$ eine Karte von $L$.
+		Sei $\dim M = m$ etc. Für $p_0 \in N$ wählen wir Karten $(\varphi,U)$ von $M$ um $p_0$ bzw. $(\psi,V)$ von $K$ um $f(p_0)$ wie oben, bzgl. derer $N$ bzw. $L$ also lokal die Form $\{p \in M \mid \varphi^{n+1}(p) = \dots = \varphi^{m}(p) = 0\}$ bzw. $\{q \in K \mid \psi^{l+1}(q) = \dots = \psi^{k}(q) = 0\}$ haben. Dann sind also $\tilde\varphi = (\varphi^1, \dots, \varphi^n)$ eine Karte von $N$ und $\tilde\psi = (\psi^1, \dots, \psi^l)$ eine Karte von $L$.
 
-		Sei $F := \psi \circ f|_N \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ die Kartendarstellung von $f$ bzgl. $\varphi$ und $\psi$. Die Kartendarstellung von $f|_N$ bzgl. $\tilde\varphi$ und $\tilde\psi$ ist dann gegeben durch
+		Sei $F := \psi \circ f \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ die Kartendarstellung von $f$ bzgl. $\varphi$ und $\psi$. Die Kartendarstellung von $f|_N$ bzgl. $\tilde\varphi$ und $\tilde\psi$ ist dann gegeben durch
 		\[(\tilde\psi \circ f|_N \circ \tilde\varphi^{-1}) (a^1,\dots,a^n) = (F^1(a,0), \dots, F^l(a,0), 0,\dots,0).\]
 		Da $F$ nach Voraussetzung glatt ist, ist also auch $\tilde\psi \circ f|_N \circ \tilde\varphi^{-1}$ glatt und wir sind fertig.
 	\end{proof}
