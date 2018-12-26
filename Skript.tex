@@ -427,6 +427,9 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 		also invertierbar. Nach dem Satz von der inversen Abbildung (Satz \ref{satz:inv_abb_R^n}) ist $\tilde\varphi \circ \varphi^{-1}$ damit ein lokaler Diffeomorphismus, da es bijektiv ist, also ein Diffeomorphismus.
 	\end{proof}
 \end{lemma}
+\begin{bsp}
+	Die Sphären $S^n$ sind Untermannigfaltigkeiten der euklidischen Räume $\R^{n+1}$.
+\end{bsp}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1380,6 +1383,17 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$: mithilfe von Karten von $M$ kann man auf kanonische Weise einen Bündelatlas konstruieren (Übung).
 				
 				Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
+				\item Wir definieren auf der reellen Ebene $\R^2$ die Äquivalenzrelation
+				\begin{align*}
+					(x,y) \sim (x',y') \diff \exists n\in\mathbb{Z}: (x',y')=(x+n,(-1)^ny)
+				\end{align*}
+				und definieren das Möbiusbündel als den Quotienten
+				\begin{align*}
+					\mathrm{Mb}=\raise0.5ex\hbox{$\R^2$} \Big/ \lower0.5ex\hbox{$\sim$}.
+				\end{align*}
+				Das Möbiusbündel ist ein Vektorbündel vom Rang $1$ über dem Kreis $S^1=\R/\mathbb{Z}$. Die Projektion ist dabei gegeben durch $\pi([x,y]):=[x]$ mit den Fasern \[\pi^{-1}(\{[a]\})=\lbrace [x,y]\mid (x,y)\in \{a\}\times\R\rbrace\cong\{a\}\times\R.\]
+				
+				Trivialisierungen dieses Vektorbündels kann man wie folgt konstruieren: Betrachte ein Intervall $I:=(a,b)\subset\R$ mit $0< b-a< 1$ und bezeichne $[I]$ das Intervall als Teilmenge von $S^1$. Dann ist $\Phi\colon\pi^{-1}([I])\rightarrow [I]\times \R$ mit $\Phi^{-1}([x],y)=[\tilde{x},y]$ eine lokale Trivialisierung, wobei $\tilde{x}$ den Repräsentanten von $[x]\in [I]$ bezeichnet, der in $I$ liegt.
 			\end{enumerate}
 		\end{bsp}
 		\begin{defn}[Vektorbündelhomomorphismen]\hfill\\
@@ -1514,7 +1528,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\phi\colon\pi^{-1}(U)&\rightarrow U\times \R^{n_a+n_b}\\
 				v_a\oplus v_b&\mapsto (\pi_a(v_a), \pr_2(\phi_a(v_a))\oplus\pr_2(\phi_b(v_b)))
 			\end{align*}
-			Trivialisierungswechsel sind (wieder unter Verwendung von Spaltenvektoren) durch die folgende Blockdiagonalmatrix gegeben: 
+			Übergangsfunktionen solcher Trivialisierungen sind (wieder unter Verwendung von Spaltenvektoren) durch die folgende Blockdiagonalmatrix gegeben: 
 			\begin{equation}
 				\tau=\left(\begin{array}{cc}\tau_a&0\\0&\tau_b\\ \end{array}\right)
 			\end{equation}
@@ -2092,14 +2106,14 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 			\begin{align*}
 				\mathcal{T}(M):=\bigoplus_{r,s=0}^{\infty}\Gamma(T^{(r,s)}M)
 			\end{align*}
-			In Komponenten hat das Tensorprodukt von zwei Tensorfeldern $A \in \Gamma(T^{(r,s)}M)$, $B \in \Gamma(T^{(t,u)}M)$ die Form $(A\otimes B)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = A^{i_1 \dots i_r}_{j_1 \dots j_s} B^{k_1 \dots k_t}_{l_1 \dots l_u}$.
+			In Komponenten hat das Tensorprodukt von zwei Tensorfeldern $A \in \Gamma(T^{(r,s)}M)$, $B \in \Gamma(T^{(t,u)}M)$ die Form $(A\otimes B)^{i_1 \dots i_r k_1 \dots k_t}_{j_1 \dots j_s l_1 \dots l_u} = A^{i_1 \dots i_r}_{j_1 \dots j_s} B^{k_1 \dots k_t}_{l_1 \dots l_u}$, insbesondere entspricht also das Tensorprodukt mit Funktionen $\sC(M)=\Gamma(T^{(0,0)}M)$ gerade der \glqq Skalarmultiplikation\grqq\ des $\sC(M)$-Moduls.
 			
 			Ebenso können wir durch punktweise Anwendung die Kontraktion von Tensoren zur Kontraktion von Tensorfeldern
 			\[C_{t,u}\colon \Gamma(T^{(r,s)}M) \to \Gamma(T^{(r-1,s-1)}M)\]
 			fortsetzen. Diese ist eine $\sC(M)$-lineare Abbildung.
 			
 			\begin{proof}
-				Das einzige, was zu zeigen ist, ist, dass die Ergebnisse der punktweisen Definitionen glatt sind und dass die Operationen $\sC(M)$ linear sind. Ersteres folgt, da die Komponentendarstellungen offensichtlich neue glatte Funktionen ergeben; zweiteres folgt direkt direkt nach Definition.
+				Das Einzige, was zu zeigen ist, ist, dass die Ergebnisse der punktweisen Definitionen glatt sind und dass die Operationen $\sC(M)$-linear sind. Ersteres folgt, da die Komponentendarstellungen offensichtlich neue glatte Funktionen ergeben; zweiteres folgt direkt direkt nach Definition.
 			\end{proof}
 		\end{lemma}
 
@@ -2125,7 +2139,7 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 			\end{align*}
 			$\sC(M)$-multilinear, so ist sie durch ein Tensorfeld $A \in \Gamma(T^{(r,s)}M)$ gegeben.
 			\begin{proof}
-				Dies folgt für 1-Formen und Vektorfelder aus Satz \ref{satz:Dualität} und für Tensorfelder daraus durch Anwendung \glqq auf jedes Argument separat\grqq .
+				Dies folgt für 1-Formen und Vektorfelder aus Satz \ref{satz:Dualität} und für Tensorfelder geht man ganz analog vor (Man zeigt also, dass eine solche multilineare Abbildung punktweise einen Tensor definiert, die Definition nur von dem Wert der Vektorfelder und 1-Formen am entsprechenden Punkt abhängt und dass das resultierende Tensorfeld glatt ist).
 			\end{proof}
 		\end{satz}
 
@@ -2156,12 +2170,15 @@ Offensichtlich gelten $\Gamma(T^{(1,0)}M)=\vf(M)$ und $\Gamma(T^{(0,0)}M)=\sC(M)
 				\end{align*}
 				Damit können wir also $\delta(\omega)$ eindeutig durch die Wirkung der Tensorderivation auf Funktionen und Vektorfeldern bestimmen.
 				
-				Durch die Produktregel bekommt man entsprechend eine eindeutige Fortsetzung auf beliebige Tensoren.
+				Durch die Produktregel und $\R$-Linearität bekommt man entsprechend eine eindeutige Fortsetzung auf beliebige Tensoren.
 			\end{proof}
 		\end{satz}
 		
 		\begin{kor}[Lie-Ableitung als Tensorderivation]
-			Die Lie-Ableitung $\mathcal{L}_X$ entlang eines Vektorfeldes $X$ lässt sich eindeutig zu einer Tensorderivation fortsetzen. \qed
+			Die Lie-Ableitung $\mathcal{L}_X$ entlang eines Vektorfeldes $X$ lässt sich eindeutig zu einer Tensorderivation fortsetzen.
+			\begin{proof}
+				Hier muss man nur prüfen, dass die Lie-Ableitung auf Funktionen und Vektorfeldern die Produktregel erfüllt (Übung).
+			\end{proof}
 		\end{kor}
 		
 		\begin{defn}[Pullback von Tensorfeldern]
