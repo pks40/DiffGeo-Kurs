@@ -1342,7 +1342,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 \epigraph{A single twig breaks, but the bundle of twigs is strong.}{\textsc{Tecumseh}}
 	\section{Faserbündel}
 		\begin{defn}[Faserbündel]
-			Ein \emph{Faserbündel} $(P,M,\pi ,F)$ ist ein Tupel aus drei Mannigfaltigkeiten (dem \emph{Totalraum} $P$, der \emph{Basis} $M$ und der \emph{typischen Faser} $F$) zusammen mit einer surjektiven \emph{Projektion} $\pi\colon P\rightarrow M$, die die folgenden Eigenschaften erfüllt:
+			Ein \emph{Faserbündel} $(P,M,\pi ,F)$ ist ein Tupel aus drei Mannigfaltigkeiten (dem \emph{Totalraum} $P$, der \emph{Basis} $M$ und der \emph{typischen Faser} $F$) zusammen mit einer \emph{Projektion} $\pi\colon P\rightarrow M$, die die folgenden Eigenschaften erfüllt:
 
 				Für alle Punkte $x\in M$ existieren eine offene Umgebung $x\in U\subset M$ und ein Diffeomorphismus $\phi\colon \pi^{-1}(U)\rightarrow U\times F$, sodass das folgende Diagramm kommutiert, also $\pi\vert_{\pi^{-1}(U)}=\pr_1\circ\phi$ (wobei $\pr_1$ die Projektion auf den ersten Faktor bezeichnet):
 			\begin{center}
@@ -1359,6 +1359,8 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			Eine solche Abbildung $\phi$ heißt \emph{lokale Trivialisierung}. Aufgrund der Existenz lokaler Trivialisierungen ist das Urbild jedes Punktes $x\in M$ unter der Projektion (\emph{Faser} von $x$ genannt) $P_x:=\pi^{-1}(\lbrace x\rbrace )$ diffeomorph zur typischen Faser: $P_x\cong F \; \forall x\in M$.
 
 			Eine Familie lokaler Trivialisierungen, die $P$ überdecken, heißt \emph{Bündelatlas}.
+			
+			Beachte, dass aus dem obigen Diagramm bereits folgt, dass $\pi$ eine surjektive Submersion ist (da $\phi$ ein Diffeomorphismus und $\mathrm{pr}_1$ eine Submersion ist).
 		\end{defn}
 		\begin{nota}
 			Man sagt auch \glqq Faserbündel über $M$\grqq und schreibt dafür einfach $(P,\pi)$.
@@ -1382,6 +1384,8 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 					E_x\rightarrow \R^n,\; p\mapsto \pr_2(\phi(p))
 				\end{equation*}
 			Daraus folgt, dass die Abbildung ${\R^n\rightarrow E_x,\; v\mapsto \phi^{-1}(x,v)}$ ebenfalls ein Vektorraumisomorphismus ist.
+			
+			Im Kontext von Vektorbündeln \glqq gelten\grqq\ nur noch solche Trivialisierungen, die punktweise Isomorphismen sind.
 		\end{defn}
 		Analog zu Kartenwechseln lassen sich auch \emph{Trivialisierungswechsel} definieren:
 		\begin{defn}
@@ -1493,7 +1497,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^*\\
 				\lambda&\mapsto\left(x,\lambda\circ({\pr_2}\circ\phi\vert_{\pi^{-1}(\lbrace x\rbrace)})^{-1}\right),
 			\end{align*}
-			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
+			wobei $\lambda\in E_x^*$. Übergangsfunktionen sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
 	
 		\begin{lemma} \label{lemma:rahmen_dual}
@@ -1655,7 +1659,7 @@ Umgekehrt lassen sich Vektorfelder (auf glatten Mannigfaltigkeiten) auch äquiva
 	\begin{proof}
 		Für jeden Punkt $p \in M$ soll $(F(fg))(p) = (F(f)(p)) g(p) + f(p) (F(g))(p)$ gelten. Da die Abbildung $\sC(M) \ni f \mapsto (F(f))(p) \in \mathbb R$ außerdem $\R$-linear ist, gibt es nach Lemma \ref{lemma:tangtvek_punktw_deriv} also einen eindeutigen Tangentialvektor $X_p \in T_pM$ mit $(F(f))(p) = X_p(f)$.
 
-		Wir müssen nur noch zeigen, dass das so definierte Vektorfeld $X\colon M \to TM$ glatt ist. Schreiben wir dazu bzgl. einer Karte $(x,U)$ das Vektorfeld lokal als $X|_U = X^i \frac{\partial}{\partial x^i}$, so müssen wir zeigen, dass die Funktionen $X^i \colon U \to \mathbb R$ glatt sind. Sei dafür $p \in U$. Wir wählen Funktionen $\tilde x^i \in \sC(M)$, die in einer offenen Umgebung $V$ von $p$ mit den $x^i$ übereinstimmen. Für $q \in V$ ist dann $X^i(q) = X^j(q) \delta^i_j = X^j(q) \frac{\partial x^i}{\partial x^j}(q) = X^j(q) \frac{\partial \tilde x^i}{\partial x^j}(q) = X_q (\tilde x^i)$, d.\,h. auf $V$ stimmt $X^i$ mit $X(\tilde x^i) = F(\tilde x^i)$ überein. Letzteres ist aber eine glatte Funktion auf ganz $M$, also ist $X^i$ glatt auf $V$. Da $p$ beliebig war, ist damit $X^i$ glatt auf $U$.
+		Wir müssen nur noch zeigen, dass das so definierte Vektorfeld $X\colon M \to TM$ glatt ist. Schreiben wir dazu bzgl. einer Karte $(x,U)$ das Vektorfeld lokal als $X|_U = X^i \frac{\partial}{\partial x^i}$, so müssen wir zeigen, dass die Funktionen $X^i \colon U \to \mathbb R$ glatt sind. Sei dafür $p \in U$. Wir wählen Funktionen $\tilde x^i \in \sC(M)$, die in einer offenen Umgebung $V$ von $p$ mit den Komponenten der Karte $x^i$ übereinstimmen. Für $q \in V$ ist dann $X^i(q) = X^j(q) \delta^i_j = X^j(q) \frac{\partial x^i}{\partial x^j}(q) = X^j(q) \frac{\partial \tilde x^i}{\partial x^j}(q) = X_q (\tilde x^i)$, d.\,h. auf $V$ stimmt $X^i$ mit $X(\tilde x^i) = F(\tilde x^i)$ überein. Letzteres ist aber eine glatte Funktion auf ganz $M$, also ist $X^i$ glatt auf $V$. Da $p$ beliebig war, ist damit $X^i$ glatt auf $U$.
 	\end{proof}
 \end{satz}
 Der letzte Teil des vorherigen Beweises zeigt außerdem:
@@ -1720,8 +1724,8 @@ Hat man einen Diffeomorphismus $\phi\colon M\to N$, dann kann man damit Vektorfe
 \end{defn}
 Man tut also das Einzige, was man sinnvoll tun kann, um aus $X$ ein Vektorfeld auf $N$ zu erhalten: Man bildet die entsprechenden Tangentialvektoren mit dem Differential von $\phi$ von $M$ nach $N$ ab. In die andere Richtung funktioniert das natürlich auch:
 \begin{defn}
-	Der \emph{Pullback von $X \in \mathfrak X(N)$ entlang von $\phi\colon M \to N$} ist $\phi^*X := (\phi^{-1})_*X$, also
-	\[(\phi^*X)_p := \DD(\phi^{-1})|_{\phi(p)}(X_{\phi(p)}) \quad \text{für} \; p \in M.\]
+	Der \emph{Pullback von $Y \in \mathfrak X(N)$ entlang von $\phi\colon M \to N$} ist $\phi^*Y := (\phi^{-1})_*Y$, also
+	\[(\phi^*Y)_p := \DD(\phi^{-1})|_{\phi(p)}(Y_{\phi(p)}) \quad \text{für} \; p \in M.\]
 \end{defn}
 
 \begin{bem}
@@ -1747,7 +1751,7 @@ Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar nah
 
 \begin{lemma}[Pushforward in Koordinaten]
 	Sind $x$ Koordinaten für $M$ und $y$ Koordinaten für $N$, so berechnet sich der Pushforward von $X = X^i \frac{\partial}{\partial x^i}$ zu $\phi_*X = (\phi_*X)^i \frac{\partial}{\partial y^i}$ mit
-	\[(\phi_*X)^i = \left(X^i \frac{\partial (y^j \circ \phi)}{\partial x^i}\right) \circ \phi^{-1}.\]
+	\[(\phi_*X)^i = \left(X^j \frac{\partial (y^i \circ \phi)}{\partial x^j}\right) \circ \phi^{-1}.\]
 	\bewUeb
 \end{lemma}
 
@@ -1782,7 +1786,7 @@ Integralkurven sind auch global eindeutig:
 	Sind $\gamma\colon I \to M$ und $\tilde\gamma\colon \tilde I \to M$ Integralkurven von $X$ durch $p$, so ist $\gamma = \tilde \gamma$ auf dem gemeinsamen Definitionsbereich $I \cap \tilde I$.
 
 	\begin{proof}
-		Wir setzen $S := \{t \in I \cap \tilde I \mid \gamma(t) = \tilde \gamma(t)\} \subset I \cap \tilde I$. $S$ ist nichtleer, da $0 \in S$. Nach Definition ist $S$ wegen der Stetigkeit von $\gamma$ und $\tilde \gamma$ abgeschlossen\footnote{Genauer: Da $M$ hausdorffsch ist, ist die Diagonale $\{(p,p) \mid p \in M\} \subset M \times M$ abgeschlossen. $S$ ist das Urbild der Diagonalen unter der glatten, insb. stetigen Abbildung $(\gamma,\tilde \gamma) \colon I \cap \tilde I \to M \times M$ und damit auch abgeschlossen.} Wenn wir noch zeigen können, dass $S$ offen ist, dann folgt, da $I \cap \tilde I$ ein Intervall, also zusammenhängend ist, dass $S = I \cap \tilde I$.
+		Wir setzen $S := \{t \in I \cap \tilde I \mid \gamma(t) = \tilde \gamma(t)\} \subset I \cap \tilde I$. $S$ ist nichtleer, da $0 \in S$. Nach Definition ist $S$ wegen der Stetigkeit von $\gamma$ und $\tilde \gamma$ abgeschlossen\footnote{Genauer: Da $M$ hausdorffsch ist, ist die Diagonale $\{(p,p) \mid p \in M\} \subset M \times M$ abgeschlossen. $S$ ist das Urbild der Diagonalen unter der glatten, insb. stetigen Abbildung $(\gamma,\tilde \gamma) \colon I \cap \tilde I \to M \times M$ und damit auch abgeschlossen.}. Wenn wir noch zeigen können, dass $S$ offen ist, dann folgt, da $I \cap \tilde I$ ein Intervall, also zusammenhängend ist, dass $S = I \cap \tilde I$.
 
 		Ist $s \in S$, so sind aber in einer Umgebung von $\gamma(s) =: q$ die Kartendarstellungen von sowohl $\gamma$ als auch $\tilde \gamma$ Lösungen derselben gewöhnlichen Differentialgleichung mit demselben Anfangswert $\gamma(s) = \tilde\gamma(s) = q$; nach der lokalen Eindeutigkeitsaussage im Satz von Picard-Lindelöf gibt es also ein offenes Intervall $J$ um $s$, auf dem sie übereinstimmen. Das heißt aber $J \subset S$; es folgt, dass $S$ offen ist.
 	\end{proof}
@@ -1806,7 +1810,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\item $U \subset M \times \R$ ist offen und $\Phi$ ist glatt.
 		\item Ist $s \in I_p$, so ist $I_{\Phi(p,s)} = I_p - s = \{t - s \mid t \in I_p\}$.
 		\item $\Phi(p,0) = p$ für alle $p \in M$.
-		\item Ist $t \in I_p$ und $s \in I_{\Phi(p,t)}$, dann ist $t+s \in I_p$ und es gilt $\Phi_s(\Phi_t(p)) = \Phi_{t+s}(p)$.
+		\item Ist $t \in I_p$ und $s \in I_{\Phi(p,t)}$, dann ist $t+s \in I_p$ und es gilt $(\Phi_s\circ\Phi_t)(p) = \Phi_{t+s}(p)$.
 		\item Für alle $t\in\R$ ist $M_t := \{p \in M \mid (t,p) \in U\}$ eine offene Teilmenge von $M$, und $\Phi_t(p) = \Phi(p,t)$ definiert einen Diffeomorphismus $\Phi_t\colon M_t \to M_{-t}$.
 	\end{enumerate}
 
@@ -1824,7 +1828,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \end{defn}
 \begin{bem}
 	Ist $X\in\mathfrak X(M)$ vollständig, so ist $\Phi^X_t$ für jedes $t\in\R$ ein Diffeomorphismus $\Phi^X_t\colon M\to M$. Wegen $\Phi^X_0 = \id_M$ und $\Phi_s\circ\Phi_t = \Phi_{t+s}$ ist also
-	\[\R \ni t \mapsto \Phi_t \in \Diff(M)\]
+	\[\R \rightarrow\Diff(M),\quad t \mapsto \Phi_t \]
 	ein Gruppenhomomorphismus.
 \end{bem}
 \begin{satz}
@@ -1889,7 +1893,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		Damit ist $(\mathcal L_X Y)(f) = [X,Y](f)$ für alle $f\in\sC(M)$, also $\mathcal L_X Y = [X,Y]$.
 	\end{proof}
 \end{lemma}
-Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y] = \mathcal L_X Y$ gibt an, wie sehr sich $Y$ ändert, wenn wir uns entlang von $X$ fließen lassen.
+Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y] = \mathcal L_X Y$ gibt an, wie sehr sich $Y$ ändert, wenn wir es entlang von $X$ fließen lassen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
