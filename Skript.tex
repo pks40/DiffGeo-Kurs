@@ -252,7 +252,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 		\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
 		\partial_1 F^n & \dots & \partial_n F^n & \partial_{n+1} F^n & \dots & \partial_m F^n
 	\end{pmatrix} (p).\]
-	Ist die linke $n\times n$-Teilmatrix invertierbar, dann lässt sich die Gleichung $F(a,b) = 0$ für $a \in \R^n, b \in \R^{m-n}$ in einer Umgebung von $p$ nach $b$ auflösen. D.\,h. es gibt offene Mengen $A \subset \R^n, B \subset \R^{m-n}$ mit $p \in A\times B \subset U$ und eine glatte Abbildung $G\colon A\to B$, sodass $F(a,b) = 0 \iff b = G(a)$ gilt.
+	Ist die linke $n\times n$-Teilmatrix invertierbar, dann lässt sich die Gleichung $F(a,b) = 0$ für $a \in \R^n, b \in \R^{m-n}$ in einer Umgebung von $p$ nach $a$ auflösen. D.\,h. es gibt offene Mengen $A \subset \R^n, B \subset \R^{m-n}$ mit $p \in A\times B \subset U$ und eine glatte Abbildung $G\colon B\to A$, sodass $F(a,b) = 0 \iff a = G(b)$ gilt.
 \end{satz}
 
 
@@ -932,7 +932,7 @@ Eine der wichtigsten Methoden, neue Mannigfaltigkeiten zu erhalten, ist der soge
 			\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
 			\partial_1 F^n & \dots & \partial_n F^n & \partial_{n+1} F^n & \dots & \partial_m F^n
 		\end{pmatrix}(x(p))\]
-		hat Rang $n$. oBdA können wir annehmen, dass die ersten $n$ Spalten dieser Matrix linear unabhängig sind (durch Vertauschen von Spalten, d.\,h. Vertauschen von Komponenten von $x$). Das bedeutet aber, dass die linke $n\times n$-Teilmatrix invertierbar ist. Nach dem Satz von der impliziten Funktion (Satz \ref{satz:impl_fkt}) lässt sich also die Gleichung $F(a,b) = 0$ für $a\in \R^n, b \in \R^{m-n}$ in einer Umgebung von $x(p)$ nach $b$ auflösen, d.\,h. es gibt eine lokal definierte glatte Abbildung $G\colon \R^n \to \R^{m-n}$ mit $F(a,b) = 0 \iff b = G(a)$. Wir haben $S$ also lokal um $p$ als Graph der glatten Abbildung $G$ dargestellt; nach Lemma \ref{lemma:umf_lokal_graph} ist $S$ also eine eingebettete Untermannigfaltigkeit der Dimension $m-n$.
+		hat Rang $n$. oBdA können wir annehmen, dass die ersten $n$ Spalten dieser Matrix linear unabhängig sind (durch Vertauschen von Spalten, d.\,h. Vertauschen von Komponenten von $x$). Das bedeutet aber, dass die linke $n\times n$-Teilmatrix invertierbar ist. Nach dem Satz von der impliziten Funktion (Satz \ref{satz:impl_fkt}) lässt sich also die Gleichung $F(a,b) = 0$ für $a\in \R^n, b \in \R^{m-n}$ in einer Umgebung von $x(p)$ nach $a$ auflösen, d.\,h. es gibt eine lokal definierte glatte Abbildung $G\colon \R^{m-n} \to \R^n$ mit $F(a,b) = 0 \iff a = G(b)$. Wir haben $S$ also lokal um $p$ als Graph der glatten Abbildung $G$ dargestellt; nach Lemma \ref{lemma:umf_lokal_graph} ist $S$ also eine eingebettete Untermannigfaltigkeit der Dimension $m-n$.
 
 		Nun wollen wir noch die Tangentialräume an $S$ charakterisieren. Sei also $p \in S$ und $v \in T_pS \subset T_pM$ (wobei wir $v \equiv \left.\DD i\right|_p(v) \in T_pM$ identifiziert haben). Da sich $v$ als Ableitung einer Kurve $\gamma\colon I \to S$ schreiben lässt, $v = \dot\gamma(0)$, erhalten wir nach Kettenregel $\left.\DD f\right|_p(v) = \left.\DD f\right|_p \left( \left.\frac{\D}{\D t}\gamma(t)\right|_{t=0} \right) = \left.\frac{\D}{\D t} f( \gamma(t)) \right|_{t=0} = \left.\frac{\D}{\D t} q \right|_{t=0} = 0$. Das zeigt $T_pS \subset \ker \left( \left.\DD f\right|_p \right)$. Aus Dimensionsgründen folgt die Gleichheit.
 	\end{proof}
