@@ -479,7 +479,9 @@ Wir müssen \emph{intrinsisch} über Richtungen in $M$ reden können. Dabei hilf
 	\[f \sim g \diff \exists \text{ offene Umgebung } V \text{ von } p \text{ mit } f = g \text{ auf } V.\]
 	Die Äquivalenzklassen bzgl. dieser Relation heißen glatte \emph{Funktionskeime} an $M$ im Punkt $p$. Zwei um $p$ definierte Funktionen definieren also genau dann denselben Keim, wenn sie in einer Umgebung von $p$ übereinstimmen.
 
-	Den Raum der Funktionskeime an $M$ in $p$ schreiben wir als $\sC_p(M)$. Den Keim zu einer Funktion $f$ schreiben wir als $[f]$. Wenn keine Missverständnisse entstehen können, schreiben wir stattdessen manchmal auch $f$, um uns Notationsaufwand zu ersparen.
+	Den Raum der Funktionskeime an $M$ in $p$ ist also
+	 \[\sC_p(M):= \raise0.2ex\hbox{$X$} \Big/ \lower0.2ex\hbox{$\sim$}.\]
+	Den Keim zu einer Funktion $f$ schreiben wir als $[f]$. Wenn keine Missverständnisse entstehen können, schreiben wir stattdessen manchmal auch $f$, um uns Notationsaufwand zu ersparen.
 \end{defn}
 
 Zu einem Funktionskeim $[f] \in \sC_p(M)$ ist der Funktionswert $[f](p) := f(p)$ wohldefiniert (warum?).
@@ -683,7 +685,7 @@ Bzgl. dieser Identifikation ist der in Beispiel \ref{bsp:kurve_geschw} definiert
 \end{bsp}
 
 \begin{satz}[Differential von linearen Abbildungen]
-	Sei $L\colon V \to W$ eine lineare Abbildung. Bzgl. der Identifikationen $T_pV \equiv V, T_{L(p)}W \equiv W$ ist $\left.\DD L\right|_p = L$.
+	Sei $L\colon V \to W$ eine lineare Abbildung. Bzgl. der Identifikationen $T_pV \equiv V, T_{L(p)}W \equiv W$ ist $\left.\DD L\right|_p = L$. Das heißt, dass das folgende Diagramm kommutiert:
 
 	\begin{center}
 		\begin{tikzpicture}
@@ -697,7 +699,7 @@ Bzgl. dieser Identifikation ist der in Beispiel \ref{bsp:kurve_geschw} definiert
 		;
 		\end{tikzpicture}
 	\end{center}
-
+		Äquivalent zur obigen Aussage ist also (jetzt ohne Identifizierung) $\left.\DD L\right|_p\partial_v=\left.\partial_{L(v)}\right|_{L(p)}$.
 	\begin{proof}
 		Für $v\in V$ ist
 		\begin{align*}
@@ -796,7 +798,7 @@ Für die Kovektoren $\left.\D x^i\right|_p \in T_p^*M$ gilt also $\left.\D x^i\r
 
 \begin{lemma}[Differential in Kartendarstellung] \label{lemma:differential_koord}
 	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Sei $p\in M$, $x$ eine Karte von $M$ um $p$ und $y$ eine Karte von $N$ um $f(p)$. Dann ist die Darstellungsmatrix des Differentials $\left.\DD f\right|_p$ bzgl. der Koordinatenbasen $\left.\frac{\partial}{\partial x^i}\right|_p$ von $T_pM$ und $\left.\frac{\partial}{\partial y^i}\right|_{f(p)}$ von $T_{f(p)}N$ die Jacobi-Matrix der Kartendarstellung $y \circ f \circ x^{-1}$ von $f$ an der Stelle $x(p)$, also die Matrix
-	\[\left.\mathrm{J}(y\circ f\circ x^{-1})\right|_{x(p)} = \left[\left(\partial_j(y\circ f\circ x^{-1})^i\right) (x(p)) \right]_{ij}.\]
+	\[\left(\left.\DD f\right\vert_p\right)^i_j=\left(\left.\mathrm{J}(y\circ f\circ x^{-1})\right|_{x(p)}\right)^i_j = \left(\partial_j(y\circ f\circ x^{-1})^i\right) (x(p)).\]
 	\bewUeb
 \end{lemma}
 
