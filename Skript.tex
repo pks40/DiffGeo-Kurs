@@ -359,7 +359,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 		Um eine differenzierbare Struktur anzugeben, reicht es also auch aus, einen nicht-maximalen Atlas anzugeben.
 		\begin{bsp}\hfill 
 			\begin{enumerate}[label=(\alph*)]
-				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden!
+				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden! Im Folgenden verwenden wir die so definierte differenzierbare Struktur auf $\R^n$.
 				\item Reelle, endlich-dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
 				\item Die obigen Beispiele topologischer Mannigfaltigkeiten gelten auch für differenzierbare Mannigfaltigkeiten, allerdings müssen auch hier Atlanten vervollständigt werden.
 				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\mid \|x\|=1\rbrace}$ sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
@@ -388,7 +388,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 			Die Menge der Diffeomorphismen $\Diff(M)\subset\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
 		\begin{lemma} \label{lemma:karte_diffeo}
-			Sei $M$ eine differenzierbare Mannigfaltigkeit und $(\varphi,U)$ eine Karte von $M$. Dann ist $\varphi\colon U \to \varphi(U) \subset \R^n$ ein Diffeomorphismus.
+			Sei $M$ eine differenzierbare Mannigfaltigkeit und $U\subset M$ eine offene Teilmenge. Eine Abbildung $\varphi\colon U \to \varphi(U) \subset \R^n$ ist genau dann ein Diffeomorphismus, wenn $(\varphi,U)$ eine Karte von $M$ ist.
 			\bewUeb
 		\end{lemma}
 
@@ -1365,8 +1365,14 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			Beachte, dass aus dem obigen Diagramm bereits folgt, dass $\pi$ eine surjektive Submersion ist (da $\phi$ ein Diffeomorphismus und $\mathrm{pr}_1$ eine Submersion ist).
 		\end{defn}
 		\begin{nota}
-			Man sagt auch \glqq Faserbündel über $M$\grqq und schreibt dafür einfach $(P,\pi)$.
+			Man sagt auch \glqq Faserbündel $(P,\pi)$ über $M$\grqq\ .
 		\end{nota}
+		\begin{lemma}\label{lemma:Karten_aus_Trivialisierungen}
+			Sei eine bijektive Abbildung $\phi\colon \pi^{-1}(U)\rightarrow U\times F$ auf einem Faserbündel $(P,\pi,M,F)$ mit den obigen Eigenschaften gegeben. Da Verkettungen von Diffeomorphismen wieder Diffeomorphismen sind, ist $\phi$ genau dann ein Diffeomorphismus (und damit eine lokale Trivialisierung), wenn für alle Karten $\varphi\colon V_y\rightarrow \varphi(V_y)\subset\R^{\dim M}$ um $y\in U\subset M$ und $\psi\colon W_v\rightarrow\psi(W_v)\subset\R^{\dim F}$ um $v\in F$ die folgende Verkettung ein Diffeomorphismus (und damit nach Lemma \ref{lemma:karte_diffeo} eine Karte von $P$) ist :
+			\begin{align*}
+				\left.(\varphi\times\psi)\circ\phi\right\vert_{\phi^{-1}(V_y\times W_v)}\colon\underbrace{\phi^{-1}(V_y\times W_v)}_{\subset P}\rightarrow \varphi(V_y)\times\psi(W_v)\subset\R^{\dim M +\dim F}
+			\end{align*}
+		\end{lemma}
 		Sei von nun an $(P,M,\pi ,F)$ ein Faserbündel.
 		\begin{bsp}\hfill
 			\begin{enumerate}[label=(\alph*)]
@@ -1504,6 +1510,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			\end{align*}
 			wobei $\lambda\in E_x^*$. Übergangsfunktionen sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
+		Bei dieser und den Folgenden Konstruktionen erhält man einen Atlas des Vektorbündels durch solche Karten, wie sie nach Lemma \ref{lemma:Karten_aus_Trivialisierungen} durch die Trivialisierungen mittels Verkettung mit Karten des Basisraumes gegeben sind. Man konstruiert die differenzierbare Struktur des Vektorbündels (die Vervollständigung des obigen Atlanten) also gerade so, dass die angegebenen lokalen Trivialisierungen Diffeomorphismen sind.
 	
 		\begin{lemma} \label{lemma:rahmen_dual}
 			Sei $(\sigma_1,\dots,\sigma_n)$ ein lokaler Rahmen von $E$. Definieren wir lokale Schnitte $\theta^1, \dots, \theta^n$ von $E^*$ dadurch, dass punktweise $\{\theta^i(x)\}$ die duale Basis von $(E_x)^*$ zur Basis $\{\sigma_i(x)\}$ von $E_x$ ist, dann sind die $\theta^i$ glatt, und somit ist $(\theta^1,\dots,\theta^n)$ ein lokaler Rahmen von $E^*$.
@@ -2002,7 +2009,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			Dies entspricht gerade der Integralkurve von $L(v)$ in $e$ ausgewertet an der Stelle $1$.
 		\end{defn}
 		\begin{lemma}\label{lemma:Eigenschaften_exp}
-			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
+			Die Exponentialabbildung erfüllt die folgenden Eigenschaften:
 			\begin{enumerate}[label=(\roman*)]
 				\item $\exp(0)=e$
 				\item Für alle $v \in \mathfrak g$ ist $t \mapsto \exp(tv)$ die Integralkurve von $L(v)$ in $e$.
