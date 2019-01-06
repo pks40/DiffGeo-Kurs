@@ -1402,7 +1402,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{bsp}\hfill
 			\begin{enumerate}[label=(\alph*)]
 				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
-				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$: mithilfe von Karten von $M$ kann man auf kanonische Weise einen Bündelatlas konstruieren (Übung).
+				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$: mithilfe von Karten von $M$ kann man auf kanonische Weise einen Bündelatlas und Karten von $TM$ konstruieren (Übung).
 				
 				Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
 				\item Wir definieren auf der reellen Ebene $\R^2$ die Äquivalenzrelation
@@ -1413,6 +1413,8 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\begin{align*}
 					\mathrm{Mb}=\raise0.5ex\hbox{$\R^2$} \Big/ \lower0.5ex\hbox{$\sim$}.
 				\end{align*}
+				Man beachte, dass für jeden Punkt in $\R^2$ eine offene Umgebung existiert, sodass die Projektion auf das Möbiusbündel eine injektive, stetige Abbildung ist. Durch Einschränkung auf das Bild und Inversion erhält man Karten (und einen Atlas).
+				
 				Das Möbiusbündel ist ein Vektorbündel vom Rang $1$ über dem Kreis $S^1=\R/\mathbb{Z}$. Die Projektion ist dabei gegeben durch $\pi([x,y]):=[x]$ mit den Fasern \[\pi^{-1}(\{[a]\})=\lbrace [x,y]\mid (x,y)\in \{a\}\times\R\rbrace\cong\{a\}\times\R.\]
 				
 				Trivialisierungen dieses Vektorbündels kann man wie folgt konstruieren: Betrachte ein Intervall $I:=(a,b)\subset\R$ mit $0< b-a< 1$ und bezeichne $[I]$ das Intervall als Teilmenge von $S^1$. Dann ist $\Phi\colon\pi^{-1}([I])\rightarrow [I]\times \R$ mit $\Phi^{-1}([x],y)=[\tilde{x},y]$ eine lokale Trivialisierung, wobei $\tilde{x}$ den Repräsentanten von $[x]\in [I]$ bezeichnet, der in $I$ liegt.
@@ -1448,7 +1450,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		
 		Kommen wir nun zu Schnitten von Vektorbündeln. Diese haben durch die zusätzliche Struktur der Fasern auch einige neue Eigenschaften.		
 		\begin{bem}
-			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)_x := f(x) \sigma_x$. Mit dieser Operation wird $\Gamma(E)$ offensichtlich zu einem $\sC(M)$-Modul.
+			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)(x) := f(x) \sigma(x)$. Mit dieser Operation wird $\Gamma(E)$ zu einem $\sC(M)$-Modul.
 		\end{bem}
 
 		\begin{defn}[Rahmen]
@@ -1526,9 +1528,9 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				
 				Haben wir eine $\sC(M)$-lineare Abbildung $F\colon \Gamma(E)\to\sC(M)$ gegeben, so wollen wir daraus einen Schnitt $\rho$ von $E^*$ konstruieren mit $F(\sigma) = \rho(\sigma)$ für alle $\sigma \in \Gamma(E)$, und wir wollen sehen, dass dieser Schnitt eindeutig ist.
 				
-				Punktweise definiert man also $\rho:M\rightarrow E^*$ implizit durch $\rho_x(\sigma_x) = (F(\sigma))(x)$. Damit dies $\rho_x$ eindeutig definiert, zeigen wir, dass wir aus der Abbildung $F$ auch alle Werte $\rho_x(s)\quad \forall s\in E_x$ bestimmen können.
+				Punktweise definiert man also $\rho:M\rightarrow E^*$ implizit durch $(\rho(x))(\sigma(x)) = (F(\sigma))(x)$. Damit dies $\rho(x)$ eindeutig definiert, zeigen wir, dass wir aus der Abbildung $F$ auch alle Werte $(\rho(x))(s)\quad \forall s\in E_x$ bestimmen können.
 				
-				Wir müssen also zeigen, dass sich einerseits jedes $s \in E_x$ zu einem Schnitt $\sigma \in \Gamma(E)$ fortsetzen lässt mit $\sigma_x = s$ und dass dann andererseits $\rho_x(\sigma_x)$ von der Wahl dieser Fortsetzung unabhängig ist. Beides geht mit Hutfunktionen, ähnlich zum Beweis von Lemma \ref{lemma:tangtvek_punktw_deriv} (Übung).
+				Wir müssen also zeigen, dass sich einerseits jedes $s \in E_x$ zu einem Schnitt $\sigma \in \Gamma(E)$ fortsetzen lässt mit $\sigma(x) = s$ und dass dann andererseits $(\rho(x))(\sigma(x))$ von der Wahl dieser Fortsetzung unabhängig ist. Beides geht mit Hutfunktionen, ähnlich zum Beweis von Lemma \ref{lemma:tangtvek_punktw_deriv} (Übung).
 				
 				Die Glattheit von $\rho$ folgt dann durch Anwendung auf einen lokalen Rahmen mit Lemma \ref{lemma:schnitt_glatt_koeff_glatt}.
 			\end{proof}
