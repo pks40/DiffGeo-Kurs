@@ -910,7 +910,7 @@ Unter einer Immersion werden also unabhängige Richtungen auf unabhängige Richt
 
 Eine der wichtigsten Methoden, neue Mannigfaltigkeiten zu erhalten, ist der sogenannte \emph{Satz vom regulären Wert}. Dieser gibt ein vergleichsweise einfaches Kriterium dafür an, dass eine Teilmenge einer gegebenen Mannigfaltigkeit eine Untermannigfaltigkeit ist.
 \begin{defn}
-	Seien $M,N$ differenzierbare Mannigfaltigkeiten, $\dim M \ge \dim N$, und sei $f \in \sC(M)$.
+	Seien $M,N$ differenzierbare Mannigfaltigkeiten, $\dim M \ge \dim N$, und sei $f \in \sC(M,N)$.
 	\begin{enumerate}[label=(\alph*)]
 		\item Ein \emph{kritischer Punkt} von $f$ ist ein Punkt $p \in M$ mit $\rk_p f < \dim N$.
 		\item Ein \emph{regulärer Punkt} von $f$ ist ein Punkt $p \in M$ mit $\rk_p f = \dim N$ (es liegt also maximaler Rang in $p$ vor, $\left.\DD f\right|_p$ ist surjektiv).
@@ -919,7 +919,7 @@ Eine der wichtigsten Methoden, neue Mannigfaltigkeiten zu erhalten, ist der soge
 \end{defn}
 
 \begin{satz}[Satz vom regulären Wert]
-	Seien $M,N$ differenzierbare Mannigfaltigkeiten, $\dim M \ge \dim N$, und sei $q\in N$ ein regulärer Wert von $f \in \sC(M)$. Dann ist das Urbild $S := f^{-1}({q}) \subset M$ eine eingebettete Untermannigfaltigkeit von $M$ mit Dimension $\dim S = \dim M - \dim N$. Für die Tangentialräume gilt dabei
+	Seien $M,N$ differenzierbare Mannigfaltigkeiten, $\dim M \ge \dim N$, und sei $q\in N$ ein regulärer Wert von $f \in \sC(M,N)$. Dann ist das Urbild $S := f^{-1}(\{q\}) \subset M$ eine eingebettete Untermannigfaltigkeit von $M$ mit Dimension $\dim S = \dim M - \dim N$. Für die Tangentialräume gilt dabei
 	\[T_pS = \ker \left( \left.\DD f\right|_p \right) \subset T_pM\]
 	für alle $p \in S$.
 
@@ -1322,7 +1322,7 @@ Mit Hutfunktionen können wir lokal definierte Funktionen zu globalen Funktionen
 
 Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktionskeimen $\sC_p(M)$, so lässt sich dieser natürlich insbesondere auf globale Funktionen $f \in \sC(M)$ anwenden. Als Anwendung von Hutfunktionen wollen wir zeigen, dass sich auch umgekehrt \glqq punktweise Derivationen\grqq\ von $\sC(M)$ zu Derivationen von Funktionskeimen \glqq lokalisieren\grqq\ lassen:
 \begin{lemma}[Tangentialvektoren als punktweise Derivationen] \label{lemma:tangtvek_punktw_deriv}
-	Sei $M$ eine differenzierbare Mannigfaltigkeit und $p\in M$. Sei $v$ eine Derivation von $\sC(M)$ bzgl. $p$, d.\,h. eine lineare Abbildung $v\colon M \to \R$ mit der Eigenschaft \[v(gh) = v(g) h(p) + g(p) v(h)\] für alle $g,h \in \sC(M)$. Dann gibt es einen eindeutigen Tangentialvektor $w \in T_pM$ mit $w([g]) = v(g)$ für alle globalen Funktionen $g \in \sC(M)$.
+	Sei $M$ eine differenzierbare Mannigfaltigkeit und $p\in M$. Sei $v$ eine Derivation von $\sC(M)$ bzgl. $p$, d.\,h. eine lineare Abbildung $v\colon\sC(M) \to \R$ mit der Eigenschaft \[v(gh) = v(g) h(p) + g(p) v(h)\] für alle $g,h \in \sC(M)$. Dann gibt es einen eindeutigen Tangentialvektor $w \in T_pM$ mit $w([g]) = v(g)$ für alle globalen Funktionen $g \in \sC(M)$.
 
 	\begin{proof}
 		Wir zeigen zunächst die Existenz von $w$. Sei $[f] \in \sC_p(M)$ ein Funktionskeim, repräsentiert durch $f\in \sC(U)$. Wir definieren $w([f])$ wie folgt: Wir wählen eine beliebige globale Funktion $\tilde f \in \sC(M)$, die in einer offenen Umgebung $V \subset U$ mit $f$ übereinstimmt, und setzen $w([f]) := v(\tilde f)$. (Für den Fall, dass schon $U=M$ gilt, können wir einfach $\tilde f = f$ wählen und haben damit direkt die geforderte Gleichung $w([f]) = v(f)$ für globale Funktionen $f \in \sC(M)$.)
@@ -1391,7 +1391,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\end{defn}
 		Analog zu Kartenwechseln lassen sich auch \emph{Trivialisierungswechsel} definieren:
 		\begin{defn}
-			Sei $(E,M,\pi,\R^n)$ ein Vektorbündel, $U,V\subset M$ mit $U\cap V\neq\emptyset$ und Trivialisierungen ${\phi_U\colon \pi^{-1}(U)\rightarrow U\times \R^n}, {\phi_V\colon \pi^{-1}(U)\rightarrow U\times \R^n}$.
+			Sei $(E,M,\pi,\R^n)$ ein Vektorbündel, $U,V\subset M$ mit $U\cap V\neq\emptyset$ und Trivialisierungen ${\phi_U\colon \pi^{-1}(U)\rightarrow U\times \R^n}, {\phi_V\colon \pi^{-1}(V)\rightarrow V\times \R^n}$.
 
 			Die folgende Abbildung heißt \emph{Trivialisierungswechsel}:
 			\begin{equation*}
@@ -1421,7 +1421,9 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{defn}[Vektorbündelhomomorphismen]\hfill\\
 			Seien $(E_a,M_a,\pi_a,\R^{n_a}),(E_b,M_b,\pi_b,\R^{n_b})$ Vektorbündel.
 			
-			Ein Tupel $(F,f)$ mit $F\colon E_a\rightarrow E_b$ und $f\colon M_a\rightarrow M_b$ heißt \emph{Vektorbündelhomomorphismus}, wenn das folgende Diagramm kommutiert:
+			Ein Tupel $(F,f)$ mit $F\colon E_a\rightarrow E_b$ und $f\colon M_a\rightarrow M_b$ heißt \emph{Vektorbündelhomomorphismus}, wenn $\pi_b\circ F=f\circ\pi_a$ gilt und $F\vert_{(E_a)_x}\colon (E_a)_x\rightarrow (E_b)_{f(x)}$ eine lineare Abbildung ist. 
+			
+			Es kommutiert also insbesondere das folgende Diagramm:
 			\begin{center}
 				\begin{tikzpicture}
 					\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{E_a & E_b \\
@@ -1434,7 +1436,6 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
   					;
 				\end{tikzpicture}
 			\end{center}
-			also $\pi_b\circ F=f\circ\pi_a$.
 		\end{defn}
 		
 		\begin{bsp}
@@ -1451,7 +1452,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\end{bem}
 
 		\begin{defn}[Rahmen]
-			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_n)\in\Gamma(P\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet.
+			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_n)\in\Gamma(E\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet.
 			
 			Natürlicherweise ist ein \emph{globaler Rahmen} ein lokaler Rahmen über $M$.
 			
@@ -1504,7 +1505,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 	
 		\begin{lemma} \label{lemma:rahmen_dual}
 			Sei $(\sigma_1,\dots,\sigma_n)$ ein lokaler Rahmen von $E$. Definieren wir lokale Schnitte $\theta^1, \dots, \theta^n$ von $E^*$ dadurch, dass punktweise $\{\theta^i(x)\}$ die duale Basis von $(E_x)^*$ zur Basis $\{\sigma_i(x)\}$ von $E_x$ ist, dann sind die $\theta^i$ glatt, und somit ist $(\theta^1,\dots,\theta^n)$ ein lokaler Rahmen von $E^*$.
-			\bewUeb
+			\bewUeb %5.2.10 mit 5.2.8
 		\end{lemma}
 	
 		\begin{satz}[Dualität von Schnitten]\label{satz:Dualität}
@@ -1574,9 +1575,9 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{lemma}[Schnitte von Tensorprodukt und Whitney-Summe]
 			Für Schnitte $\sigma_a\in\Gamma(E_a)$, $\sigma_b\in\Gamma(E_b)$ erhält man Schnitte der Whitney-Summe und des Tensorproduktes durch \glqq faserweise\grqq\ Verknüpfung:
 			\begin{align*}
-				\Gamma(E_a)\oplus\Gamma(E_b)&\rightarrow\Gamma(E_a\oplus E_b),\\
+				\Gamma(E_a)\times\Gamma(E_b)&\rightarrow\Gamma(E_a\oplus E_b),\\
 				(\sigma_a,\sigma_b)&\mapsto \sigma_a\oplus\sigma_b,\quad (\sigma_a\oplus\sigma_b)(p):=\sigma_a(p)\oplus\sigma_b(p)\\
-				\Gamma(E_a)\otimes\Gamma(E_b)&\rightarrow\Gamma(E_a\otimes E_b),\\
+				\Gamma(E_a)\times\Gamma(E_b)&\rightarrow\Gamma(E_a\otimes E_b),\\
 				(\sigma_a,\sigma_b)&\mapsto \sigma_a\otimes\sigma_b,\quad (\sigma_a\otimes\sigma_b)(p):=\sigma_a(p)\otimes\sigma_b(p)
 			\end{align*}
 		\end{lemma}
@@ -1697,7 +1698,7 @@ Später werden wir eine geometrische Interpretation des Kommutators kennenlernen
 	\end{enumerate}
 	\bewUeb
 \end{lemma}
-\begin{bem}
+\begin{bem}\label{bem:Lie-Algebra}
 	Die Eigenschaften \ref{lemma:kommut_1}, \ref{lemma:kommut_2} und \ref{lemma:kommut_3} besagen, dass $(\mathfrak X(M), [\cdot,\cdot])$ eine sogenannte \emph{Lie-Algebra} über $\R$ ist.
 \end{bem}
 
@@ -1719,7 +1720,7 @@ Später werden wir eine geometrische Interpretation des Kommutators kennenlernen
 \section{Transport von Vektorfeldern}
 Hat man einen Diffeomorphismus $\phi\colon M\to N$, dann kann man damit Vektorfelder von $M$ nach $N$ \glqq transportieren\grqq:
 \begin{defn}
-	Sei $\phi\colon M \to N$ ein Diffeomorphismus und $X \in \mathfrak X(M)$. Der \emph{Pushforward von $X$ entlang von $\phi$} ist das Vektorfeld $\phi_*X \in \mathfrak X(M)$ definiert durch
+	Sei $\phi\colon M \to N$ ein Diffeomorphismus und $X \in \mathfrak X(M)$. Der \emph{Pushforward von $X$ entlang von $\phi$} ist das Vektorfeld $\phi_*X \in \mathfrak X(N)$ definiert durch
 	\[(\phi_*X)_q := \DD\phi|_{\phi^{-1}(q)}(X_{\phi^{-1}(q)}) \quad \text{für} \; q \in N\]
 	bzw.
 	\[(\phi_*X)_{\phi(p)} = \DD\phi|_{p}(X_p) \quad \text{für} \; p \in M.\]
@@ -1829,8 +1830,8 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	Ein Vektorfeld heißt \emph{vollständig}, wenn sich alle seine Integralkurven auf ganz $\R$ als Definitionsbereich fortsetzen lassen.
 \end{defn}
 \begin{bem}
-	Ist $X\in\mathfrak X(M)$ vollständig, so ist $\Phi^X_t$ für jedes $t\in\R$ ein Diffeomorphismus $\Phi^X_t\colon M\to M$. Wegen $\Phi^X_0 = \id_M$ und $\Phi_s\circ\Phi_t = \Phi_{t+s}$ ist also
-	\[\R \rightarrow\Diff(M),\quad t \mapsto \Phi_t \]
+	Ist $X\in\mathfrak X(M)$ vollständig, so ist $\Phi^X_t$ für jedes $t\in\R$ ein Diffeomorphismus $\Phi^X_t\colon M\to M$. Wegen $\Phi^X_0 = \id_M$ und $\Phi^X_s\circ\Phi^X_t = \Phi^X_{t+s}$ ist also
+	\[\R \rightarrow\Diff(M),\quad t \mapsto \Phi^X_t \]
 	ein Gruppenhomomorphismus.
 \end{bem}
 \begin{satz}
@@ -1848,7 +1849,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \begin{defn}[Lie-Ableitung]
 	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$), definiert durch
 	\[(\mathcal L_X T)(p) := \left.\frac{\D}{\D t}(\Phi_t^* T)(p)\right|_{t=0} = \lim_{t\to 0} \frac{(\Phi_t^* T)(p) - T(p)}{t},\]
-	wobei $\Phi = \Phi^X$ der Fluss von $X$ ist. Dabei ist $t \mapsto (\Phi_t^*T)(p) \in \mathbb R$ (oder $\in T_pM$) einfach eine Abbildung von $\mathbb R$ in einen Vektorraum, von der wir die übliche Ableitung nehmen.
+	wobei $\Phi = \Phi^X$ der Fluss von $X$ ist. Dabei ist $t \mapsto (\Phi_t^*T)(p) \in \mathbb R$ (oder $\in T_pM$ [sic!]) einfach eine Abbildung von $\mathbb R$ in einen Vektorraum, von der wir die übliche Ableitung nehmen.
 
 	Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir uns \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
 	
@@ -1906,9 +1907,9 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			Eine \emph{Lie-Gruppe} ist eine differenzierbare Mannigfaltigkeit $G$ mit einer Gruppenstruktur, sodass die Verknüpfung $\cdot\colon G\times G\rightarrow G, (g,h)\mapsto g\cdot h$ und die Inversion ${i\colon G\rightarrow G}, {g\mapsto g^{-1}}$ glatte Abbildungen sind.
 			
 			Wir definieren die \emph{Linkstranslation} entlang $g$:
-			\begin{equation}
+			\begin{equation*}
 				l_g\colon G\to G, h\mapsto g\cdot h
-			\end{equation}
+			\end{equation*}
 			
 			Es gelten $(l_g)^{-1}=l_{g^{-1}}$ und $l_g\circ l_h=l_{g\cdot h}$, also ist $l\colon G\rightarrow \mathrm{Aut}(G)$ ein Gruppenhomomorphismus.
 			
@@ -1926,7 +1927,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 		\begin{defn}[Linksinvariante Vektorfelder]
 			Ein \emph{linksinvariantes Vektorfeld} ist ein Vektorfeld $X\in\mathfrak{X}(G)$, das \glqq invariant\grqq\ unter dem push-forward von Linkstranslationen ist. Das heißt, dass folgende Gleichung gilt:
 			\begin{equation*}
-				\left((l_g)_*X\right)_h\stackrel{\text{Def.}}{=}\DD l_g\vert_{g^{-1}\cdot h}X_{g^{-1}\cdot h}=X_h
+				\left((l_g)_*X\right)_h\stackrel{\text{Def.}}{=}\DD l_g\vert_{g^{-1}\cdot h}X_{g^{-1}\cdot h}=X_h\quad\quad \forall g,h\in G
 			\end{equation*}
 			Die Menge der linksinvarianten Vektorfelder heißt $\vf^L(G)$.
 		\end{defn}
@@ -1937,20 +1938,21 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			\begin{proof}
 				Zum Beweis konstruieren wir den kanonischen Isomorphismus und zeigen, dass die linksinvarianten Vektorfelder unter Bildung von Kommutatoren abgeschlossen sind:
 				\begin{align}
-					\Psi&\colon\vf^L(G)\to T_eG, X\mapsto X_e\nonumber\\
-					L&\colon T_eG\rightarrow \vf^L(G), v\mapsto (g\mapsto \DD l_g\vert_e v)\label{def:kan_Iso}
+					\Psi\colon\vf^L(G)&\rightarrow T_eG, X\mapsto X_e\nonumber\\
+					L\colon T_eG&\rightarrow \vf^L(G), v\mapsto L(v)\label{def:kan_Iso}\\
+					L(v)\colon G&\rightarrow TG, g\mapsto \DD l_g\vert_e v\nonumber
 				\end{align}
 				$L$ ist wohldefiniert, denn für $v\in T_eG$ und $g,h\in G$ gilt:
 				\begin{align*}
-					\left((l_g)_*L(v)\right)_h&=\DD l_g\vert_{g^{-1}\cdot h}L(v)_{g^{-1}\cdot h}\\
-					&=\DD l_g\vert_{g^{-1}\cdot h}\DD (l_{g^{-1}\cdot h}\vert_e v)\\
-					\text{(Kettenregel)}\quad &=\DD\left(l_g\circ l_{g^{-1}}\right)\big\vert _h\DD l_h\vert_e v\\
-					&=\DD l_h\vert_e v\\
+					\left((l_g)_*L(v)\right)_h&=\left.\DD l_g\right\vert_{g^{-1}\cdot h}L(v)_{g^{-1}\cdot h}\\
+					&=\left.\DD l_g\right\vert_{g^{-1}\cdot h}(\DD l_{g^{-1}\cdot h}\vert_e v)\\
+					\text{(Kettenregel)}\quad &=\left.\DD\left(l_g\circ l_{g^{-1}}\right)\right\vert _h\DD l_h\vert_e v\\
+					&=\left.\DD l_h\right\vert_e v\\
 					&=L(v)_h
 				\end{align*}
 				Außerdem gilt $\Psi\circ L=\id_{T_eG}$:
 				\begin{align*}
-					\Psi(L(v))= (g\mapsto \DD l_g\vert_e v)_e=\DD l_e\vert_e v=v
+					\Psi(L(v))= (L(v))_e=\DD l_e\vert_e v=v
 				\end{align*}
 				und die Umkehrung $L(\Psi(X))=X$ wird punktweise durch Ausnutzen der Linksinvarianz klar:
 				\begin{align*}
@@ -1970,6 +1972,11 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			\end{align*}
 			wobei wir den kanonischen Isomorphismus $L\colon \mathfrak{g}\to \vf^L(G)$ aus Gleichung (\ref{def:kan_Iso}) benutzt haben. Nach Konstruktion ist diese Verkettung bilinear, antisymmetrisch und erfüllt die Jacobi-Identität (siehe Lemma \ref{lemma:kommut}). Sie heißt die \emph{Lie-Klammer} von $\mathfrak{g}$.
 		\end{defn}
+		\begin{bem}
+			Die Eigenschaften des Kommutators (aus Lemma \ref{lemma:kommut}) von Vektorfeldern gelten nun auch für die Lie-Klammer auf der Lie-Algebra $\mathfrak{g}$.
+			
+			Per Konstruktion wird der kanonische Isomorphismus $L$ zu einem Homomorphismus von Lie-Algebren (also einer $\R$-linearen Abbildung mit $\left[.,.\right]\circ(L\times L)=L\circ\left[.,.\right]$, wobei links der Kommutator und rechts die Lie-Klammer stehen).
+		\end{bem}
 		\begin{bsp}\hfill
 			Die Lie-Algebra der $\GL(V)$ ist der Vektorraum der Endomorphismen $\End(V)$. Dies ist klar, wenn man $\GL(V)$ als (offene) Teilmenge von $\End(V)$ betrachtet: Der Tangentialraum ist dann kanonisch $\End(V)$.
 		\end{bsp}
