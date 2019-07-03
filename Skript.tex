@@ -252,7 +252,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 		\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
 		\partial_1 F^n & \dots & \partial_n F^n & \partial_{n+1} F^n & \dots & \partial_m F^n
 	\end{pmatrix} (p).\]
-	Ist die linke $n\times n$-Teilmatrix invertierbar, dann lässt sich die Gleichung $F(a,b) = 0$ für $a \in \R^n, b \in \R^{m-n}$ in einer Umgebung von $p$ nach $b$ auflösen. D.\,h. es gibt offene Mengen $A \subset \R^n, B \subset \R^{m-n}$ mit $p \in A\times B \subset U$ und eine glatte Abbildung $G\colon A\to B$, sodass $F(a,b) = 0 \iff b = G(a)$ gilt.
+	Ist die linke $n\times n$-Teilmatrix invertierbar, dann lässt sich die Gleichung $F(a,b) = 0$ für $a \in \R^n, b \in \R^{m-n}$ in einer Umgebung von $p$ nach $a$ auflösen. D.\,h. es gibt offene Mengen $A \subset \R^n, B \subset \R^{m-n}$ mit $p \in A\times B \subset U$ und eine glatte Abbildung $G\colon B\to A$, sodass $F(a,b) = 0 \iff a = G(b)$ gilt.
 \end{satz}
 
 
@@ -264,7 +264,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 		\begin{defn}[Topologischer Raum]
 			Ein \emph{topologischer Raum} ist ein Tupel $(X,\mathcal{T})$ bestehend aus einer Menge $X$ und einer Familie von Teilmengen $\mathcal{T}$, die folgende Eigenschaften erfüllen:
 			\begin{enumerate}[label=(\roman*)]
-				\item $\emptyset, x\in \mathcal{T}$
+				\item $\emptyset, X\in \mathcal{T}$
 				\item $\forall U_1, U_2\in \mathcal{T} \text{ gilt }U_1\cap U_2\in\mathcal{T}$
 				\item Für jede Familie $\lbrace U_i\rbrace_{i\in I}\subset \mathcal{T}$ gilt $\bigcup_{i\in I}U_i\in\mathcal{T}$
 			\end{enumerate}
@@ -359,9 +359,9 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 		Um eine differenzierbare Struktur anzugeben, reicht es also auch aus, einen nicht-maximalen Atlas anzugeben.
 		\begin{bsp}\hfill 
 			\begin{enumerate}[label=(\alph*)]
-				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden!
+				\item Der euklidische Raum $\R^n$ (und seine offenen Teilmengen) sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, der oben genannte Atlas muss dazu aber erweitert werden! Im Folgenden verwenden wir die so definierte differenzierbare Struktur auf $\R^n$.
 				\item Reelle, endlich-dimensionale Vektorräume sind differenzierbare Mannigfaltigkeiten.
-				\item Die obigen Beispiele topologischer Mannigfaltigkeiten gelten auch für differenzierbare Mannigfalltigkeiten, allerdings müssen auch hier Atlanten vervollständigt werden.
+				\item Die obigen Beispiele topologischer Mannigfaltigkeiten gelten auch für differenzierbare Mannigfaltigkeiten, allerdings müssen auch hier Atlanten vervollständigt werden.
 				\item Die Sphären ${S^n:=\lbrace x\in\R^{n+1}\mid \|x\|=1\rbrace}$ sind $n$-dimensionale differenzierbare Mannigfaltigkeiten, die sich nicht mit einer einzelnen Karte überdecken lassen.
 			\end{enumerate}
 		\end{bsp}
@@ -388,7 +388,7 @@ Iterativ folgt, dass bei Anwendung auf glatte Funktionen beliebig viele partiell
 			Die Menge der Diffeomorphismen $\Diff(M)\subset\sC(M,M)$ bildet eine Gruppe.
 		\end{defn}
 		\begin{lemma} \label{lemma:karte_diffeo}
-			Sei $M$ eine differenzierbare Mannigfaltigkeit und $(\varphi,U)$ eine Karte von $M$. Dann ist $\varphi\colon U \to \varphi(U) \subset \R^n$ ein Diffeomorphismus.
+			Sei $M$ eine differenzierbare Mannigfaltigkeit und $U\subset M$ eine offene Teilmenge. Eine Abbildung $\varphi\colon U \to \varphi(U) \subset \R^n$ ist genau dann ein Diffeomorphismus, wenn $(\varphi,U)$ eine Karte von $M$ ist.
 			\bewUeb
 		\end{lemma}
 
@@ -479,7 +479,9 @@ Wir müssen \emph{intrinsisch} über Richtungen in $M$ reden können. Dabei hilf
 	\[f \sim g \diff \exists \text{ offene Umgebung } V \text{ von } p \text{ mit } f = g \text{ auf } V.\]
 	Die Äquivalenzklassen bzgl. dieser Relation heißen glatte \emph{Funktionskeime} an $M$ im Punkt $p$. Zwei um $p$ definierte Funktionen definieren also genau dann denselben Keim, wenn sie in einer Umgebung von $p$ übereinstimmen.
 
-	Den Raum der Funktionskeime an $M$ in $p$ schreiben wir als $\sC_p(M)$. Den Keim zu einer Funktion $f$ schreiben wir als $[f]$. Wenn keine Missverständnisse entstehen können, schreiben wir stattdessen manchmal auch $f$, um uns Notationsaufwand zu ersparen.
+	Den Raum der Funktionskeime an $M$ in $p$ ist also
+	 \[\sC_p(M):= \raise0.2ex\hbox{$X$} \Big/ \lower0.2ex\hbox{$\sim$}.\]
+	Den Keim zu einer Funktion $f$ schreiben wir als $[f]$. Wenn keine Missverständnisse entstehen können, schreiben wir stattdessen manchmal auch $f$, um uns Notationsaufwand zu ersparen.
 \end{defn}
 
 Zu einem Funktionskeim $[f] \in \sC_p(M)$ ist der Funktionswert $[f](p) := f(p)$ wohldefiniert (warum?).
@@ -679,11 +681,11 @@ Bzgl. dieser Identifikation ist der in Beispiel \ref{bsp:kurve_geschw} definiert
 \end{kor}
 
 \begin{bsp}
-	Ist $U\subset\mathbb R^n$ offen und $p\in U$, so bilden die partiellen Ableitungsableitungen $\left.\partial_1\right|_p, \dots, \left.\partial_n\right|_p$ eine Basis von $T_pU$ (denn es ist ja $T_pU = T_p\mathbb R^n$).
+	Ist $U\subset\mathbb R^n$ offen und $p\in U$, so bilden die partiellen Ableitungsoperatoren $\left.\partial_1\right|_p, \dots, \left.\partial_n\right|_p$ eine Basis von $T_pU$ (denn es ist ja $T_pU = T_p\mathbb R^n$).
 \end{bsp}
 
 \begin{satz}[Differential von linearen Abbildungen]
-	Sei $L\colon V \to W$ eine lineare Abbildung. Bzgl. der Identifikationen $T_pV \equiv V, T_{L(p)}W \equiv W$ ist $\left.\DD L\right|_p = L$.
+	Sei $L\colon V \to W$ eine lineare Abbildung. Bzgl. der Identifikationen $T_pV \equiv V, T_{L(p)}W \equiv W$ ist $\left.\DD L\right|_p = L$. Das heißt, dass das folgende Diagramm kommutiert:
 
 	\begin{center}
 		\begin{tikzpicture}
@@ -697,7 +699,7 @@ Bzgl. dieser Identifikation ist der in Beispiel \ref{bsp:kurve_geschw} definiert
 		;
 		\end{tikzpicture}
 	\end{center}
-
+		Äquivalent zur obigen Aussage ist also (jetzt ohne Identifizierung) $\left.\DD L\right|_p\partial_v=\left.\partial_{L(v)}\right|_{L(p)}$.
 	\begin{proof}
 		Für $v\in V$ ist
 		\begin{align*}
@@ -796,7 +798,7 @@ Für die Kovektoren $\left.\D x^i\right|_p \in T_p^*M$ gilt also $\left.\D x^i\r
 
 \begin{lemma}[Differential in Kartendarstellung] \label{lemma:differential_koord}
 	Sei $f\colon M \to N$ eine glatte Abbildung zwischen differenzierbaren Mannigfaltigkeiten. Sei $p\in M$, $x$ eine Karte von $M$ um $p$ und $y$ eine Karte von $N$ um $f(p)$. Dann ist die Darstellungsmatrix des Differentials $\left.\DD f\right|_p$ bzgl. der Koordinatenbasen $\left.\frac{\partial}{\partial x^i}\right|_p$ von $T_pM$ und $\left.\frac{\partial}{\partial y^i}\right|_{f(p)}$ von $T_{f(p)}N$ die Jacobi-Matrix der Kartendarstellung $y \circ f \circ x^{-1}$ von $f$ an der Stelle $x(p)$, also die Matrix
-	\[\left.\mathrm{J}(y\circ f\circ x^{-1})\right|_{x(p)} = \left[\left(\partial_j(y\circ f\circ x^{-1})^i\right) (x(p)) \right]_{ij}.\]
+	\[\left(\left.\DD f\right\vert_p\right)^i_j=\left(\left.\mathrm{J}(y\circ f\circ x^{-1})\right|_{x(p)}\right)^i_j = \left(\partial_j(y\circ f\circ x^{-1})^i\right) (x(p)).\]
 	\bewUeb
 \end{lemma}
 
@@ -908,7 +910,7 @@ Unter einer Immersion werden also unabhängige Richtungen auf unabhängige Richt
 
 Eine der wichtigsten Methoden, neue Mannigfaltigkeiten zu erhalten, ist der sogenannte \emph{Satz vom regulären Wert}. Dieser gibt ein vergleichsweise einfaches Kriterium dafür an, dass eine Teilmenge einer gegebenen Mannigfaltigkeit eine Untermannigfaltigkeit ist.
 \begin{defn}
-	Seien $M,N$ differenzierbare Mannigfaltigkeiten, $\dim M \ge \dim N$, und sei $f \in \sC(M)$.
+	Seien $M,N$ differenzierbare Mannigfaltigkeiten, $\dim M \ge \dim N$, und sei $f \in \sC(M,N)$.
 	\begin{enumerate}[label=(\alph*)]
 		\item Ein \emph{kritischer Punkt} von $f$ ist ein Punkt $p \in M$ mit $\rk_p f < \dim N$.
 		\item Ein \emph{regulärer Punkt} von $f$ ist ein Punkt $p \in M$ mit $\rk_p f = \dim N$ (es liegt also maximaler Rang in $p$ vor, $\left.\DD f\right|_p$ ist surjektiv).
@@ -917,7 +919,7 @@ Eine der wichtigsten Methoden, neue Mannigfaltigkeiten zu erhalten, ist der soge
 \end{defn}
 
 \begin{satz}[Satz vom regulären Wert]
-	Seien $M,N$ differenzierbare Mannigfaltigkeiten, $\dim M \ge \dim N$, und sei $q\in N$ ein regulärer Wert von $f \in \sC(M)$. Dann ist das Urbild $S := f^{-1}({q}) \subset M$ eine eingebettete Untermannigfaltigkeit von $M$ mit Dimension $\dim S = \dim M - \dim N$. Für die Tangentialräume gilt dabei
+	Seien $M,N$ differenzierbare Mannigfaltigkeiten, $\dim M \ge \dim N$, und sei $q\in N$ ein regulärer Wert von $f \in \sC(M,N)$. Dann ist das Urbild $S := f^{-1}(\{q\}) \subset M$ eine eingebettete Untermannigfaltigkeit von $M$ mit Dimension $\dim S = \dim M - \dim N$. Für die Tangentialräume gilt dabei
 	\[T_pS = \ker \left( \left.\DD f\right|_p \right) \subset T_pM\]
 	für alle $p \in S$.
 
@@ -932,7 +934,7 @@ Eine der wichtigsten Methoden, neue Mannigfaltigkeiten zu erhalten, ist der soge
 			\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
 			\partial_1 F^n & \dots & \partial_n F^n & \partial_{n+1} F^n & \dots & \partial_m F^n
 		\end{pmatrix}(x(p))\]
-		hat Rang $n$. oBdA können wir annehmen, dass die ersten $n$ Spalten dieser Matrix linear unabhängig sind (durch Vertauschen von Spalten, d.\,h. Vertauschen von Komponenten von $x$). Das bedeutet aber, dass die linke $n\times n$-Teilmatrix invertierbar ist. Nach dem Satz von der impliziten Funktion (Satz \ref{satz:impl_fkt}) lässt sich also die Gleichung $F(a,b) = 0$ für $a\in \R^n, b \in \R^{m-n}$ in einer Umgebung von $x(p)$ nach $b$ auflösen, d.\,h. es gibt eine lokal definierte glatte Abbildung $G\colon \R^n \to \R^{m-n}$ mit $F(a,b) = 0 \iff b = G(a)$. Wir haben $S$ also lokal um $p$ als Graph der glatten Abbildung $G$ dargestellt; nach Lemma \ref{lemma:umf_lokal_graph} ist $S$ also eine eingebettete Untermannigfaltigkeit der Dimension $m-n$.
+		hat Rang $n$. oBdA können wir annehmen, dass die ersten $n$ Spalten dieser Matrix linear unabhängig sind (durch Vertauschen von Spalten, d.\,h. Vertauschen von Komponenten von $x$). Das bedeutet aber, dass die linke $n\times n$-Teilmatrix invertierbar ist. Nach dem Satz von der impliziten Funktion (Satz \ref{satz:impl_fkt}) lässt sich also die Gleichung $F(a,b) = 0$ für $a\in \R^n, b \in \R^{m-n}$ in einer Umgebung von $x(p)$ nach $a$ auflösen, d.\,h. es gibt eine lokal definierte glatte Abbildung $G\colon \R^{m-n} \to \R^n$ mit $F(a,b) = 0 \iff a = G(b)$. Wir haben $S$ also lokal um $p$ als Graph der glatten Abbildung $G$ dargestellt; nach Lemma \ref{lemma:umf_lokal_graph} ist $S$ also eine eingebettete Untermannigfaltigkeit der Dimension $m-n$.
 
 		Nun wollen wir noch die Tangentialräume an $S$ charakterisieren. Sei also $p \in S$ und $v \in T_pS \subset T_pM$ (wobei wir $v \equiv \left.\DD i\right|_p(v) \in T_pM$ identifiziert haben). Da sich $v$ als Ableitung einer Kurve $\gamma\colon I \to S$ schreiben lässt, $v = \dot\gamma(0)$, erhalten wir nach Kettenregel $\left.\DD f\right|_p(v) = \left.\DD f\right|_p \left( \left.\frac{\D}{\D t}\gamma(t)\right|_{t=0} \right) = \left.\frac{\D}{\D t} f( \gamma(t)) \right|_{t=0} = \left.\frac{\D}{\D t} q \right|_{t=0} = 0$. Das zeigt $T_pS \subset \ker \left( \left.\DD f\right|_p \right)$. Aus Dimensionsgründen folgt die Gleichheit.
 	\end{proof}
@@ -1320,7 +1322,7 @@ Mit Hutfunktionen können wir lokal definierte Funktionen zu globalen Funktionen
 
 Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktionskeimen $\sC_p(M)$, so lässt sich dieser natürlich insbesondere auf globale Funktionen $f \in \sC(M)$ anwenden. Als Anwendung von Hutfunktionen wollen wir zeigen, dass sich auch umgekehrt \glqq punktweise Derivationen\grqq\ von $\sC(M)$ zu Derivationen von Funktionskeimen \glqq lokalisieren\grqq\ lassen:
 \begin{lemma}[Tangentialvektoren als punktweise Derivationen] \label{lemma:tangtvek_punktw_deriv}
-	Sei $M$ eine differenzierbare Mannigfaltigkeit und $p\in M$. Sei $v$ eine Derivation von $\sC(M)$ bzgl. $p$, d.\,h. eine lineare Abbildung $v\colon M \to \R$ mit der Eigenschaft \[v(gh) = v(g) h(p) + g(p) v(h)\] für alle $g,h \in \sC(M)$. Dann gibt es einen eindeutigen Tangentialvektor $w \in T_pM$ mit $w([g]) = v(g)$ für alle globalen Funktionen $g \in \sC(M)$.
+	Sei $M$ eine differenzierbare Mannigfaltigkeit und $p\in M$. Sei $v$ eine Derivation von $\sC(M)$ bzgl. $p$, d.\,h. eine lineare Abbildung $v\colon\sC(M) \to \R$ mit der Eigenschaft \[v(gh) = v(g) h(p) + g(p) v(h)\] für alle $g,h \in \sC(M)$. Dann gibt es einen eindeutigen Tangentialvektor $w \in T_pM$ mit $w([g]) = v(g)$ für alle globalen Funktionen $g \in \sC(M)$.
 
 	\begin{proof}
 		Wir zeigen zunächst die Existenz von $w$. Sei $[f] \in \sC_p(M)$ ein Funktionskeim, repräsentiert durch $f\in \sC(U)$. Wir definieren $w([f])$ wie folgt: Wir wählen eine beliebige globale Funktion $\tilde f \in \sC(M)$, die in einer offenen Umgebung $V \subset U$ mit $f$ übereinstimmt, und setzen $w([f]) := v(\tilde f)$. (Für den Fall, dass schon $U=M$ gilt, können wir einfach $\tilde f = f$ wählen und haben damit direkt die geforderte Gleichung $w([f]) = v(f)$ für globale Funktionen $f \in \sC(M)$.)
@@ -1342,7 +1344,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 \epigraph{A single twig breaks, but the bundle of twigs is strong.}{\textsc{Tecumseh}}
 	\section{Faserbündel}
 		\begin{defn}[Faserbündel]
-			Ein \emph{Faserbündel} $(P,M,\pi ,F)$ ist ein Tupel aus drei Mannigfaltigkeiten (dem \emph{Totalraum} $P$, der \emph{Basis} $M$ und der \emph{typischen Faser} $F$) zusammen mit einer surjektiven \emph{Projektion} $\pi\colon P\rightarrow M$, die die folgenden Eigenschaften erfüllt:
+			Ein \emph{Faserbündel} $(P,M,\pi ,F)$ ist ein Tupel aus drei Mannigfaltigkeiten (dem \emph{Totalraum} $P$, der \emph{Basis} $M$ und der \emph{typischen Faser} $F$) zusammen mit einer \emph{Projektion} $\pi\colon P\rightarrow M$, die die folgenden Eigenschaften erfüllt:
 
 				Für alle Punkte $x\in M$ existieren eine offene Umgebung $x\in U\subset M$ und ein Diffeomorphismus $\phi\colon \pi^{-1}(U)\rightarrow U\times F$, sodass das folgende Diagramm kommutiert, also $\pi\vert_{\pi^{-1}(U)}=\pr_1\circ\phi$ (wobei $\pr_1$ die Projektion auf den ersten Faktor bezeichnet):
 			\begin{center}
@@ -1359,10 +1361,18 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 			Eine solche Abbildung $\phi$ heißt \emph{lokale Trivialisierung}. Aufgrund der Existenz lokaler Trivialisierungen ist das Urbild jedes Punktes $x\in M$ unter der Projektion (\emph{Faser} von $x$ genannt) $P_x:=\pi^{-1}(\lbrace x\rbrace )$ diffeomorph zur typischen Faser: $P_x\cong F \; \forall x\in M$.
 
 			Eine Familie lokaler Trivialisierungen, die $P$ überdecken, heißt \emph{Bündelatlas}.
+			
+			Beachte, dass aus dem obigen Diagramm bereits folgt, dass $\pi$ eine surjektive Submersion ist (da $\phi$ ein Diffeomorphismus und $\mathrm{pr}_1$ eine Submersion ist).
 		\end{defn}
 		\begin{nota}
-			Man sagt auch \glqq Faserbündel über $M$\grqq und schreibt dafür einfach $(P,\pi)$.
+			Man sagt auch \glqq Faserbündel $(P,\pi)$ über $M$\grqq\ .
 		\end{nota}
+		\begin{lemma}\label{lemma:Karten_aus_Trivialisierungen}
+			Sei eine bijektive Abbildung $\phi\colon \pi^{-1}(U)\rightarrow U\times F$ auf einem Faserbündel $(P,\pi,M,F)$ mit den obigen Eigenschaften gegeben. Da Verkettungen von Diffeomorphismen wieder Diffeomorphismen sind, ist $\phi$ genau dann ein Diffeomorphismus (und damit eine lokale Trivialisierung), wenn für alle Karten $\varphi\colon V_y\rightarrow \varphi(V_y)\subset\R^{\dim M}$ um $y\in U\subset M$ und $\psi\colon W_v\rightarrow\psi(W_v)\subset\R^{\dim F}$ um $v\in F$ die folgende Verkettung ein Diffeomorphismus (und damit nach Lemma \ref{lemma:karte_diffeo} eine Karte von $P$) ist :
+			\begin{align*}
+				\left.(\varphi\times\psi)\circ\phi\right\vert_{\phi^{-1}(V_y\times W_v)}\colon\underbrace{\phi^{-1}(V_y\times W_v)}_{\subset P}\rightarrow \varphi(V_y)\times\psi(W_v)\subset\R^{\dim M +\dim F}
+			\end{align*}
+		\end{lemma}
 		Sei von nun an $(P,M,\pi ,F)$ ein Faserbündel.
 		\begin{bsp}\hfill
 			\begin{enumerate}[label=(\alph*)]
@@ -1382,10 +1392,12 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 					E_x\rightarrow \R^n,\; p\mapsto \pr_2(\phi(p))
 				\end{equation*}
 			Daraus folgt, dass die Abbildung ${\R^n\rightarrow E_x,\; v\mapsto \phi^{-1}(x,v)}$ ebenfalls ein Vektorraumisomorphismus ist.
+			
+			Im Kontext von Vektorbündeln \glqq gelten\grqq\ nur noch solche Trivialisierungen, die punktweise Isomorphismen sind.
 		\end{defn}
 		Analog zu Kartenwechseln lassen sich auch \emph{Trivialisierungswechsel} definieren:
 		\begin{defn}
-			Sei $(E,M,\pi,\R^n)$ ein Vektorbündel, $U,V\subset M$ mit $U\cap V\neq\emptyset$ und Trivialisierungen ${\phi_U\colon \pi^{-1}(U)\rightarrow U\times \R^n}, {\phi_V\colon \pi^{-1}(U)\rightarrow U\times \R^n}$.
+			Sei $(E,M,\pi,\R^n)$ ein Vektorbündel, $U,V\subset M$ mit $U\cap V\neq\emptyset$ und Trivialisierungen ${\phi_U\colon \pi^{-1}(U)\rightarrow U\times \R^n}, {\phi_V\colon \pi^{-1}(V)\rightarrow V\times \R^n}$.
 
 			Die folgende Abbildung heißt \emph{Trivialisierungswechsel}:
 			\begin{equation*}
@@ -1396,7 +1408,7 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{bsp}\hfill
 			\begin{enumerate}[label=(\alph*)]
 				\item Das triviale Bündel $M\times \R^n$ ist ein Vektorbündel vom Rang $n$.
-				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$: mithilfe von Karten von $M$ kann man auf kanonische Weise einen Bündelatlas konstruieren (Übung).
+				\item Das Tangentialbündel $TM:=\bigcup_{x\in M}T_xM$ ist ein Vektorbündel vom Rang $n:=\dim M$: mithilfe von Karten von $M$ kann man auf kanonische Weise einen Bündelatlas und Karten von $TM$ konstruieren (Übung).
 				
 				Beachte jedoch, dass im Allgemeinen $TM\ncong M\times \R^n$ (es existiert also nicht unbedingt ein Vektorbündelisomorphismus zwischen dem Tangential- und dem trivialen Bündel). Im Fall $TM\cong M\times \R^n$ heißt die Mannigfaltigkeit parallelisierbar.
 				\item Wir definieren auf der reellen Ebene $\R^2$ die Äquivalenzrelation
@@ -1407,6 +1419,8 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\begin{align*}
 					\mathrm{Mb}=\raise0.5ex\hbox{$\R^2$} \Big/ \lower0.5ex\hbox{$\sim$}.
 				\end{align*}
+				Man beachte, dass für jeden Punkt in $\R^2$ eine offene Umgebung existiert, sodass die Projektion auf das Möbiusbündel eine injektive, stetige Abbildung ist. Durch Einschränkung auf das Bild und Inversion erhält man Karten (und einen Atlas).
+				
 				Das Möbiusbündel ist ein Vektorbündel vom Rang $1$ über dem Kreis $S^1=\R/\mathbb{Z}$. Die Projektion ist dabei gegeben durch $\pi([x,y]):=[x]$ mit den Fasern \[\pi^{-1}(\{[a]\})=\lbrace [x,y]\mid (x,y)\in \{a\}\times\R\rbrace\cong\{a\}\times\R.\]
 				
 				Trivialisierungen dieses Vektorbündels kann man wie folgt konstruieren: Betrachte ein Intervall $I:=(a,b)\subset\R$ mit $0< b-a< 1$ und bezeichne $[I]$ das Intervall als Teilmenge von $S^1$. Dann ist $\Phi\colon\pi^{-1}([I])\rightarrow [I]\times \R$ mit $\Phi^{-1}([x],y)=[\tilde{x},y]$ eine lokale Trivialisierung, wobei $\tilde{x}$ den Repräsentanten von $[x]\in [I]$ bezeichnet, der in $I$ liegt.
@@ -1415,7 +1429,9 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{defn}[Vektorbündelhomomorphismen]\hfill\\
 			Seien $(E_a,M_a,\pi_a,\R^{n_a}),(E_b,M_b,\pi_b,\R^{n_b})$ Vektorbündel.
 			
-			Ein Tupel $(F,f)$ mit $F\colon E_a\rightarrow E_b$ und $f\colon M_a\rightarrow M_b$ heißt \emph{Vektorbündelhomomorphismus}, wenn das folgende Diagramm kommutiert:
+			Ein Tupel $(F,f)$ mit $F\colon E_a\rightarrow E_b$ und $f\colon M_a\rightarrow M_b$ heißt \emph{Vektorbündelhomomorphismus}, wenn $\pi_b\circ F=f\circ\pi_a$ gilt und $F\vert_{(E_a)_x}\colon (E_a)_x\rightarrow (E_b)_{f(x)}$ eine lineare Abbildung ist. 
+			
+			Es kommutiert also insbesondere das folgende Diagramm:
 			\begin{center}
 				\begin{tikzpicture}
 					\matrix(m)[matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{E_a & E_b \\
@@ -1428,7 +1444,6 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
   					;
 				\end{tikzpicture}
 			\end{center}
-			also $\pi_b\circ F=f\circ\pi_a$.
 		\end{defn}
 		
 		\begin{bsp}
@@ -1441,11 +1456,11 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		
 		Kommen wir nun zu Schnitten von Vektorbündeln. Diese haben durch die zusätzliche Struktur der Fasern auch einige neue Eigenschaften.		
 		\begin{bem}
-			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)_x := f(x) \sigma_x$. Mit dieser Operation wird $\Gamma(E)$ offensichtlich zu einem $\sC(M)$-Modul.
+			Man kann Schnitte von Vektorbündeln in offensichtlicher Weise mit Funktionen multiplizieren: Für $f \in \sC(M), \sigma \in \Gamma(E)$ definiert man $f\sigma \in \Gamma(E)$ durch $(f\sigma)(x) := f(x) \sigma(x)$. Mit dieser Operation wird $\Gamma(E)$ zu einem $\sC(M)$-Modul.
 		\end{bem}
 
 		\begin{defn}[Rahmen]
-			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_n)\in\Gamma(P\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet.
+			Ein \emph{lokaler Rahmen} über $U$ ist ein Tupel lokaler Schnitte $(\sigma_1,\ldots,\sigma_n)\in\Gamma(E\vert_U)$, das für alle Punkte $x\in U$ eine Basis von $E_x$ bildet.
 			
 			Natürlicherweise ist ein \emph{globaler Rahmen} ein lokaler Rahmen über $M$.
 			
@@ -1493,12 +1508,13 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				\phi^{\prime}\colon(\pi^{\prime})^{-1}(U)&\rightarrow U\times (\R^n)^*\\
 				\lambda&\mapsto\left(x,\lambda\circ({\pr_2}\circ\phi\vert_{\pi^{-1}(\lbrace x\rbrace)})^{-1}\right),
 			\end{align*}
-			wobei $\lambda\in E_x^*$. Trivialisierungswechsel sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
+			wobei $\lambda\in E_x^*$. Übergangsfunktionen sind (unter Identifikation von $\R^n$ mit Spalten- und $(\R^n)^*$ mit Zeilenvektoren) durch $\tau^{\prime}=\tau^{-1}$ gegeben, sodass $(x,\lambda)\mapsto(x,\lambda\tau^{\prime}(x))$.
 		\end{defn}
+		Bei dieser und den Folgenden Konstruktionen erhält man einen Atlas des Vektorbündels durch solche Karten, wie sie nach Lemma \ref{lemma:Karten_aus_Trivialisierungen} durch die Trivialisierungen mittels Verkettung mit Karten des Basisraumes gegeben sind. Man konstruiert die differenzierbare Struktur des Vektorbündels (die Vervollständigung des obigen Atlanten) also gerade so, dass die angegebenen lokalen Trivialisierungen Diffeomorphismen sind.
 	
 		\begin{lemma} \label{lemma:rahmen_dual}
 			Sei $(\sigma_1,\dots,\sigma_n)$ ein lokaler Rahmen von $E$. Definieren wir lokale Schnitte $\theta^1, \dots, \theta^n$ von $E^*$ dadurch, dass punktweise $\{\theta^i(x)\}$ die duale Basis von $(E_x)^*$ zur Basis $\{\sigma_i(x)\}$ von $E_x$ ist, dann sind die $\theta^i$ glatt, und somit ist $(\theta^1,\dots,\theta^n)$ ein lokaler Rahmen von $E^*$.
-			\bewUeb
+			\bewUeb %5.2.10 mit 5.2.8
 		\end{lemma}
 	
 		\begin{satz}[Dualität von Schnitten]\label{satz:Dualität}
@@ -1519,9 +1535,9 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 				
 				Haben wir eine $\sC(M)$-lineare Abbildung $F\colon \Gamma(E)\to\sC(M)$ gegeben, so wollen wir daraus einen Schnitt $\rho$ von $E^*$ konstruieren mit $F(\sigma) = \rho(\sigma)$ für alle $\sigma \in \Gamma(E)$, und wir wollen sehen, dass dieser Schnitt eindeutig ist.
 				
-				Punktweise definiert man also $\rho:M\rightarrow E^*$ implizit durch $\rho_x(\sigma_x) = (F(\sigma))(x)$. Damit dies $\rho_x$ eindeutig definiert, zeigen wir, dass wir aus der Abbildung $F$ auch alle Werte $\rho_x(s)\quad \forall s\in E_x$ bestimmen können.
+				Punktweise definiert man also $\rho:M\rightarrow E^*$ implizit durch $(\rho(x))(\sigma(x)) = (F(\sigma))(x)$. Damit dies $\rho(x)$ eindeutig definiert, zeigen wir, dass wir aus der Abbildung $F$ auch alle Werte $(\rho(x))(s)\quad \forall s\in E_x$ bestimmen können.
 				
-				Wir müssen also zeigen, dass sich einerseits jedes $s \in E_x$ zu einem Schnitt $\sigma \in \Gamma(E)$ fortsetzen lässt mit $\sigma_x = s$ und dass dann andererseits $\rho_x(\sigma_x)$ von der Wahl dieser Fortsetzung unabhängig ist. Beides geht mit Hutfunktionen, ähnlich zum Beweis von Lemma \ref{lemma:tangtvek_punktw_deriv} (Übung).
+				Wir müssen also zeigen, dass sich einerseits jedes $s \in E_x$ zu einem Schnitt $\sigma \in \Gamma(E)$ fortsetzen lässt mit $\sigma(x) = s$ und dass dann andererseits $(\rho(x))(\sigma(x))$ von der Wahl dieser Fortsetzung unabhängig ist. Beides geht mit Hutfunktionen, ähnlich zum Beweis von Lemma \ref{lemma:tangtvek_punktw_deriv} (Übung).
 				
 				Die Glattheit von $\rho$ folgt dann durch Anwendung auf einen lokalen Rahmen mit Lemma \ref{lemma:schnitt_glatt_koeff_glatt}.
 			\end{proof}
@@ -1568,9 +1584,9 @@ Haben wir einen Tangentialvektor $v \in T_pM$, also eine Derivation von Funktion
 		\begin{lemma}[Schnitte von Tensorprodukt und Whitney-Summe]
 			Für Schnitte $\sigma_a\in\Gamma(E_a)$, $\sigma_b\in\Gamma(E_b)$ erhält man Schnitte der Whitney-Summe und des Tensorproduktes durch \glqq faserweise\grqq\ Verknüpfung:
 			\begin{align*}
-				\Gamma(E_a)\oplus\Gamma(E_b)&\rightarrow\Gamma(E_a\oplus E_b),\\
+				\Gamma(E_a)\times\Gamma(E_b)&\rightarrow\Gamma(E_a\oplus E_b),\\
 				(\sigma_a,\sigma_b)&\mapsto \sigma_a\oplus\sigma_b,\quad (\sigma_a\oplus\sigma_b)(p):=\sigma_a(p)\oplus\sigma_b(p)\\
-				\Gamma(E_a)\otimes\Gamma(E_b)&\rightarrow\Gamma(E_a\otimes E_b),\\
+				\Gamma(E_a)\times\Gamma(E_b)&\rightarrow\Gamma(E_a\otimes E_b),\\
 				(\sigma_a,\sigma_b)&\mapsto \sigma_a\otimes\sigma_b,\quad (\sigma_a\otimes\sigma_b)(p):=\sigma_a(p)\otimes\sigma_b(p)
 			\end{align*}
 		\end{lemma}
@@ -1655,7 +1671,7 @@ Umgekehrt lassen sich Vektorfelder (auf glatten Mannigfaltigkeiten) auch äquiva
 	\begin{proof}
 		Für jeden Punkt $p \in M$ soll $(F(fg))(p) = (F(f)(p)) g(p) + f(p) (F(g))(p)$ gelten. Da die Abbildung $\sC(M) \ni f \mapsto (F(f))(p) \in \mathbb R$ außerdem $\R$-linear ist, gibt es nach Lemma \ref{lemma:tangtvek_punktw_deriv} also einen eindeutigen Tangentialvektor $X_p \in T_pM$ mit $(F(f))(p) = X_p(f)$.
 
-		Wir müssen nur noch zeigen, dass das so definierte Vektorfeld $X\colon M \to TM$ glatt ist. Schreiben wir dazu bzgl. einer Karte $(x,U)$ das Vektorfeld lokal als $X|_U = X^i \frac{\partial}{\partial x^i}$, so müssen wir zeigen, dass die Funktionen $X^i \colon U \to \mathbb R$ glatt sind. Sei dafür $p \in U$. Wir wählen Funktionen $\tilde x^i \in \sC(M)$, die in einer offenen Umgebung $V$ von $p$ mit den $x^i$ übereinstimmen. Für $q \in V$ ist dann $X^i(q) = X^j(q) \delta^i_j = X^j(q) \frac{\partial x^i}{\partial x^j}(q) = X^j(q) \frac{\partial \tilde x^i}{\partial x^j}(q) = X_q (\tilde x^i)$, d.\,h. auf $V$ stimmt $X^i$ mit $X(\tilde x^i) = F(\tilde x^i)$ überein. Letzteres ist aber eine glatte Funktion auf ganz $M$, also ist $X^i$ glatt auf $V$. Da $p$ beliebig war, ist damit $X^i$ glatt auf $U$.
+		Wir müssen nur noch zeigen, dass das so definierte Vektorfeld $X\colon M \to TM$ glatt ist. Schreiben wir dazu bzgl. einer Karte $(x,U)$ das Vektorfeld lokal als $X|_U = X^i \frac{\partial}{\partial x^i}$, so müssen wir zeigen, dass die Funktionen $X^i \colon U \to \mathbb R$ glatt sind. Sei dafür $p \in U$. Wir wählen Funktionen $\tilde x^i \in \sC(M)$, die in einer offenen Umgebung $V$ von $p$ mit den Komponenten der Karte $x^i$ übereinstimmen. Für $q \in V$ ist dann $X^i(q) = X^j(q) \delta^i_j = X^j(q) \frac{\partial x^i}{\partial x^j}(q) = X^j(q) \frac{\partial \tilde x^i}{\partial x^j}(q) = X_q (\tilde x^i)$, d.\,h. auf $V$ stimmt $X^i$ mit $X(\tilde x^i) = F(\tilde x^i)$ überein. Letzteres ist aber eine glatte Funktion auf ganz $M$, also ist $X^i$ glatt auf $V$. Da $p$ beliebig war, ist damit $X^i$ glatt auf $U$.
 	\end{proof}
 \end{satz}
 Der letzte Teil des vorherigen Beweises zeigt außerdem:
@@ -1691,7 +1707,7 @@ Später werden wir eine geometrische Interpretation des Kommutators kennenlernen
 	\end{enumerate}
 	\bewUeb
 \end{lemma}
-\begin{bem}
+\begin{bem}\label{bem:Lie-Algebra}
 	Die Eigenschaften \ref{lemma:kommut_1}, \ref{lemma:kommut_2} und \ref{lemma:kommut_3} besagen, dass $(\mathfrak X(M), [\cdot,\cdot])$ eine sogenannte \emph{Lie-Algebra} über $\R$ ist.
 \end{bem}
 
@@ -1713,15 +1729,15 @@ Später werden wir eine geometrische Interpretation des Kommutators kennenlernen
 \section{Transport von Vektorfeldern}
 Hat man einen Diffeomorphismus $\phi\colon M\to N$, dann kann man damit Vektorfelder von $M$ nach $N$ \glqq transportieren\grqq:
 \begin{defn}
-	Sei $\phi\colon M \to N$ ein Diffeomorphismus und $X \in \mathfrak X(M)$. Der \emph{Pushforward von $X$ entlang von $\phi$} ist das Vektorfeld $\phi_*X \in \mathfrak X(M)$ definiert durch
+	Sei $\phi\colon M \to N$ ein Diffeomorphismus und $X \in \mathfrak X(M)$. Der \emph{Pushforward von $X$ entlang von $\phi$} ist das Vektorfeld $\phi_*X \in \mathfrak X(N)$ definiert durch
 	\[(\phi_*X)_q := \DD\phi|_{\phi^{-1}(q)}(X_{\phi^{-1}(q)}) \quad \text{für} \; q \in N\]
 	bzw.
 	\[(\phi_*X)_{\phi(p)} = \DD\phi|_{p}(X_p) \quad \text{für} \; p \in M.\]
 \end{defn}
 Man tut also das Einzige, was man sinnvoll tun kann, um aus $X$ ein Vektorfeld auf $N$ zu erhalten: Man bildet die entsprechenden Tangentialvektoren mit dem Differential von $\phi$ von $M$ nach $N$ ab. In die andere Richtung funktioniert das natürlich auch:
 \begin{defn}
-	Der \emph{Pullback von $X \in \mathfrak X(N)$ entlang von $\phi\colon M \to N$} ist $\phi^*X := (\phi^{-1})_*X$, also
-	\[(\phi^*X)_p := \DD(\phi^{-1})|_{\phi(p)}(X_{\phi(p)}) \quad \text{für} \; p \in M.\]
+	Der \emph{Pullback von $Y \in \mathfrak X(N)$ entlang von $\phi\colon M \to N$} ist $\phi^*Y := (\phi^{-1})_*Y$, also
+	\[(\phi^*Y)_p := \DD(\phi^{-1})|_{\phi(p)}(Y_{\phi(p)}) \quad \text{für} \; p \in M.\]
 \end{defn}
 
 \begin{bem}
@@ -1747,7 +1763,7 @@ Man definiert Pushforward und Pullback auch für glatte Funktionen, und zwar nah
 
 \begin{lemma}[Pushforward in Koordinaten]
 	Sind $x$ Koordinaten für $M$ und $y$ Koordinaten für $N$, so berechnet sich der Pushforward von $X = X^i \frac{\partial}{\partial x^i}$ zu $\phi_*X = (\phi_*X)^i \frac{\partial}{\partial y^i}$ mit
-	\[(\phi_*X)^i = \left(X^i \frac{\partial (y^j \circ \phi)}{\partial x^i}\right) \circ \phi^{-1}.\]
+	\[(\phi_*X)^i = \left(X^j \frac{\partial (y^i \circ \phi)}{\partial x^j}\right) \circ \phi^{-1}.\]
 	\bewUeb
 \end{lemma}
 
@@ -1782,7 +1798,7 @@ Integralkurven sind auch global eindeutig:
 	Sind $\gamma\colon I \to M$ und $\tilde\gamma\colon \tilde I \to M$ Integralkurven von $X$ durch $p$, so ist $\gamma = \tilde \gamma$ auf dem gemeinsamen Definitionsbereich $I \cap \tilde I$.
 
 	\begin{proof}
-		Wir setzen $S := \{t \in I \cap \tilde I \mid \gamma(t) = \tilde \gamma(t)\} \subset I \cap \tilde I$. $S$ ist nichtleer, da $0 \in S$. Nach Definition ist $S$ wegen der Stetigkeit von $\gamma$ und $\tilde \gamma$ abgeschlossen\footnote{Genauer: Da $M$ hausdorffsch ist, ist die Diagonale $\{(p,p) \mid p \in M\} \subset M \times M$ abgeschlossen. $S$ ist das Urbild der Diagonalen unter der glatten, insb. stetigen Abbildung $(\gamma,\tilde \gamma) \colon I \cap \tilde I \to M \times M$ und damit auch abgeschlossen.} Wenn wir noch zeigen können, dass $S$ offen ist, dann folgt, da $I \cap \tilde I$ ein Intervall, also zusammenhängend ist, dass $S = I \cap \tilde I$.
+		Wir setzen $S := \{t \in I \cap \tilde I \mid \gamma(t) = \tilde \gamma(t)\} \subset I \cap \tilde I$. $S$ ist nichtleer, da $0 \in S$. Nach Definition ist $S$ wegen der Stetigkeit von $\gamma$ und $\tilde \gamma$ abgeschlossen\footnote{Genauer: Da $M$ hausdorffsch ist, ist die Diagonale $\{(p,p) \mid p \in M\} \subset M \times M$ abgeschlossen. $S$ ist das Urbild der Diagonalen unter der glatten, insb. stetigen Abbildung $(\gamma,\tilde \gamma) \colon I \cap \tilde I \to M \times M$ und damit auch abgeschlossen.}. Wenn wir noch zeigen können, dass $S$ offen ist, dann folgt, da $I \cap \tilde I$ ein Intervall, also zusammenhängend ist, dass $S = I \cap \tilde I$.
 
 		Ist $s \in S$, so sind aber in einer Umgebung von $\gamma(s) =: q$ die Kartendarstellungen von sowohl $\gamma$ als auch $\tilde \gamma$ Lösungen derselben gewöhnlichen Differentialgleichung mit demselben Anfangswert $\gamma(s) = \tilde\gamma(s) = q$; nach der lokalen Eindeutigkeitsaussage im Satz von Picard-Lindelöf gibt es also ein offenes Intervall $J$ um $s$, auf dem sie übereinstimmen. Das heißt aber $J \subset S$; es folgt, dass $S$ offen ist.
 	\end{proof}
@@ -1806,7 +1822,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		\item $U \subset M \times \R$ ist offen und $\Phi$ ist glatt.
 		\item Ist $s \in I_p$, so ist $I_{\Phi(p,s)} = I_p - s = \{t - s \mid t \in I_p\}$.
 		\item $\Phi(p,0) = p$ für alle $p \in M$.
-		\item Ist $t \in I_p$ und $s \in I_{\Phi(p,t)}$, dann ist $t+s \in I_p$ und es gilt $\Phi_s(\Phi_t(p)) = \Phi_{t+s}(p)$.
+		\item Ist $t \in I_p$ und $s \in I_{\Phi(p,t)}$, dann ist $t+s \in I_p$ und es gilt $(\Phi_s\circ\Phi_t)(p) = \Phi_{t+s}(p)$.
 		\item Für alle $t\in\R$ ist $M_t := \{p \in M \mid (t,p) \in U\}$ eine offene Teilmenge von $M$, und $\Phi_t(p) = \Phi(p,t)$ definiert einen Diffeomorphismus $\Phi_t\colon M_t \to M_{-t}$.
 	\end{enumerate}
 
@@ -1823,8 +1839,8 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 	Ein Vektorfeld heißt \emph{vollständig}, wenn sich alle seine Integralkurven auf ganz $\R$ als Definitionsbereich fortsetzen lassen.
 \end{defn}
 \begin{bem}
-	Ist $X\in\mathfrak X(M)$ vollständig, so ist $\Phi^X_t$ für jedes $t\in\R$ ein Diffeomorphismus $\Phi^X_t\colon M\to M$. Wegen $\Phi^X_0 = \id_M$ und $\Phi_s\circ\Phi_t = \Phi_{t+s}$ ist also
-	\[\R \ni t \mapsto \Phi_t \in \Diff(M)\]
+	Ist $X\in\mathfrak X(M)$ vollständig, so ist $\Phi^X_t$ für jedes $t\in\R$ ein Diffeomorphismus $\Phi^X_t\colon M\to M$. Wegen $\Phi^X_0 = \id_M$ und $\Phi^X_s\circ\Phi^X_t = \Phi^X_{t+s}$ ist also
+	\[\R \rightarrow\Diff(M),\quad t \mapsto \Phi^X_t \]
 	ein Gruppenhomomorphismus.
 \end{bem}
 \begin{satz}
@@ -1842,7 +1858,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 \begin{defn}[Lie-Ableitung]
 	Sei $M$ eine differenzierbare Mannigfaltigkeit, $X \in \mathfrak X(M)$ und entweder $T \in \sC(M)$ oder $T \in \mathfrak X(M)$. Die \emph{Lie-Ableitung von $T$ in Richtung von $X$} ist $\mathcal L_X T \in \sC(M)$ (oder $\in \mathfrak X(M)$), definiert durch
 	\[(\mathcal L_X T)(p) := \left.\frac{\D}{\D t}(\Phi_t^* T)(p)\right|_{t=0} = \lim_{t\to 0} \frac{(\Phi_t^* T)(p) - T(p)}{t},\]
-	wobei $\Phi = \Phi^X$ der Fluss von $X$ ist. Dabei ist $t \mapsto (\Phi_t^*T)(p) \in \mathbb R$ (oder $\in T_pM$) einfach eine Abbildung von $\mathbb R$ in einen Vektorraum, von der wir die übliche Ableitung nehmen.
+	wobei $\Phi = \Phi^X$ der Fluss von $X$ ist. Dabei ist $t \mapsto (\Phi_t^*T)(p) \in \mathbb R$ (oder $\in T_pM$ [sic!]) einfach eine Abbildung von $\mathbb R$ in einen Vektorraum, von der wir die übliche Ableitung nehmen.
 
 	Anschaulich gesprochen  berechnet $\mathcal L_X T$ also, wie sehr sich das geometrische Objekt $T$ ändert, wenn wir uns \glqq infinitesimal\grqq\ in Richtung von $X$ fließen lassen.
 	
@@ -1889,7 +1905,7 @@ Oft fasst man die Integralkurven zu einer einzigen Abbildung zusammen:
 		Damit ist $(\mathcal L_X Y)(f) = [X,Y](f)$ für alle $f\in\sC(M)$, also $\mathcal L_X Y = [X,Y]$.
 	\end{proof}
 \end{lemma}
-Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y] = \mathcal L_X Y$ gibt an, wie sehr sich $Y$ ändert, wenn wir uns entlang von $X$ fließen lassen.
+Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y] = \mathcal L_X Y$ gibt an, wie sehr sich $Y$ ändert, wenn wir es entlang von $X$ fließen lassen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1900,9 +1916,9 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			Eine \emph{Lie-Gruppe} ist eine differenzierbare Mannigfaltigkeit $G$ mit einer Gruppenstruktur, sodass die Verknüpfung $\cdot\colon G\times G\rightarrow G, (g,h)\mapsto g\cdot h$ und die Inversion ${i\colon G\rightarrow G}, {g\mapsto g^{-1}}$ glatte Abbildungen sind.
 			
 			Wir definieren die \emph{Linkstranslation} entlang $g$:
-			\begin{equation}
+			\begin{equation*}
 				l_g\colon G\to G, h\mapsto g\cdot h
-			\end{equation}
+			\end{equation*}
 			
 			Es gelten $(l_g)^{-1}=l_{g^{-1}}$ und $l_g\circ l_h=l_{g\cdot h}$, also ist $l\colon G\rightarrow \mathrm{Aut}(G)$ ein Gruppenhomomorphismus.
 			
@@ -1920,7 +1936,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 		\begin{defn}[Linksinvariante Vektorfelder]
 			Ein \emph{linksinvariantes Vektorfeld} ist ein Vektorfeld $X\in\mathfrak{X}(G)$, das \glqq invariant\grqq\ unter dem push-forward von Linkstranslationen ist. Das heißt, dass folgende Gleichung gilt:
 			\begin{equation*}
-				\left((l_g)_*X\right)_h\stackrel{\text{Def.}}{=}\DD l_g\vert_{g^{-1}\cdot h}X_{g^{-1}\cdot h}=X_h
+				\left((l_g)_*X\right)_h\stackrel{\text{Def.}}{=}\DD l_g\vert_{g^{-1}\cdot h}X_{g^{-1}\cdot h}=X_h\quad\quad \forall g,h\in G
 			\end{equation*}
 			Die Menge der linksinvarianten Vektorfelder heißt $\vf^L(G)$.
 		\end{defn}
@@ -1931,20 +1947,21 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			\begin{proof}
 				Zum Beweis konstruieren wir den kanonischen Isomorphismus und zeigen, dass die linksinvarianten Vektorfelder unter Bildung von Kommutatoren abgeschlossen sind:
 				\begin{align}
-					\Psi&\colon\vf^L(G)\to T_eG, X\mapsto X_e\nonumber\\
-					L&\colon T_eG\rightarrow \vf^L(G), v\mapsto (g\mapsto \DD l_g\vert_e v)\label{def:kan_Iso}
+					\Psi\colon\vf^L(G)&\rightarrow T_eG, X\mapsto X_e\nonumber\\
+					L\colon T_eG&\rightarrow \vf^L(G), v\mapsto L(v)\label{def:kan_Iso}\\
+					L(v)\colon G&\rightarrow TG, g\mapsto \DD l_g\vert_e v\nonumber
 				\end{align}
 				$L$ ist wohldefiniert, denn für $v\in T_eG$ und $g,h\in G$ gilt:
 				\begin{align*}
-					\left((l_g)_*L(v)\right)_h&=\DD l_g\vert_{g^{-1}\cdot h}L(v)_{g^{-1}\cdot h}\\
-					&=\DD l_g\vert_{g^{-1}\cdot h}\DD (l_{g^{-1}\cdot h}\vert_e v)\\
-					\text{(Kettenregel)}\quad &=\DD\left(l_g\circ l_{g^{-1}}\right)\big\vert _h\DD l_h\vert_e v\\
-					&=\DD l_h\vert_e v\\
+					\left((l_g)_*L(v)\right)_h&=\left.\DD l_g\right\vert_{g^{-1}\cdot h}L(v)_{g^{-1}\cdot h}\\
+					&=\left.\DD l_g\right\vert_{g^{-1}\cdot h}(\DD l_{g^{-1}\cdot h}\vert_e v)\\
+					\text{(Kettenregel)}\quad &=\left.\DD\left(l_g\circ l_{g^{-1}}\right)\right\vert _h\DD l_h\vert_e v\\
+					&=\left.\DD l_h\right\vert_e v\\
 					&=L(v)_h
 				\end{align*}
 				Außerdem gilt $\Psi\circ L=\id_{T_eG}$:
 				\begin{align*}
-					\Psi(L(v))= (g\mapsto \DD l_g\vert_e v)_e=\DD l_e\vert_e v=v
+					\Psi(L(v))= (L(v))_e=\DD l_e\vert_e v=v
 				\end{align*}
 				und die Umkehrung $L(\Psi(X))=X$ wird punktweise durch Ausnutzen der Linksinvarianz klar:
 				\begin{align*}
@@ -1964,6 +1981,11 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			\end{align*}
 			wobei wir den kanonischen Isomorphismus $L\colon \mathfrak{g}\to \vf^L(G)$ aus Gleichung (\ref{def:kan_Iso}) benutzt haben. Nach Konstruktion ist diese Verkettung bilinear, antisymmetrisch und erfüllt die Jacobi-Identität (siehe Lemma \ref{lemma:kommut}). Sie heißt die \emph{Lie-Klammer} von $\mathfrak{g}$.
 		\end{defn}
+		\begin{bem}
+			Die Eigenschaften des Kommutators (aus Lemma \ref{lemma:kommut}) von Vektorfeldern gelten nun auch für die Lie-Klammer auf der Lie-Algebra $\mathfrak{g}$.
+			
+			Per Konstruktion wird der kanonische Isomorphismus $L$ zu einem Homomorphismus von Lie-Algebren (also einer $\R$-linearen Abbildung mit $\left[.,.\right]\circ(L\times L)=L\circ\left[.,.\right]$, wobei links der Kommutator und rechts die Lie-Klammer stehen).
+		\end{bem}
 		\begin{bsp}\hfill
 			Die Lie-Algebra der $\GL(V)$ ist der Vektorraum der Endomorphismen $\End(V)$. Dies ist klar, wenn man $\GL(V)$ als (offene) Teilmenge von $\End(V)$ betrachtet: Der Tangentialraum ist dann kanonisch $\End(V)$.
 		\end{bsp}
@@ -1987,7 +2009,7 @@ Dies gibt uns eine geometrische Interpretation des Vektorfeld-Kommutators: $[X,Y
 			Dies entspricht gerade der Integralkurve von $L(v)$ in $e$ ausgewertet an der Stelle $1$.
 		\end{defn}
 		\begin{lemma}\label{lemma:Eigenschaften_exp}
-			Die Exponentialabbildung besitzt die folgenden Eigenschaften:
+			Die Exponentialabbildung erfüllt die folgenden Eigenschaften:
 			\begin{enumerate}[label=(\roman*)]
 				\item $\exp(0)=e$
 				\item Für alle $v \in \mathfrak g$ ist $t \mapsto \exp(tv)$ die Integralkurve von $L(v)$ in $e$.
